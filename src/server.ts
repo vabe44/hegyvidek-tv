@@ -15,6 +15,8 @@ import * as logger from "morgan";
 import * as passport from "passport";
 import * as path from "path";
 import expressValidator = require("express-validator");
+import "reflect-metadata";
+import {createConnection} from "typeorm";
 
 /**
  * Load environment variables from .env file, where API keys and passwords are configured.
@@ -60,10 +62,6 @@ class App {
       resave: true,
       saveUninitialized: true,
       secret: process.env.SESSION_SECRET,
-      store: new this.MongoStore({
-        autoReconnect: true,
-        url: process.env.MONGODB_URI || process.env.MONGOLAB_URI,
-      }),
     }));
     this.express.use(passport.initialize());
     this.express.use(passport.session());
@@ -72,20 +70,6 @@ class App {
     this.express.use(lusca.xssProtection(true));
     this.express.use((req, res, next) => {
       res.locals.user = req.user;
-      next();
-    });
-    this.express.use((req, res, next) => {
-      // After successful login, redirect back to the intended page
-      if (!req.user &&
-        req.path !== "/login" &&
-        req.path !== "/signup" &&
-        !req.path.match(/^\/auth/) &&
-        !req.path.match(/\./)) {
-        req.session.returnTo = req.path;
-      } else if (req.user &&
-        req.path === "/account") {
-        req.session.returnTo = req.path;
-      }
       next();
     });
     this.express.use(express.static(path.join(__dirname, "public"), { maxAge: 31557600000 }));
@@ -102,14 +86,10 @@ class App {
   }
 
   private launchConf() {
-    // mongoose.Promise = global.Promise;
-    mongoose.connect(process.env.MONGODB_URI || process.env.MONGOLAB_URI);
-
-    mongoose.connection.on("error", () => {
-      // tslint:disable-next-line:no-console
-      console.log("MongoDB connection error. Please make sure MongoDB is running.");
-      process.exit();
-    });
+    // TypeORM connection
+    createConnection().then(async (connection) => {
+    // tslint:disable-next-line:no-console
+    }).catch((error) => console.log("TypeORM connection error: ", error));
 
     this.express.use(errorHandler());
 
