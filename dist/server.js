@@ -35,6 +35,7 @@ dotenv.config({ path: ".env.example" });
 const account_1 = require("./routes/account");
 const api_1 = require("./routes/api");
 const contact_1 = require("./routes/contact");
+const musoraink_1 = require("./routes/musoraink");
 const oauth_1 = require("./routes/oauth");
 const root_1 = require("./routes/root");
 class App {
@@ -78,6 +79,7 @@ class App {
         this.express.use("/auth", oauth_1.default);
         this.express.use("/account", account_1.default);
         this.express.use("/contact", contact_1.default);
+        this.express.use("/musoraink", musoraink_1.default);
     }
     launchConf() {
         // TypeORM connection
