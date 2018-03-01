@@ -1,0 +1,11 @@
+.container {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.adas {
+    height: 50vh;
+    width: 50vw;
+}
