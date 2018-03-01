@@ -9,8 +9,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+const bcrypt = require("bcrypt");
 const typeorm_1 = require("typeorm");
 let User = class User extends typeorm_1.BaseEntity {
+    hashPassword(password) {
+        return bcrypt.hashSync(password, 10);
+    }
 };
 __decorate([
     typeorm_1.PrimaryGeneratedColumn(),

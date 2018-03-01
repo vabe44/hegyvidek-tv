@@ -13,7 +13,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
  */
 const bodyParser = require("body-parser");
 const compression = require("compression"); // compresses requests
-const mongo = require("connect-mongo"); // (session)
 const dotenv = require("dotenv");
 const errorHandler = require("errorhandler");
 const express = require("express");
@@ -40,7 +39,6 @@ const oauth_1 = require("./routes/oauth");
 const root_1 = require("./routes/root");
 class App {
     constructor() {
-        this.MongoStore = mongo(session);
         this.express = express();
         this.middleware();
         this.routes();

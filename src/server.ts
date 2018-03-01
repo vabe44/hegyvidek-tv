@@ -40,7 +40,6 @@ class App {
 
   // ref to Express instance
   public express: express.Application;
-  private readonly MongoStore = mongo(session);
 
   constructor() {
     this.express = express();

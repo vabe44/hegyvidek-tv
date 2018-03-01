@@ -2,7 +2,7 @@ import * as bcrypt from "bcrypt-nodejs";
 import * as crypto from "crypto";
 import * as mongoose from "mongoose";
 
-export type UserModel = mongoose.Document & {
+export type UserModelMongo = mongoose.Document & {
   email: string,
   password: string,
   passwordResetToken: string,
@@ -86,5 +86,5 @@ userSchema.methods.gravatar = function(size: number) {
 };
 
 // export const User: UserType = mongoose.model<UserType>('User', userSchema);
-const User = mongoose.model<UserModel>("User", userSchema);
+const User = mongoose.model<UserModelMongo>("User", userSchema);
 export default User;

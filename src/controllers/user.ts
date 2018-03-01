@@ -1,11 +1,14 @@
 import * as async from "async";
+import * as bcrypt from "bcrypt";
 import * as crypto from "crypto";
 import { NextFunction, Request, Response } from "express";
+import * as jwt from "jsonwebtoken";
 import { WriteError } from "mongodb";
 import * as nodemailer from "nodemailer";
 import * as passport from "passport";
 import { LocalStrategyInfo } from "passport-local";
-import { AuthToken, default as User, UserModel } from "../models/User";
+import { User } from "../entity/User";
+import { AuthToken, default as UserMongo, UserModelMongo } from "../models/User";
 // const request = require("express-validator");
 
 /**
@@ -25,7 +28,7 @@ export let getLogin = (req: Request, res: Response) => {
  * POST /login
  * Sign in using email and password.
  */
-export let postLogin = (req: Request, res: Response, next: NextFunction) => {
+export let postLogin = async (req: Request, res: Response, next: NextFunction) => {
   req.assert("email", "Email is not valid").isEmail();
   req.assert("password", "Password cannot be blank").notEmpty();
   req.sanitize("email").normalizeEmail({ gmail_remove_dots: false });
@@ -34,21 +37,28 @@ export let postLogin = (req: Request, res: Response, next: NextFunction) => {
 
   if (errors) {
     req.flash("errors", errors);
-    return res.redirect("/login");
+    return res.json({ errors });
   }
 
-  passport.authenticate("local", (err: Error, user: UserModel, info: LocalStrategyInfo) => {
-    if (err) { return next(err); }
-    if (!user) {
-      req.flash("errors", info.message);
-      return res.redirect("/login");
-    }
-    req.logIn(user, (err) => {
-      if (err) { return next(err); }
-      req.flash("success", { msg: "Success! You are logged in." });
-      res.redirect(req.session.returnTo || "/");
-    });
-  })(req, res, next);
+  const user = await User.findOne({ email: req.body.email });
+
+  if ( !user ) {
+    res.status(401).json({message: "No such user found."});
+  }
+
+  if (bcrypt.compareSync(req.body.password, user.password)) {
+    // from now on we'll identify the user by the id
+    // the id is the only personalized value that goes into our token
+    const payload = {
+      email: user.email,
+      id: user.id,
+      username: user.username,
+    };
+    const token = jwt.sign(payload, process.env.JWT_SECRET);
+    res.json({ message: "ok", token });
+  } else {
+    res.status(401).json({message: "Passwords did not match"});
+  }
 };
 
 /**
@@ -77,40 +87,43 @@ export let getSignup = (req: Request, res: Response) => {
  * POST /signup
  * Create a new local account.
  */
-export let postSignup = (req: Request, res: Response, next: NextFunction) => {
+export let postSignup =  async (req: Request, res: Response, next: NextFunction) => {
   req.assert("email", "Email is not valid").isEmail();
+  req.sanitize("email").normalizeEmail({ gmail_remove_dots: false });
   req.assert("password", "Password must be at least 4 characters long").len({ min: 4 });
   req.assert("confirmPassword", "Passwords do not match").equals(req.body.password);
-  req.sanitize("email").normalizeEmail({ gmail_remove_dots: false });
+  req.assert("username", "Username must be at least 4 characters long").len({ min: 4 });
 
   const errors = req.validationErrors();
 
   if (errors) {
     req.flash("errors", errors);
-    return res.redirect("/signup");
+    return res.json({ errors });
   }
 
-  const user = new User({
-    email: req.body.email,
-    password: req.body.password,
-  });
+  const user = new User();
+  user.username = req.body.username;
+  user.email = req.body.email;
+  user.password = user.hashPassword(req.body.password);
 
-  User.findOne({ email: req.body.email }, (err, existingUser) => {
-    if (err) { return next(err); }
-    if (existingUser) {
-      req.flash("errors", { msg: "Account with that email address already exists." });
-      return res.redirect("/signup");
-    }
-    user.save((err) => {
-      if (err) { return next(err); }
-      req.logIn(user, (err) => {
-        if (err) {
-          return next(err);
-        }
-        res.redirect("/");
-      });
-    });
-  });
+  const alreadyRegistered = await User.findOne({ email: req.body.email });
+  if (alreadyRegistered) {
+    req.flash("errors", { msg: "Account with that email address already exists." });
+    return res.json({ message: "Account with that email address already exists." });
+  }
+  await user.save();
+
+  if (user.id) {
+    const payload = {
+      email: user.email,
+      id: user.id,
+      username: user.username,
+    };
+    const token = jwt.sign(payload, process.env.JWT_SECRET);
+    return res.json({ message: "ok", token });
+  } else {
+    return res.json({ message: "error" });
+  }
 };
 
 /**
@@ -138,7 +151,7 @@ export let postUpdateProfile = (req: Request, res: Response, next: NextFunction)
     return res.redirect("/account");
   }
 
-  User.findById(req.user.id, (err, user: UserModel) => {
+  UserMongo.findById(req.user.id, (err, user: UserModelMongo) => {
     if (err) { return next(err); }
     user.email = req.body.email || "";
     user.profile.name = req.body.name || "";
@@ -174,7 +187,7 @@ export let postUpdatePassword = (req: Request, res: Response, next: NextFunction
     return res.redirect("/account");
   }
 
-  User.findById(req.user.id, (err, user: UserModel) => {
+  UserMongo.findById(req.user.id, (err, user: UserModelMongo) => {
     if (err) { return next(err); }
     user.password = req.body.password;
     user.save((err: WriteError) => {
@@ -190,7 +203,7 @@ export let postUpdatePassword = (req: Request, res: Response, next: NextFunction
  * Delete user account.
  */
 export let postDeleteAccount = (req: Request, res: Response, next: NextFunction) => {
-  User.remove({ _id: req.user.id }, (err) => {
+  UserMongo.remove({ _id: req.user.id }, (err) => {
     if (err) { return next(err); }
     req.logout();
     req.flash("info", { msg: "Your account has been deleted." });
@@ -204,7 +217,7 @@ export let postDeleteAccount = (req: Request, res: Response, next: NextFunction)
  */
 export let getOauthUnlink = (req: Request, res: Response, next: NextFunction) => {
   const provider = req.params.provider;
-  User.findById(req.user.id, (err, user: any) => {
+  UserMongo.findById(req.user.id, (err, user: any) => {
     if (err) { return next(err); }
     user[provider] = undefined;
     user.tokens = user.tokens.filter((token: AuthToken) => token.kind !== provider);
@@ -224,7 +237,7 @@ export let getReset = (req: Request, res: Response, next: NextFunction) => {
   if (req.isAuthenticated()) {
     return res.redirect("/");
   }
-  User
+  UserMongo
     .findOne({ passwordResetToken: req.params.token })
     .where("passwordResetExpires").gt(Date.now())
     .exec((err, user) => {
@@ -257,7 +270,7 @@ export let postReset = (req: Request, res: Response, next: NextFunction) => {
   async.waterfall([
     // tslint:disable-next-line:ban-types
     function resetPassword(done: Function) {
-      User
+      UserMongo
         .findOne({ passwordResetToken: req.params.token })
         .where("passwordResetExpires").gt(Date.now())
         .exec((err, user: any) => {
@@ -278,7 +291,7 @@ export let postReset = (req: Request, res: Response, next: NextFunction) => {
         });
     },
     // tslint:disable-next-line:ban-types
-    function sendResetPasswordEmail(user: UserModel, done: Function) {
+    function sendResetPasswordEmail(user: UserModelMongo, done: Function) {
       const transporter = nodemailer.createTransport({
         auth: {
           pass: process.env.SENDGRID_PASSWORD,
@@ -342,7 +355,7 @@ export let postForgot = (req: Request, res: Response, next: NextFunction) => {
     },
     // tslint:disable-next-line:ban-types
     function setRandomToken(token: AuthToken, done: Function) {
-      User.findOne({ email: req.body.email }, (err, user: any) => {
+      UserMongo.findOne({ email: req.body.email }, (err, user: any) => {
         if (err) { return done(err); }
         if (!user) {
           req.flash("errors", { msg: "Account with that email address does not exist." });
@@ -356,7 +369,7 @@ export let postForgot = (req: Request, res: Response, next: NextFunction) => {
       });
     },
     // tslint:disable-next-line:ban-types
-    function sendForgotPasswordEmail(token: AuthToken, user: UserModel, done: Function) {
+    function sendForgotPasswordEmail(token: AuthToken, user: UserModelMongo, done: Function) {
       const transporter = nodemailer.createTransport({
         auth: {
           pass: process.env.SENDGRID_PASSWORD,
