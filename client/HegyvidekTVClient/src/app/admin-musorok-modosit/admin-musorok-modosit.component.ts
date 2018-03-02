@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MusorService } from '../services/musor.service';
 import { Musor } from '../interfaces/Musor';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin-musorok-modosit',
@@ -12,6 +12,7 @@ export class AdminMusorokModositComponent implements OnInit {
 
   musor: any = {};
   constructor(
+  private router: Router,
   private musorService: MusorService, private route: ActivatedRoute) {}
 
   ngOnInit() {
@@ -26,6 +27,19 @@ export class AdminMusorokModositComponent implements OnInit {
         console.log(response);
         if (response.musor) {
           console.log('siker');
+        } else  {
+          console.log('error');
+        }
+      });
+  }
+
+  torlesMusor() {
+    this.musorService.torles(this.musor.id)
+      .subscribe(response => {
+        console.log(response);
+        if (response.musor) {
+          console.log('siker');
+          this.router.navigate(['/admin/musorok']);
         } else  {
           console.log('error');
         }

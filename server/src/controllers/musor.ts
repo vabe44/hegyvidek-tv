@@ -77,3 +77,19 @@ export let putMusor =  async (req: Request, res: Response, next: NextFunction) =
         return res.json({ message: "Hiba tortent a musor modositasa kozben. Kerem probalja ujra kesobb." });
     }
 };
+
+/**
+ * DELETE /musoraink
+ * Musor torlese.
+ */
+export let deleteMusor =  async (req: Request, res: Response, next: NextFunction) => {
+
+    const musor = await Musor.findOneById(req.params.id);
+    await musor.remove();
+
+    if (!musor.id) {
+        return res.json({ musor });
+    } else {
+        return res.json({ message: "Hiba tortent a musor torlese kozben. Kerem probalja ujra kesobb." });
+    }
+};

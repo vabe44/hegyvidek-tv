@@ -12,6 +12,7 @@ class Musoraink {
     this.router.get("/:id", musorController.getMusorId);
     this.router.post("/", musorController.postMusor);
     this.router.put("/", musorController.putMusor);
+    this.router.delete("/:id", musorController.deleteMusor);
   }
 }
 

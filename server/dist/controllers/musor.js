@@ -79,4 +79,18 @@ exports.putMusor = (req, res, next) => __awaiter(this, void 0, void 0, function*
         return res.json({ message: "Hiba tortent a musor modositasa kozben. Kerem probalja ujra kesobb." });
     }
 });
+/**
+ * DELETE /musoraink
+ * Musor torlese.
+ */
+exports.deleteMusor = (req, res, next) => __awaiter(this, void 0, void 0, function* () {
+    const musor = yield Musor_1.Musor.findOneById(req.params.id);
+    yield musor.remove();
+    if (!musor.id) {
+        return res.json({ musor });
+    }
+    else {
+        return res.json({ message: "Hiba tortent a musor torlese kozben. Kerem probalja ujra kesobb." });
+    }
+});
 //# sourceMappingURL=musor.js.map

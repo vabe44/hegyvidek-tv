@@ -29,4 +29,9 @@ export class MusorService {
       .map(response => response.json());
   }
 
+  torles(id) {
+    return this.http.delete(environment.apiUrl + '/musoraink/' + id)
+      .map(response => response.json());
+  }
+
 }
