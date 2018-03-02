@@ -2,7 +2,7 @@ export interface Musor {
     id: number;
     cim: string;
     url: string;
-    statusz: boolean;
+    statusz: string;
     megjelenites: string;
     periodus: string;
     kep: string;

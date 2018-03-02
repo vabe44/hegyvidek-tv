@@ -26,7 +26,7 @@ __decorate([
 ], Musor.prototype, "url", void 0);
 __decorate([
     typeorm_1.Column(),
-    __metadata("design:type", Boolean)
+    __metadata("design:type", String)
 ], Musor.prototype, "statusz", void 0);
 __decorate([
     typeorm_1.Column(),

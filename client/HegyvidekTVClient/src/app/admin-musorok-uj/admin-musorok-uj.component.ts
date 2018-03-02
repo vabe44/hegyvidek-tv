@@ -1,3 +1,4 @@
+import { Musor } from './../interfaces/Musor';
 import { MusorService } from './../services/musor.service';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
@@ -14,7 +15,7 @@ export class AdminMusorokUjComponent {
     private musorService: MusorService) { }
 
   ujMusor(musor) {
-    this.musorService.ujMusor(musor)
+    this.musorService.uj(musor)
       .subscribe(response => {
         console.log(response);
         if (response.musor) {

@@ -19,6 +19,7 @@ import { AdminMenuComponent } from './admin-menu/admin-menu.component';
 import { AdminEpizodokComponent } from './admin-epizodok/admin-epizodok.component';
 import { AdminMusorokUjComponent } from './admin-musorok-uj/admin-musorok-uj.component';
 import { MusorService } from './services/musor.service';
+import { AdminMusorokModositComponent } from './admin-musorok-modosit/admin-musorok-modosit.component';
 
 export function getAuthHttp(http, options: RequestOptions) {
   return new AuthHttp(new AuthConfig({
@@ -35,7 +36,8 @@ export function getAuthHttp(http, options: RequestOptions) {
     AdminMusorokComponent,
     AdminMenuComponent,
     AdminEpizodokComponent,
-    AdminMusorokUjComponent
+    AdminMusorokUjComponent,
+    AdminMusorokModositComponent
   ],
   imports: [
     BrowserModule,
@@ -45,9 +47,10 @@ export function getAuthHttp(http, options: RequestOptions) {
       { path: '', component: HomeComponent },
       { path: 'login', component: LoginComponent },
       { path: 'admin/musorok/uj', component: AdminMusorokUjComponent },
+      { path: 'admin/musorok/:id', component: AdminMusorokModositComponent },
       { path: 'admin/musorok', component: AdminMusorokComponent },
       { path: 'admin/epizodok', component: AdminEpizodokComponent },
-      { path: 'admin', component: AdminComponent },
+      { path: 'admin', component: AdminMusorokComponent },
     ])
   ],
   providers: [

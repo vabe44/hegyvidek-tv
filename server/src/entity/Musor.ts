@@ -13,7 +13,7 @@ export class Musor extends BaseEntity {
     public url: string;
 
     @Column()
-    public statusz: boolean;
+    public statusz: string;
 
     @Column()
     public megjelenites: string;

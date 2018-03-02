@@ -1,0 +1,41 @@
+<app-admin-menu></app-admin-menu>
+
+<form class="form-signup" #f="ngForm" (ngSubmit)="modositMusor()">
+  <h2 class="form-signup-heading">Musor modositasa</h2>
+
+  <label for="musorCim" class="sr-only">Musor cime</label>
+  <input type="text" id="musorCim" name="musorCim" [(ngModel)]="musor.cim" class="form-control" required autofocus>
+
+  <label for="musorUrl" class="sr-only">Beszedes URL</label>
+  <input type="text" id="musorUrl" name="musorUrl" [(ngModel)]="musor.url" class="form-control" required>
+
+  <label for="musorStatusz" class="sr-only">Statusz</label>
+  <select id="musorStatusz" name="musorStatusz" [(ngModel)]="musor.statusz">
+    <option value="aktiv" [attr.selected]="musor.statusz==='aktiv' ? true : false">Aktiv</option>
+    <option value="inaktiv" [attr.selected]="musor.statusz==='inaktiv' ? true : false">Inaktiv</option>
+  </select>
+
+  <label for="musorMegjelenites" class="sr-only">Megjelenites</label>
+  <select id="musorMegjelenites" name="musorMegjelenites" [(ngModel)]="musor.megjelenites">
+    <option value="hirado" [attr.selected]="musor.periodus==='hirado' ? true : false">Hirado megjelenitesu</option>
+    <option value="musor" [attr.selected]="musor.periodus==='musor' ? true : false">Normal megjelenitesu</option>
+  </select>
+
+  <label for="musorPeriodus" class="sr-only">Periodus</label>
+  <select id="musorPeriodus" name="musorPeriodus" [(ngModel)]="musor.periodus">
+    <option value="napi" [attr.selected]="musor.periodus==='napi' ? true : false">Napi</option>
+    <option value="heti" [attr.selected]="musor.periodus==='heti' ? true : false">Heti</option>
+    <option value="havi" [attr.selected]="musor.periodus==='havi' ? true : false">Havi</option>
+  </select>
+
+  <label for="musorKep" class="sr-only">Musor kepe</label>
+  <input type="text" id="musorKep" name="musorKep" [(ngModel)]="musor.kep" class="form-control" required>
+
+  <label for="musorRovidLeiras" class="sr-only">Musor rovid leirasa</label>
+  <textarea id="musorRovidLeiras" name="musorRovidLeiras" [(ngModel)]="musor.rovidLeiras" rows="10" cols="50"></textarea>
+
+  <label for="musorReszletesLeiras" class="sr-only">Musor reszletes leirasa</label>
+  <textarea id="musorReszletesLeiras" name="musorReszletesLeiras" [(ngModel)]="musor.reszletesLeiras" rows="10" cols="100"></textarea>
+
+  <button class="btn btn-lg btn-primary btn-block" type="submit">Mentes</button>
+</form>

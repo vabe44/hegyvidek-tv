@@ -5,3 +5,9 @@
 <p>
   admin-musorok works!
 </p>
+
+<ul>
+  <li *ngFor="let musor of musorok">
+      <a [routerLink]="['/admin/musorok', musor.id]">{{ musor.cim }}</a>
+  </li>
+</ul>

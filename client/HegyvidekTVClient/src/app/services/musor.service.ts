@@ -9,9 +9,24 @@ export class MusorService {
 
   constructor(private authHttp: AuthHttp, private http: Http) { }
 
-  ujMusor(musor) {
+  osszes() {
+    return this.http.get(environment.apiUrl + '/musoraink')
+      .map(response => response.json());
+  }
+
+  musor(id) {
+    return this.http.get(environment.apiUrl + '/musoraink/' + id)
+      .map(response => response.json());
+  }
+
+  uj(musor) {
     return this.http.post(environment.apiUrl + '/musoraink', musor)
       .map(response => response.json());
-   }
+  }
+
+  modosit(musor) {
+    return this.http.put(environment.apiUrl + '/musoraink', musor)
+      .map(response => response.json());
+  }
 
 }
