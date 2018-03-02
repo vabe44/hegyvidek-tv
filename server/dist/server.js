@@ -13,6 +13,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
  */
 const bodyParser = require("body-parser");
 const compression = require("compression"); // compresses requests
+const cors = require("cors");
 const dotenv = require("dotenv");
 const errorHandler = require("errorhandler");
 const express = require("express");
@@ -64,6 +65,10 @@ class App {
         this.express.use(flash());
         this.express.use(lusca.xframe("SAMEORIGIN"));
         this.express.use(lusca.xssProtection(true));
+        this.express.use(cors({
+            credentials: true,
+            origin: process.env.CLIENT_URL_FOR_CORS,
+        }));
         this.express.use((req, res, next) => {
             res.locals.user = req.user;
             next();

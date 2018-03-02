@@ -4,6 +4,7 @@
 import * as bodyParser from "body-parser";
 import * as compression from "compression";  // compresses requests
 import * as mongo from "connect-mongo"; // (session)
+import * as cors from "cors";
 import * as dotenv from "dotenv";
 import * as errorHandler from "errorhandler";
 import * as express from "express";
@@ -68,6 +69,10 @@ class App {
     this.express.use(flash());
     this.express.use(lusca.xframe("SAMEORIGIN"));
     this.express.use(lusca.xssProtection(true));
+    this.express.use(cors({
+      credentials: true,
+      origin: process.env.CLIENT_URL_FOR_CORS,
+    }));
     this.express.use((req, res, next) => {
       res.locals.user = req.user;
       next();

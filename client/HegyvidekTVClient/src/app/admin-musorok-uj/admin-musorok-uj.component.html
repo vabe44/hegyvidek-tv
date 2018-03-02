@@ -10,19 +10,19 @@
   <input type="text" id="musorUrl" name="musorUrl" ngModel class="form-control" required>
 
   <label for="musorStatusz" class="sr-only">Statusz</label>
-  <select id="musorStatusz" name="musorStatusz">
+  <select id="musorStatusz" name="musorStatusz" ngModel>
     <option value="0" selected>Aktiv</option>
     <option value="1">Inaktiv</option>
   </select>
 
   <label for="musorMegjelenites" class="sr-only">Megjelenites</label>
-  <select id="musorMegjelenites" name="musorMegjelenites">
+  <select id="musorMegjelenites" name="musorMegjelenites" ngModel>
     <option value="hirado" selected>Hirado megjelenitesu</option>
     <option value="musor">Normal megjelenitesu</option>
   </select>
 
   <label for="musorPeriodus" class="sr-only">Periodus</label>
-  <select id="musorPeriodus" name="musorPeriodus">
+  <select id="musorPeriodus" name="musorPeriodus" ngModel>
     <option value="napi" selected>Napi</option>
     <option value="heti">Heti</option>
     <option value="havi">Havi</option>
@@ -32,10 +32,10 @@
   <input type="text" id="musorKep" name="musorKep" ngModel class="form-control" required>
 
   <label for="musorRovidLeiras" class="sr-only">Musor rovid leirasa</label>
-  <textarea id="musorRovidLeiras" name="musorRovidLeiras" rows="10" cols="50"></textarea>
+  <textarea id="musorRovidLeiras" name="musorRovidLeiras" ngModel rows="10" cols="50"></textarea>
 
   <label for="musorReszletesLeiras" class="sr-only">Musor reszletes leirasa</label>
-  <textarea id="musorReszletesLeiras" name="musorReszletesLeiras" rows="10" cols="100"></textarea>
+  <textarea id="musorReszletesLeiras" name="musorReszletesLeiras" ngModel rows="10" cols="100"></textarea>
 
   <button class="btn btn-lg btn-primary btn-block" type="submit">Mentes</button>
 </form>

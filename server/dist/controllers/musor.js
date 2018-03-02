@@ -15,17 +15,17 @@ const Musor_1 = require("../entity/Musor");
  */
 exports.postMusor = (req, res, next) => __awaiter(this, void 0, void 0, function* () {
     const musor = new Musor_1.Musor();
-    musor.cim = req.body.cim;
-    musor.url = req.body.url;
-    musor.statusz = req.body.statusz;
-    musor.megjelenites = req.body.megjelenites;
-    musor.periodus = req.body.periodus;
-    musor.kep = req.body.kep;
-    musor.rovidLeiras = req.body.rovidLeiras;
-    musor.reszletesLeiras = req.body.reszletesLeiras;
+    musor.cim = req.body.musorCim;
+    musor.url = req.body.musorUrl;
+    musor.statusz = req.body.musorStatusz;
+    musor.megjelenites = req.body.musorMegjelenites;
+    musor.periodus = req.body.musorPeriodus;
+    musor.kep = req.body.musorKep;
+    musor.rovidLeiras = req.body.musorRovidLeiras;
+    musor.reszletesLeiras = req.body.musorReszletesLeiras;
     yield musor.save();
     if (musor.id) {
-        return res.json({ message: "ok", musor });
+        return res.json({ musor });
     }
     else {
         return res.json({ message: "Hiba tortent a musor letrehozasa kozben. Kerem probalja ujra kesobb." });

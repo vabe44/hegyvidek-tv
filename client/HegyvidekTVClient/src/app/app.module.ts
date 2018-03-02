@@ -18,6 +18,7 @@ import { AdminMusorokComponent } from './admin-musorok/admin-musorok.component';
 import { AdminMenuComponent } from './admin-menu/admin-menu.component';
 import { AdminEpizodokComponent } from './admin-epizodok/admin-epizodok.component';
 import { AdminMusorokUjComponent } from './admin-musorok-uj/admin-musorok-uj.component';
+import { MusorService } from './services/musor.service';
 
 export function getAuthHttp(http, options: RequestOptions) {
   return new AuthHttp(new AuthConfig({
@@ -51,6 +52,7 @@ export function getAuthHttp(http, options: RequestOptions) {
   ],
   providers: [
     AuthService,
+    MusorService,
     AuthHttp,
     {
       provide: AuthHttp,
