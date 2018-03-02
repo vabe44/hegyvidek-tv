@@ -15,12 +15,14 @@ const Musor_1 = require("../entity/Musor");
  */
 exports.postMusor = (req, res, next) => __awaiter(this, void 0, void 0, function* () {
     const musor = new Musor_1.Musor();
-    musor.youtube = req.body.youtube;
-    musor.kategoria = req.body.kategoria;
-    musor.datum = req.body.datum;
-    musor.tartalom = req.body.tartalom;
-    musor.kulcsszavak = req.body.kulcsszavak;
-    musor.kiemelt = req.body.kiemelt;
+    musor.cim = req.body.cim;
+    musor.url = req.body.url;
+    musor.statusz = req.body.statusz;
+    musor.megjelenites = req.body.megjelenites;
+    musor.periodus = req.body.periodus;
+    musor.kep = req.body.kep;
+    musor.rovidLeiras = req.body.rovidLeiras;
+    musor.reszletesLeiras = req.body.reszletesLeiras;
     yield musor.save();
     if (musor.id) {
         return res.json({ message: "ok", musor });

@@ -10,46 +10,54 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const typeorm_1 = require("typeorm");
-let Musor = class Musor extends typeorm_1.BaseEntity {
+let Epizod = class Epizod extends typeorm_1.BaseEntity {
 };
 __decorate([
     typeorm_1.PrimaryGeneratedColumn(),
     __metadata("design:type", Number)
-], Musor.prototype, "id", void 0);
+], Epizod.prototype, "id", void 0);
 __decorate([
     typeorm_1.Column(),
     __metadata("design:type", String)
-], Musor.prototype, "cim", void 0);
+], Epizod.prototype, "cim", void 0);
 __decorate([
     typeorm_1.Column(),
     __metadata("design:type", String)
-], Musor.prototype, "url", void 0);
+], Epizod.prototype, "url", void 0);
 __decorate([
     typeorm_1.Column(),
     __metadata("design:type", Boolean)
-], Musor.prototype, "statusz", void 0);
+], Epizod.prototype, "statusz", void 0);
+__decorate([
+    typeorm_1.Column(),
+    __metadata("design:type", Boolean)
+], Epizod.prototype, "kiemelt", void 0);
 __decorate([
     typeorm_1.Column(),
     __metadata("design:type", String)
-], Musor.prototype, "megjelenites", void 0);
+], Epizod.prototype, "kulcsszavak", void 0);
 __decorate([
     typeorm_1.Column(),
     __metadata("design:type", String)
-], Musor.prototype, "periodus", void 0);
+], Epizod.prototype, "datum", void 0);
 __decorate([
     typeorm_1.Column(),
     __metadata("design:type", String)
-], Musor.prototype, "kep", void 0);
+], Epizod.prototype, "musor", void 0);
 __decorate([
     typeorm_1.Column(),
     __metadata("design:type", String)
-], Musor.prototype, "rovidLeiras", void 0);
+], Epizod.prototype, "kep", void 0);
 __decorate([
     typeorm_1.Column(),
     __metadata("design:type", String)
-], Musor.prototype, "reszletesLeiras", void 0);
-Musor = __decorate([
+], Epizod.prototype, "youtube", void 0);
+__decorate([
+    typeorm_1.Column(),
+    __metadata("design:type", String)
+], Epizod.prototype, "reszletesLeiras", void 0);
+Epizod = __decorate([
     typeorm_1.Entity()
-], Musor);
-exports.Musor = Musor;
-//# sourceMappingURL=Musor.js.map
+], Epizod);
+exports.Epizod = Epizod;
+//# sourceMappingURL=Epizod.js.map

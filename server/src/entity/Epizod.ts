@@ -1,7 +1,7 @@
 import {BaseEntity, Column, Entity, OneToMany, PrimaryGeneratedColumn} from "typeorm";
 
 @Entity()
-export class Musor extends BaseEntity {
+export class Epizod extends BaseEntity {
 
     @PrimaryGeneratedColumn()
     public id: number;
@@ -16,16 +16,22 @@ export class Musor extends BaseEntity {
     public statusz: boolean;
 
     @Column()
-    public megjelenites: string;
+    public kiemelt: boolean;
 
     @Column()
-    public periodus: string;
+    public kulcsszavak: string;
+
+    @Column()
+    public datum: string;
+
+    @Column()
+    public musor: string;
 
     @Column()
     public kep: string;
 
     @Column()
-    public rovidLeiras: string;
+    public youtube: string;
 
     @Column()
     public reszletesLeiras: string;

@@ -14,6 +14,10 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { AdminComponent } from './admin/admin.component';
 import { HomeComponent } from './home/home.component';
+import { AdminMusorokComponent } from './admin-musorok/admin-musorok.component';
+import { AdminMenuComponent } from './admin-menu/admin-menu.component';
+import { AdminEpizodokComponent } from './admin-epizodok/admin-epizodok.component';
+import { AdminMusorokUjComponent } from './admin-musorok-uj/admin-musorok-uj.component';
 
 export function getAuthHttp(http, options: RequestOptions) {
   return new AuthHttp(new AuthConfig({
@@ -26,7 +30,11 @@ export function getAuthHttp(http, options: RequestOptions) {
     AppComponent,
     LoginComponent,
     AdminComponent,
-    HomeComponent
+    HomeComponent,
+    AdminMusorokComponent,
+    AdminMenuComponent,
+    AdminEpizodokComponent,
+    AdminMusorokUjComponent
   ],
   imports: [
     BrowserModule,
@@ -35,6 +43,9 @@ export function getAuthHttp(http, options: RequestOptions) {
     RouterModule.forRoot([
       { path: '', component: HomeComponent },
       { path: 'login', component: LoginComponent },
+      { path: 'admin/musorok/uj', component: AdminMusorokUjComponent },
+      { path: 'admin/musorok', component: AdminMusorokComponent },
+      { path: 'admin/epizodok', component: AdminEpizodokComponent },
       { path: 'admin', component: AdminComponent },
     ])
   ],

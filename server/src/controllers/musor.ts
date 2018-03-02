@@ -9,12 +9,14 @@ import { Musor } from "../entity/Musor";
 export let postMusor =  async (req: Request, res: Response, next: NextFunction) => {
 
     const musor = new Musor();
-    musor.youtube = req.body.youtube;
-    musor.kategoria = req.body.kategoria;
-    musor.datum = req.body.datum;
-    musor.tartalom = req.body.tartalom;
-    musor.kulcsszavak = req.body.kulcsszavak;
-    musor.kiemelt = req.body.kiemelt;
+    musor.cim = req.body.cim;
+    musor.url = req.body.url;
+    musor.statusz = req.body.statusz;
+    musor.megjelenites = req.body.megjelenites;
+    musor.periodus = req.body.periodus;
+    musor.kep = req.body.kep;
+    musor.rovidLeiras = req.body.rovidLeiras;
+    musor.reszletesLeiras = req.body.reszletesLeiras;
     await musor.save();
 
     if (musor.id) {

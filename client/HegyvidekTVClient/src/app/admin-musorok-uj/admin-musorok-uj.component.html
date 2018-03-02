@@ -1,0 +1,41 @@
+<app-admin-menu></app-admin-menu>
+
+<form class="form-signup" #f="ngForm" (ngSubmit)="ujMusor(f.value)">
+  <h2 class="form-signup-heading">Uj musor feltoltese</h2>
+
+  <label for="musorCim" class="sr-only">Musor cime</label>
+  <input type="text" id="musorCim" name="musorCim" ngModel class="form-control" required autofocus>
+
+  <label for="musorUrl" class="sr-only">Beszedes URL</label>
+  <input type="text" id="musorUrl" name="musorUrl" ngModel class="form-control" required>
+
+  <label for="musorStatusz" class="sr-only">Statusz</label>
+  <select id="musorStatusz" name="musorStatusz">
+    <option value="0" selected>Aktiv</option>
+    <option value="1">Inaktiv</option>
+  </select>
+
+  <label for="musorMegjelenites" class="sr-only">Megjelenites</label>
+  <select id="musorMegjelenites" name="musorMegjelenites">
+    <option value="hirado" selected>Hirado megjelenitesu</option>
+    <option value="musor">Normal megjelenitesu</option>
+  </select>
+
+  <label for="musorPeriodus" class="sr-only">Periodus</label>
+  <select id="musorPeriodus" name="musorPeriodus">
+    <option value="napi" selected>Napi</option>
+    <option value="heti">Heti</option>
+    <option value="havi">Havi</option>
+  </select>
+
+  <label for="musorKep" class="sr-only">Musor kepe</label>
+  <input type="text" id="musorKep" name="musorKep" ngModel class="form-control" required>
+
+  <label for="musorRovidLeiras" class="sr-only">Musor rovid leirasa</label>
+  <textarea id="musorRovidLeiras" name="musorRovidLeiras" rows="10" cols="50"></textarea>
+
+  <label for="musorReszletesLeiras" class="sr-only">Musor reszletes leirasa</label>
+  <textarea id="musorReszletesLeiras" name="musorReszletesLeiras" rows="10" cols="100"></textarea>
+
+  <button class="btn btn-lg btn-primary btn-block" type="submit">Mentes</button>
+</form>
