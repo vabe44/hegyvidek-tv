@@ -1,0 +1,95 @@
+<app-header></app-header>
+<main>
+    <section class="content">
+        <div class="cim">
+            <h2 class="bold">Kapcsolat</h2>
+        </div>
+        <p>
+            Már teljes Budapesten látható a Hegyvidék Televízió 24 órás adása a DIGI TV hálózatán a 410-es csatornahelyen. <br>
+            Továbbá Budapest 1. 2. 12. kerületében a UPC digitális kábelén az 505 csatornán, az analóg kábelén <br>
+            UHF 201,25 Mhz-en, a TELEKOM IPTV-s hálózatán a 226-os csatornán, <br>
+            valamint az Invitel Zrt. kábelszolgáltató UHF 189,25 Mhz-én.
+        </p>
+
+        <p>
+            Közműsorszolgáltatóként a Hegyvidék Televízió korszerű, a helyi igényekhez igazodó, azokat kiszolgáló <br>
+            műsorstruktúrájával közvetítő szerepet tölt bea lakosság, az önkormányzat, <br>
+            a közhivatalok és a civil szervezetek között.
+        </p>
+
+        <p class="bold">A Hegyvidék TV 24 órán keresztül tájékoztatja a lakosokat a hét minden napján.</p>
+
+        <p>
+            Hétköznap reggelenként 7 és 10 óra között útfigyelő kameránk segítségével időjárás jelentéstés közlekedési információt <br>
+            szolgáltatunk, 10 órától 15 óráig az esti műsorokat ismételjük meg, 15 és 19 óra között pedig a Képújság oldalain <br>
+            tájékoztatjuk a nézőket. Főműsoridőben 19 és 22 óra között híreket, stúdióbeszélgetéseket, <br>
+            színes helyi riportokat, képes összefoglaló anyagokat sugárzunk.
+        </p>
+
+        <div class="kapcsolat">
+            <div class="terkep">
+                <div class="google">
+                    <img src="/assets/images/google-maps.png" alt="Google Maps">
+                </div>
+                <div class="elerhetosegeink">
+                    <p class="elerhetosegeink">Elérhetőségeink:</p>
+                    <address>
+                        <span class="bold">Hegyvidék Televízió Zrt.</span><br>
+                        1122 Budapest, Hajnóczy József utca 2.
+                    </address>
+                    <div class="telefon">
+                        <p class="elerhetoseg">Telefon:</p><p class="elerhetoseg">+36 1 781 1787</p>
+                    </div>
+                    <div class="mobil">
+                        <p class="elerhetoseg">Mobil:</p><p class="elerhetoseg">+36 20 501 9828</p>
+                    </div>
+                    <div class="email">
+                        <p class="elerhetoseg">Email:</p><p class="elerhetoseg">htv@hegyvidektv.hu</p>
+                    </div>
+                </div>
+            </div>
+            <div class="uzenet">
+                <p class="irjon-nekunk bold">Írjon Nekünk!</p>
+                <form action="/kapcsolat" method="post">
+                    <div class="columns">
+                        <div class="column">
+                            <div class="field">
+                                <label class="label">Név:</label>
+                                <div class="control">
+                                    <input class="input" type="text">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="column">
+                            <div class="field">
+                                <label class="label">E-mail cím:</label>
+                                <div class="control">
+                                    <input class="input" type="email">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">Tárgy:</label>
+                        <div class="control">
+                            <input class="input" type="text">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">Levél:</label>
+                        <div class="control">
+                            <textarea class="textarea" placeholder="Textarea" rows="8"></textarea>
+                        </div>
+                    </div>
+                    <div class="kuldes control">
+                        <button class="kuldes button is-link">Küldés</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+</main>
+<footer>
+    <app-partnerek></app-partnerek>
+    <app-footer></app-footer>
+</footer>

@@ -30,6 +30,9 @@ import { LegfrissebbHirekComponent } from './legfrissebb-hirek/legfrissebb-hirek
 import { SocialMediaComponent } from './social-media/social-media.component';
 import { PartnerekComponent } from './partnerek/partnerek.component';
 import { FooterComponent } from './footer/footer.component';
+import { KapcsolatComponent } from './kapcsolat/kapcsolat.component';
+import { MediaajanlatComponent } from './mediaajanlat/mediaajanlat.component';
+import { MusorainkComponent } from './musoraink/musoraink.component';
 
 export function getAuthHttp(http, options: RequestOptions) {
   return new AuthHttp(new AuthConfig({
@@ -57,7 +60,10 @@ export function getAuthHttp(http, options: RequestOptions) {
     LegfrissebbHirekComponent,
     SocialMediaComponent,
     PartnerekComponent,
-    FooterComponent
+    FooterComponent,
+    KapcsolatComponent,
+    MediaajanlatComponent,
+    MusorainkComponent
   ],
   imports: [
     BrowserModule,
@@ -65,6 +71,9 @@ export function getAuthHttp(http, options: RequestOptions) {
     HttpModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent },
+      { path: 'musoraink', component: MusorainkComponent },
+      { path: 'kapcsolat', component: KapcsolatComponent },
+      { path: 'mediaajanlat', component: MediaajanlatComponent },
       { path: 'login', component: LoginComponent },
       { path: 'admin/musorok/uj', component: AdminMusorokUjComponent },
       { path: 'admin/musorok/:id', component: AdminMusorokModositComponent },

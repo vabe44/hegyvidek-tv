@@ -1,0 +1,120 @@
+main {
+    display: flex;
+    justify-content: center;
+    background-color: #d4d4d4;
+}
+
+section.content {
+    width: 1280px;
+    display: flex;
+    flex-direction: column;
+    color: #1f50ba;
+    padding: 0 160px;
+}
+
+.cim {
+    display: flex;
+    color: #1f50ba;
+    padding: 20px 0;
+}
+
+h2 {
+    color: #1f50ba;
+    font-size: 16px;
+    font-family: sans-serif;
+    text-transform: uppercase;
+    padding: 10px 20px;
+    border: 2px solid #1f50ba;
+    margin-bottom: unset;
+}
+
+.content p {
+    margin-bottom: unset;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+p {
+    padding: 10px 0;
+}
+
+.kapcsolat {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 10px;
+}
+
+.terkep, .uzenet {
+    width: 50%;
+}
+
+p.elerhetosegeink {
+    text-transform: uppercase;
+    font-family: sans-serif;
+    padding: 40px 0;
+}
+
+address {
+    font-style: normal;
+    font-family: sans-serif;
+}
+
+.uzenet {
+    width: 440px;
+}
+
+.telefon, .mobil, .email {
+    width: 200px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.telefon {
+    padding-top: 40px;
+}
+
+.email {
+    padding-top: 20px;
+    padding-bottom: 40px;
+}
+
+p.elerhetoseg {
+    padding: unset;
+    padding-bottom: unset;
+    padding-top: unset;
+}
+
+p.irjon-nekunk {
+    text-transform: uppercase;
+    padding-top: unset;
+}
+
+.columns {
+    margin-bottom: unset;
+}
+
+label {
+    color: #1f50ba;
+    margin-bottom: unset;
+}
+
+input, textarea {
+    border: 2px solid #1f50ba;
+}
+
+.kuldes.control {
+    display: flex;
+    justify-content: center;
+}
+
+.kuldes.button {
+    color: white;
+    font-size: 16px;
+    font-family: sans-serif;
+    background-color: #1f50ba;
+    text-transform: uppercase;
+    border-radius: unset;
+    padding: 0 30px;
+}

@@ -1,0 +1,72 @@
+main {
+    display: flex;
+    justify-content: center;
+    background-color: #d4d4d4;
+}
+
+section.content {
+    width: 1280px;
+    display: flex;
+    flex-direction: column;
+    color: #1f50ba;
+    padding: 0 160px;
+}
+
+.cim {
+    display: flex;
+    color: #1f50ba;
+    padding: 20px 0;
+}
+
+h2 {
+    color: #1f50ba;
+    font-size: 16px;
+    font-family: sans-serif;
+    text-transform: uppercase;
+    padding: 10px 20px;
+    border: 2px solid #1f50ba;
+    margin-bottom: unset;
+}
+
+.content p {
+    margin-bottom: unset;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+p {
+    padding: 10px 0;
+}
+
+ol {
+  margin: 0 0 1.5em;
+  padding: 0;
+  counter-reset: item;
+}
+
+ol > li {
+  margin: 0;
+  padding: 10px 0 10px 0;
+  list-style-type: none;
+  counter-increment: item;
+}
+
+ol > li:before {
+  display: inline-block;
+  width: 1em;
+  padding-right: 0.5em;
+  font-weight: bold;
+  text-align: right;
+  content: counter(item) ".";
+}
+
+ul {
+    margin-top: unset;
+    padding: 10px 0;
+}
+
+ul > li {
+    margin-left: 2em;
+}
