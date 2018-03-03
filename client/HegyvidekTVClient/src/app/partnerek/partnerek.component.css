@@ -1,0 +1,27 @@
+.content {
+    display: flex;
+    justify-content: center;
+}
+
+.partnerek.columns {
+    width: 1280px;
+    padding: unset;
+    margin: unset;
+    margin-bottom: unset;
+    background-color: #a7d153;
+}
+
+.partner.column {
+    padding: unset;
+    margin: unset;
+    margin-bottom: unset;
+}
+
+.partner.column > a {
+    display: flex;
+}
+
+img.partner {
+    width: 100%;
+    height: auto;
+}

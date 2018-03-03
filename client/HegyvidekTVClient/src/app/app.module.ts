@@ -27,6 +27,9 @@ import { MenuComponent } from './menu/menu.component';
 import { IdojarasComponent } from './idojaras/idojaras.component';
 import { KiemeltVideokComponent } from './kiemelt-videok/kiemelt-videok.component';
 import { LegfrissebbHirekComponent } from './legfrissebb-hirek/legfrissebb-hirek.component';
+import { SocialMediaComponent } from './social-media/social-media.component';
+import { PartnerekComponent } from './partnerek/partnerek.component';
+import { FooterComponent } from './footer/footer.component';
 
 export function getAuthHttp(http, options: RequestOptions) {
   return new AuthHttp(new AuthConfig({
@@ -51,7 +54,10 @@ export function getAuthHttp(http, options: RequestOptions) {
     MenuComponent,
     IdojarasComponent,
     KiemeltVideokComponent,
-    LegfrissebbHirekComponent
+    LegfrissebbHirekComponent,
+    SocialMediaComponent,
+    PartnerekComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
