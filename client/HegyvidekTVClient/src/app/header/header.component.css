@@ -1,0 +1,182 @@
+header {
+    width: 100%;
+    height: 220px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.logo {
+    width: 240px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    background-image: url('/assets/images/htv_logo.png');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+p.pontosido {
+    font-size: 20px;
+    padding-right: 15px;
+    padding-bottom: 5px;
+    color: #1f50ba;
+    font-family: sans-serif;
+}
+
+.idojaras {
+    width: 120px;
+    background-color: burlywood;
+    background-image: url('/assets/images/koponyeg.png');
+}
+
+.container {
+    width: 1280px;
+    height: 200px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.contents {
+    width: 920px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-family: sans-serif;
+}
+
+.felso {
+    height: 120px;
+    display: flex;
+}
+
+.cim {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    color: #1f50ba;
+}
+
+.linkek {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.social {
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 80px;
+}
+
+.social > a {
+    margin: 5px;
+}
+
+.facebook, .youtube {
+    width: 31px;
+    height: 31px;
+}
+
+.facebook {
+    background-image: url('/assets/images/facebook.png');
+}
+
+.facebook:hover {
+    background-image: url('/assets/images/facebook-color.png');
+}
+
+.youtube {
+    background-image: url('/assets/images/youtube.png');
+}
+
+.youtube:hover {
+    background-image: url('/assets/images/youtube-color.png');
+}
+
+.hegyvidek-radio {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+img.hegyvidekradio-kep {
+    padding: 20px;
+    padding-top: 0px;
+    padding-left: 10px
+}
+
+p.radio {
+    font-size: 20px;
+    color: #1f50ba;
+    padding-bottom: 15px;
+}
+
+.kereses {
+    width: 50%;
+    display: flex;
+}
+
+.kereses.input {
+    height: 40px;
+    flex: 1;
+    border: 2px solid #1f50ba;
+    border-radius: unset;
+}
+
+.kereses.button {
+    height: 40px;
+    width: 145px;
+    color: white;
+    font-size: 20px;
+    font-family: sans-serif;
+    background-color: #1f50ba;
+    text-transform: uppercase;
+    padding: unset;
+    border: unset;
+    border-radius: unset;
+}
+
+.kereses.button:hover {
+    color: #1f50ba;
+    border: 2px solid #1f50ba;
+    border-left: unset;
+    background-color: white;
+}
+
+.linkek {
+    width: 50%;
+}
+
+.also {
+    height: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.menu {
+    width: 100%;
+}
+
+h1 {
+    font-size: 30px;
+    text-transform: uppercase;
+    line-height: 30px;
+}
+
+h1 > span {
+    font-weight: bold;
+}
+
+h2 {
+    font-size: 12px;
+}
+
+.hirek-scroller {
+    height: 20px;
+    width: 1280px;
+    color: #1f50ba;
+    /* background-color: darkgoldenrod; */
+}

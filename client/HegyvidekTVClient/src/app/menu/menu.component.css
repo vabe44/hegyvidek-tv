@@ -1,0 +1,26 @@
+.menu.button, .menu.dropdown, .dropdown-trigger {
+    width: 100%;
+}
+
+.menu.columns {
+    margin: unset;
+}
+
+.menu.column {
+    padding: unset;
+}
+
+.menu.button {
+    height: 40px;
+    font-size: 20px;
+    text-transform: uppercase;
+    background-color: #a7d153;
+    color: white;
+    border: unset;
+    border-radius: unset;
+    padding: unset;
+}
+
+.musoraink.menu.button, .menu.button:hover, .menu.button:active, .menu.button:focus {
+    background-color: #1f50ba;
+}

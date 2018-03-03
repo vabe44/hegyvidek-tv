@@ -20,6 +20,11 @@ import { AdminEpizodokComponent } from './admin-epizodok/admin-epizodok.componen
 import { AdminMusorokUjComponent } from './admin-musorok-uj/admin-musorok-uj.component';
 import { MusorService } from './services/musor.service';
 import { AdminMusorokModositComponent } from './admin-musorok-modosit/admin-musorok-modosit.component';
+import { HeaderComponent } from './header/header.component';
+import { EloAdasComponent } from './elo-adas/elo-adas.component';
+import { HirekScrollerComponent } from './hirek-scroller/hirek-scroller.component';
+import { MenuComponent } from './menu/menu.component';
+import { IdojarasComponent } from './idojaras/idojaras.component';
 
 export function getAuthHttp(http, options: RequestOptions) {
   return new AuthHttp(new AuthConfig({
@@ -37,7 +42,12 @@ export function getAuthHttp(http, options: RequestOptions) {
     AdminMenuComponent,
     AdminEpizodokComponent,
     AdminMusorokUjComponent,
-    AdminMusorokModositComponent
+    AdminMusorokModositComponent,
+    HeaderComponent,
+    EloAdasComponent,
+    HirekScrollerComponent,
+    MenuComponent,
+    IdojarasComponent
   ],
   imports: [
     BrowserModule,

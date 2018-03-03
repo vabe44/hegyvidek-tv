@@ -2,10 +2,6 @@
 
 <a routerLink="/admin/musorok/uj">Uj musor hozzaadasa</a>
 
-<p>
-  admin-musorok works!
-</p>
-
 <ul>
   <li *ngFor="let musor of musorok">
       <a [routerLink]="['/admin/musorok', musor.id]">{{ musor.cim }}</a>
