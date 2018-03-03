@@ -1,0 +1,23 @@
+main {
+    display: flex;
+    justify-content: center;
+    background-color: #d4d4d4;
+}
+
+section.content {
+    width: 1280px;
+    display: flex;
+}
+
+section.main {
+    width: 880px;
+    padding: 10px;
+}
+
+aside {
+    width: 400px;
+}
+
+app-kiemelt-videok {
+    background-color: #a7d153;
+}

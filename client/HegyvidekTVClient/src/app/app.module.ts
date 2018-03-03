@@ -25,6 +25,7 @@ import { EloAdasComponent } from './elo-adas/elo-adas.component';
 import { HirekScrollerComponent } from './hirek-scroller/hirek-scroller.component';
 import { MenuComponent } from './menu/menu.component';
 import { IdojarasComponent } from './idojaras/idojaras.component';
+import { KiemeltVideokComponent } from './kiemelt-videok/kiemelt-videok.component';
 
 export function getAuthHttp(http, options: RequestOptions) {
   return new AuthHttp(new AuthConfig({
@@ -47,7 +48,8 @@ export function getAuthHttp(http, options: RequestOptions) {
     EloAdasComponent,
     HirekScrollerComponent,
     MenuComponent,
-    IdojarasComponent
+    IdojarasComponent,
+    KiemeltVideokComponent
   ],
   imports: [
     BrowserModule,

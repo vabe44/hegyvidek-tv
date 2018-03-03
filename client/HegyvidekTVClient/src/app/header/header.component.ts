@@ -14,7 +14,9 @@ export class HeaderComponent {
     this.zone.runOutsideAngular(() => {
       setInterval(() => {
         this.now = new Date();
-        this.renderer.setProperty(this.myCounter.nativeElement, 'textContent', `${this.now.getHours()}:${this.now.getMinutes()}`);
+        const perc = this.now.getMinutes() < 10 ? '0' + this.now.getMinutes() : this.now.getMinutes();
+        const ido = `${this.now.getHours()}:${perc}`;
+        this.renderer.setProperty(this.myCounter.nativeElement, 'textContent', ido);
       }, 1);
     });
   }

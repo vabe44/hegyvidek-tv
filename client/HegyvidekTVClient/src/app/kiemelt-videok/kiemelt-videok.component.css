@@ -1,0 +1,47 @@
+.content {
+    width: 870px;
+    padding: 10px;
+    background-color: #a7d153;
+}
+
+.cim {
+    display: flex;
+    color: white;
+    padding-bottom: 5px;
+}
+
+h1 {
+    color: white;
+    font-size: 20px;
+    font-family: sans-serif;
+    text-transform: uppercase;
+    padding: 10px;
+    border: 2px solid white;
+    margin-bottom: unset;
+}
+
+.videok {
+    display: flex;
+    flex-wrap: wrap;
+    color: white;
+    padding-top: 5px;
+}
+
+.video {
+    width: 50%;
+}
+
+.video > .kep {
+    width: 420px;
+    height: 236px;
+    background-color: black;
+}
+
+.video > .szalagcim {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.video > .tartalom {
+    font-size: 16px;
+}

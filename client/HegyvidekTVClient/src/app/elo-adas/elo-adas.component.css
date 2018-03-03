@@ -1,5 +1,41 @@
+.content {
+    width: 870px;
+    padding: 10px;
+    background-color: #eaeaea;
+}
+
+.cim {
+    display: flex;
+    padding-bottom: 10px;
+}
+
+h1, h2 {
+    display: inline;
+    margin: unset !important;
+    font-size: 20px;
+    font-family: sans-serif;
+    color: #1f50ba;
+}
+
+h1 {
+    text-transform: uppercase;
+    padding: 10px;
+    border: 2px solid #1f50ba;
+}
+
+h2 {
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+}
+
 .adas {
-    margin: 25vh auto;
-    height: 50vh;
-    width: 50vw;
+    height: 486px;
+    width: 860px;
+}
+
+.tartalom {
+    font-size: 16px;
+    font-family: sans-serif;
+    padding-top: 5px;
 }
