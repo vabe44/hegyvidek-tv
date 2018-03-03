@@ -1,0 +1,33 @@
+.cim {
+    display: flex;
+    color: #1f50ba;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+h2 {
+    font-size: 20px;
+    font-family: sans-serif;
+    text-transform: uppercase;
+    padding: 10px;
+    border: 2px solid #1f50ba;;
+    margin-bottom: unset;
+}
+
+.hir {
+    color: white;
+    background-color: #1f50ba;
+    padding: 10px;
+}
+
+.hir > h3.szalagcim {
+    color: white;
+    font-size: 18px;
+    margin: unset;
+    padding-top: 10px;
+    font-family: sans-serif;
+}
+
+.hir > .tartalom {
+    font-size: 16px;
+}

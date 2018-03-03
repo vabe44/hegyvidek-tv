@@ -26,6 +26,7 @@ import { HirekScrollerComponent } from './hirek-scroller/hirek-scroller.componen
 import { MenuComponent } from './menu/menu.component';
 import { IdojarasComponent } from './idojaras/idojaras.component';
 import { KiemeltVideokComponent } from './kiemelt-videok/kiemelt-videok.component';
+import { LegfrissebbHirekComponent } from './legfrissebb-hirek/legfrissebb-hirek.component';
 
 export function getAuthHttp(http, options: RequestOptions) {
   return new AuthHttp(new AuthConfig({
@@ -49,7 +50,8 @@ export function getAuthHttp(http, options: RequestOptions) {
     HirekScrollerComponent,
     MenuComponent,
     IdojarasComponent,
-    KiemeltVideokComponent
+    KiemeltVideokComponent,
+    LegfrissebbHirekComponent
   ],
   imports: [
     BrowserModule,
