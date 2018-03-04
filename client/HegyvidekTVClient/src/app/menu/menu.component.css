@@ -24,3 +24,36 @@
 .musoraink.menu.button, .menu.button:hover, .menu.button:active, .menu.button:focus, .menu.button.active {
     background-color: #1f50ba;
 }
+
+.dropdown-menu {
+    width: 230px;
+    padding-top: unset;
+}
+
+.dropdown-content {
+    padding-top: unset;
+    padding-bottom: unset;
+}
+
+.dropdown-item {
+    color: #1f50ba;
+    padding: unset;
+}
+
+li > a {
+    font-size: 20px;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+li > a:hover {
+    color: white;
+    background-color: #1f50ba;
+}
+
+li:first-child {
+    padding-top: 15px;
+    padding-bottom: 20px
+}

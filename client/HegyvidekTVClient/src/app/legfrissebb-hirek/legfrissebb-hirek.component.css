@@ -1,6 +1,5 @@
 .cim {
     display: flex;
-    color: #1f50ba;
     padding-top: 10px;
     padding-bottom: 10px;
 }
@@ -10,6 +9,7 @@ h2 {
     font-family: sans-serif;
     text-transform: uppercase;
     padding: 10px;
+    color: #1f50ba;
     border: 2px solid #1f50ba;;
     margin-bottom: unset;
 }
