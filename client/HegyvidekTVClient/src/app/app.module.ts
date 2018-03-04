@@ -34,6 +34,8 @@ import { KapcsolatComponent } from './kapcsolat/kapcsolat.component';
 import { MediaajanlatComponent } from './mediaajanlat/mediaajanlat.component';
 import { MusorainkComponent } from './musoraink/musoraink.component';
 
+import { AngularWeatherWidgetModule, WeatherApiName } from 'angular-weather-widget';
+
 export function getAuthHttp(http, options: RequestOptions) {
   return new AuthHttp(new AuthConfig({
     tokenName: 'token'
@@ -80,7 +82,12 @@ export function getAuthHttp(http, options: RequestOptions) {
       { path: 'admin/musorok', component: AdminMusorokComponent },
       { path: 'admin/epizodok', component: AdminEpizodokComponent },
       { path: 'admin', component: AdminMusorokComponent },
-    ])
+    ]),
+    AngularWeatherWidgetModule.forRoot({
+      key: '2d51d2c195bd413f69941502a3e9282a/////////',
+      name: WeatherApiName.OPEN_WEATHER_MAP,
+      baseUrl: 'https://api.openweathermap.org/data/2.5'
+    })
   ],
   providers: [
     AuthService,
@@ -92,7 +99,7 @@ export function getAuthHttp(http, options: RequestOptions) {
       deps: [Http, RequestOptions]
     },
     // CORS
-    {provide: BrowserXhr, useClass: CustExtBrowserXhr},
+    // {provide: BrowserXhr, useClass: CustExtBrowserXhr},
   ],
   bootstrap: [AppComponent]
 })
