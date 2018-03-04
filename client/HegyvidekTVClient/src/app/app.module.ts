@@ -1,3 +1,5 @@
+import { HttpClient } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { AuthHttp, AUTH_PROVIDERS, provideAuth, AuthConfig } from 'angular2-jwt/angular2-jwt';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -9,6 +11,8 @@ import { RouterModule } from '@angular/router';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 
 import { AuthService } from './services/auth.service';
+import { MusorService } from './services/musor.service';
+import { IdojarasService } from './services/idojaras.service';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -18,7 +22,6 @@ import { AdminMusorokComponent } from './admin-musorok/admin-musorok.component';
 import { AdminMenuComponent } from './admin-menu/admin-menu.component';
 import { AdminEpizodokComponent } from './admin-epizodok/admin-epizodok.component';
 import { AdminMusorokUjComponent } from './admin-musorok-uj/admin-musorok-uj.component';
-import { MusorService } from './services/musor.service';
 import { AdminMusorokModositComponent } from './admin-musorok-modosit/admin-musorok-modosit.component';
 import { HeaderComponent } from './header/header.component';
 import { EloAdasComponent } from './elo-adas/elo-adas.component';
@@ -33,8 +36,6 @@ import { FooterComponent } from './footer/footer.component';
 import { KapcsolatComponent } from './kapcsolat/kapcsolat.component';
 import { MediaajanlatComponent } from './mediaajanlat/mediaajanlat.component';
 import { MusorainkComponent } from './musoraink/musoraink.component';
-
-import { AngularWeatherWidgetModule, WeatherApiName } from 'angular-weather-widget';
 
 export function getAuthHttp(http, options: RequestOptions) {
   return new AuthHttp(new AuthConfig({
@@ -71,6 +72,7 @@ export function getAuthHttp(http, options: RequestOptions) {
     BrowserModule,
     FormsModule,
     HttpModule,
+    HttpClientModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent },
       { path: 'musoraink', component: MusorainkComponent },
@@ -82,16 +84,12 @@ export function getAuthHttp(http, options: RequestOptions) {
       { path: 'admin/musorok', component: AdminMusorokComponent },
       { path: 'admin/epizodok', component: AdminEpizodokComponent },
       { path: 'admin', component: AdminMusorokComponent },
-    ]),
-    AngularWeatherWidgetModule.forRoot({
-      key: '2d51d2c195bd413f69941502a3e9282a/////////',
-      name: WeatherApiName.OPEN_WEATHER_MAP,
-      baseUrl: 'https://api.openweathermap.org/data/2.5'
-    })
+    ])
   ],
   providers: [
     AuthService,
     MusorService,
+    IdojarasService,
     AuthHttp,
     {
       provide: AuthHttp,

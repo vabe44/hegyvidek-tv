@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-footer',
@@ -8,6 +9,8 @@ import { Component, OnInit } from '@angular/core';
 export class FooterComponent implements OnInit {
 
   public ev: number;
+  public facebookLink = environment.facebook;
+  public youtubeLink = environment.youtube;
   constructor() {
     this.ev = new Date().getFullYear();
   }
