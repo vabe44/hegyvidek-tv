@@ -21,7 +21,7 @@
     padding: unset;
 }
 
-.musoraink.menu.button, .menu.button:hover, .menu.button:active, .menu.button:focus, .menu.button.active {
+.menu.button:hover, .menu.button:active, .menu.button:focus, .menu.button.active {
     background-color: #1f50ba;
 }
 

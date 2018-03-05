@@ -23,7 +23,7 @@ export class EloAdasComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.streamUrl = 'http://tv.hegyvidek.hu/stream_mpeg.flv';
+    this.streamUrl = 'https://tv.hegyvidek.hu/stream_mpeg.flv';
     this.player = new MediaElementPlayer('player', this.play);
     this.player.setSrc(this.streamUrl);
     this.player.forceLive = true;

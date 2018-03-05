@@ -6,6 +6,7 @@
 
 .cim {
     display: flex;
+    justify-content: space-between;
     color: white;
     padding-left: 5px;
     padding-top: 5px;
@@ -16,15 +17,18 @@ h2 {
     font-size: 20px;
     font-family: sans-serif;
     text-transform: uppercase;
-    padding: 10px;
-    border: 2px solid white;
     margin-bottom: unset;
+}
+
+.cim > .lapozas {
+    font-size: 18px;
+    padding-right: 5px;
 }
 
 .videok {
     display: flex;
     flex-wrap: wrap;
-    color: white;
+    color: black;
     padding-top: 5px;
 }
 
@@ -39,15 +43,35 @@ h2 {
     background-color: black;
 }
 
-.video > h3.szalagcim {
-    color: white;
+.video > .szoveg {
+    background-color: white;
+    padding: 10px;
+    padding-top: 5px;
+}
+
+.szoveg > h3.szalagcim {
+    color: black;
     font-size: 18px;
     margin: unset;
-    padding-top: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
     font-family: sans-serif;
 }
 
-.video > .tartalom {
+.szoveg > .tartalom {
     font-size: 16px;
     line-height: 1.25em;
+}
+
+.datum {
+    text-align: right;
+}
+
+.content > .lapozas {
+    display: flex;
+    justify-content: space-between;
+    color: white;
+    text-align: center;
+    font-size: 18px;
+    padding: 10px;
 }

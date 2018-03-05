@@ -4,6 +4,7 @@ header {
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-color: white;
 }
 
 .logo {
@@ -54,6 +55,10 @@ time.pontosido {
     flex-direction: column;
     justify-content: flex-end;
     color: #1f50ba;
+}
+
+.cim > h2 {
+    color: black;
 }
 
 .linkek {
@@ -107,7 +112,7 @@ img.hegyvidekradio-kep {
 
 p.radio {
     font-size: 20px;
-    color: #1f50ba;
+    color: black;
     padding-bottom: 15px;
 }
 
@@ -175,6 +180,5 @@ h2 {
 .hirek-scroller {
     height: 20px;
     width: 1280px;
-    color: #1f50ba;
-    /* background-color: darkgoldenrod; */
+    color: black;
 }

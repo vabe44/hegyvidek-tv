@@ -97,7 +97,7 @@ export function getAuthHttp(http, options: RequestOptions) {
       deps: [Http, RequestOptions]
     },
     // CORS
-    // {provide: BrowserXhr, useClass: CustExtBrowserXhr},
+    {provide: BrowserXhr, useClass: CustExtBrowserXhr},
   ],
   bootstrap: [AppComponent]
 })

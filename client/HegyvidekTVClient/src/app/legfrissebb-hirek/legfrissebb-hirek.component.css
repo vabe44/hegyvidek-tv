@@ -1,33 +1,46 @@
 .cim {
     display: flex;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding: 10px;
+    /* padding-top: 10px; */
+    padding-bottom: unset;
+    background-color: #1f50ba;
 }
 
 h2 {
     font-size: 20px;
     font-family: sans-serif;
     text-transform: uppercase;
-    padding: 10px;
-    color: #1f50ba;
-    border: 2px solid #1f50ba;;
+    /* padding: 10px; */
+    color: white;
+    /* border: 2px solid #1f50ba;; */
     margin-bottom: unset;
 }
 
 .hir {
-    color: white;
+    color: black;
     background-color: #1f50ba;
     padding: 10px;
 }
 
-.hir > h3.szalagcim {
-    color: white;
+.kep {
+    display: flex;
+}
+
+.szoveg {
+    background-color: white;
+    padding: 10px;
+    padding-top: 5px;
+}
+
+h3.szalagcim {
+    color: black;
     font-size: 18px;
     margin: unset;
     padding-top: 5px;
     font-family: sans-serif;
 }
 
-.hir > .tartalom {
+.tartalom {
     font-size: 16px;
+    line-height: 18px;
 }

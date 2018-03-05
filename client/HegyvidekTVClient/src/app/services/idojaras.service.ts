@@ -5,7 +5,7 @@ import { environment } from '../../environments/environment';
 @Injectable()
 export class IdojarasService {
 
-  private apiUrl = 'http://api.openweathermap.org/data/2.5/forecast/daily?' +
+  private apiUrl = 'https://api.openweathermap.org/data/2.5/forecast/daily?' +
   'q=Budapest,hu&lang=hu&units=metric&mode=json&appid=' + environment.weatherApiKey;
   constructor(private http: HttpClient) { }
 

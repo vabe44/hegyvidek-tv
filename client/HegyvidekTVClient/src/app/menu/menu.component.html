@@ -1,18 +1,18 @@
 <div class="menu columns">
   <div class="menu column">
-    <a routerLink="/" class="menu button">Élő Adás</a>
+    <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="menu button">Élő Adás</a>
   </div>
   <div class="menu column">
     <div class="menu dropdown is-hoverable">
       <div class="dropdown-trigger">
-        <a class="musoraink menu button" aria-haspopup="true" aria-controls="dropdown-menu4">Műsoraink</a>
+        <a routerLink="/musoraink" routerLinkActive="active" class="menu button" aria-haspopup="true" aria-controls="dropdown-menu4">Műsoraink</a>
       </div>
       <div class="dropdown-menu" id="dropdown-menu4" role="menu">
         <div class="dropdown-content">
           <div class="dropdown-item">
             <ul>
               <li>
-                <a href="#">Műsorújság</a>
+                <a href="/">Műsorújság</a>
               </li>
               <li><a href="#">Alfa és Omega</a></li>
               <li><a href="#">Budai Híradó</a></li>

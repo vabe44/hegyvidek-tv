@@ -1,7 +1,8 @@
 main {
     display: flex;
     justify-content: center;
-    background-color: #d4d4d4;
+    padding-top: 20px;
+    padding-bottom: 10px;
 }
 
 section.content {
