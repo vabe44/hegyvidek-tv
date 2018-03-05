@@ -5,6 +5,9 @@ header {
     flex-direction: column;
     align-items: center;
     background-color: white;
+    position: fixed;
+    top: 0;
+    z-index: 999;
 }
 
 .logo {
@@ -70,7 +73,12 @@ time.pontosido {
 .social {
     display: flex;
     justify-content: flex-end;
-    padding-right: 80px;
+    /* padding-right: 80px; */
+    padding-bottom: 10px;
+}
+
+.fb-like, .g-ytsubscribe {
+    padding: 0 5px;
 }
 
 .social > a {

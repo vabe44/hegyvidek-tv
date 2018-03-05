@@ -25,6 +25,10 @@
     background-color: #1f50ba;
 }
 
+.button:focus:not(:active), .button.is-focused:not(:active) {
+    box-shadow: unset;
+}
+
 .dropdown-menu {
     width: 230px;
     padding-top: unset;
