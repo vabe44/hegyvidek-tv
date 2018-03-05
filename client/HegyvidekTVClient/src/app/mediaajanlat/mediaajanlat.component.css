@@ -1,15 +1,14 @@
 main {
     display: flex;
     justify-content: center;
-    background-color: #d4d4d4;
 }
 
 section.content {
     width: 1280px;
     display: flex;
     flex-direction: column;
-    color: #1f50ba;
-    padding: 0 160px;
+    color: black;
+    padding: 10px 160px;
 }
 
 .cim {
@@ -34,6 +33,10 @@ h2 {
 
 .bold {
     font-weight: bold;
+}
+
+.indented {
+    margin-left: 2em;
 }
 
 p {

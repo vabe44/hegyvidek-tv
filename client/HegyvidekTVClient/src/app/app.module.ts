@@ -36,6 +36,8 @@ import { FooterComponent } from './footer/footer.component';
 import { KapcsolatComponent } from './kapcsolat/kapcsolat.component';
 import { MediaajanlatComponent } from './mediaajanlat/mediaajanlat.component';
 import { MusorainkComponent } from './musoraink/musoraink.component';
+import { MusorComponent } from './musor/musor.component';
+import { RegebbiVideokComponent } from './regebbi-videok/regebbi-videok.component';
 
 export function getAuthHttp(http, options: RequestOptions) {
   return new AuthHttp(new AuthConfig({
@@ -66,7 +68,9 @@ export function getAuthHttp(http, options: RequestOptions) {
     FooterComponent,
     KapcsolatComponent,
     MediaajanlatComponent,
-    MusorainkComponent
+    MusorainkComponent,
+    MusorComponent,
+    RegebbiVideokComponent
   ],
   imports: [
     BrowserModule,
@@ -76,6 +80,7 @@ export function getAuthHttp(http, options: RequestOptions) {
     RouterModule.forRoot([
       { path: '', component: HomeComponent },
       { path: 'musoraink', component: MusorainkComponent },
+      { path: 'musor', component: MusorComponent },
       { path: 'kapcsolat', component: KapcsolatComponent },
       { path: 'mediaajanlat', component: MediaajanlatComponent },
       { path: 'login', component: LoginComponent },

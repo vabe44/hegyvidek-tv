@@ -1,0 +1,64 @@
+main {
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
+    padding-bottom: 10px;
+}
+
+section.content {
+    width: 1280px;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.musor {
+    display: flex;
+}
+
+.media {
+    min-width: 620px;
+    min-height: 100%;
+    background-color: black;
+}
+
+.details {
+    padding: 10px;
+    color: black;
+    background-color: white;
+}
+
+h1.cim {
+    color: white;
+    background-color: #a7d153;
+    font-size: 20px;
+    font-family: sans-serif;
+    text-transform: uppercase;
+    padding: 10px;
+}
+
+h2.alcim {
+    font-size: 16px;
+    margin-bottom: 50px;
+}
+
+.szoveg {
+    padding: 10px;
+    padding-top: unset;
+}
+
+.szoveg > p {
+    margin-bottom: unset;
+}
+
+p {
+    margin-bottom: unset;
+}
+
+p.tartalom {
+    padding-bottom: 20px;
+}
+
+.bold {
+    font-weight: bold;
+}

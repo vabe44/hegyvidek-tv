@@ -1,15 +1,15 @@
 main {
     display: flex;
     justify-content: center;
-    background-color: #d4d4d4;
+    /* background-color: #d4d4d4; */
 }
 
 section.content {
     width: 1280px;
     display: flex;
     flex-direction: column;
-    color: #1f50ba;
-    padding: 0 160px;
+    color: black;
+    padding: 10px 160px;
 }
 
 .cim {
@@ -50,10 +50,8 @@ p {
     width: 50%;
 }
 
-p.elerhetosegeink {
-    text-transform: uppercase;
-    font-family: sans-serif;
-    padding: 40px 0;
+.elerhetoseg-cim {
+    margin: 10px 0;
 }
 
 address {
@@ -87,6 +85,7 @@ p.elerhetoseg {
 }
 
 p.irjon-nekunk {
+    color: #1f50ba;
     text-transform: uppercase;
     padding-top: unset;
 }
@@ -98,10 +97,8 @@ p.irjon-nekunk {
 label {
     color: #1f50ba;
     margin-bottom: unset;
-}
-
-input, textarea {
-    border: 2px solid #1f50ba;
+    font-style: normal;
+    font-weight: 400;
 }
 
 .kuldes.control {
