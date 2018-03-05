@@ -1,0 +1,89 @@
+main {
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
+    padding-bottom: 10px;
+}
+
+section.content {
+    width: 1280px;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.cim {
+    display: flex;
+    color: #1f50ba;
+    padding: 20px 0;
+}
+
+h2 {
+    color: #1f50ba;
+    font-size: 20px;
+    line-height: 20px;
+    font-family: sans-serif;
+    border: 2px solid #1f50ba;
+    text-transform: uppercase;
+    margin-bottom: unset;
+    padding: 10px 30px;
+}
+
+.cim > p {
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    font-family: sans-serif;
+    margin-bottom: unset;
+    padding: 0 10px;
+    color: white;
+    background-color: #1f50ba;
+}
+
+.cim > p.kereses {
+    flex: 1;
+    font-size: 18px;
+    font-family: sans-serif;
+}
+
+.musorok {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.musor {
+    width: 50%;
+    display: flex;
+    padding-bottom: 10px;
+}
+
+.kep {
+    min-width: 355px;
+    min-height: 200px;
+    background-color: black;
+}
+
+.reszletek {
+    flex: 1;
+    max-width: 260px;
+    padding: 10px;
+    background-color: white;
+}
+
+.reszletek > h3 {
+    color: white;
+    font-size: 20px;
+    line-height: 20px;
+    font-family: sans-serif;
+    text-transform: uppercase;
+    margin-bottom: unset;
+    padding: 10px;
+    background-color: #a7d153;
+}
+
+.reszletek > p.leiras {
+    color: black;
+    padding: 10px;
+    line-height: 20px;
+}
