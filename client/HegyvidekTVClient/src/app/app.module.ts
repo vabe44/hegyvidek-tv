@@ -38,6 +38,7 @@ import { MediaajanlatComponent } from './mediaajanlat/mediaajanlat.component';
 import { MusorainkComponent } from './musoraink/musoraink.component';
 import { MusorComponent } from './musor/musor.component';
 import { RegebbiVideokComponent } from './regebbi-videok/regebbi-videok.component';
+import { MusorujsagComponent } from './musorujsag/musorujsag.component';
 
 export function getAuthHttp(http, options: RequestOptions) {
   return new AuthHttp(new AuthConfig({
@@ -70,7 +71,8 @@ export function getAuthHttp(http, options: RequestOptions) {
     MediaajanlatComponent,
     MusorainkComponent,
     MusorComponent,
-    RegebbiVideokComponent
+    RegebbiVideokComponent,
+    MusorujsagComponent
   ],
   imports: [
     BrowserModule,

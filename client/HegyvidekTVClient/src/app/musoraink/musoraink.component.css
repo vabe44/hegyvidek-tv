@@ -1,8 +1,6 @@
 main {
     display: flex;
     justify-content: center;
-    padding-top: 20px;
-    padding-bottom: 10px;
 }
 
 section.content {
@@ -10,12 +8,15 @@ section.content {
     display: flex;
     flex-direction: column;
     padding: 10px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    background-color: rgba(255,255,255,0.25);
 }
 
 .cim {
     display: flex;
     color: #1f50ba;
-    padding: 20px 0;
+    padding: 30px 0;
 }
 
 h2 {
@@ -53,13 +54,12 @@ h2 {
 }
 
 .musor {
-    width: 50%;
     display: flex;
     padding-bottom: 10px;
 }
 
 .kep {
-    min-width: 355px;
+    min-width: 360px;
     min-height: 200px;
     background-color: black;
 }

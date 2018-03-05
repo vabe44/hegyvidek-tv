@@ -1,4 +1,5 @@
 .htv {
-    background-image: url('/assets/images/htv_bg_2.png');
+    background-image: url('/assets/images/htv_bg.png');
     background-position: center;
+    background-size: cover;
 }
