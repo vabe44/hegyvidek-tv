@@ -10,15 +10,15 @@ header {
     z-index: 999;
 }
 
-.logo {
+/* .logo {
     width: 240px;
     display: flex;
     justify-content: flex-end;
     align-items: flex-end;
-    background-image: url('/assets/images/htv_logo.png');
+    background-image: url('../assets/images/htv_logo.png');
     background-repeat: no-repeat;
     background-position: center;
-}
+} */
 
 time.pontosido {
     font-size: 20px;
@@ -73,37 +73,19 @@ time.pontosido {
 .social {
     display: flex;
     justify-content: flex-end;
-    /* padding-right: 80px; */
     padding-bottom: 10px;
 }
 
-.fb-like, .g-ytsubscribe {
-    padding: 0 5px;
-}
-
-.social > a {
-    margin: 5px;
+.facebook-like, .yt-subscribe {
+    display: flex;
+    align-items: center;
+    padding-left: 5px;
+    padding-right: 10px;
 }
 
 .facebook, .youtube {
     width: 31px;
     height: 31px;
-}
-
-.facebook {
-    background-image: url('/assets/images/facebook.png');
-}
-
-.facebook:hover {
-    background-image: url('/assets/images/facebook-color.png');
-}
-
-.youtube {
-    background-image: url('/assets/images/youtube.png');
-}
-
-.youtube:hover {
-    background-image: url('/assets/images/youtube-color.png');
 }
 
 .hegyvidek-radio {

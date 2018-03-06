@@ -12,3 +12,56 @@ html, body{
     height: 100%;
     max-height: 100%;
 }
+
+.htv {
+    background-image: url('./assets/images/htv_bg.png');
+    background-position: center;
+    background-size: cover;
+}
+
+.logo {
+    width: 240px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    background-image: url('./assets/images/htv_logo.png');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.facebook {
+    background-image: url('./assets/images/facebook.png');
+}
+
+.facebook-invert {
+    background-image: url('./assets/images/facebook-invert.png');
+}
+
+.facebook:hover, .facebook-invert:hover, .facebook-color {
+    background-image: url('./assets/images/facebook-color.png');
+}
+
+.facebook-color:hover {
+    background-image: url('./assets/images/facebook.png');
+}
+
+.youtube {
+    background-image: url('./assets/images/youtube.png');
+}
+
+.youtube-invert {
+    background-image: url('./assets/images/youtube-invert.png');
+}
+
+.youtube:hover, .youtube-invert:hover, .youtube-color {
+    background-image: url('./assets/images/youtube-color.png');
+}
+
+.youtube-color:hover {
+    background-image: url('./assets/images/youtube.png');
+}
+
+.facebook, .facebook-invert, .facebook-color, .youtube, .youtube-invert, .youtube-color {
+    width: 31px;
+    height: 31px;
+}

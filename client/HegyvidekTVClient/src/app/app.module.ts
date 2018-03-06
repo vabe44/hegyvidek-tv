@@ -82,7 +82,7 @@ export function getAuthHttp(http, options: RequestOptions) {
     RouterModule.forRoot([
       { path: '', component: HomeComponent },
       { path: 'musoraink', component: MusorainkComponent },
-      { path: 'musor', component: MusorComponent },
+      { path: 'musoraink/musor', component: MusorComponent },
       { path: 'kapcsolat', component: KapcsolatComponent },
       { path: 'mediaajanlat', component: MediaajanlatComponent },
       { path: 'login', component: LoginComponent },
