@@ -39,6 +39,8 @@ import { MusorainkComponent } from './musoraink/musoraink.component';
 import { MusorComponent } from './musor/musor.component';
 import { RegebbiVideokComponent } from './regebbi-videok/regebbi-videok.component';
 import { MusorujsagComponent } from './musorujsag/musorujsag.component';
+import { KeresesComponent } from './kereses/kereses.component';
+import { KeresesTalalatokComponent } from './kereses-talalatok/kereses-talalatok.component';
 
 export function getAuthHttp(http, options: RequestOptions) {
   return new AuthHttp(new AuthConfig({
@@ -72,7 +74,9 @@ export function getAuthHttp(http, options: RequestOptions) {
     MusorainkComponent,
     MusorComponent,
     RegebbiVideokComponent,
-    MusorujsagComponent
+    MusorujsagComponent,
+    KeresesComponent,
+    KeresesTalalatokComponent
   ],
   imports: [
     BrowserModule,
@@ -85,6 +89,7 @@ export function getAuthHttp(http, options: RequestOptions) {
       { path: 'musoraink/musor', component: MusorComponent },
       { path: 'kapcsolat', component: KapcsolatComponent },
       { path: 'mediaajanlat', component: MediaajanlatComponent },
+      { path: 'kereses', component: KeresesComponent },
       { path: 'login', component: LoginComponent },
       { path: 'admin/musorok/uj', component: AdminMusorokUjComponent },
       { path: 'admin/musorok/:id', component: AdminMusorokModositComponent },

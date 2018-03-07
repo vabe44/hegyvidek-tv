@@ -1,0 +1,130 @@
+.content {
+    width: 100%;
+}
+
+.cim {
+    display: flex;
+    color: #1f50ba;
+    padding: 5px 0;
+    padding-top: unset;
+}
+
+.cim2 {
+    display: flex;
+    color: #1f50ba;
+    padding: 5px 0;
+}
+
+h2 {
+    color: #1f50ba;
+    font-size: 20px;
+    line-height: 20px;
+    font-family: sans-serif;
+    border: 2px solid #1f50ba;
+    text-transform: uppercase;
+    margin-bottom: unset;
+    padding: 10px 20px;
+}
+
+.cim p {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    font-family: sans-serif;
+    margin-bottom: unset;
+    padding-left: 10px;
+}
+
+.rendezes {
+    display: flex;
+}
+
+.rendezes p {
+    /* flex: 1; */
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    font-family: sans-serif;
+    margin-bottom: unset;
+    padding: 0 10px;
+}
+
+.kereses select, .kereses select:focus, .kereses select:active, .kereses select:focus-within {
+    color: #1f50ba;
+    font-size: 18px;
+    font-family: sans-serif;
+    border: 2px solid #1f50ba;
+    background-color: transparent;
+}
+
+.cim2 p {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    font-family: sans-serif;
+    margin-bottom: unset;
+    padding: 0;
+}
+
+.cim2 .lapozas {
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    font-family: sans-serif;
+    padding-right: 5px;
+}
+
+.videok {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    color: black;
+    padding-top: 10px;
+}
+
+.video {
+    width: 410px;
+    padding-bottom: 15px;
+}
+
+.video .kep {
+    width: 410px;
+    height: 230px;
+    background-color: black;
+}
+
+.video .szoveg {
+    background-color: white;
+    padding: 10px;
+    padding-top: 5px;
+}
+
+.szoveg h3.szalagcim {
+    color: black;
+    font-size: 20px;
+    margin: unset;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-family: sans-serif;
+}
+
+.szoveg .tartalom {
+    font-size: 16px;
+    line-height: 1.25em;
+}
+
+.datum {
+    text-align: right;
+}
+
+.content > .lapozas {
+    display: flex;
+    justify-content: space-between;
+    font-family: sans-serif;
+    color: #1f50ba;
+    text-align: center;
+    font-size: 18px;
+    padding: 10px;
+}
