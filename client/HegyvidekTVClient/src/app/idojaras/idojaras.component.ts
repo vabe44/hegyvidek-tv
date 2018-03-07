@@ -8,18 +8,22 @@ import { IdojarasService } from '../services/idojaras.service';
 })
 export class IdojarasComponent implements OnInit {
   idojaras: any;
+  Math: any;
+  ma: string;
   hetNapjai = ['Vasárnap', 'Hétfő', 'Kedd', 'Szerda', 'Csütörtök', 'Péntek', 'Szombat'];
+  datum: number;
+  honap: string;
+  honapok = ['Január', 'Február', 'Március', 'Április', 'Május', 'Június', 'Július',
+              'Augusztus', 'Szeptember', 'Október', 'November', 'December'];
   nap1; nap2; nap3; nap4;
   constructor(private idojarasService: IdojarasService) {}
 
   ngOnInit() {
-    this.idojarasService.elorejelzes().subscribe(response => {
-      this.idojaras = response;
-      this.nap1 = this.hetNapjai[new Date(this.idojaras.list[0].dt * 1000).getDay()];
-      this.nap2 = this.hetNapjai[new Date(this.idojaras.list[1].dt * 1000).getDay()];
-      this.nap3 = this.hetNapjai[new Date(this.idojaras.list[2].dt * 1000).getDay()];
-      this.nap4 = this.hetNapjai[new Date(this.idojaras.list[3].dt * 1000).getDay()];
-    });
+    this.Math = Math;
+    this.ma = this.hetNapjai[new Date(Date.now()).getDay()];
+    this.datum = new Date(Date.now()).getDate();
+    this.honap = this.honapok[new Date(Date.now()).getMonth()];
+    this.idojarasService.elorejelzes().subscribe(response => this.idojaras = response);
   }
 
 }

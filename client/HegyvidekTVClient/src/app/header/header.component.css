@@ -1,6 +1,6 @@
 header {
     width: 100%;
-    height: 220px;
+    height: 195px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -48,7 +48,8 @@ time.pontosido {
 }
 
 .felso {
-    height: 120px;
+    /* height: 90px; */
+    flex: 1;
     display: flex;
 }
 
@@ -56,8 +57,9 @@ time.pontosido {
     width: 50%;
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
+    justify-content: center;
     color: #1f50ba;
+    margin-top: 20px;
 }
 
 .cim > h2 {
@@ -72,8 +74,9 @@ time.pontosido {
 
 .social {
     display: flex;
-    justify-content: flex-end;
-    padding-bottom: 10px;
+    /* justify-content: flex-end; */
+    margin-left: 50%;
+    padding-left: 10px;
 }
 
 .facebook-like, .yt-subscribe {
@@ -88,26 +91,35 @@ time.pontosido {
     height: 31px;
 }
 
+.youtube-link {
+    padding-left: 10px;
+}
+
 .hegyvidek-radio {
     display: flex;
-    justify-content: flex-end;
+    /* justify-content: flex-end; */
     align-items: center;
+    margin-left: 50%;
+    padding-left: 10px;
+    padding-bottom: 5px;
 }
 
 img.hegyvidekradio-kep {
-    padding: 20px;
-    padding-top: 0px;
-    padding-left: 10px
+    padding-left: 10px;
+}
+
+.hegyvidek-radio:hover {
+    opacity: 0.75;
 }
 
 p.radio {
     font-size: 20px;
     color: black;
-    padding-bottom: 15px;
+    /* padding-bottom: 15px; */
 }
 
 .kereses {
-    width: 50%;
+    /* width: 50%; */
     display: flex;
 }
 
@@ -143,7 +155,7 @@ p.radio {
 }
 
 .also {
-    height: 80px;
+    /* height: 80px; */
     display: flex;
     flex-direction: column;
     align-items: flex-end;

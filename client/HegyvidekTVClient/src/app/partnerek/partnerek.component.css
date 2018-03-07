@@ -9,21 +9,19 @@
     padding: unset;
     margin: unset;
     margin-bottom: unset;
-    background-color: #a7d153;
+    background-color: white;
 }
 
 .partner.column {
     padding: unset;
     margin: unset;
     margin-bottom: unset;
+    height: 200px;
 }
 
-.partner.column > a {
+.partner.column a {
     display: flex;
-}
-
-.partner.column > a:hover {
-    opacity: 0.75;
+    height: 100%;
 }
 
 img.partner {

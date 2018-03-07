@@ -1,26 +1,22 @@
 <div class="idojaras">
-    <p>&nbsp;</p>
-    <ul>
-        <li>
-            <p class="nap">Ma</p>
-            <img src="https://openweathermap.org/img/w/{{ idojaras?.list[0].weather[0].icon }}.png" title="{{ idojaras?.list[0].weather[0].description }}">
-            <p class="fok">{{ idojaras?.list[0].temp.day }} &#8451;</p>
-
-        </li>
-        <li>
-            <p class="nap">Holnap</p>
-            <img src="https://openweathermap.org/img/w/{{ idojaras?.list[1].weather[0].icon }}.png" title="{{ idojaras?.list[1].weather[0].description }}">
-            <p class="fok">{{ idojaras?.list[1].temp.day }} &#8451;</p>
-        </li>
-        <li>
-            <p class="nap">{{ nap3 }}</p>
-            <img src="https://openweathermap.org/img/w/{{ idojaras?.list[2].weather[0].icon }}.png" title="{{ idojaras?.list[2].weather[0].description }}">
-            <p class="fok">{{ idojaras?.list[2].temp.day }} &#8451;</p>
-        </li>
-        <li>
-            <p class="nap">{{ nap4 }}</p>
-            <img src="https://openweathermap.org/img/w/{{ idojaras?.list[3].weather[0].icon }}.png" title="{{ idojaras?.list[3].weather[0].description }}">
-            <p class="fok">{{ idojaras?.list[3].temp.day }} &#8451;</p>
-        </li>
-    </ul>
+    <p class="datum">{{ honap }} {{ datum }}. {{ ma}}</p>
+    <div class="homerseklet">
+        <div class="nappal">
+            <p class="napszak">Nappal</p>
+            <div class="szoveg">
+                <span class="ertek">{{ Math.round(idojaras?.list[0].temp.day) }} </span><span class="celsius">&#8451;</span>
+            </div>
+        </div>
+        <div class="ejszaka">
+            <p class="napszak">Éjszaka</p>
+            <div class="szoveg">
+                <span class="ertek">{{ Math.round(idojaras?.list[0].temp.night) }} </span><span class="celsius">&#8451;</span>
+            </div>
+        </div>
+    </div>
+    <div class="ikon">
+        <img src="https://openweathermap.org/img/w/{{ idojaras?.list[0].weather[0].icon }}.png" 
+            title="Holnap: {{ Math.round(idojaras?.list[1].temp.day) }} &#8451; / {{ Math.round(idojaras?.list[1].temp.night) }} &#8451;, {{ idojaras?.list[1].weather[0].description }}">
+        <p class="datum">{{ idojaras?.list[0].weather[0].description }}</p>
+    </div>
 </div>

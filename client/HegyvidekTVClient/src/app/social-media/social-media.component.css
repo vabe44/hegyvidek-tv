@@ -1,4 +1,4 @@
-.facebook {
+.facebook-feed {
     padding-top: 20px;
     padding-bottom: 10px;
 }
@@ -8,14 +8,14 @@ img.htv-youtube {
     border-radius: 75px;
 }
 
-.youtube {
+.youtube-sub {
     display: flex;
     flex-wrap: wrap;
     padding: 10px;
     background-color: white;
 }
 
-.logo {
+.yt-logo {
     width: 50%;
     display: flex;
     justify-content: center;

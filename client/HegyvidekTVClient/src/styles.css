@@ -65,3 +65,69 @@ html, body{
     width: 31px;
     height: 31px;
 }
+
+/* PARTNEREK */
+
+a.hegyvidek-partner.hegyvidek {
+    background-image: url('./assets/images/hegyvidek.jpg');
+}
+
+a.hegyvidek-partner.hegyvidek:hover {
+    background-image: url('./assets/images/hegyvidek-hover.jpg');
+}
+
+a.hegyvidek-partner.hegyvidekkartya {
+    background-image: url('./assets/images/hegyvidekkartya.jpg');
+}
+
+a.hegyvidek-partner.hegyvidekkartya:hover {
+    background-image: url('./assets/images/hegyvidekkartya-hover.jpg');
+}
+
+a.hegyvidek-partner.momkult {
+    background-image: url('./assets/images/momkult.jpg');
+}
+
+a.hegyvidek-partner.momkult:hover {
+    background-image: url('./assets/images/momkult-hover.jpg');
+}
+
+a.hegyvidek-partner.hegyvidekujsag {
+    background-image: url('./assets/images/hegyvidekujsag.jpg');
+}
+
+a.hegyvidek-partner.hegyvidekujsag:hover {
+    background-image: url('./assets/images/hegyvidekujsag-hover.jpg');
+}
+
+a.hegyvidek-partner.hegyvideksport {
+    background-image: url('./assets/images/hegyvideksport.jpg');
+}
+
+a.hegyvidek-partner.hegyvideksport:hover {
+    background-image: url('./assets/images/hegyvideksport-hover.jpg');
+}
+
+a.hegyvidek-partner.pokornizoltan {
+    background-image: url('./assets/images/pokornizoltan.jpg');
+}
+
+a.hegyvidek-partner.pokornizoltan:hover {
+    background-image: url('./assets/images/pokornizoltan-hover.jpg');
+}
+
+a.hegyvidek-partner.vaczijanos {
+    background-image: url('./assets/images/vaczijanos.jpg');
+}
+
+a.hegyvidek-partner.vaczijanos:hover {
+    background-image: url('./assets/images/vaczijanos-hover.jpg');
+}
+
+a.hegyvidek-partner.momsport {
+    background-image: url('./assets/images/momsport.jpg');
+}
+
+a.hegyvidek-partner.momsport:hover {
+    background-image: url('./assets/images/momsport-hover.jpg');
+}
