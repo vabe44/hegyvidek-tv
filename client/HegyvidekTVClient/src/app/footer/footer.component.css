@@ -10,7 +10,7 @@
     color: white;
     background-color: #a7d153;
     margin-bottom: unset;
-    padding: 30px 100px;
+    padding: 25px 100px;
 }
 
 .nmhh {
@@ -99,5 +99,6 @@ p.telefon {
 .nevjegy > p {
     display: flex;
     justify-content: center;
+    font-size: 14px;
     text-transform: uppercase;
 }

@@ -44,3 +44,7 @@ h3.szalagcim {
     font-size: 16px;
     line-height: 18px;
 }
+
+.datum {
+    text-align: right;
+}

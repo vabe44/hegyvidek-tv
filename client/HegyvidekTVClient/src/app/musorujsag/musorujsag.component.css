@@ -48,3 +48,82 @@ td.ido.cella > p {
 table td, table th {
     vertical-align: middle;
 }
+
+/* UJAK */
+
+.fejlec {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.idosav {
+    display: flex;
+}
+
+.musorujsag-cim {
+    width: 200px;
+    display: flex;
+    color: #1f50ba;
+    font-size: 20px;
+    line-height: 20px;
+    font-weight: 400;
+    font-family: sans-serif;
+    border: 2px solid #1f50ba;
+    text-transform: uppercase;
+    padding: 10px 30px;
+}
+
+.nap {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    color: white;
+    background-color: #1f50ba;
+    font-size: 18px;
+    line-height: 18px;
+    font-weight: 400;
+    font-family: sans-serif;
+    border: 2px solid #1f50ba;
+    text-transform: uppercase;
+}
+
+.musor:nth-of-type(even) {
+    background-color: white;
+}
+
+.ido {
+    width: 200px;
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 30px;
+}
+
+.elso.ido {
+    margin-top: 10px;
+}
+
+.ido p {
+    display: flex;
+    align-items: center;
+    color: white;
+    font-size: 18px;
+    line-height: 18px;
+    padding: 10px 20px;
+    background-color: #a7d153;
+}
+
+.musor {
+    flex: 1;
+    display: flex;
+    padding: 10px;
+    color: black;
+    font-size: 16px;
+    line-height: 16px;
+    text-transform: uppercase;
+}
+
+.musor p {
+    display: flex;
+    align-items: center;
+}
