@@ -9,7 +9,7 @@ section.content {
     flex-direction: column;
     padding: 10px;
     padding-top: 30px;
-    padding-bottom: 30px;
+    padding-bottom: 50px;
     background-color: rgba(255,255,255,0.25);
     margin-top: 195px;
 }
@@ -32,6 +32,7 @@ h2 {
     border: 2px solid #1f50ba;
     text-transform: uppercase;
     margin-bottom: unset;
+    text-align: center;
     padding: 10px 30px;
 }
 
@@ -61,6 +62,7 @@ h2 {
 .musor {
     display: flex;
     padding-bottom: 10px;
+    width: calc(50% - 10px);
 }
 
 .kep {

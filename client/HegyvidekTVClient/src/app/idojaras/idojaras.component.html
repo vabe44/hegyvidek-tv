@@ -16,7 +16,7 @@
     </div>
     <div class="ikon">
         <img src="https://openweathermap.org/img/w/{{ idojaras?.list[0].weather[0].icon }}.png" 
-            title="Holnap: {{ Math.round(idojaras?.list[1].temp.day) }} &#8451; / {{ Math.round(idojaras?.list[1].temp.night) }} &#8451;, {{ idojaras?.list[1].weather[0].description }}">
-        <p class="datum">{{ idojaras?.list[0].weather[0].description }}</p>
+            title="{{ idojaras?.list[0].weather[0].description }}">
+        <!-- <p class="datum">{{ idojaras?.list[0].weather[0].description }}</p> -->
     </div>
 </div>

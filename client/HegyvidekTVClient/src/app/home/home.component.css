@@ -9,7 +9,7 @@ section.content {
     padding-top: 20px;
     padding-bottom: 60px;
     background-color: rgba(255,255,255,0.25);
-    margin-top: 195px;
+    margin-top: 180px;
 }
 
 section.main {
@@ -18,8 +18,4 @@ section.main {
 
 aside {
     width: 400px;
-}
-
-app-kiemelt-videok {
-    background-color: #a7d153;
 }
