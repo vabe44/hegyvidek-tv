@@ -63,6 +63,6 @@ p.datum {
 }
 
 img {
-    max-height: 100%;
-    max-width: 100%;
+    width: 80px;
+    height: 80px;
 }
