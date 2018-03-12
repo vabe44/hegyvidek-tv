@@ -1,43 +1,73 @@
-<app-admin-menu></app-admin-menu>
+<main>
+  <section class="content">
+    <section class="main">
+      <app-admin-menu></app-admin-menu>
+      <div class="uj-hir">
+        <form class="form-ujhir" #f="ngForm" (ngSubmit)="modositMusor(f.value)">
+          <h2 class="title">Műsor módosítása</h2>
 
-<form class="form-signup" #f="ngForm" (ngSubmit)="modositMusor()">
-  <h2 class="form-signup-heading">Musor modositasa</h2>
-
-  <label for="musorCim" class="sr-only">Musor cime</label>
-  <input type="text" id="musorCim" name="musorCim" [(ngModel)]="musor.cim" class="form-control" required autofocus>
-
-  <label for="musorUrl" class="sr-only">Beszedes URL</label>
-  <input type="text" id="musorUrl" name="musorUrl" [(ngModel)]="musor.url" class="form-control" required>
-
-  <label for="musorStatusz" class="sr-only">Statusz</label>
-  <select id="musorStatusz" name="musorStatusz" [(ngModel)]="musor.statusz">
-    <option value="aktiv" [attr.selected]="musor.statusz==='aktiv' ? true : false">Aktiv</option>
-    <option value="inaktiv" [attr.selected]="musor.statusz==='inaktiv' ? true : false">Inaktiv</option>
-  </select>
-
-  <label for="musorMegjelenites" class="sr-only">Megjelenites</label>
-  <select id="musorMegjelenites" name="musorMegjelenites" [(ngModel)]="musor.megjelenites">
-    <option value="hirado" [attr.selected]="musor.periodus==='hirado' ? true : false">Hirado megjelenitesu</option>
-    <option value="musor" [attr.selected]="musor.periodus==='musor' ? true : false">Normal megjelenitesu</option>
-  </select>
-
-  <label for="musorPeriodus" class="sr-only">Periodus</label>
-  <select id="musorPeriodus" name="musorPeriodus" [(ngModel)]="musor.periodus">
-    <option value="napi" [attr.selected]="musor.periodus==='napi' ? true : false">Napi</option>
-    <option value="heti" [attr.selected]="musor.periodus==='heti' ? true : false">Heti</option>
-    <option value="havi" [attr.selected]="musor.periodus==='havi' ? true : false">Havi</option>
-  </select>
-
-  <label for="musorKep" class="sr-only">Musor kepe</label>
-  <input type="text" id="musorKep" name="musorKep" [(ngModel)]="musor.kep" class="form-control" required>
-
-  <label for="musorRovidLeiras" class="sr-only">Musor rovid leirasa</label>
-  <textarea id="musorRovidLeiras" name="musorRovidLeiras" [(ngModel)]="musor.rovidLeiras" rows="10" cols="50"></textarea>
-
-  <label for="musorReszletesLeiras" class="sr-only">Musor reszletes leirasa</label>
-  <textarea id="musorReszletesLeiras" name="musorReszletesLeiras" [(ngModel)]="musor.reszletesLeiras" rows="10" cols="100"></textarea>
-
-  <button class="btn btn-lg btn-primary btn-block" type="submit">Mentes</button>
-</form>
-
-<button (click)="torlesMusor()">Torles</button>
+          <div class="field is-grouped">
+            <p class="control is-expanded">
+              <label class="label">Műsor címe</label>
+              <input id="cim" name="cim" [(ngModel)]="musor.cim" class="input" type="text" placeholder="Műsor címe">
+            </p>
+            <p class="control is-expanded">
+              <label class="label">Beszédes URL</label>
+              <input type="text" id="url" name="url" [(ngModel)]="musor.url" class="input" placeholder="Beszédes URL" required>
+            </p>
+            <div class="control">
+              <label class="label">Státusz</label>
+              <div class="select">
+                <select id="statusz" [(ngModel)]="musor.statusz" name="statusz">
+                  <option value="aktiv" [attr.selected]="musor.statusz==='aktív' ? true : false">Aktív</option>
+                  <option value="inaktiv" [attr.selected]="musor.statusz==='inaktív' ? true : false">Inaktív</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="field is-grouped">
+            <div class="control">
+              <label class="label">Műsor képe</label>
+              <div class="field">
+                <div class="file is-primary has-name is-boxed">
+                  <label class="file-label">
+                    <input class="file-input" type="file" name="resume">
+                    <span class="file-cta">
+                      <span class="file-icon">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                      </span>
+                      <span class="file-label">
+                        Feltöltés
+                      </span>
+                    </span>
+                    <span class="file-name">
+                      Screen Shot 2017-07-29 at 15.54.25.png
+                    </span>
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div class="control is-expanded">
+              <label class="label">Kép</label>
+              <figure class="image is-16by9">
+                <img src="https://bulma.io/images/placeholders/640x360.png">
+              </figure>
+            </div>
+            <div class="control is-expanded">
+              <label class="label">Műsor leírása</label>
+              <textarea class="textarea" [(ngModel)]="musor.leiras" id="leiras" name="leiras" placeholder="e.g. Hello world"></textarea>
+            </div>
+          </div>
+          <div class="field is-grouped">
+            <p class="control">
+              <button class="button is-danger" (click)="torlesMusor()">Törlés</button>
+            </p>
+            <p class="control is-expanded">
+              <button class="button is-success" type="submit">Mentés</button>
+            </p>
+          </div>
+        </form>
+      </div>
+    </section>
+  </section>
+</main>

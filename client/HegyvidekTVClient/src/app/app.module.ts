@@ -1,3 +1,4 @@
+import { HirService } from './services/hir.service';
 import { HttpClient } from '@angular/common/http';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthHttp, AUTH_PROVIDERS, provideAuth, AuthConfig } from 'angular2-jwt/angular2-jwt';
@@ -41,7 +42,8 @@ import { RegebbiVideokComponent } from './regebbi-videok/regebbi-videok.componen
 import { MusorujsagComponent } from './musorujsag/musorujsag.component';
 import { KeresesComponent } from './kereses/kereses.component';
 import { KeresesTalalatokComponent } from './kereses-talalatok/kereses-talalatok.component';
-
+import { AdminHirekComponent } from './admin-hirek/admin-hirek.component';
+import { FileSelectDirective } from 'ng2-file-upload';
 export function getAuthHttp(http, options: RequestOptions) {
   return new AuthHttp(new AuthConfig({
     tokenName: 'token'
@@ -76,7 +78,9 @@ export function getAuthHttp(http, options: RequestOptions) {
     RegebbiVideokComponent,
     MusorujsagComponent,
     KeresesComponent,
-    KeresesTalalatokComponent
+    KeresesTalalatokComponent,
+    AdminHirekComponent,
+    FileSelectDirective
   ],
   imports: [
     BrowserModule,
@@ -91,6 +95,7 @@ export function getAuthHttp(http, options: RequestOptions) {
       { path: 'mediaajanlat', component: MediaajanlatComponent },
       { path: 'kereses', component: KeresesComponent },
       { path: 'login', component: LoginComponent },
+      { path: 'admin/hirek', component: AdminHirekComponent },
       { path: 'admin/musorok/uj', component: AdminMusorokUjComponent },
       { path: 'admin/musorok/:id', component: AdminMusorokModositComponent },
       { path: 'admin/musorok', component: AdminMusorokComponent },
@@ -102,6 +107,7 @@ export function getAuthHttp(http, options: RequestOptions) {
     AuthService,
     MusorService,
     IdojarasService,
+    HirService,
     AuthHttp,
     {
       provide: AuthHttp,

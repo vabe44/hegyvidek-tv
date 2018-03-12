@@ -1,5 +1,6 @@
 import * as async from "async";
 import { NextFunction, Request, Response } from "express";
+import * as multer from "multer";
 import { Musor } from "../entity/Musor";
 
 /**
@@ -37,14 +38,11 @@ export let getMusorId =  async (req: Request, res: Response, next: NextFunction)
 export let postMusor =  async (req: Request, res: Response, next: NextFunction) => {
 
     const musor = new Musor();
-    musor.cim = req.body.musorCim;
-    musor.url = req.body.musorUrl;
-    musor.statusz = req.body.musorStatusz;
-    musor.megjelenites = req.body.musorMegjelenites;
-    musor.periodus = req.body.musorPeriodus;
-    musor.kep = req.body.musorKep;
-    musor.rovidLeiras = req.body.musorRovidLeiras;
-    musor.reszletesLeiras = req.body.musorReszletesLeiras;
+    musor.cim = req.body.cim;
+    musor.url = req.body.url;
+    musor.statusz = req.body.statusz;
+    musor.kep = req.body.kep;
+    musor.leiras = req.body.leiras;
     await musor.save();
 
     if (musor.id) {
@@ -64,11 +62,8 @@ export let putMusor =  async (req: Request, res: Response, next: NextFunction) =
     musor.cim = req.body.cim;
     musor.url = req.body.url;
     musor.statusz = req.body.statusz;
-    musor.megjelenites = req.body.megjelenites;
-    musor.periodus = req.body.periodus;
     musor.kep = req.body.kep;
-    musor.rovidLeiras = req.body.rovidLeiras;
-    musor.reszletesLeiras = req.body.reszletesLeiras;
+    musor.leiras = req.body.leiras;
     await musor.save();
 
     if (musor.id) {
@@ -92,4 +87,30 @@ export let deleteMusor =  async (req: Request, res: Response, next: NextFunction
     } else {
         return res.json({ message: "Hiba tortent a musor torlese kozben. Kerem probalja ujra kesobb." });
     }
+};
+
+/**
+ * POST /musoraink KEP
+ * Musor kep feltoltese.
+ */
+export let uploadPicture =  async (req: Request, res: Response, next: NextFunction) => {
+
+    // set the directory for the uploads to the uploaded to
+    const DIR = process.env.CLIENT_IMAGES_PATH + "musorok";
+    // tslint:disable-next-line:max-line-length
+    // define the type of upload multer would be doing and pass in its destination, in our case, its a single file with the name photo
+    const upload = multer({dest: DIR}).single("photo");
+
+    let path = "";
+    upload(req, res, (err: any) => {
+        if (err) {
+            // An error occurred when uploading
+            // tslint:disable-next-line:no-console
+            console.log(err);
+            return res.status(422).send("an Error occured");
+        }
+        // No error occured.
+        path = req.file.path;
+        return res.json({ message: "Upload Completed for " + path, path});
+    });
 };

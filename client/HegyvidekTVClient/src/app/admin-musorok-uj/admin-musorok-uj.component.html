@@ -1,41 +1,79 @@
-<app-admin-menu></app-admin-menu>
+<main>
+  <section class="content">
+    <section class="main">
+      <app-admin-menu></app-admin-menu>
 
-<form class="form-signup" #f="ngForm" (ngSubmit)="ujMusor(f.value)">
-  <h2 class="form-signup-heading">Uj musor feltoltese</h2>
+      <div class="uj-hir">
+        <form class="form-ujhir" #f="ngForm" (ngSubmit)="ujMusor(f.value)">
+          <h2 class="title">Új műsor hozzáadása</h2>
 
-  <label for="musorCim" class="sr-only">Musor cime</label>
-  <input type="text" id="musorCim" name="musorCim" ngModel class="form-control" required autofocus>
+          <div class="field is-grouped">
+            <p class="control is-expanded">
+              <label class="label">Műsor címe</label>
+              <input id="cim" name="cim" [(ngModel)]="musor.cim" class="input" type="text" placeholder="Műsor címe">
+            </p>
+            <p class="control is-expanded">
+              <label class="label">Beszédes URL</label>
+              <input type="text" id="url" name="url" [(ngModel)]="musor.url" class="input" placeholder="Beszédes URL" required>
+            </p>
+            <div class="control">
+              <label class="label">Státusz</label>
+              <div class="select">
+                <select id="statusz" [(ngModel)]="musor.statusz" name="statusz">
+                  <option value="aktiv" [attr.selected]="musor.statusz === 'aktív' ? true : false">Aktív</option>
+                  <option value="inaktiv" [attr.selected]="musor.statusz === 'inaktív' ? true : false">Inaktív</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="field is-grouped">
+            <div class="control">
+              <label class="label">Műsor képe</label>
+              <div class="field">
+                <div class="file is-primary has-name is-boxed">
+                  <label class="file-label">
+                    <input class="file-input" type="file" name="photo" ng2FileSelect [uploader]="uploader">
+                    <span class="file-cta">
+                      <span class="file-icon">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                      </span>
+                      <span class="file-label">
+                        Feltöltés
+                      </span>
+                    </span>
+                    <span class="file-name">
+                      Screen Shot 2017-07-29 at 15.54.25.png
+                    </span>
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div class="control is-expanded">
+              <label class="label">Kép</label>
+              <figure class="image is-16by9">
+                <img [attr.src]="kep">
+              </figure>
+            </div>
+            <div class="control is-expanded">
+              <label class="label">Műsor leírása</label>
+              <textarea class="textarea" [(ngModel)]="musor.leiras" id="leiras" name="leiras" placeholder="e.g. Hello world"></textarea>
+            </div>
+          </div>
+          <div class="field is-grouped">
+            <!-- button to trigger the file upload when submitted -->
+            <button type="button" class="btn btn-success btn-s" (click)="uploader.uploadAll()" [disabled]="!uploader.getNotUploadedItems().length">
+              Upload with ng-2 file uploader
+            </button>
+            <p class="control is-expanded">
+              <button class="save button is-success" type="submit">Mentés</button>
+            </p>
+          </div>
+        </form>
+      </div>
+    </section>
 
-  <label for="musorUrl" class="sr-only">Beszedes URL</label>
-  <input type="text" id="musorUrl" name="musorUrl" ngModel class="form-control" required>
+    <!-- File input for the file-upload plugin, with special ng2-file-upload directive called ng2FileSelect -->
+    <!-- <input type="file" name="photo" ng2FileSelect [uploader]="uploader" /> -->
 
-  <label for="musorStatusz" class="sr-only">Statusz</label>
-  <select id="musorStatusz" name="musorStatusz" ngModel>
-    <option value="0">Inaktiv</option>
-    <option value="1" selected>Aktiv</option>
-  </select>
-
-  <label for="musorMegjelenites" class="sr-only">Megjelenites</label>
-  <select id="musorMegjelenites" name="musorMegjelenites" ngModel>
-    <option value="hirado" selected>Hirado megjelenitesu</option>
-    <option value="musor">Normal megjelenitesu</option>
-  </select>
-
-  <label for="musorPeriodus" class="sr-only">Periodus</label>
-  <select id="musorPeriodus" name="musorPeriodus" ngModel>
-    <option value="napi" selected>Napi</option>
-    <option value="heti">Heti</option>
-    <option value="havi">Havi</option>
-  </select>
-
-  <label for="musorKep" class="sr-only">Musor kepe</label>
-  <input type="text" id="musorKep" name="musorKep" ngModel class="form-control" required>
-
-  <label for="musorRovidLeiras" class="sr-only">Musor rovid leirasa</label>
-  <textarea id="musorRovidLeiras" name="musorRovidLeiras" ngModel rows="10" cols="50"></textarea>
-
-  <label for="musorReszletesLeiras" class="sr-only">Musor reszletes leirasa</label>
-  <textarea id="musorReszletesLeiras" name="musorReszletesLeiras" ngModel rows="10" cols="100"></textarea>
-
-  <button class="btn btn-lg btn-primary btn-block" type="submit">Mentes</button>
-</form>
+  </section>
+</main>

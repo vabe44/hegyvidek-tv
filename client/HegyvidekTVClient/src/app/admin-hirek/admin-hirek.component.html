@@ -1,0 +1,55 @@
+<main>
+  <section class="content">
+      <section class="main">
+        <app-admin-menu></app-admin-menu>
+
+        <div class="uj-hir">
+          <form class="form-ujhir" #f="ngForm" (ngSubmit)="letrehozHir(f.value)">
+            <h2 class="title">Új hír hozzáadása</h2>
+
+            <div class="field is-grouped">
+              <p class="control is-expanded">
+                  <input id="szoveg" name="szoveg" [(ngModel)]="ujHir.szoveg" class="input" type="text" placeholder="Hir tartalma">
+              </p>
+              <div class="control">
+                <div class="select">
+                  <select id="statusz" [(ngModel)]="ujHir.statusz" name="statusz">
+                      <option value="aktiv" [attr.selected]="ujHir.statusz === 'aktív' ? true : false">Aktív</option>
+                      <option value="inaktiv" [attr.selected]="ujHir.statusz === 'inaktív' ? true : false">Inaktív</option>
+                  </select>
+                </div>
+              </div>
+              <p class="control">
+                <button class="save button is-success" type="submit">Mentés</button>
+              </p>
+            </div>
+          </form>
+        </div>
+
+        <div class="hirek">
+          <h2 class="title">Hírek</h2>
+          <form *ngFor="let hir of hirek; let index = index;trackBy:trackByIndex;" class="form-modositHir" #f="ngForm" (ngSubmit)="modositHir(hir)">
+            <div class="field is-grouped">
+              <p class="control is-expanded">
+                <input id="szoveg" name="szoveg" class="input" type="text" [(ngModel)]="hir.szoveg" value="{{ hir.szoveg }}">
+              </p>
+              <div class="control">
+                <div class="select">
+                  <select id="statusz" [(ngModel)]="hir.statusz" name="statusz">
+                      <option value="aktiv" [attr.selected]="hir.statusz === 'aktív' ? true : false">Aktív</option>
+                      <option value="inaktiv" [attr.selected]="hir.statusz === 'inaktív' ? true : false">Inaktív</option>
+                  </select>
+                </div>
+              </div>
+              <p class="control">
+                <button class="save button is-primary" (click)="modositHir(hir)">Frissítés</button>
+              </p>
+              <p class="control">
+                <button class="delete button is-danger" (click)="torlesHir(hir)">Törlés</button>
+              </p>
+            </div>
+          </form>
+        </div>
+      </section>
+  </section>
+</main>

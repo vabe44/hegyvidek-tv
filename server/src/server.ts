@@ -32,6 +32,7 @@ dotenv.config({ path: ".env.example" });
 import accountRouter from "./routes/account";
 import apiRouter from "./routes/api";
 import contactRouter from "./routes/contact";
+import hirekRouter from "./routes/hirek";
 import musorainkRouter from "./routes/musoraink";
 import oauthRouter from "./routes/oauth";
 import rootRouter from "./routes/root";
@@ -95,6 +96,7 @@ class App {
     this.express.use("/account", accountRouter);
     this.express.use("/contact", contactRouter);
     this.express.use("/musoraink", musorainkRouter);
+    this.express.use("/hirek", hirekRouter);
   }
 
   private launchConf() {

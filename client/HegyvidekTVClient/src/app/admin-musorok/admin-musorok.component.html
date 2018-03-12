@@ -1,9 +1,14 @@
-<app-admin-menu></app-admin-menu>
+<main>
+  <section class="content">
+      <section class="main">
+        <app-admin-menu></app-admin-menu>
+        <a routerLink="/admin/musorok/uj">Uj musor hozzaadasa</a>
 
-<a routerLink="/admin/musorok/uj">Uj musor hozzaadasa</a>
-
-<ul>
-  <li *ngFor="let musor of musorok">
-      <a [routerLink]="['/admin/musorok', musor.id]">{{ musor.cim }}</a>
-  </li>
-</ul>
+        <ul>
+          <li *ngFor="let musor of musorok">
+              <a [routerLink]="['/admin/musorok', musor.id]">{{ musor.cim }}</a>
+          </li>
+        </ul>
+      </section>
+  </section>
+</main>

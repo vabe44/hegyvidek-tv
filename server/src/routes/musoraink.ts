@@ -1,5 +1,6 @@
 import { NextFunction, Request, Response, Router } from "express";
 import * as musorController from "../controllers/musor";
+import { uploadPicture } from "./../controllers/musor";
 
 class Musoraink {
   public router: Router;
@@ -13,6 +14,7 @@ class Musoraink {
     this.router.post("/", musorController.postMusor);
     this.router.put("/", musorController.putMusor);
     this.router.delete("/:id", musorController.deleteMusor);
+    this.router.post("/picture", musorController.uploadPicture);
   }
 }
 

@@ -3,9 +3,6 @@ export interface Musor {
     cim: string;
     url: string;
     statusz: string;
-    megjelenites: string;
-    periodus: string;
-    kep: string;
-    rovidLeiras: string;
-    reszletesLeiras: string;
+    kep: string|any;
+    leiras: string;
 }

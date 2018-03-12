@@ -1,10 +1,9 @@
 <div class="hirek">
-  <p class="marquee"><span [ngStyle]="{animation: text}">
-    A legfrissebb hírek és aktualitások olvashatóak itt egy folyamatosan jobbról balra úszó szövegfolyamként.   |   
-    A legfrissebb hírek és aktualitások olvashatóak itt egy folyamatosan jobbról balra úszó szövegfolyamként.   |   
-    A legfrissebb hírek és aktualitások olvashatóak itt egy folyamatosan jobbról balra úszó szövegfolyamként.   |   
-    A legfrissebb hírek és aktualitások olvashatóak itt egy folyamatosan jobbról balra úszó szövegfolyamként.   |   
-    A legfrissebb hírek és aktualitások olvashatóak itt egy folyamatosan jobbról balra úszó szövegfolyamként.   |   
-    A legfrissebb hírek és aktualitások olvashatóak itt egy folyamatosan jobbról balra úszó szövegfolyamként.   |   
-  </span></p>
+  <p class="marquee">
+    <span [ngStyle]="{animation: text}">
+      <ng-container *ngFor="let hir of hirek">
+        {{ hir.szoveg }} &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;
+      </ng-container>
+    </span>
+  </p>
 </div>

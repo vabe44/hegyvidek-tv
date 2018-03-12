@@ -10,34 +10,22 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const typeorm_1 = require("typeorm");
-let Musor = class Musor extends typeorm_1.BaseEntity {
+let Hir = class Hir extends typeorm_1.BaseEntity {
 };
 __decorate([
     typeorm_1.PrimaryGeneratedColumn(),
     __metadata("design:type", Number)
-], Musor.prototype, "id", void 0);
+], Hir.prototype, "id", void 0);
 __decorate([
     typeorm_1.Column(),
     __metadata("design:type", String)
-], Musor.prototype, "cim", void 0);
+], Hir.prototype, "szoveg", void 0);
 __decorate([
     typeorm_1.Column(),
     __metadata("design:type", String)
-], Musor.prototype, "url", void 0);
-__decorate([
-    typeorm_1.Column(),
-    __metadata("design:type", String)
-], Musor.prototype, "statusz", void 0);
-__decorate([
-    typeorm_1.Column(),
-    __metadata("design:type", String)
-], Musor.prototype, "kep", void 0);
-__decorate([
-    typeorm_1.Column(),
-    __metadata("design:type", String)
-], Musor.prototype, "leiras", void 0);
-Musor = __decorate([
+], Hir.prototype, "statusz", void 0);
+Hir = __decorate([
     typeorm_1.Entity()
-], Musor);
-exports.Musor = Musor;
-//# sourceMappingURL=Musor.js.map
+], Hir);
+exports.Hir = Hir;
+//# sourceMappingURL=Hir.js.map

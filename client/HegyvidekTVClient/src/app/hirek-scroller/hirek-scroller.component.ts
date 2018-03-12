@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { HirService } from '../services/hir.service';
+import { Hir } from '../interfaces/Hir';
 
 @Component({
   selector: 'app-hirek-scroller',
@@ -6,19 +8,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./hirek-scroller.component.css']
 })
 export class HirekScrollerComponent implements OnInit {
-  hirek: string[];
+
+  hirek: Hir[] = [];
   text: string;
-  constructor() {
-    this.hirek = [
-      'A legfrissebb hírek és aktualitások olvashatóak itt egy folyamatosan jobbról balra úszó szövegfolyamként.   |',
-      'A legfrissebb hírek és aktualitások olvashatóak itt egy folyamatosan jobbról balra úszó szövegfolyamként.   |',
-      'A legfrissebb hírek és aktualitások olvashatóak itt egy folyamatosan jobbról balra úszó szövegfolyamként.   |',
-      'A legfrissebb hírek és aktualitások olvashatóak itt egy folyamatosan jobbról balra úszó szövegfolyamként.   |',
-      'A legfrissebb hírek és aktualitások olvashatóak itt egy folyamatosan jobbról balra úszó szövegfolyamként.   |',
-    ];
-    this.text = `marquee ${ this.hirek.length * 20 }s linear infinite`;
+
+  constructor(private hirService: HirService) {
+    // this.text = `marquee ${ this.hirek.length * 20 }s linear infinite`;
   }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.hirService.osszes().subscribe(response => {
+      this.hirek = response.hirek;
+      this.text = `marquee ${ this.hirek.length * 20 }s linear infinite`;
+    });
+  }
 
 }
