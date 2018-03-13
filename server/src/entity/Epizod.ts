@@ -1,4 +1,5 @@
-import {BaseEntity, Column, Entity, OneToMany, PrimaryGeneratedColumn} from "typeorm";
+import {BaseEntity, Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn} from "typeorm";
+import { Musor } from "./Musor";
 
 @Entity()
 export class Epizod extends BaseEntity {
@@ -13,26 +14,26 @@ export class Epizod extends BaseEntity {
     public url: string;
 
     @Column()
-    public statusz: boolean;
+    public statusz: string;
 
     @Column()
     public kiemelt: boolean;
 
     @Column()
-    public kulcsszavak: string;
-
-    @Column()
     public datum: string;
 
     @Column()
-    public musor: string;
-
-    @Column()
     public kep: string;
+    @Column()
+    public video: string;
 
     @Column()
     public youtube: string;
 
     @Column()
-    public reszletesLeiras: string;
+    public leiras: string;
+
+    // tslint:disable-next-line:arrow-parens
+    @ManyToOne(type => Musor, musor => musor.epizodok)
+    public musor: Musor;
 }

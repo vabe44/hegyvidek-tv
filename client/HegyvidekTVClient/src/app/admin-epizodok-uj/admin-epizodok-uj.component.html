@@ -1,0 +1,77 @@
+<main>
+  <section class="content">
+    <section class="main">
+      <app-admin-menu></app-admin-menu>
+
+      <div class="uj-hir">
+        <form class="form-ujhir" (ngSubmit)="ujEpizod()">
+          <h2 class="title">Új epizód hozzáadása</h2>
+
+          <div class="field is-grouped">
+            <p class="control is-expanded">
+              <label class="label">Epizód címe</label>
+              <input id="cim" name="cim" [(ngModel)]="epizod.cim" class="input" type="text" placeholder="Epizód címe">
+            </p>
+            <p class="control is-expanded">
+              <label class="label">Beszédes URL</label>
+              <input type="text" id="url" name="url" [(ngModel)]="epizod.url" class="input" placeholder="Beszédes URL" required>
+            </p>
+            <div class="control">
+              <label class="label">Műsor</label>
+              <div class="select">
+                <select id="musor" [(ngModel)]="epizod.musor" name="musor">
+                  <option *ngFor="let musor of musorok" [value]="musor.id">{{ musor.cim }}</option>
+                </select>
+              </div>
+            </div>
+            <div class="control">
+              <label class="label">Státusz</label>
+              <div class="select">
+                <select id="statusz" [(ngModel)]="epizod.statusz" name="statusz">
+                  <option value="aktív" [attr.selected]="epizod.statusz === 'aktív' ? true : false">Aktív</option>
+                  <option value="inaktív" [attr.selected]="epizod.statusz === 'inaktív' ? true : false">Inaktív</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="field is-grouped">
+            <div class="control">
+              <label class="label">Epizód képe</label>
+              <div class="field">
+                <div class="file is-primary is-boxed">
+                  <label class="file-label">
+                    <input class="file-input" type="file" name="photo" ng2FileSelect [uploader]="uploader">
+                    <span class="file-cta">
+                      <span class="file-icon">
+                        <img src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTYuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgd2lkdGg9IjI0cHgiIGhlaWdodD0iMjRweCIgdmlld0JveD0iMCAwIDU0OC4xNzYgNTQ4LjE3NiIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgNTQ4LjE3NiA1NDguMTc2OyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+CjxnPgoJPHBhdGggZD0iTTUyNC4zMjYsMjk3LjM1MmMtMTUuODk2LTE5Ljg5LTM2LjIxLTMyLjc4Mi02MC45NTktMzguNjg0YzcuODEtMTEuOCwxMS43MDQtMjQuOTM0LDExLjcwNC0zOS4zOTkgICBjMC0yMC4xNzctNy4xMzktMzcuNDAxLTIxLjQwOS01MS42NzhjLTE0LjI3My0xNC4yNzItMzEuNDk4LTIxLjQxMS01MS42NzUtMjEuNDExYy0xOC4wODMsMC0zMy44NzksNS45MDEtNDcuMzksMTcuNzAzICAgYy0xMS4yMjUtMjcuNDEtMjkuMTcxLTQ5LjM5My01My44MTctNjUuOTVjLTI0LjY0Ni0xNi41NjItNTEuODE4LTI0Ljg0Mi04MS41MTQtMjQuODQyYy00MC4zNDksMC03NC44MDIsMTQuMjc5LTEwMy4zNTMsNDIuODMgICBjLTI4LjU1MywyOC41NDQtNDIuODI1LDYyLjk5OS00Mi44MjUsMTAzLjM1MWMwLDIuNDc0LDAuMTkxLDYuNTY3LDAuNTcxLDEyLjI3NWMtMjIuNDU5LDEwLjQ2OS00MC4zNDksMjYuMTcxLTUzLjY3Niw0Ny4xMDYgICBDNi42NjEsMjk5LjU5NCwwLDMyMi40MywwLDM0Ny4xNzljMCwzNS4yMTQsMTIuNTE3LDY1LjMyOSwzNy41NDQsOTAuMzU4YzI1LjAyOCwyNS4wMzcsNTUuMTUsMzcuNTQ4LDkwLjM2MiwzNy41NDhoMzEwLjYzNiAgIGMzMC4yNTksMCw1Ni4wOTYtMTAuNzExLDc3LjUxMi0zMi4xMmMyMS40MTMtMjEuNDA5LDMyLjEyMS00Ny4yNDYsMzIuMTIxLTc3LjUxNkM1NDguMTcyLDMzOS45NDQsNTQwLjIyMywzMTcuMjQ4LDUyNC4zMjYsMjk3LjM1MiAgIHogTTM2Mi43MjksMjg5LjY0OGMtMS44MTMsMS44MDQtMy45NDksMi43MDctNi40MiwyLjcwN2gtNjMuOTUzdjEwMC41MDJjMCwyLjQ3MS0wLjkwMyw0LjYxMy0yLjcxMSw2LjQyICAgYy0xLjgxMywxLjgxMy0zLjk0OSwyLjcxMS02LjQyLDIuNzExaC01NC44MjZjLTIuNDc0LDAtNC42MTUtMC44OTctNi40MjMtMi43MTFjLTEuODA0LTEuODA3LTIuNzEyLTMuOTQ5LTIuNzEyLTYuNDJWMjkyLjM1NSAgIEgxNTUuMzFjLTIuNjYyLDAtNC44NTMtMC44NTUtNi41NjMtMi41NjNjLTEuNzEzLTEuNzE0LTIuNTY4LTMuOTA0LTIuNTY4LTYuNTY2YzAtMi4yODYsMC45NS00LjU3MiwyLjg1Mi02Ljg1NWwxMDAuMjEzLTEwMC4yMSAgIGMxLjcxMy0xLjcxNCwzLjkwMy0yLjU3LDYuNTY3LTIuNTdjMi42NjYsMCw0Ljg1NiwwLjg1Niw2LjU2NywyLjU3bDEwMC40OTksMTAwLjQ5NWMxLjcxNCwxLjcxMiwyLjU2MiwzLjkwMSwyLjU2Miw2LjU3MSAgIEMzNjUuNDM4LDI4NS42OTYsMzY0LjUzNSwyODcuODQ1LDM2Mi43MjksMjg5LjY0OHoiIGZpbGw9IiNGRkZGRkYiLz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8L3N2Zz4K"
+                        />
+                      </span>
+                      <span class="file-label">
+                        Kép feltöltése
+                      </span>
+                    </span>
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div *ngIf="epizod.kep" class="control is-expanded">
+              <label class="label">Kép</label>
+              <figure class="image is-16by9">
+                <img [attr.src]="epizod?.kep">
+              </figure>
+            </div>
+            <div class="control is-expanded">
+              <label class="label">Epizód leírása</label>
+              <textarea class="textarea" [(ngModel)]="epizod.leiras" id="leiras" name="leiras" placeholder="Epizód leírása"></textarea>
+            </div>
+          </div>
+          <div class="field is-grouped">
+            <p class="control is-expanded">
+              <button class="save button is-success" type="submit">Mentés</button>
+            </p>
+          </div>
+        </form>
+      </div>
+    </section>
+  </section>
+</main>

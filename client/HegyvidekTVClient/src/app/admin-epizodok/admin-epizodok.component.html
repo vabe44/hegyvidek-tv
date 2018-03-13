@@ -1,5 +1,14 @@
-<app-admin-menu></app-admin-menu>
+<main>
+  <section class="content">
+    <section class="main">
+      <app-admin-menu></app-admin-menu>
+      <a routerLink="/admin/epizodok/uj">Uj epizod hozzaadasa</a>
 
-<p>
-  admin-epizodok works!
-</p>
+      <ul>
+        <li *ngFor="let epizod of epizodok">
+          <a [routerLink]="['/admin/epizodok', epizod.id]">{{ epizod.cim }}</a>
+        </li>
+      </ul>
+    </section>
+  </section>
+</main>

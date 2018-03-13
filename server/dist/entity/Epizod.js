@@ -10,6 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const typeorm_1 = require("typeorm");
+const Musor_1 = require("./Musor");
 let Epizod = class Epizod extends typeorm_1.BaseEntity {
 };
 __decorate([
@@ -26,7 +27,7 @@ __decorate([
 ], Epizod.prototype, "url", void 0);
 __decorate([
     typeorm_1.Column(),
-    __metadata("design:type", Boolean)
+    __metadata("design:type", String)
 ], Epizod.prototype, "statusz", void 0);
 __decorate([
     typeorm_1.Column(),
@@ -35,15 +36,7 @@ __decorate([
 __decorate([
     typeorm_1.Column(),
     __metadata("design:type", String)
-], Epizod.prototype, "kulcsszavak", void 0);
-__decorate([
-    typeorm_1.Column(),
-    __metadata("design:type", String)
 ], Epizod.prototype, "datum", void 0);
-__decorate([
-    typeorm_1.Column(),
-    __metadata("design:type", String)
-], Epizod.prototype, "musor", void 0);
 __decorate([
     typeorm_1.Column(),
     __metadata("design:type", String)
@@ -51,11 +44,19 @@ __decorate([
 __decorate([
     typeorm_1.Column(),
     __metadata("design:type", String)
+], Epizod.prototype, "video", void 0);
+__decorate([
+    typeorm_1.Column(),
+    __metadata("design:type", String)
 ], Epizod.prototype, "youtube", void 0);
 __decorate([
     typeorm_1.Column(),
     __metadata("design:type", String)
-], Epizod.prototype, "reszletesLeiras", void 0);
+], Epizod.prototype, "leiras", void 0);
+__decorate([
+    typeorm_1.ManyToOne(type => Musor_1.Musor, musor => musor.epizodok),
+    __metadata("design:type", Musor_1.Musor)
+], Epizod.prototype, "musor", void 0);
 Epizod = __decorate([
     typeorm_1.Entity()
 ], Epizod);

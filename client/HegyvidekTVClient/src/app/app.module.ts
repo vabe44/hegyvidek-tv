@@ -44,6 +44,9 @@ import { KeresesComponent } from './kereses/kereses.component';
 import { KeresesTalalatokComponent } from './kereses-talalatok/kereses-talalatok.component';
 import { AdminHirekComponent } from './admin-hirek/admin-hirek.component';
 import { FileSelectDirective } from 'ng2-file-upload';
+import { AdminEpizodokUjComponent } from './admin-epizodok-uj/admin-epizodok-uj.component';
+import { AdminEpizodokModositComponent } from './admin-epizodok-modosit/admin-epizodok-modosit.component';
+import { EpizodService } from './services/epizod.service';
 export function getAuthHttp(http, options: RequestOptions) {
   return new AuthHttp(new AuthConfig({
     tokenName: 'token'
@@ -80,7 +83,9 @@ export function getAuthHttp(http, options: RequestOptions) {
     KeresesComponent,
     KeresesTalalatokComponent,
     AdminHirekComponent,
-    FileSelectDirective
+    FileSelectDirective,
+    AdminEpizodokUjComponent,
+    AdminEpizodokModositComponent
   ],
   imports: [
     BrowserModule,
@@ -100,12 +105,15 @@ export function getAuthHttp(http, options: RequestOptions) {
       { path: 'admin/musorok/:id', component: AdminMusorokModositComponent },
       { path: 'admin/musorok', component: AdminMusorokComponent },
       { path: 'admin/epizodok', component: AdminEpizodokComponent },
+      { path: 'admin/epizodok/uj', component: AdminEpizodokUjComponent },
+      { path: 'admin/epizodok/:id', component: AdminEpizodokModositComponent },
       { path: 'admin', component: AdminMusorokComponent },
     ])
   ],
   providers: [
     AuthService,
     MusorService,
+    EpizodService,
     IdojarasService,
     HirService,
     AuthHttp,

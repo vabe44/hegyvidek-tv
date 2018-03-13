@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Epizod } from '../interfaces/Epizod';
+import { EpizodService } from '../services/epizod.service';
 
 @Component({
   selector: 'app-admin-epizodok',
@@ -7,9 +9,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminEpizodokComponent implements OnInit {
 
-  constructor() { }
+  epizodok: Epizod[];
+  constructor(private epizodService: EpizodService) { }
 
   ngOnInit() {
+    this.epizodService.osszes().subscribe(response => this.epizodok = response.epizodok);
   }
 
 }

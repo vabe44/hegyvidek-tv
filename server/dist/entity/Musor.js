@@ -10,6 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const typeorm_1 = require("typeorm");
+const Epizod_1 = require("./Epizod");
 let Musor = class Musor extends typeorm_1.BaseEntity {
 };
 __decorate([
@@ -36,6 +37,11 @@ __decorate([
     typeorm_1.Column(),
     __metadata("design:type", String)
 ], Musor.prototype, "leiras", void 0);
+__decorate([
+    typeorm_1.OneToMany(type => Epizod_1.Epizod, epizod => epizod.musor) // note: we will create author property in the Photo class below
+    ,
+    __metadata("design:type", Array)
+], Musor.prototype, "epizodok", void 0);
 Musor = __decorate([
     typeorm_1.Entity()
 ], Musor);

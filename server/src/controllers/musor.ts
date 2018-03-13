@@ -96,12 +96,11 @@ export let deleteMusor =  async (req: Request, res: Response, next: NextFunction
 export let uploadPicture =  async (req: Request, res: Response, next: NextFunction) => {
 
     // set the directory for the uploads to the uploaded to
-    const DIR = process.env.CLIENT_IMAGES_PATH + "musorok";
+    const DIR = process.env.SERVER_IMAGES_PATH;
     // tslint:disable-next-line:max-line-length
     // define the type of upload multer would be doing and pass in its destination, in our case, its a single file with the name photo
     const upload = multer({dest: DIR}).single("photo");
 
-    let path = "";
     upload(req, res, (err: any) => {
         if (err) {
             // An error occurred when uploading
@@ -110,7 +109,7 @@ export let uploadPicture =  async (req: Request, res: Response, next: NextFuncti
             return res.status(422).send("an Error occured");
         }
         // No error occured.
-        path = req.file.path;
-        return res.json({ message: "Upload Completed for " + path, path});
+        const file = req.file;
+        return res.json({ file });
     });
 };

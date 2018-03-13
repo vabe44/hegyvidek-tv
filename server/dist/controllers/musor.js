@@ -94,11 +94,10 @@ exports.deleteMusor = (req, res, next) => __awaiter(this, void 0, void 0, functi
  */
 exports.uploadPicture = (req, res, next) => __awaiter(this, void 0, void 0, function* () {
     // set the directory for the uploads to the uploaded to
-    const DIR = process.env.CLIENT_IMAGES_PATH + "musorok";
+    const DIR = process.env.SERVER_IMAGES_PATH;
     // tslint:disable-next-line:max-line-length
     // define the type of upload multer would be doing and pass in its destination, in our case, its a single file with the name photo
     const upload = multer({ dest: DIR }).single("photo");
-    let path = "";
     upload(req, res, (err) => {
         if (err) {
             // An error occurred when uploading
@@ -107,8 +106,8 @@ exports.uploadPicture = (req, res, next) => __awaiter(this, void 0, void 0, func
             return res.status(422).send("an Error occured");
         }
         // No error occured.
-        path = req.file.path;
-        return res.json({ message: "Upload Completed for " + path, path });
+        const file = req.file;
+        return res.json({ file });
     });
 });
 //# sourceMappingURL=musor.js.map

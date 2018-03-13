@@ -3,6 +3,7 @@ import { MusorService } from './../services/musor.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FileUploader } from 'ng2-file-upload/ng2-file-upload';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-admin-musorok-uj',
@@ -15,7 +16,6 @@ export class AdminMusorokUjComponent implements OnInit {
   URL = 'http://localhost:3000/musoraink/picture';
   public uploader: FileUploader = new FileUploader({url: this.URL, itemAlias: 'photo'});
   musor: Musor;
-  kep: any = './assets/images/musorok/04486a6fbb18a818612af1940c3b82b4';
   constructor(
     private router: Router,
     private musorService: MusorService) {
@@ -31,18 +31,20 @@ export class AdminMusorokUjComponent implements OnInit {
 
   ngOnInit() {
     // override the onAfterAddingfile property of the uploader so it doesn't authenticate with //credentials.
-    this.uploader.onAfterAddingFile = (file) => { file.withCredentials = false; };
+    this.uploader.onAfterAddingFile = (file) => {
+      file.withCredentials = false;
+      this.uploader.uploadAll();
+    };
     // overide the onCompleteItem property of the uploader so we are
     // able to deal with the server response.
     this.uploader.onCompleteItem = (item: any, response: any, status: any, headers: any) => {
-        console.log('ImageUpload:uploaded:', item, status, response);
-
-        this.kep = response.filename;
+      const filename = JSON.parse(response).file.filename;
+      this.musor.kep = `${environment.apiUrl}/images/${filename}`;
     };
   }
 
-  ujMusor(musor) {
-    this.musorService.uj(musor)
+  ujMusor() {
+    this.musorService.uj(this.musor)
       .subscribe(response => {
         console.log(response);
         if (response.musor) {
