@@ -15,8 +15,9 @@
         </div>
     </div>
     <div class="ikon">
-        <img src="https://openweathermap.org/img/w/{{ idojaras?.list[0].weather[0].icon }}.png" 
-            title="{{ idojaras?.list[0].weather[0].description }}">
+        <i class="owf owf-{{ idojaras?.list[0].weather[0].id }}" title="{{ idojaras?.list[0].weather[0].description }}"></i>
+        <!-- <img src="https://openweathermap.org/img/w/{{ idojaras?.list[0].weather[0].icon }}.png"  -->
+            <!-- title="{{ idojaras?.list[0].weather[0].description }}"> -->
         <!-- <p class="datum">{{ idojaras?.list[0].weather[0].description }}</p> -->
     </div>
 </div>

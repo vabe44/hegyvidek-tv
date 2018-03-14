@@ -128,6 +128,8 @@ export let upload =  async (req: Request, res: Response, next: NextFunction) => 
         return res.json({ data: res.data });
         });
     }
-
-    runSample(process.env.SERVER_VIDEOS_PATH + "/" + req.body.video, () => { /* sample complete */ });
+    function send(video: any) {
+        res.json({video});
+    }
+    runSample(process.env.SERVER_VIDEOS_PATH + "/" + req.body.video, (video) => { /* sample complete */ });
 };

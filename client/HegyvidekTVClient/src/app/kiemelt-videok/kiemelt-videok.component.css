@@ -15,7 +15,7 @@
 h2 {
     color: white;
     font-size: 20px;
-    font-family: sans-serif;
+    font-family: "Arial", "Helvetica", "Helvetica Neue", sans-serif;
     text-transform: uppercase;
     margin-bottom: unset;
 }
@@ -55,7 +55,7 @@ h2 {
     margin: unset;
     padding-top: 5px;
     padding-bottom: 5px;
-    font-family: sans-serif;
+    font-family: "Arial", "Helvetica", "Helvetica Neue", sans-serif;
 }
 
 .szoveg > .tartalom {

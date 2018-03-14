@@ -28,7 +28,7 @@ h2 {
     color: #1f50ba;
     font-size: 20px;
     line-height: 20px;
-    font-family: sans-serif;
+    font-family: "Arial", "Helvetica", "Helvetica Neue", sans-serif;
     border: 2px solid #1f50ba;
     text-transform: uppercase;
     margin-bottom: unset;
@@ -40,7 +40,7 @@ h2 {
     display: flex;
     align-items: center;
     font-size: 16px;
-    font-family: sans-serif;
+    font-family: "Arial", "Helvetica", "Helvetica Neue", sans-serif;
     margin-bottom: unset;
     padding: 0 10px;
     color: white;
@@ -50,7 +50,7 @@ h2 {
 .cim > p.kereses {
     flex: 1;
     font-size: 16px;
-    font-family: sans-serif;
+    font-family: "Arial", "Helvetica", "Helvetica Neue", sans-serif;
 }
 
 .musorok {
@@ -82,7 +82,7 @@ h2 {
     color: white;
     font-size: 20px;
     line-height: 20px;
-    font-family: sans-serif;
+    font-family: "Arial", "Helvetica", "Helvetica Neue", sans-serif;
     text-transform: uppercase;
     margin-bottom: unset;
     padding: 10px;

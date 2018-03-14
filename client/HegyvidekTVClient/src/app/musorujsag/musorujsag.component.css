@@ -3,7 +3,7 @@ th.musorujsag-cim {
     font-size: 20px;
     line-height: 20px;
     font-weight: 400;
-    font-family: sans-serif;
+    font-family: "Arial", "Helvetica", "Helvetica Neue", sans-serif;
     border: 2px solid #1f50ba;
     text-transform: uppercase;
     padding: 10px 30px;
@@ -15,7 +15,7 @@ th.nap {
     font-size: 16px;
     line-height: 16px;
     font-weight: 400;
-    font-family: sans-serif;
+    font-family: "Arial", "Helvetica", "Helvetica Neue", sans-serif;
     border: 2px solid #1f50ba;
     text-transform: uppercase;
 }
@@ -67,7 +67,7 @@ table td, table th {
     font-size: 20px;
     line-height: 20px;
     font-weight: 400;
-    font-family: sans-serif;
+    font-family: "Arial", "Helvetica", "Helvetica Neue", sans-serif;
     border: 2px solid #1f50ba;
     text-transform: uppercase;
     padding: 10px 30px;
@@ -83,7 +83,7 @@ table td, table th {
     font-size: 18px;
     line-height: 18px;
     font-weight: 400;
-    font-family: sans-serif;
+    font-family: "Arial", "Helvetica", "Helvetica Neue", sans-serif;
     border: 2px solid #1f50ba;
     text-transform: uppercase;
 }

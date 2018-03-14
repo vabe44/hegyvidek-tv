@@ -21,7 +21,17 @@
       "styles": [
         "styles.css",
         "../node_modules/mediaelement/build/mediaelementplayer.min.css",
-        "../node_modules/bulma/css/bulma.css"
+        "../node_modules/bulma/css/bulma.css",
+        "assets/fonts/OpenWeatherIcons.eot",
+        "assets/fonts/OpenWeatherIcons.svg",
+        "assets/fonts/OpenWeatherIcons.ttf",
+        "assets/fonts/OpenWeatherIcons.woff",
+        "assets/fonts/OpenWeatherIcons.woff2",
+        "assets/fonts/WeatherIcons.eot",
+        "assets/fonts/WeatherIcons.svg",
+        "assets/fonts/WeatherIcons.ttf",
+        "assets/fonts/WeatherIcons.woff",
+        "assets/fonts/WeatherIcons.woff2"
       ],
       "scripts": [
         "../node_modules/mediaelement/build/mediaelement-and-player.min.js",

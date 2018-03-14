@@ -116,6 +116,9 @@ exports.upload = (req, res, next) => __awaiter(this, void 0, void 0, function* (
             return res.json({ data: res.data });
         });
     }
-    runSample(process.env.SERVER_VIDEOS_PATH + "/" + req.body.video, () => { });
+    function send(video) {
+        res.json({ video });
+    }
+    runSample(process.env.SERVER_VIDEOS_PATH + "/" + req.body.video, (video) => { });
 });
 //# sourceMappingURL=youtube.js.map

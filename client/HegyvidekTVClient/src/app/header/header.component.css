@@ -20,12 +20,17 @@ header {
     background-position: center;
 } */
 
+.logolink {
+    display: flex;
+}
+
 time.pontosido {
     font-size: 20px;
     padding-right: 15px;
     padding-bottom: 5px;
     color: #1f50ba;
     font-family: sans-serif;
+    cursor: default;
 }
 
 .idojaras {
@@ -62,7 +67,7 @@ time.pontosido {
     margin-top: 20px;
 }
 
-.cim > h2 {
+.cim h2 {
     color: black;
 }
 
@@ -173,7 +178,7 @@ h1 {
     line-height: 30px;
 }
 
-h1 > span {
+h1 span {
     font-weight: bold;
 }
 

@@ -24,7 +24,7 @@ section.content {
 h2 {
     color: #1f50ba;
     font-size: 20px;
-    font-family: sans-serif;
+    font-family: "Arial", "Helvetica", "Helvetica Neue", sans-serif;
     text-transform: uppercase;
     padding: 10px 20px;
     border: 2px solid #1f50ba;
@@ -60,7 +60,7 @@ p {
 
 address {
     font-style: normal;
-    font-family: sans-serif;
+    font-family: "Arial", "Helvetica", "Helvetica Neue", sans-serif;
 }
 
 .uzenet {
@@ -113,7 +113,7 @@ label {
 .kuldes.button {
     color: white;
     font-size: 16px;
-    font-family: sans-serif;
+    font-family: "Arial", "Helvetica", "Helvetica Neue", sans-serif;
     background-color: #1f50ba;
     text-transform: uppercase;
     border-radius: unset;

@@ -12,7 +12,7 @@ h2 {
     color: #1f50ba;
     font-size: 18px;
     line-height: 18px;
-    font-family: sans-serif;
+    font-family: "Arial", "Helvetica", "Helvetica Neue", sans-serif;
     border: 2px solid #1f50ba;
     text-transform: uppercase;
     margin-bottom: unset;
@@ -24,7 +24,7 @@ h2 {
     display: flex;
     align-items: center;
     font-size: 18px;
-    font-family: sans-serif;
+    font-family: "Arial", "Helvetica", "Helvetica Neue", sans-serif;
     margin-bottom: unset;
     padding-left: 10px;
 }
@@ -33,7 +33,7 @@ h2 {
     display: flex;
     align-items: center;
     font-size: 18px;
-    font-family: sans-serif;
+    font-family: "Arial", "Helvetica", "Helvetica Neue", sans-serif;
     padding-right: 5px;
 }
 
@@ -67,7 +67,7 @@ h2 {
     margin: unset;
     padding-top: 5px;
     padding-bottom: 5px;
-    font-family: sans-serif;
+    font-family: "Arial", "Helvetica", "Helvetica Neue", sans-serif;
 }
 
 .szoveg > .tartalom {
@@ -82,7 +82,7 @@ h2 {
 .content > .lapozas {
     display: flex;
     justify-content: space-between;
-    font-family: sans-serif;
+    font-family: "Arial", "Helvetica", "Helvetica Neue", sans-serif;
     color: #1f50ba;
     text-align: center;
     font-size: 18px;

@@ -1,5 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
 
+body, button, input, select, textarea {
+    font-family: "Arial", "Helvetica", "Helvetica Neue", sans-serif;
+}
+
 html, body{
     margin: 0;
     padding: 0;
@@ -26,7 +30,8 @@ html, body{
     align-items: flex-end;
     background-image: url('./assets/images/htv_logo.png');
     background-repeat: no-repeat;
-    background-position: center;
+    background-position-x: center;
+    background-position-y: bottom;
 }
 
 .facebook {

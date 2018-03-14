@@ -33,7 +33,8 @@ export class AdminEpizodokUjComponent implements OnInit {
         kep: '',
         youtube: '',
         leiras: '',
-        musor: -1
+        musor: -1,
+        video: ''
       };
     }
 

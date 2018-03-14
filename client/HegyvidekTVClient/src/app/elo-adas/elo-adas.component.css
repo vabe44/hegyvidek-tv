@@ -14,7 +14,7 @@ h2, h3 {
     margin: unset !important;
     font-size: 20px;
     line-height: 20px;
-    font-family: sans-serif;
+    font-family: "Arial", "Helvetica", "Helvetica Neue", sans-serif;
 }
 
 h2 {
@@ -39,6 +39,6 @@ h3 {
 .tartalom {
     color: black;
     font-size: 16px;
-    font-family: sans-serif;
+    font-family: "Arial", "Helvetica", "Helvetica Neue", sans-serif;
     padding-top: 5px;
 }
