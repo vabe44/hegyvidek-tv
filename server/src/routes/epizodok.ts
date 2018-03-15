@@ -18,4 +18,4 @@ class Epizodok {
 }
 
 const epizodokRoutes = new Epizodok();
-export default epizodokRoutes.router;
+export default epizodokRoutes.router as Router;

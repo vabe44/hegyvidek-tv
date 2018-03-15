@@ -36,16 +36,16 @@
               <div class="control">
                 <div class="select">
                   <select id="statusz" [(ngModel)]="hir.statusz" name="statusz">
-                      <option value="aktiv" [attr.selected]="hir.statusz === 'aktív' ? true : false">Aktív</option>
-                      <option value="inaktiv" [attr.selected]="hir.statusz === 'inaktív' ? true : false">Inaktív</option>
+                      <option value="aktív" [attr.selected]="hir.statusz === 'aktív' ? true : false">Aktív</option>
+                      <option value="inaktív" [attr.selected]="hir.statusz === 'inaktív' ? true : false">Inaktív</option>
                   </select>
                 </div>
               </div>
               <p class="control">
-                <button class="save button is-primary" (click)="modositHir(hir)">Frissítés</button>
+                <button class="button is-primary" (click)="modositHir(hir)">Frissítés</button>
               </p>
               <p class="control">
-                <button class="delete button is-danger" (click)="torlesHir(hir)">Törlés</button>
+                <button class="button is-danger" (click)="torlesHir(hir)">Törlés</button>
               </p>
             </div>
           </form>

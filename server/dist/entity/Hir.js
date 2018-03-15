@@ -9,6 +9,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+// tslint:disable-next-line:max-line-length
 const typeorm_1 = require("typeorm");
 let Hir = class Hir extends typeorm_1.BaseEntity {
 };
@@ -24,6 +25,14 @@ __decorate([
     typeorm_1.Column(),
     __metadata("design:type", String)
 ], Hir.prototype, "statusz", void 0);
+__decorate([
+    typeorm_1.CreateDateColumn(),
+    __metadata("design:type", Date)
+], Hir.prototype, "createdDate", void 0);
+__decorate([
+    typeorm_1.UpdateDateColumn(),
+    __metadata("design:type", Date)
+], Hir.prototype, "updatedDate", void 0);
 Hir = __decorate([
     typeorm_1.Entity()
 ], Hir);

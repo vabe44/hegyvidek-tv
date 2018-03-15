@@ -19,14 +19,13 @@ const errorHandler = require("errorhandler");
 const express = require("express");
 const flash = require("express-flash");
 const session = require("express-session");
+const expressValidator = require("express-validator");
+const http_1 = require("http");
 const lusca = require("lusca");
 const logger = require("morgan");
 const passport = require("passport");
 const path = require("path");
-const expressValidator = require("express-validator");
-const http_1 = require("http");
 require("reflect-metadata");
-const io = require("socket.io");
 const typeorm_1 = require("typeorm");
 /**
  * Load environment variables from .env file, where API keys and passwords are configured.
@@ -48,7 +47,6 @@ class App {
     constructor() {
         this.express = express();
         this.server = http_1.createServer(this.express);
-        this.io = io(this.server);
         this.middleware();
         this.routes();
         this.launchConf();
@@ -111,19 +109,6 @@ class App {
       in %s mode"), this.express.get("port"), this.express.get("env"));
             // tslint:disable-next-line:no-console
             console.log("  Press CTRL-C to stop\n");
-        });
-        this.io.on("connect", (socket) => {
-            // tslint:disable-next-line:no-console
-            console.log("Connected client on port %s.", this.express.get("port"));
-            socket.on("message", (m) => {
-                // tslint:disable-next-line:no-console
-                console.log("[server](message): %s", JSON.stringify(m));
-                this.io.emit("message", m);
-            });
-            socket.on("disconnect", () => {
-                // tslint:disable-next-line:no-console
-                console.log("Client disconnected");
-            });
         });
     }
 }

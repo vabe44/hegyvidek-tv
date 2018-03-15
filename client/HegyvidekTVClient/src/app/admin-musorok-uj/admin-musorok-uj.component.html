@@ -8,14 +8,15 @@
           <h2 class="title">Új műsor hozzáadása</h2>
 
           <div class="field is-grouped">
-            <p class="control is-expanded">
+            <div class="control is-expanded">
               <label class="label">Műsor címe</label>
-              <input id="cim" name="cim" [(ngModel)]="musor.cim" class="input" type="text" placeholder="Műsor címe">
-            </p>
-            <p class="control is-expanded">
+              <input id="cim" name="cim" [(ngModel)]="musor.cim" (keyup)="toUrlFormat(musor.cim)" (change)="toUrlFormat(musor.cim)" class="input" type="text" placeholder="Műsor címe">
+            </div>
+            <div class="control is-expanded">
               <label class="label">Beszédes URL</label>
-              <input type="text" id="url" name="url" [(ngModel)]="musor.url" class="input" placeholder="Beszédes URL" required>
-            </p>
+              <input type="text" id="url" name="url" [(ngModel)]="musor.url" class="input" [class.is-success]="urlUnique" [class.is-danger]="!urlUnique" placeholder="Beszédes URL" required>
+              <p *ngIf="!urlUnique" class="help is-danger">Ez az URL már létezik</p>
+            </div>
             <div class="control">
               <label class="label">Státusz</label>
               <div class="select">
@@ -25,12 +26,10 @@
                 </select>
               </div>
             </div>
-          </div>
-          <div class="field is-grouped">
             <div class="control">
               <label class="label">Műsor képe</label>
               <div class="field">
-                <div class="file is-primary is-boxed">
+                <div class="file is-primary">
                   <label class="file-label">
                     <input class="file-input" type="file" name="photo" ng2FileSelect [uploader]="uploader">
                     <span class="file-cta">
@@ -46,6 +45,8 @@
                 </div>
               </div>
             </div>
+          </div>
+          <div class="field is-grouped">
             <div *ngIf="musor.kep" class="control is-expanded">
               <label class="label">Kép</label>
               <figure class="image is-16by9">

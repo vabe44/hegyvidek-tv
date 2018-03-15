@@ -103,22 +103,22 @@ exports.upload = (req, res, next) => __awaiter(this, void 0, void 0, function* (
             // number of bytes uploaded to this point.
             onUploadProgress: (evt) => {
                 const progress = (evt.bytesRead / fileSize) * 100;
-                process.stdout.clearLine();
-                process.stdout.cursorTo(0);
-                console.log(`${Math.round(progress)}% complete`);
+                // process.stdout.clearLine();
+                // process.stdout.cursorTo(0);
+                // console.log(`${Math.round(progress)}% complete`);
             },
         }, (err, res) => {
             if (err) {
                 throw err;
             }
-            console.log("\n\n");
-            console.log(res.data);
-            return res.json({ data: res.data });
+            // console.log("\n\n");
+            // console.log(res.data);
+            callback(res.data);
         });
     }
-    function send(video) {
-        res.json({ video });
-    }
-    runSample(process.env.SERVER_VIDEOS_PATH + "/" + req.body.video, (video) => { });
+    const data = runSample(process.env.SERVER_VIDEOS_PATH + "/" + req.body.video, (data) => {
+        res.json({ data });
+    });
+    // return res.json({ data });
 });
 //# sourceMappingURL=youtube.js.map

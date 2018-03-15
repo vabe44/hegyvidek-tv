@@ -12,6 +12,7 @@ class Musoraink {
     this.router.get("/", musorController.getMusor);
     this.router.get("/:id", musorController.getMusorId);
     this.router.post("/", musorController.postMusor);
+    this.router.post("/urlcheck", musorController.checkUrl);
     this.router.put("/", musorController.putMusor);
     this.router.delete("/:id", musorController.deleteMusor);
     this.router.post("/picture", musorController.uploadPicture);
@@ -19,4 +20,4 @@ class Musoraink {
 }
 
 const musorRoutes = new Musoraink();
-export default musorRoutes.router;
+export default musorRoutes.router as Router;

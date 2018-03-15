@@ -9,6 +9,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+// tslint:disable-next-line:max-line-length
 const typeorm_1 = require("typeorm");
 const Musor_1 = require("./Musor");
 let Epizod = class Epizod extends typeorm_1.BaseEntity {
@@ -54,7 +55,17 @@ __decorate([
     __metadata("design:type", String)
 ], Epizod.prototype, "leiras", void 0);
 __decorate([
-    typeorm_1.ManyToOne(type => Musor_1.Musor, musor => musor.epizodok),
+    typeorm_1.CreateDateColumn(),
+    __metadata("design:type", Date)
+], Epizod.prototype, "createdDate", void 0);
+__decorate([
+    typeorm_1.UpdateDateColumn(),
+    __metadata("design:type", Date)
+], Epizod.prototype, "updatedDate", void 0);
+__decorate([
+    typeorm_1.ManyToOne(type => Musor_1.Musor, musor => musor.epizodok, {
+        eager: true,
+    }),
     __metadata("design:type", Musor_1.Musor)
 ], Epizod.prototype, "musor", void 0);
 Epizod = __decorate([

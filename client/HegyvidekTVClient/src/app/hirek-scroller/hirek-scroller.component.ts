@@ -18,7 +18,7 @@ export class HirekScrollerComponent implements OnInit {
 
   ngOnInit() {
     this.hirService.osszes().subscribe(response => {
-      this.hirek = response.hirek;
+      this.hirek = response.hirek.filter(hir => hir.statusz === 'aktív');
       this.text = `marquee ${ this.hirek.length * 20 }s linear infinite`;
     });
   }

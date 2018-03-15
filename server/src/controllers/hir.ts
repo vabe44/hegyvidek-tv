@@ -1,5 +1,6 @@
 import * as async from "async";
 import { NextFunction, Request, Response } from "express";
+import { getConnection } from "typeorm";
 import { Hir } from "../entity/Hir";
 
 /**
@@ -8,7 +9,11 @@ import { Hir } from "../entity/Hir";
  */
 export let getHirek =  async (req: Request, res: Response, next: NextFunction) => {
 
-    const hirek = await Hir.find();
+    const hirek = await getConnection()
+        .getRepository(Hir)
+        .createQueryBuilder("hir")
+        .orderBy("hir.createdDate", "DESC")
+        .getMany();
     if (hirek.length) {
         return res.json({ hirek });
     } else {

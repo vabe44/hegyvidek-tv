@@ -16,6 +16,7 @@ export class AdminMusorokModositComponent implements OnInit {
   // define the constant url we would be uploading to.
   URL = 'http://localhost:3000/musoraink/picture';
   public uploader: FileUploader = new FileUploader({url: this.URL, itemAlias: 'photo'});
+  urlUnique: boolean;
   constructor(
   private router: Router,
   private musorService: MusorService, private route: ActivatedRoute) {}
@@ -35,6 +36,7 @@ export class AdminMusorokModositComponent implements OnInit {
       const filename = JSON.parse(response).file.filename;
       this.musor.kep = `${environment.apiUrl}/images/${filename}`;
     };
+    this.urlUnique = true;
   }
 
   modositMusor() {
@@ -60,6 +62,29 @@ export class AdminMusorokModositComponent implements OnInit {
           console.log('error');
         }
       });
+  }
+
+  toUrlFormat(text: string) {
+    // Use hash map for special characters
+    // tslint:disable-next-line:max-line-length
+    const specialChars = {'à': 'a', 'ä': 'a', 'á': 'a', 'â': 'a', 'æ': 'a', 'å': 'a', 'ë': 'e', 'è': 'e', 'é': 'e', 'ê': 'e', 'î': 'i', 'ï': 'i', 'ì': 'i', 'í': 'i', 'ò': 'o', 'ó': 'o', 'ö': 'o', 'ő': 'o', 'ô': 'o', 'ø': 'o', 'ù': 'o', 'ú': 'u', 'ü': 'u', 'ű': 'u', 'û': 'u', 'ñ': 'n', 'ç': 'c', 'ß': 's', 'ÿ': 'y', 'œ': 'o', 'ŕ': 'r', 'ś': 's', 'ń': 'n', 'ṕ': 'p', 'ẃ': 'w', 'ǵ': 'g', 'ǹ': 'n', 'ḿ': 'm', 'ǘ': 'u', 'ẍ': 'x', 'ź': 'z', 'ḧ': 'h', '·': '-', '/': '-', '_': '-', ',': '-', ':': '-', ';': '-'};
+
+    this.musor.url = text.toString().toLowerCase()
+      .replace(/\s+/g, '-')           // Replace spaces with -
+      .replace(/./g, (target, index, str) => specialChars[target] || target) // Replace special characters using the hash map
+      .replace(/&/g, '-and-')         // Replace & with 'and'
+      .replace(/[^\w\-]+/g, '')       // Remove all non-word chars
+      .replace(/\-\-+/g, '-')         // Replace multiple - with single -
+      .replace(/^-+/, '')             // Trim - from start of text
+      .replace(/-+$/, '');             // Trim - from end of text
+    this.musorService.isUrlUnique(this.musor.url)
+      .subscribe(response => {
+        if (response.unique) {
+          this.urlUnique = true;
+        } else  {
+          this.urlUnique = false;
+        }
+    });
   }
 
 }

@@ -1,4 +1,5 @@
-import {BaseEntity, Column, Entity, OneToMany, PrimaryGeneratedColumn} from "typeorm";
+// tslint:disable-next-line:max-line-length
+import { BaseEntity, Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 
 @Entity()
 export class Hir extends BaseEntity {
@@ -11,4 +12,10 @@ export class Hir extends BaseEntity {
 
     @Column()
     public statusz: string;
+
+    @CreateDateColumn()
+    public createdDate: Date;
+
+    @UpdateDateColumn()
+    public updatedDate: Date;
 }

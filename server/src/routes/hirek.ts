@@ -17,4 +17,4 @@ class Hirek {
 }
 
 const hirRoutes = new Hirek();
-export default hirRoutes.router;
+export default hirRoutes.router as Router;

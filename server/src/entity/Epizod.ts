@@ -1,4 +1,5 @@
-import {BaseEntity, Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn} from "typeorm";
+// tslint:disable-next-line:max-line-length
+import { BaseEntity, Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 import { Musor } from "./Musor";
 
 @Entity()
@@ -33,7 +34,15 @@ export class Epizod extends BaseEntity {
     @Column()
     public leiras: string;
 
+    @CreateDateColumn()
+    public createdDate: Date;
+
+    @UpdateDateColumn()
+    public updatedDate: Date;
+
     // tslint:disable-next-line:arrow-parens
-    @ManyToOne(type => Musor, musor => musor.epizodok)
+    @ManyToOne(type => Musor, musor => musor.epizodok, {
+        eager: true,
+    })
     public musor: Musor;
 }

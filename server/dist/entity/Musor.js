@@ -9,6 +9,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+// tslint:disable-next-line:max-line-length
 const typeorm_1 = require("typeorm");
 const Epizod_1 = require("./Epizod");
 let Musor = class Musor extends typeorm_1.BaseEntity {
@@ -37,6 +38,14 @@ __decorate([
     typeorm_1.Column(),
     __metadata("design:type", String)
 ], Musor.prototype, "leiras", void 0);
+__decorate([
+    typeorm_1.CreateDateColumn(),
+    __metadata("design:type", Date)
+], Musor.prototype, "createdDate", void 0);
+__decorate([
+    typeorm_1.UpdateDateColumn(),
+    __metadata("design:type", Date)
+], Musor.prototype, "updatedDate", void 0);
 __decorate([
     typeorm_1.OneToMany(type => Epizod_1.Epizod, epizod => epizod.musor) // note: we will create author property in the Photo class below
     ,

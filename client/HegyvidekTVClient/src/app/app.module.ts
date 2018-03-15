@@ -43,7 +43,7 @@ import { MusorujsagComponent } from './musorujsag/musorujsag.component';
 import { KeresesComponent } from './kereses/kereses.component';
 import { KeresesTalalatokComponent } from './kereses-talalatok/kereses-talalatok.component';
 import { AdminHirekComponent } from './admin-hirek/admin-hirek.component';
-import { FileSelectDirective } from 'ng2-file-upload';
+import { FileUploadModule } from 'ng2-file-upload';
 import { AdminEpizodokUjComponent } from './admin-epizodok-uj/admin-epizodok-uj.component';
 import { AdminEpizodokModositComponent } from './admin-epizodok-modosit/admin-epizodok-modosit.component';
 import { EpizodService } from './services/epizod.service';
@@ -83,7 +83,6 @@ export function getAuthHttp(http, options: RequestOptions) {
     KeresesComponent,
     KeresesTalalatokComponent,
     AdminHirekComponent,
-    FileSelectDirective,
     AdminEpizodokUjComponent,
     AdminEpizodokModositComponent
   ],
@@ -92,6 +91,7 @@ export function getAuthHttp(http, options: RequestOptions) {
     FormsModule,
     HttpModule,
     HttpClientModule,
+    FileUploadModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent },
       { path: 'musoraink', component: MusorainkComponent },

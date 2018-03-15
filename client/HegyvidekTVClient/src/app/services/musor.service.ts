@@ -34,4 +34,8 @@ export class MusorService {
       .map(response => response.json());
   }
 
+  isUrlUnique(url) {
+    return this.http.post(environment.apiUrl + '/musoraink/urlcheck', url)
+      .map(response => response.json());
+  }
 }

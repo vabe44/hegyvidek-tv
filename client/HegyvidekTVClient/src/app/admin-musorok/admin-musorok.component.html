@@ -1,14 +1,25 @@
 <main>
   <section class="content">
-      <section class="main">
-        <app-admin-menu></app-admin-menu>
-        <a routerLink="/admin/musorok/uj">Uj musor hozzaadasa</a>
+    <app-admin-menu></app-admin-menu>
+    <div class="musoraink">
+      <div class="cim">
+        <h2 class="musoraink-cim">Műsoraink</h2>
+        <p class="kereses">Kattintson a műsorokra a módosításhoz.</p>
+        <p><a routerLink="/admin/musorok/uj">Új műsor hozzáadása</a></p>
+      </div>
 
-        <ul>
-          <li *ngFor="let musor of musorok">
-              <a [routerLink]="['/admin/musorok', musor.id]">{{ musor.cim }}</a>
-          </li>
-        </ul>
-      </section>
+      <div class="musorok">
+        <a *ngFor="let musor of musorok" a [routerLink]="['/admin/musorok', musor.id]" class="musor">
+          <div class="kep">
+            <img [src]="musor.kep" alt="{{ musor.cim }}">
+          </div>
+          <div class="reszletek">
+            <h3>{{ musor.cim }}</h3>
+            <p class="leiras">{{ musor.leiras }}</p>
+          </div>
+        </a>
+
+      </div>
+    </div>
   </section>
 </main>

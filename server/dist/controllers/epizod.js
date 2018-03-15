@@ -11,6 +11,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const googleapis_1 = require("googleapis");
 const multer = require("multer");
 const Epizod_1 = require("../entity/Epizod");
+const Musor_1 = require("../entity/Musor");
 const OAuth2 = googleapis_1.google.auth.OAuth2;
 const oauth2Client = new OAuth2("15446227899-uo4u0njei3sf26b7r3qmu9hbqide94h3.apps.googleusercontent.com", "sW0B-dppq2AIl3tn0IxDwl9C", "http://localhost:3000/epizodok/video");
 /**
@@ -78,7 +79,7 @@ exports.putEpizod = (req, res, next) => __awaiter(this, void 0, void 0, function
     epizod.video = req.body.video;
     epizod.youtube = req.body.youtube;
     epizod.leiras = req.body.leiras;
-    epizod.musor = req.body.musor;
+    epizod.musor = yield Musor_1.Musor.findOneById(req.body.musor);
     yield epizod.save();
     if (epizod.id) {
         return res.json({ epizod });

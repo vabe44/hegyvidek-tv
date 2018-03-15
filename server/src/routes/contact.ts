@@ -14,4 +14,4 @@ class Contact {
 }
 
 const contactRoutes = new Contact();
-export default contactRoutes.router;
+export default contactRoutes.router as Router;

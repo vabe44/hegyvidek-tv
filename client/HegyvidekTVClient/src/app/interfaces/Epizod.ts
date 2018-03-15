@@ -1,3 +1,4 @@
+import { Musor } from './Musor';
 export interface Epizod {
     id: number;
     cim: string;
@@ -9,5 +10,7 @@ export interface Epizod {
     video: string;
     youtube: string;
     leiras: string;
-    musor: number;
+    musor: Musor;
+    createdDate: Date;
+    updatedDate: Date;
 }

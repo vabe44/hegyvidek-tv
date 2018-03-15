@@ -3,6 +3,7 @@ import { NextFunction, Request, Response } from "express";
 import { google } from "googleapis";
 import * as multer from "multer";
 import { Epizod } from "../entity/Epizod";
+import { Musor } from "../entity/Musor";
 import { YouTube } from "../entity/YouTube";
 
 const OAuth2 = google.auth.OAuth2;
@@ -82,7 +83,7 @@ export let putEpizod =  async (req: Request, res: Response, next: NextFunction) 
     epizod.video = req.body.video;
     epizod.youtube = req.body.youtube;
     epizod.leiras = req.body.leiras;
-    epizod.musor = req.body.musor;
+    epizod.musor = await Musor.findOneById(req.body.musor);
     await epizod.save();
 
     if (epizod.id) {

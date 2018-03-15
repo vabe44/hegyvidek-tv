@@ -16,4 +16,4 @@ class Api {
 }
 
 const apiRoutes = new Api();
-export default apiRoutes.router;
+export default apiRoutes.router as Router;

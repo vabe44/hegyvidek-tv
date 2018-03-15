@@ -10,16 +10,15 @@ import * as errorHandler from "errorhandler";
 import * as express from "express";
 import * as flash from "express-flash";
 import * as session from "express-session";
+import expressValidator = require("express-validator");
+import { createServer, Server } from "http";
 import * as lusca from "lusca";
 import * as mongoose from "mongoose";
 import * as logger from "morgan";
 import * as passport from "passport";
 import * as path from "path";
-import expressValidator = require("express-validator");
-import { createServer, Server } from "http";
 import "reflect-metadata";
-import * as io from "socket.io";
-import {createConnection} from "typeorm";
+import { createConnection } from "typeorm";
 
 /**
  * Load environment variables from .env file, where API keys and passwords are configured.
@@ -48,12 +47,10 @@ class App {
   // ref to Express instance
   public express: express.Application;
   private server: Server;
-  private io: SocketIO.Server;
 
   constructor() {
     this.express = express();
     this.server = createServer(this.express);
-    this.io = io(this.server);
     this.middleware();
     this.routes();
     this.launchConf();
@@ -120,21 +117,6 @@ class App {
       in %s mode"), this.express.get("port"), this.express.get("env"));
       // tslint:disable-next-line:no-console
       console.log("  Press CTRL-C to stop\n");
-    });
-
-    this.io.on("connect", (socket: any) => {
-      // tslint:disable-next-line:no-console
-      console.log("Connected client on port %s.", this.express.get("port"));
-      socket.on("message", (m: any) => {
-        // tslint:disable-next-line:no-console
-        console.log("[server](message): %s", JSON.stringify(m));
-        this.io.emit("message", m);
-      });
-
-      socket.on("disconnect", () => {
-        // tslint:disable-next-line:no-console
-        console.log("Client disconnected");
-      });
     });
   }
 }

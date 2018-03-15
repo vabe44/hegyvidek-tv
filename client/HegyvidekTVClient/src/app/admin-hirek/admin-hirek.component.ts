@@ -15,7 +15,9 @@ export class AdminHirekComponent implements OnInit {
     this.ujHir = {
       id: 0,
       szoveg: '',
-      statusz: 'aktiv'
+      statusz: 'aktiv',
+      createdDate: undefined,
+      updatedDate: undefined
     };
   }
 
@@ -28,9 +30,10 @@ export class AdminHirekComponent implements OnInit {
       .subscribe(response => {
         console.log(response);
         if (response.hir) {
-          alert('whoo hoo! im saved boys');
+          this.hirek.unshift(response.hir);
+          this.ujHir.szoveg = '';
         } else  {
-          console.log('error');
+          alert(response.message);
         }
       });
   }
@@ -48,16 +51,19 @@ export class AdminHirekComponent implements OnInit {
   }
 
   torlesHir(hir) {
-    this.hirService.torles(hir.id)
-      .subscribe(response => {
-        console.log(response);
-        if (response.hir) {
-          console.log('siker');
-          this.hirek.splice(this.hirek.indexOf(hir), 1);
-        } else  {
-          console.log('error');
-        }
-      });
+    const shouldDelete = confirm('Biztos benne, hogy törölni akarja a hírt?');
+    if (shouldDelete) {
+      this.hirService.torles(hir.id)
+        .subscribe(response => {
+          console.log(response);
+          if (response.hir) {
+            console.log('siker');
+            this.hirek.splice(this.hirek.indexOf(hir), 1);
+          } else  {
+            console.log('error');
+          }
+        });
+    }
   }
 
   trackByIndex(index: number, obj: any): any {

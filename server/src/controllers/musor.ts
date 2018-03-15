@@ -113,3 +113,17 @@ export let uploadPicture =  async (req: Request, res: Response, next: NextFuncti
         return res.json({ file });
     });
 };
+
+/**
+ * GET /musoraink
+ * Osszes musor.
+ */
+export let checkUrl =  async (req: Request, res: Response, next: NextFunction) => {
+
+    const musorok = await Musor.find({ url: req.body.url });
+    if (musorok.length) {
+        return res.json({ unique: false });
+    } else {
+        return res.json({ unique: true });
+    }
+};

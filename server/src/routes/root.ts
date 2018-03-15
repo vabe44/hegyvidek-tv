@@ -23,4 +23,4 @@ class Root {
 }
 
 const rootRoutes = new Root();
-export default rootRoutes.router;
+export default rootRoutes.router as Router;

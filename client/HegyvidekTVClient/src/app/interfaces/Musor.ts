@@ -1,3 +1,5 @@
+import { Epizod } from './Epizod';
+
 export interface Musor {
     id: number;
     cim: string;
@@ -5,4 +7,6 @@ export interface Musor {
     statusz: string;
     kep: string|any;
     leiras: string;
+    createdDate: Date;
+    updatedDate: Date;
 }

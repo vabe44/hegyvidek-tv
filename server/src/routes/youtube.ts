@@ -15,4 +15,4 @@ class YouTube {
 }
 
 const youtubeRoutes = new YouTube();
-export default youtubeRoutes.router;
+export default youtubeRoutes.router as Router;

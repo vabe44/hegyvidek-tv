@@ -10,6 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const bcrypt = require("bcrypt");
+// tslint:disable-next-line:max-line-length
 const typeorm_1 = require("typeorm");
 let User = class User extends typeorm_1.BaseEntity {
     hashPassword(password) {
@@ -32,6 +33,14 @@ __decorate([
     typeorm_1.Column(),
     __metadata("design:type", String)
 ], User.prototype, "password", void 0);
+__decorate([
+    typeorm_1.CreateDateColumn(),
+    __metadata("design:type", Date)
+], User.prototype, "createdDate", void 0);
+__decorate([
+    typeorm_1.UpdateDateColumn(),
+    __metadata("design:type", Date)
+], User.prototype, "updatedDate", void 0);
 User = __decorate([
     typeorm_1.Entity()
 ], User);

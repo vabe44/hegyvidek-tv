@@ -115,21 +115,22 @@ export let upload =  async (req: Request, res: Response, next: NextFunction) => 
         // number of bytes uploaded to this point.
         onUploadProgress: (evt: any) => {
             const progress = (evt.bytesRead / fileSize) * 100;
-            process.stdout.clearLine();
-            process.stdout.cursorTo(0);
-            console.log(`${Math.round(progress)}% complete`);
+            // process.stdout.clearLine();
+            // process.stdout.cursorTo(0);
+            // console.log(`${Math.round(progress)}% complete`);
         },
-        }, (err, res) => {
+        }, (err: any, res: any) => {
         if (err) {
             throw err;
         }
-        console.log("\n\n");
-        console.log(res.data);
-        return res.json({ data: res.data });
+        // console.log("\n\n");
+        // console.log(res.data);
+        callback(res.data);
         });
     }
-    function send(video: any) {
-        res.json({video});
-    }
-    runSample(process.env.SERVER_VIDEOS_PATH + "/" + req.body.video, (video) => { /* sample complete */ });
+    const data = runSample(process.env.SERVER_VIDEOS_PATH + "/" + req.body.video, (data: any) => {
+        res.json({ data });
+    });
+
+    // return res.json({ data });
 };

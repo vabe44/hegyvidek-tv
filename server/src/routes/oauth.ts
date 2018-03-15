@@ -21,4 +21,4 @@ class Oauth {
 }
 
 const oauthRoutes = new Oauth();
-export default oauthRoutes.router;
+export default oauthRoutes.router as Router;

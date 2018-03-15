@@ -8,13 +8,18 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+const typeorm_1 = require("typeorm");
 const Hir_1 = require("../entity/Hir");
 /**
  * GET /hirek
  * Osszes hir.
  */
 exports.getHirek = (req, res, next) => __awaiter(this, void 0, void 0, function* () {
-    const hirek = yield Hir_1.Hir.find();
+    const hirek = yield typeorm_1.getConnection()
+        .getRepository(Hir_1.Hir)
+        .createQueryBuilder("hir")
+        .orderBy("hir.createdDate", "DESC")
+        .getMany();
     if (hirek.length) {
         return res.json({ hirek });
     }
