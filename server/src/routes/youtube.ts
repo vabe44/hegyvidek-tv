@@ -8,6 +8,9 @@ class YouTube {
     this.init();
   }
   private init() {
+    this.router.get("/settings", youtubeController.getSettings);
+    this.router.post("/settings", youtubeController.editSettings);
+    this.router.delete("/settings", youtubeController.deleteSettings);
     this.router.get("/save-tokens", youtubeController.saveTokens);
     this.router.get("/oauth", youtubeController.oauth);
     this.router.post("/upload", youtubeController.upload);

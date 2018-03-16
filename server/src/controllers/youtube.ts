@@ -8,10 +8,43 @@ import { YouTube } from "../entity/YouTube";
 
 const OAuth2 = google.auth.OAuth2;
 const oauth2Client = new OAuth2(
-  "15446227899-uo4u0njei3sf26b7r3qmu9hbqide94h3.apps.googleusercontent.com",
-  "sW0B-dppq2AIl3tn0IxDwl9C",
-  "http://localhost:3000/youtube/save-tokens",
+"15446227899-uo4u0njei3sf26b7r3qmu9hbqide94h3.apps.googleusercontent.com",
+"sW0B-dppq2AIl3tn0IxDwl9C",
+"http://localhost:3000/youtube/save-tokens",
 );
+
+/**
+ * GET /youtube
+ * Egy hir.
+ */
+export let getSettings =  async (req: Request, res: Response, next: NextFunction) => {
+
+    const youtubes = await YouTube.find();
+    const youtube = youtubes[0];
+    if (youtube.id) {
+        return res.json({ youtube });
+    } else {
+        return res.json({ message: "Hiba tortent a beallitasok lekerdezese kozben. Kerem probalja ujra kesobb." });
+    }
+};
+
+/**
+ * PUT /hirek
+ * Hir modositasa.
+ */
+export let editSettings =  async (req: Request, res: Response, next: NextFunction) => {
+
+    const youtube = await YouTube.findOneById(req.body.id);
+    youtube.accessToken = req.body.accessToken;
+    youtube.refreshToken = req.body.refreshToken;
+    await youtube.save();
+
+    if (youtube.id) {
+        return res.json({ youtube });
+    } else {
+        return res.json({ message: "Hiba tortent a beallitasok modositasa kozben. Kerem probalja ujra kesobb." });
+    }
+};
 
 /**
  * GET /epizodok VIDEO
@@ -78,59 +111,106 @@ export let saveTokens =  async (req: Request, res: Response, next: NextFunction)
  */
 export let upload =  async (req: Request, res: Response, next: NextFunction) => {
 
-    const tokens = await YouTube.findOneById(1);
+    const youtubeTokens = await YouTube.findOne();
+
     oauth2Client.setCredentials({
-        access_token: tokens.accessToken,
-        refresh_token: tokens.refreshToken,
-    });
-
-    // initialize the Youtube API library
-    const youtube = google.youtube({
-        auth: oauth2Client,
-        version: "v3",
-    });
-
-    // very basic example of uploading a video to youtube
-    function runSample(fileName: string, callback: any) {
-        const fileSize = fs.statSync(fileName).size;
-        youtube.videos.insert({
-        part: "id,snippet,status",
+        access_token: youtubeTokens.accessToken,
+        refresh_token: youtubeTokens.refreshToken,
         // tslint:disable-next-line:object-literal-sort-keys
-        notifySubscribers: false,
-        resource: {
-            snippet: {
-            title: req.body.cim,
+        expiry_date: (new Date()).getTime() + (1000 * 60 * 60 * 24 * 7),
+    });
+
+    oauth2Client.refreshAccessToken((err, tokens) => {
+        // your access_token is now refreshed and stored in oauth2Client
+        // store these new tokens in a safe place (e.g. database)
+        // tslint:disable-next-line:no-console
+        console.log(err, tokens);
+        youtubeTokens.accessToken = tokens.access_token;
+        youtubeTokens.save();
+
+        oauth2Client.setCredentials({
+            access_token: tokens.access_token,
+            refresh_token: tokens.refresh_token,
             // tslint:disable-next-line:object-literal-sort-keys
-            description: req.body.leiras,
-            },
-            status: {
-            privacyStatus: "private",
-            },
-        },
-        media: {
-            body: fs.createReadStream(fileName),
-        },
-        }, {
-        // Use the `onUploadProgress` event from Axios to track the
-        // number of bytes uploaded to this point.
-        onUploadProgress: (evt: any) => {
-            const progress = (evt.bytesRead / fileSize) * 100;
-            // process.stdout.clearLine();
-            // process.stdout.cursorTo(0);
-            // console.log(`${Math.round(progress)}% complete`);
-        },
-        }, (err: any, res: any) => {
-        if (err) {
-            throw err;
-        }
-        // console.log("\n\n");
-        // console.log(res.data);
-        callback(res.data);
+            expiry_date: (new Date()).getTime() + (1000 * 60 * 60 * 24 * 7),
         });
-    }
-    const data = runSample(process.env.SERVER_VIDEOS_PATH + "/" + req.body.video, (data: any) => {
-        res.json({ data });
+
+        // initialize the Youtube API library
+        const youtube = google.youtube({
+            auth: oauth2Client,
+            version: "v3",
+        });
+
+        // very basic example of uploading a video to youtube
+        function runSample(fileName: string, callback: any) {
+            const fileSize = fs.statSync(fileName).size;
+            youtube.videos.insert({
+            part: "id,snippet,status",
+            // tslint:disable-next-line:object-literal-sort-keys
+            notifySubscribers: false,
+            resource: {
+                snippet: {
+                title: req.body.cim,
+                // tslint:disable-next-line:object-literal-sort-keys
+                description: req.body.leiras,
+                },
+                status: {
+                privacyStatus: "private",
+                },
+            },
+            media: {
+                body: fs.createReadStream(fileName),
+            },
+            }, {
+            // Use the `onUploadProgress` event from Axios to track the
+            // number of bytes uploaded to this point.
+            onUploadProgress: (evt: any) => {
+                const progress = (evt.bytesRead / fileSize) * 100;
+                // process.stdout.clearLine();
+                // process.stdout.cursorTo(0);
+                // console.log(`${Math.round(progress)}% complete`);
+            },
+            }, (err: any, res: any) => {
+            if (err) {
+                throw err;
+            }
+            fs.unlink(fileName, async (error) => {
+                if (error) {
+                    throw error;
+                }
+                // tslint:disable-next-line:no-console
+                console.log("Deleted video from server");
+                const epizod = await Epizod.findOne({ video: req.body.video });
+                epizod.video = "";
+                epizod.save();
+            });
+            // console.log("\n\n");
+            // console.log(res.data);
+            callback(res.data);
+            });
+        }
+        const data = runSample(process.env.SERVER_VIDEOS_PATH + "/" + req.body.video, (data: any) => {
+            res.json({ data });
+        });
     });
 
     // return res.json({ data });
+};
+
+/**
+ * PUT /hirek
+ * Hir modositasa.
+ */
+export let deleteSettings =  async (req: Request, res: Response, next: NextFunction) => {
+
+    const youtube = await YouTube.findOne();
+    youtube.accessToken = "";
+    youtube.refreshToken = "";
+    await youtube.save();
+
+    if (!youtube.accessToken) {
+        return res.json({ youtube });
+    } else {
+        return res.json({ message: "Hiba tortent a beallitasok torlese kozben. Kerem probalja ujra kesobb." });
+    }
 };

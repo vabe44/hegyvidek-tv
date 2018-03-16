@@ -14,8 +14,18 @@ export class MusorService {
       .map(response => response.json());
   }
 
+  aktiv() {
+    return this.http.get(environment.apiUrl + '/musoraink/aktivmusorok')
+      .map(response => response.json());
+  }
+
   musor(id) {
     return this.http.get(environment.apiUrl + '/musoraink/' + id)
+      .map(response => response.json());
+  }
+
+  musorUrl(url) {
+    return this.http.get(environment.apiUrl + '/musoraink/url/' + url)
       .map(response => response.json());
   }
 

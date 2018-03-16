@@ -1,3 +1,4 @@
+import { YoutubeService } from './services/youtube.service';
 import { HirService } from './services/hir.service';
 import { HttpClient } from '@angular/common/http';
 import { HttpClientModule } from '@angular/common/http';
@@ -47,6 +48,8 @@ import { FileUploadModule } from 'ng2-file-upload';
 import { AdminEpizodokUjComponent } from './admin-epizodok-uj/admin-epizodok-uj.component';
 import { AdminEpizodokModositComponent } from './admin-epizodok-modosit/admin-epizodok-modosit.component';
 import { EpizodService } from './services/epizod.service';
+import { AdminYoutubeAuthComponent } from './admin-youtube-auth/admin-youtube-auth.component';
+import { YoutubeEmbedPipe } from './pipes/youtube-embed.pipe';
 export function getAuthHttp(http, options: RequestOptions) {
   return new AuthHttp(new AuthConfig({
     tokenName: 'token'
@@ -84,7 +87,9 @@ export function getAuthHttp(http, options: RequestOptions) {
     KeresesTalalatokComponent,
     AdminHirekComponent,
     AdminEpizodokUjComponent,
-    AdminEpizodokModositComponent
+    AdminEpizodokModositComponent,
+    AdminYoutubeAuthComponent,
+    YoutubeEmbedPipe
   ],
   imports: [
     BrowserModule,
@@ -95,7 +100,7 @@ export function getAuthHttp(http, options: RequestOptions) {
     RouterModule.forRoot([
       { path: '', component: HomeComponent },
       { path: 'musoraink', component: MusorainkComponent },
-      { path: 'musoraink/musor', component: MusorComponent },
+      { path: 'musoraink/:musor', component: MusorComponent },
       { path: 'kapcsolat', component: KapcsolatComponent },
       { path: 'mediaajanlat', component: MediaajanlatComponent },
       { path: 'kereses', component: KeresesComponent },
@@ -107,6 +112,7 @@ export function getAuthHttp(http, options: RequestOptions) {
       { path: 'admin/epizodok', component: AdminEpizodokComponent },
       { path: 'admin/epizodok/uj', component: AdminEpizodokUjComponent },
       { path: 'admin/epizodok/:id', component: AdminEpizodokModositComponent },
+      { path: 'admin/youtube', component: AdminYoutubeAuthComponent },
       { path: 'admin', component: AdminMusorokComponent },
     ])
   ],
@@ -116,6 +122,7 @@ export function getAuthHttp(http, options: RequestOptions) {
     EpizodService,
     IdojarasService,
     HirService,
+    YoutubeService,
     AuthHttp,
     {
       provide: AuthHttp,

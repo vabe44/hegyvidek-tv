@@ -1,58 +1,72 @@
 <main>
   <section class="content">
-    <section class="main">
-      <app-admin-menu></app-admin-menu>
+    <app-admin-menu></app-admin-menu>
 
-      <div class="uj-epizod">
-        <form class="form-modositEpizod" (ngSubmit)="modositEpizod()">
-          <h2 class="title">Epizód módosítása</h2>
+    <div class="uj-epizod">
+      <form class="form-modositEpizod" (ngSubmit)="modositEpizod()">
+        <h2 class="title">Epizód módosítása</h2>
 
-          <div class="field is-grouped">
-            <p class="control is-expanded">
-              <label class="label">Epizód címe</label>
-              <input id="cim" name="cim" [(ngModel)]="epizod.cim" (keyup)="toUrlFormat(epizod.cim)" (change)="toUrlFormat(epizod.cim)" class="input" type="text" placeholder="Epizód címe">
-            </p>
-            <div class="control is-expanded">
-              <label class="label">Beszédes URL</label>
-              <input type="text" id="url" name="url" [(ngModel)]="epizod.url" class="input" [class.is-success]="urlUnique" [class.is-danger]="!urlUnique" placeholder="Beszédes URL" required>
-              <p *ngIf="!urlUnique" class="help is-danger">Ez az URL már létezik</p>
-            </div>
-            <div class="control">
-              <label class="label">Műsor</label>
-              <div class="select">
-                <select id="musor" *ngIf="epizod.musor" [(ngModel)]="epizod.musor.id" name="musor">
-                  <option *ngFor="let musor of musorok" [attr.selected]="epizod.musor.id == musor.id ? true : false" [value]="musor.id">{{ musor.cim }}</option>
-                </select>
-              </div>
-            </div>
-            <div class="control">
-              <label class="label">Státusz</label>
-              <div class="select">
-                <select id="statusz" [(ngModel)]="epizod.statusz" name="statusz">
-                  <option value="aktív" [attr.selected]="epizod.statusz == 'aktív' ? true : false">Aktív</option>
-                  <option value="inaktív" [attr.selected]="epizod.statusz == 'inaktív' ? true : false">Inaktív</option>
-                </select>
-              </div>
+        <div class="field is-grouped">
+          <p class="control is-expanded">
+            <label class="label">Epizód címe</label>
+            <input id="cim" name="cim" [(ngModel)]="epizod.cim" (keyup)="toUrlFormat(epizod.cim)" (change)="toUrlFormat(epizod.cim)" class="input" type="text" placeholder="Epizód címe">
+          </p>
+          <div class="control is-expanded">
+            <label class="label">Beszédes URL</label>
+            <input type="text" id="url" name="url" [(ngModel)]="epizod.url" class="input" [class.is-success]="urlUnique" [class.is-danger]="!urlUnique" placeholder="Beszédes URL" required>
+            <p *ngIf="!urlUnique" class="help is-danger">Ez az URL már létezik</p>
+          </div>
+          <div class="control">
+            <label class="label">Műsor</label>
+            <div class="select">
+              <select id="musor" *ngIf="epizod.musor" [(ngModel)]="epizod.musor.id" name="musor">
+                <option *ngFor="let musor of musorok" [attr.selected]="epizod.musor.id == musor.id ? true : false" [value]="musor.id">{{ musor.cim }}</option>
+              </select>
             </div>
           </div>
-          <div class="field is-grouped">
-            <div class="control">
-              <label class="label">YouTube videó</label>
-              <div class="select">
-                <select id="youtubeVideo" name="youtubeVideo" [(ngModel)]="youtubeVideo">
-                  <option value="link">Linkelés</option>
-                  <option value="feltoltes">Feltöltés</option>
-                </select>
-              </div>
-              <div *ngIf="youtubeVideo === 'link'" class="field">
-                <label class="label">Azonosító</label>
-                <input id="yt" name="yt" [(ngModel)]="epizod.youtube" (change)="updateYoutubeVideoEmbedUrl(epizod.youtube)" class="input" type="text" placeholder="YouTube azonosító">
-              </div>
-              <div *ngIf="youtubeVideo === 'feltoltes'" class="field">
-                <label class="label">Új videó feltöltése</label>
-                <div class="file is-primary">
-                  <label class="file-label">
-                    <input class="file-input" [class.is-loading]="videoUploading" type="file" name="video" ng2FileSelect [uploader]="uploader">
+          <div class="control">
+            <label class="label">Státusz</label>
+            <div class="select">
+              <select id="statusz" [(ngModel)]="epizod.statusz" name="statusz">
+                <option value="aktív" [attr.selected]="epizod.statusz == 'aktív' ? true : false">Aktív</option>
+                <option value="inaktív" [attr.selected]="epizod.statusz == 'inaktív' ? true : false">Inaktív</option>
+              </select>
+            </div>
+          </div>
+          <div class="control">
+            <label class="label">Kiemelt</label>
+            <div class="select">
+              <select id="kiemelt" [(ngModel)]="epizod.kiemelt" name="kiemelt">
+                <option value="true" [attr.selected]="epizod.kiemelt == 1 ? true : false">Igen</option>
+                <option value="false" [attr.selected]="epizod.kiemelt == 0 ? false : true">Nem</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="field is-grouped">
+          <div class="control is-expanded">
+            <label class="label">Epizód leírása</label>
+            <textarea class="textarea" [(ngModel)]="epizod.leiras" id="leiras" name="leiras" placeholder="Epizód leírása"></textarea>
+          </div>
+          <div class="control">
+            <label class="label">YouTube videó</label>
+            <div class="select">
+              <select id="youtubeVideo" name="youtubeVideo" [(ngModel)]="youtubeVideo">
+                <option value="link">Linkelés</option>
+                <option value="feltoltes">Feltöltés</option>
+              </select>
+            </div>
+            <div *ngIf="youtubeVideo === 'link'" class="field">
+              <label class="label">Azonosító</label>
+              <input id="yt" name="yt" [(ngModel)]="epizod.youtube" (change)="updateYoutubeVideoEmbedUrl(epizod.youtube)" class="input" type="text" placeholder="YouTube azonosító">
+            </div>
+            <div *ngIf="youtubeVideo === 'feltoltes'" class="field">
+              <label class="label">Új videó feltöltése</label>
+              <div class="file is-primary">
+                <label class="file-label">
+                  <a *ngIf="videoUploading; else uploadButton" class="button is-primary is-loading">Feltöltés...</a>
+                  <ng-template #uploadButton>
+                    <input class="file-input" type="file" name="video" ng2FileSelect [uploader]="uploader">
                     <span class="file-cta">
                       <span class="file-icon">
                         <img src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTYuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgd2lkdGg9IjI0cHgiIGhlaWdodD0iMjRweCIgdmlld0JveD0iMCAwIDU0OC4xNzYgNTQ4LjE3NiIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgNTQ4LjE3NiA1NDguMTc2OyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+CjxnPgoJPHBhdGggZD0iTTUyNC4zMjYsMjk3LjM1MmMtMTUuODk2LTE5Ljg5LTM2LjIxLTMyLjc4Mi02MC45NTktMzguNjg0YzcuODEtMTEuOCwxMS43MDQtMjQuOTM0LDExLjcwNC0zOS4zOTkgICBjMC0yMC4xNzctNy4xMzktMzcuNDAxLTIxLjQwOS01MS42NzhjLTE0LjI3My0xNC4yNzItMzEuNDk4LTIxLjQxMS01MS42NzUtMjEuNDExYy0xOC4wODMsMC0zMy44NzksNS45MDEtNDcuMzksMTcuNzAzICAgYy0xMS4yMjUtMjcuNDEtMjkuMTcxLTQ5LjM5My01My44MTctNjUuOTVjLTI0LjY0Ni0xNi41NjItNTEuODE4LTI0Ljg0Mi04MS41MTQtMjQuODQyYy00MC4zNDksMC03NC44MDIsMTQuMjc5LTEwMy4zNTMsNDIuODMgICBjLTI4LjU1MywyOC41NDQtNDIuODI1LDYyLjk5OS00Mi44MjUsMTAzLjM1MWMwLDIuNDc0LDAuMTkxLDYuNTY3LDAuNTcxLDEyLjI3NWMtMjIuNDU5LDEwLjQ2OS00MC4zNDksMjYuMTcxLTUzLjY3Niw0Ny4xMDYgICBDNi42NjEsMjk5LjU5NCwwLDMyMi40MywwLDM0Ny4xNzljMCwzNS4yMTQsMTIuNTE3LDY1LjMyOSwzNy41NDQsOTAuMzU4YzI1LjAyOCwyNS4wMzcsNTUuMTUsMzcuNTQ4LDkwLjM2MiwzNy41NDhoMzEwLjYzNiAgIGMzMC4yNTksMCw1Ni4wOTYtMTAuNzExLDc3LjUxMi0zMi4xMmMyMS40MTMtMjEuNDA5LDMyLjEyMS00Ny4yNDYsMzIuMTIxLTc3LjUxNkM1NDguMTcyLDMzOS45NDQsNTQwLjIyMywzMTcuMjQ4LDUyNC4zMjYsMjk3LjM1MiAgIHogTTM2Mi43MjksMjg5LjY0OGMtMS44MTMsMS44MDQtMy45NDksMi43MDctNi40MiwyLjcwN2gtNjMuOTUzdjEwMC41MDJjMCwyLjQ3MS0wLjkwMyw0LjYxMy0yLjcxMSw2LjQyICAgYy0xLjgxMywxLjgxMy0zLjk0OSwyLjcxMS02LjQyLDIuNzExaC01NC44MjZjLTIuNDc0LDAtNC42MTUtMC44OTctNi40MjMtMi43MTFjLTEuODA0LTEuODA3LTIuNzEyLTMuOTQ5LTIuNzEyLTYuNDJWMjkyLjM1NSAgIEgxNTUuMzFjLTIuNjYyLDAtNC44NTMtMC44NTUtNi41NjMtMi41NjNjLTEuNzEzLTEuNzE0LTIuNTY4LTMuOTA0LTIuNTY4LTYuNTY2YzAtMi4yODYsMC45NS00LjU3MiwyLjg1Mi02Ljg1NWwxMDAuMjEzLTEwMC4yMSAgIGMxLjcxMy0xLjcxNCwzLjkwMy0yLjU3LDYuNTY3LTIuNTdjMi42NjYsMCw0Ljg1NiwwLjg1Niw2LjU2NywyLjU3bDEwMC40OTksMTAwLjQ5NWMxLjcxNCwxLjcxMiwyLjU2MiwzLjkwMSwyLjU2Miw2LjU3MSAgIEMzNjUuNDM4LDI4NS42OTYsMzY0LjUzNSwyODcuODQ1LDM2Mi43MjksMjg5LjY0OHoiIGZpbGw9IiNGRkZGRkYiLz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8L3N2Zz4K"
@@ -62,32 +76,28 @@
                         Video feltöltése
                       </span>
                     </span>
-                  </label>
-                </div>
+                  </ng-template>
+                </label>
               </div>
             </div>
-            <div *ngIf="epizod.youtube" class="control">
-              <label class="label">YouTube</label>
-              <iframe width="280" height="157" [src]="youtubeEmbed" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-            </div>
-            <div class="control is-expanded">
-              <label class="label">Epizód leírása</label>
-              <textarea class="textarea" [(ngModel)]="epizod.leiras" id="leiras" name="leiras" placeholder="Epizód leírása"></textarea>
-            </div>
           </div>
-          <div class="field is-grouped">
-            <p class="control">
-              <button class="button is-danger" (click)="torlesEpizod()">Törlés</button>
-            </p>
-            <p class="control">
-                <button type="button" [class.is-loading]="ytUploading" class="button is-primary" *ngIf="epizod.video" (click)="uploadYouTube()">YouTube</button>
-              </p>
-            <p class="control is-expanded">
-              <button class="button is-success" type="submit">Mentés</button>
-            </p>
+          <div *ngIf="epizod.youtube" class="control">
+            <label class="label">YouTube</label>
+            <iframe width="280" height="157" [src]="youtubeEmbed" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
           </div>
-        </form>
-      </div>
-    </section>
+        </div>
+        <div class="field is-grouped">
+          <p class="control">
+            <button class="button is-danger" (click)="torlesEpizod()">Törlés</button>
+          </p>
+          <!-- <p class="control">
+              <button type="button" [class.is-loading]="ytUploading" class="button is-primary" *ngIf="epizod.video" (click)="uploadYouTube()">YouTube</button>
+          </p> -->
+          <p class="control is-expanded">
+            <button class="button is-success" type="submit">Mentés</button>
+          </p>
+        </div>
+      </form>
+    </div>
   </section>
 </main>

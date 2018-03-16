@@ -10,6 +10,8 @@ class Musoraink {
   }
   private init() {
     this.router.get("/", musorController.getMusor);
+    this.router.get("/aktivmusorok", musorController.getAktivMusor);
+    this.router.get("/url/:musorUrl", musorController.getMusorUrl);
     this.router.get("/:id", musorController.getMusorId);
     this.router.post("/", musorController.postMusor);
     this.router.post("/urlcheck", musorController.checkUrl);

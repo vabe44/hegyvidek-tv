@@ -45,6 +45,7 @@ export class AdminMusorokModositComponent implements OnInit {
         console.log(response);
         if (response.musor) {
           console.log('siker');
+          this.router.navigate(['/admin/musorok']);
         } else  {
           console.log('error');
         }

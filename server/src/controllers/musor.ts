@@ -18,12 +18,40 @@ export let getMusor =  async (req: Request, res: Response, next: NextFunction) =
 };
 
 /**
+ * GET /aktivmusoraink
+ * Osszes musor.
+ */
+export let getAktivMusor =  async (req: Request, res: Response, next: NextFunction) => {
+
+    const musorok = await Musor.find({ statusz: "aktív" });
+    if (musorok.length) {
+        return res.json({ musorok });
+    } else {
+        return res.json({ message: "Hiba tortent a musorok lekerdezese kozben. Kerem probalja ujra kesobb." });
+    }
+};
+
+/**
  * GET /musoraink/musor
  * Egy musor.
  */
 export let getMusorId =  async (req: Request, res: Response, next: NextFunction) => {
 
     const musor = await Musor.findOneById(req.params.id);
+    if (musor.id) {
+        return res.json({ musor });
+    } else {
+        return res.json({ message: "Hiba tortent a musor lekerdezese kozben. Kerem probalja ujra kesobb." });
+    }
+};
+
+/**
+ * GET /aktivmusoraink
+ * Osszes musor.
+ */
+export let getMusorUrl =  async (req: Request, res: Response, next: NextFunction) => {
+
+    const musor = await Musor.findOne({ url: req.params.musorUrl });
     if (musor.id) {
         return res.json({ musor });
     } else {

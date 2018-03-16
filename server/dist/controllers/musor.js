@@ -24,11 +24,37 @@ exports.getMusor = (req, res, next) => __awaiter(this, void 0, void 0, function*
     }
 });
 /**
+ * GET /aktivmusoraink
+ * Osszes musor.
+ */
+exports.getAktivMusor = (req, res, next) => __awaiter(this, void 0, void 0, function* () {
+    const musorok = yield Musor_1.Musor.find({ statusz: "aktív" });
+    if (musorok.length) {
+        return res.json({ musorok });
+    }
+    else {
+        return res.json({ message: "Hiba tortent a musorok lekerdezese kozben. Kerem probalja ujra kesobb." });
+    }
+});
+/**
  * GET /musoraink/musor
  * Egy musor.
  */
 exports.getMusorId = (req, res, next) => __awaiter(this, void 0, void 0, function* () {
     const musor = yield Musor_1.Musor.findOneById(req.params.id);
+    if (musor.id) {
+        return res.json({ musor });
+    }
+    else {
+        return res.json({ message: "Hiba tortent a musor lekerdezese kozben. Kerem probalja ujra kesobb." });
+    }
+});
+/**
+ * GET /aktivmusoraink
+ * Osszes musor.
+ */
+exports.getMusorUrl = (req, res, next) => __awaiter(this, void 0, void 0, function* () {
+    const musor = yield Musor_1.Musor.findOne({ url: req.params.musorUrl });
     if (musor.id) {
         return res.json({ musor });
     }

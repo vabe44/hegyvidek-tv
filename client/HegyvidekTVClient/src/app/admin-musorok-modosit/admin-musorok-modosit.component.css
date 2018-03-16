@@ -6,16 +6,12 @@ main {
 section.content {
     width: 1280px;
     display: flex;
-    padding-top: 20px;
-    padding-bottom: 60px;
+    flex-direction: column;
+    padding: 10px;
+    padding-top: 30px;
+    padding-bottom: 50px;
     background-color: rgba(255,255,255,0.25);
     margin-top: 180px;
-    display: flex;
-    justify-content: center;
-}
-
-section.main {
-    width: 1136px;
 }
 
 .field.is-grouped {

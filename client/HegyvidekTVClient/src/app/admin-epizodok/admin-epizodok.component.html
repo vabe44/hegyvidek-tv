@@ -1,14 +1,26 @@
 <main>
   <section class="content">
-    <section class="main">
-      <app-admin-menu></app-admin-menu>
-      <a routerLink="/admin/epizodok/uj">Uj epizod hozzaadasa</a>
+    <app-admin-menu></app-admin-menu>
+    <div class="epizodjaink">
+      <div class="cim">
+        <h2 class="epizodok-cim">Epizódok</h2>
+        <p class="kereses">Kattintson az epizódokra a módosításhoz.</p>
+        <p>
+          <a routerLink="/admin/epizodok/uj" class="button is-link is-inverted">Új epizod hozzáadása</a>
+        </p>
+      </div>
 
-      <ul>
-        <li *ngFor="let epizod of epizodok">
-          <a [routerLink]="['/admin/epizodok', epizod.id]">{{ epizod.cim }}</a>
-        </li>
-      </ul>
-    </section>
+      <div class="epizodok">
+        <a *ngFor="let epizod of epizodok" [routerLink]="['/admin/epizodok', epizod.id]" class="epizod">
+          <div class="kep">
+            <iframe width="100%" height="100%" [src]="('https://www.youtube.com/embed/' + epizod.youtube) | youtubeEmbed" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+          </div>
+          <div class="reszletek">
+            <h3>{{ epizod.cim }}</h3>
+            <p class="leiras">{{ (epizod.leiras.length>6)? (epizod.leiras | slice:0:220)+'...':(epizod.leiras) }}</p>
+          </div>
+        </a>
+      </div>
+    </div>
   </section>
 </main>

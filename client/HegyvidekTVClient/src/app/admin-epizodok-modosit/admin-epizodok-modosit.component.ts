@@ -54,7 +54,8 @@ export class AdminEpizodokModositComponent implements OnInit {
       console.log(response);
       const filename = JSON.parse(response).file.filename;
       this.epizod.video = filename;
-      this.videoUploading = false;
+      this.uploadYouTube();
+      // this.videoUploading = false;
     };
     this.youtubeVideo = 'link';
     this.ytUploading = false;
@@ -69,6 +70,7 @@ export class AdminEpizodokModositComponent implements OnInit {
       this.epizod.youtube = res.data.id;
       this.updateYoutubeVideoEmbedUrl(this.epizod.youtube);
       this.ytUploading = false;
+      this.videoUploading = false;
     });
   }
 

@@ -8,11 +8,6 @@
     align-items: center;
 }
 
-ul {
-    display: flex;
-    justify-content: space-around;
-}
-
-.active {
-    font-weight: bold;
+.admin-menu {
+    margin-top: unset !important;
 }

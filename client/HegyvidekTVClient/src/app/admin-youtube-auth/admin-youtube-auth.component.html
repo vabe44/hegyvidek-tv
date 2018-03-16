@@ -1,0 +1,40 @@
+<main>
+  <section class="content">
+    <app-admin-menu></app-admin-menu>
+
+    <div class="beallitasok">
+      <form class="form-ytsettings" #f="ngForm" (ngSubmit)="frissites()">
+        <h2 class="title">YouTube engedélyek</h2>
+
+        <div class="field">
+          <p class="control">
+            <a [href]="oauthUrl" class="button is-primary" type="button">{{ youtube.accessToken ? 'Tokenek frissítése' : 'YouTube fiók csatolása' }}</a>
+          </p>
+        </div>
+
+        <div *ngIf="youtube" class="field">
+          <div class="field">
+            <p class="control is-expanded">
+              <label class="label">Access token</label>
+              <input id="accessToken" name="accessToken" [(ngModel)]="youtube.accessToken" class="input" type="text" placeholder="Access token">
+            </p>
+          </div>
+          <div class="field">
+            <p class="control is-expanded">
+              <label class="label">Refresh token</label>
+              <input id="refreshToken" name="refreshToken" [(ngModel)]="youtube.refreshToken" class="input" type="text" placeholder="Refresh token">
+            </p>
+          </div>
+          <div class="field is-grouped">
+              <p class="control">
+                <button class="button is-danger" (click)="torles()">Törlés</button>
+              </p>
+              <p class="control is-expanded">
+                <button class="button is-success" type="submit">Mentés</button>
+              </p>
+            </div>
+        </div>
+      </form>
+    </div>
+  </section>
+</main>

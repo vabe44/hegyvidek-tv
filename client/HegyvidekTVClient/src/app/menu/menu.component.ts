@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Musor } from '../interfaces/Musor';
+import { MusorService } from '../services/musor.service';
 
 @Component({
   selector: 'app-menu',
@@ -7,9 +9,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuComponent implements OnInit {
 
-  constructor() { }
+  musorok: Musor[];
+  constructor(private musorService: MusorService) { }
 
   ngOnInit() {
+    this.musorService.aktiv().subscribe(response => this.musorok = response.musorok);
   }
 
 }

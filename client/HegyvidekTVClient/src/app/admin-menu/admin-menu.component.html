@@ -7,11 +7,12 @@
     <a class="button is-danger">Kilépés</a>
   </div>
 
-  <div class="menu">
+  <div class="tabs is-toggle is-fullwidth">
     <ul>
-      <li><a routerLink="/admin/hirek" routerLinkActive="active">Hírek</a></li>
-      <li><a routerLink="/admin/musorok" routerLinkActive="active">Műsorok</a></li>
-      <li><a routerLink="/admin/epizodok" routerLinkActive="active">Epizódok</a></li>
+      <li routerLinkActive="is-active" class="admin-menu"><a routerLink="/admin/hirek">Hírek</a></li>
+      <li routerLinkActive="is-active" class="admin-menu"><a routerLink="/admin/musorok">Műsorok</a></li>
+      <li routerLinkActive="is-active" class="admin-menu"><a routerLink="/admin/epizodok">Epizódok</a></li>
+      <li routerLinkActive="is-active" class="admin-menu"><a routerLink="/admin/youtube">YouTube</a></li>
     </ul>
   </div>
 </div>
