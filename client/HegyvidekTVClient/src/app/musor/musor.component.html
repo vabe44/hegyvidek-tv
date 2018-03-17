@@ -8,7 +8,7 @@
         <h1 class="cim">{{ musor.cim }}</h1>
         <div class="szoveg">
           <h2 class="alcim">{{ musor.leiras }}</h2>
-          <p class="bold">{{ musor.epizodok[0].cim | uppercase }}   |   {{ musor.epizodok[0].datum }}</p>
+          <p class="bold">{{ musor.epizodok[0].cim | uppercase }}   |   {{ musor.epizodok[0].datum | datum }}</p>
           <p class="tartalom-cim">Tartalom:</p>
           <p class="tartalom" [innerHTML]="musor.epizodok[0].leiras"></p>
         </div>

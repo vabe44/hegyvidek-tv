@@ -50,6 +50,7 @@ import { AdminEpizodokModositComponent } from './admin-epizodok-modosit/admin-ep
 import { EpizodService } from './services/epizod.service';
 import { AdminYoutubeAuthComponent } from './admin-youtube-auth/admin-youtube-auth.component';
 import { YoutubeEmbedPipe } from './pipes/youtube-embed.pipe';
+import { DatumPipe } from './pipes/datum.pipe';
 export function getAuthHttp(http, options: RequestOptions) {
   return new AuthHttp(new AuthConfig({
     tokenName: 'token'
@@ -89,7 +90,8 @@ export function getAuthHttp(http, options: RequestOptions) {
     AdminEpizodokUjComponent,
     AdminEpizodokModositComponent,
     AdminYoutubeAuthComponent,
-    YoutubeEmbedPipe
+    YoutubeEmbedPipe,
+    DatumPipe
   ],
   imports: [
     BrowserModule,
