@@ -1,6 +1,7 @@
 import * as async from "async";
 import { NextFunction, Request, Response } from "express";
 import * as multer from "multer";
+import { getConnection } from "typeorm";
 import { Musor } from "../entity/Musor";
 
 /**
@@ -51,7 +52,14 @@ export let getMusorId =  async (req: Request, res: Response, next: NextFunction)
  */
 export let getMusorUrl =  async (req: Request, res: Response, next: NextFunction) => {
 
-    const musor = await Musor.findOne({ url: req.params.musorUrl });
+    const musor = await getConnection()
+        .getRepository(Musor)
+        .createQueryBuilder("musor")
+        .where("musor.url = :url", { url: req.params.musorUrl })
+        .innerJoinAndSelect("musor.epizodok", "epizodok")
+        .orderBy("musor.createdDate", "DESC")
+        .getOne();
+
     if (musor.id) {
         return res.json({ musor });
     } else {

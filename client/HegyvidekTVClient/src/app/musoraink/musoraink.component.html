@@ -12,149 +12,15 @@
 
       <div class="musorok">
 
-        <div class="musor">
-          <div class="kep"></div>
-          <div class="reszletek">
-            <h3>Alfa és Omega</h3>
-            <p class="leiras">Miseközvetítés a Gazdagréti Szent Angyalok Plébániából.</p>
+        <a *ngFor="let musor of musorok" [routerLink]="['/musoraink/', musor.url]" class="musor">
+          <div class="kep">
+            <img [src]="musor.kep" alt="{{ musor.cim }}">
           </div>
-        </div>
-
-        <div class="musor">
-          <div class="kep"></div>
           <div class="reszletek">
-            <h3>Budai Híradó</h3>
-            <p class="leiras">Friss hírek, interjúk, aktualitások a Hegyvidéken és a Fővárosban. Hiteles, gyors tájékoztatás.</p>
+            <h3>{{ musor.cim }}</h3>
+            <p class="leiras">{{ musor.leiras }}</p>
           </div>
-        </div>
-
-        <div class="musor">
-          <div class="kep"></div>
-          <div class="reszletek">
-            <h3>Budai Magazin</h3>
-            <p class="leiras">Közéleti események, egészségügy, életmód, tudomány, riportok, stúdióbeszélgetések szakértőkkel.</p>
-          </div>
-        </div>
-
-        <div class="musor">
-          <div class="kep"></div>
-          <div class="reszletek">
-            <h3>Duett</h3>
-            <p class="leiras">Stúdióbeszélgetés közéleti személyekkel, politikusokkal aktuális, közérdekű témákról.</p>
-          </div>
-        </div>
-
-        <div class="musor">
-          <div class="kep"></div>
-          <div class="reszletek">
-            <h3>Hegylakó Magazin</h3>
-            <p class="leiras">A havonta jelentkező magazinműsorban bemutatunk mindent, amit tudni érdemes a Hegyvidékről és a Hegyvidék kártyáról.</p>
-          </div>
-        </div>
-
-        <div class="musor">
-          <div class="kep"></div>
-          <div class="reszletek">
-            <h3>Hírek</h3>
-            <p class="leiras">A legfontosabb információk röviden, tömören.</p>
-          </div>
-        </div>
-
-        <div class="musor">
-          <div class="kep"></div>
-          <div class="reszletek">
-            <h3>Kék Hírek</h3>
-            <p class="leiras">Bűnügyi hírek a Hegyvidéken. A kerület rendőrkapitánya és a kapitányság munkatársai tájékoztatják a lakókat a XII. kerület rendőrségi eseményeiről.</p>
-          </div>
-        </div>
-
-        <div class="musor">
-          <div class="kep"></div>
-          <div class="reszletek">
-            <h3>Képújság</h3>
-            <p class="leiras">Önkormányzati, társadalmi és civil hirdetések.</p>
-          </div>
-        </div>
-
-        <div class="musor">
-          <div class="kep"></div>
-          <div class="reszletek">
-            <h3>Kommentár Nélkül</h3>
-            <p class="leiras">Koncertek, előadások, aktuális események.</p>
-          </div>
-        </div>
-
-        <div class="musor">
-          <div class="kep"></div>
-          <div class="reszletek">
-            <h3>Kultúrpont</h3>
-            <p class="leiras">Riport műsor a Hegyvidék legkiválóbb művészeiről, színházzal, irodalommal, kiállításokkal.</p>
-          </div>
-        </div>
-
-        <div class="musor">
-          <div class="kep"></div>
-          <div class="reszletek">
-            <h3>Lélekemelő</h3>
-            <p class="leiras">Bibliaóra dr. Szederkényi Károly, római katolikus plébánossal.</p>
-          </div>
-        </div>
-
-        <div class="musor">
-          <div class="kep"></div>
-          <div class="reszletek">
-            <h3>Minőségi Idő</h3>
-            <p class="leiras">A házasság és a család intézményét népszerűsítő sorozat, különös figyelmet fordítva a párválasztásra, családtervezésre, gyermeknevelésre.</p>
-          </div>
-        </div>
-
-        <div class="musor">
-          <div class="kep"></div>
-          <div class="reszletek">
-            <h3>Ökopakk</h3>
-            <p class="leiras">Az ÖkoPakk, a Hegyvidék TV környezetvédelemi, környezetgazdálkodási magazinja.</p>
-          </div>
-        </div>
-
-        <div class="musor">
-          <div class="kep"></div>
-          <div class="reszletek">
-            <h3>Paragrafus</h3>
-            <p class="leiras">Jogi műsor közérdekű témákban. Segít eligazodni olyan jogi kérdésekben, amivel a mindennapokban szembesülhetünk. Szakértőink nézői kérdésekre is válaszolnak.</p>
-          </div>
-        </div>
-
-        <div class="musor">
-          <div class="kep"></div>
-          <div class="reszletek">
-            <h3>Pénz-Tárca</h3>
-            <p class="leiras">A pénz egyszer nagyon régen megfogadta, hogy azé lesz, aki szereti őt. A Pénz-Tárca, a Hegyvidék TV gazdasági magazinja a pénz szeretet-nyelvén beszél.</p>
-          </div>
-        </div>
-
-        <div class="musor">
-          <div class="kep"></div>
-          <div class="reszletek">
-            <h3>Útinform, időjárás</h3>
-            <p class="leiras">Élő közvetítés a BAH-csomópontról. Tájékoztatás a forgalmi rend változásokról, balesetekről, a budapesti útviszonyokról és az időjárásról.</p>
-          </div>
-        </div>
-
-        <div class="musor">
-          <div class="kep"></div>
-          <div class="reszletek">
-            <h3>Vadőrző</h3>
-            <p class="leiras"></p>
-          </div>
-        </div>
-
-        <div class="musor">
-          <div class="kep"></div>
-          <div class="reszletek">
-            <h3>Ziccer</h3>
-            <p class="leiras">Sportösszeállítás főleg hegyvidéki és budai klubok, sportolók főszereplésével. Az egészséges életmódtól az élsportig, illetve különleges sportok bemutatásáig színes a Ziccer-paletta...</p>
-          </div>
-        </div>
+        </a>
 
       </div>
     </div>

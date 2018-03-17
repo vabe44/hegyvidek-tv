@@ -133,3 +133,17 @@ export let uploadVideo =  async (req: Request, res: Response, next: NextFunction
         return res.json({ file });
     });
 };
+
+/**
+ * GET /musoraink
+ * Osszes musor.
+ */
+export let checkUrl =  async (req: Request, res: Response, next: NextFunction) => {
+
+    const epizodok = await Epizod.find({ url: req.body.url });
+    if (epizodok.length) {
+        return res.json({ unique: false });
+    } else {
+        return res.json({ unique: true });
+    }
+};

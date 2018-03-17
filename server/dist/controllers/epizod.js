@@ -124,4 +124,17 @@ exports.uploadVideo = (req, res, next) => __awaiter(this, void 0, void 0, functi
         return res.json({ file });
     });
 });
+/**
+ * GET /musoraink
+ * Osszes musor.
+ */
+exports.checkUrl = (req, res, next) => __awaiter(this, void 0, void 0, function* () {
+    const epizodok = yield Epizod_1.Epizod.find({ url: req.body.url });
+    if (epizodok.length) {
+        return res.json({ unique: false });
+    }
+    else {
+        return res.json({ unique: true });
+    }
+});
 //# sourceMappingURL=epizod.js.map

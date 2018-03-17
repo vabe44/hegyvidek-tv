@@ -16,10 +16,10 @@ import { SafeResourceUrl, DomSanitizer } from '@angular/platform-browser';
 export class AdminEpizodokUjComponent implements OnInit {
 
   // define the constant url we would be uploading to.
-  URL = 'http://localhost:3000/epizodok/picture';
-  public uploader: FileUploader = new FileUploader({url: this.URL, itemAlias: 'photo'});
+  URL = 'http://localhost:3000/epizodok/video';
+  public uploader: FileUploader = new FileUploader({url: this.URL, itemAlias: 'video'});
   urlUnique: boolean;
-  epizod: Epizod;
+  epizod: any = {};
   musor: Musor;
   musorok: Musor[];
   youtubeVideo: string;
@@ -29,7 +29,9 @@ export class AdminEpizodokUjComponent implements OnInit {
   videoUploading: boolean;
   constructor(
     private router: Router,
-    private epizodService: EpizodService, private musorService: MusorService, private sanitizer: DomSanitizer) {
+    private epizodService: EpizodService,
+    private musorService: MusorService,
+    private sanitizer: DomSanitizer) {
       this.epizod = {
         id: 0,
         cim: '',
@@ -113,7 +115,7 @@ export class AdminEpizodokUjComponent implements OnInit {
     // tslint:disable-next-line:max-line-length
     const specialChars = {'à': 'a', 'ä': 'a', 'á': 'a', 'â': 'a', 'æ': 'a', 'å': 'a', 'ë': 'e', 'è': 'e', 'é': 'e', 'ê': 'e', 'î': 'i', 'ï': 'i', 'ì': 'i', 'í': 'i', 'ò': 'o', 'ó': 'o', 'ö': 'o', 'ő': 'o', 'ô': 'o', 'ø': 'o', 'ù': 'o', 'ú': 'u', 'ü': 'u', 'ű': 'u', 'û': 'u', 'ñ': 'n', 'ç': 'c', 'ß': 's', 'ÿ': 'y', 'œ': 'o', 'ŕ': 'r', 'ś': 's', 'ń': 'n', 'ṕ': 'p', 'ẃ': 'w', 'ǵ': 'g', 'ǹ': 'n', 'ḿ': 'm', 'ǘ': 'u', 'ẍ': 'x', 'ź': 'z', 'ḧ': 'h', '·': '-', '/': '-', '_': '-', ',': '-', ':': '-', ';': '-'};
 
-    this.musor.url = text.toString().toLowerCase()
+    this.epizod.url = text.toString().toLowerCase()
       .replace(/\s+/g, '-')           // Replace spaces with -
       .replace(/./g, (target, index, str) => specialChars[target] || target) // Replace special characters using the hash map
       .replace(/&/g, '-and-')         // Replace & with 'and'
@@ -121,7 +123,7 @@ export class AdminEpizodokUjComponent implements OnInit {
       .replace(/\-\-+/g, '-')         // Replace multiple - with single -
       .replace(/^-+/, '')             // Trim - from start of text
       .replace(/-+$/, '');             // Trim - from end of text
-    this.musorService.isUrlUnique(this.musor.url)
+    this.epizodService.isUrlUnique(this.epizod.url)
       .subscribe(response => {
         if (response.unique) {
           this.urlUnique = true;

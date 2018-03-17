@@ -5,14 +5,17 @@
   <div class="menu column">
     <div class="menu dropdown is-hoverable">
       <div class="dropdown-trigger">
-        <a routerLink="/musoraink" routerLinkActive="active" class="menu button" aria-haspopup="true" aria-controls="dropdown-menu4">Műsoraink</a>
+        <a routerLink="/musoraink" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"
+            class="menu button" aria-haspopup="true" aria-controls="dropdown-menu4">
+            Műsoraink
+        </a>
       </div>
       <div class="dropdown-menu" id="dropdown-menu4" role="menu">
         <div class="dropdown-content">
           <div class="dropdown-item">
             <ul>
               <li>
-                <a routerLink="/musoraink" routerLinkActive="active">Műsorújság</a>
+                <a routerLink="/musoraink" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Műsorújság</a>
               </li>
               <li *ngFor="let musor of musorok"><a routerLink="/musoraink/{{ musor.url }}" routerLinkActive="active">{{ musor.cim }}</a></li>
             </ul>

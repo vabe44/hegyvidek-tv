@@ -61,3 +61,8 @@ li:first-child {
     padding-top: 15px;
     padding-bottom: 20px
 }
+
+.active {
+    color: white;
+    background-color: #1f50ba;
+}

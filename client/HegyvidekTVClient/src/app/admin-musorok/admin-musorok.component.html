@@ -9,7 +9,7 @@
       </div>
 
       <div class="musorok">
-        <a *ngFor="let musor of musorok" a [routerLink]="['/admin/musorok', musor.id]" class="musor">
+        <a *ngFor="let musor of musorok" [routerLink]="['/admin/musorok', musor.id]" class="musor">
           <div class="kep">
             <img [src]="musor.kep" alt="{{ musor.cim }}">
           </div>

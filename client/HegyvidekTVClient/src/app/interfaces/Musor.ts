@@ -9,4 +9,5 @@ export interface Musor {
     leiras: string;
     createdDate: Date;
     updatedDate: Date;
+    epizodok: Epizod[];
 }

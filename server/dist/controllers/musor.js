@@ -9,6 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const multer = require("multer");
+const typeorm_1 = require("typeorm");
 const Musor_1 = require("../entity/Musor");
 /**
  * GET /musoraink
@@ -54,7 +55,13 @@ exports.getMusorId = (req, res, next) => __awaiter(this, void 0, void 0, functio
  * Osszes musor.
  */
 exports.getMusorUrl = (req, res, next) => __awaiter(this, void 0, void 0, function* () {
-    const musor = yield Musor_1.Musor.findOne({ url: req.params.musorUrl });
+    const musor = yield typeorm_1.getConnection()
+        .getRepository(Musor_1.Musor)
+        .createQueryBuilder("musor")
+        .where("musor.url = :url", { url: req.params.musorUrl })
+        .innerJoinAndSelect("musor.epizodok", "epizodok")
+        .orderBy("musor.createdDate", "DESC")
+        .getOne();
     if (musor.id) {
         return res.json({ musor });
     }

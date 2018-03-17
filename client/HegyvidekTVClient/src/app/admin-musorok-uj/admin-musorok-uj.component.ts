@@ -28,7 +28,8 @@ export class AdminMusorokUjComponent implements OnInit {
         kep: '',
         leiras: '',
         createdDate: undefined,
-        updatedDate: undefined
+        updatedDate: undefined,
+        epizodok: []
       };
     }
 
