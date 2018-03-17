@@ -1,12 +1,13 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectionStrategy, OnChanges, SimpleChanges } from '@angular/core';
 import { Epizod } from '../interfaces/Epizod';
 
 @Component({
   selector: 'app-regebbi-videok',
   templateUrl: './regebbi-videok.component.html',
-  styleUrls: ['./regebbi-videok.component.css']
+  styleUrls: ['./regebbi-videok.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class RegebbiVideokComponent implements OnInit {
+export class RegebbiVideokComponent implements OnInit, OnChanges {
 
   @Input() epizodok: Epizod[];
 
@@ -17,6 +18,13 @@ export class RegebbiVideokComponent implements OnInit {
   constructor() {
     this.page = 1;
     this.pageSize = 6;
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    // changes.prop contains the old and the new value...
+    console.log(changes);
+    this.filteredEpizodok = this.paginate(this.epizodok, this.pageSize, this.page);
+    this.maxPageSize = this.epizodok.length / this.pageSize;
   }
 
   ngOnInit() {

@@ -20,6 +20,7 @@ export class MusorComponent implements OnInit {
       this.route.paramMap.subscribe(params => {
         this.musorService.musorUrl(params.get('musor')).subscribe(response => {
           this.musor = response.musor;
+          console.log(response);
         });
       });
     }

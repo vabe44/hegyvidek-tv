@@ -42,6 +42,7 @@ h1.cim {
 h2.alcim {
     font-size: 16px;
     margin-bottom: 50px;
+    white-space: pre-line;
 }
 
 .szoveg {
@@ -57,10 +58,14 @@ p {
     margin-bottom: unset;
 }
 
-p.tartalom {
+p.tartalom-cim {
     padding-bottom: 20px;
 }
 
 .bold {
     font-weight: bold;
+}
+
+.tartalom {
+    white-space: pre-line;
 }

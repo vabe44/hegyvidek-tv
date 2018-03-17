@@ -1,21 +1,16 @@
 <main>
   <section class="content">
-    <div class="musor">
-      <div class="media"></div>
+    <div *ngIf="musor" class="musor">
+      <div class="media">
+        <iframe width="100%" height="100%" [src]="('https://www.youtube.com/embed/' + musor.epizodok[0].youtube) | youtubeEmbed" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+      </div>
       <div class="details">
-        <h1 class="cim">{{ musor?.cim }}</h1>
+        <h1 class="cim">{{ musor.cim }}</h1>
         <div class="szoveg">
-          <h2 class="alcim">{{ musor?.leiras }}</h2>
-          <p class="bold">BUDAI HÍRADÓ   |   2018. február. 16.</p>
-          <p class="tartalom">Tartalom:</p>
-          <p>
-            Több férőhely, barátságosabb környezet  - Új óvoda épül Pesthidegkúton
-            <br><br>
-            Rövidebb várólisták - A sugárterápiás eszközök cseréjének köszönhetően, 
-            csökkent a várakozási idő az Onkológiai Intézetben 
-            <br><br>
-            Játszani jó! - Társasjáték kiállítás a Kiscelli Múzeumban
-          </p>
+          <h2 class="alcim">{{ musor.leiras }}</h2>
+          <p class="bold">{{ musor.epizodok[0].cim | uppercase }}   |   {{ musor.epizodok[0].createdDate }}</p>
+          <p class="tartalom-cim">Tartalom:</p>
+          <p class="tartalom" [innerHTML]="musor.epizodok[0].leiras"></p>
         </div>
       </div>
     </div>

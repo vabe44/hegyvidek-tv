@@ -50,6 +50,10 @@ h2 {
     text-align: right;
 }
 
+.felso.lapozas span {
+    cursor: pointer;
+}
+
 .videok {
     display: flex;
     justify-content: space-between;
