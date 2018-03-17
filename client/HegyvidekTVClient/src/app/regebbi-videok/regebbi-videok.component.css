@@ -68,13 +68,17 @@ h2 {
     flex-direction: column;
 }
 
-.video > .kep {
+.video .kep {
     width: 410px;
     height: 230px;
     background-color: black;
 }
 
-.video > .szoveg {
+.video .kep img {
+    min-width: 100%;
+}
+
+.video .szoveg {
     flex: 1;
     background-color: white;
     padding: 10px;

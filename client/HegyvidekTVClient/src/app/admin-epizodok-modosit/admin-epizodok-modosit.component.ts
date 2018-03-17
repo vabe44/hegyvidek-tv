@@ -40,6 +40,7 @@ export class AdminEpizodokModositComponent implements OnInit {
       console.log(response);
       this.epizod = response.epizod;
       this.updateYoutubeVideoEmbedUrl(this.epizod.youtube);
+      this.epizod.datum = new Date(this.epizod.datum);
       console.log(this.epizod);
     });
     // override the onAfterAddingfile property of the uploader so it doesn't authenticate with //credentials.

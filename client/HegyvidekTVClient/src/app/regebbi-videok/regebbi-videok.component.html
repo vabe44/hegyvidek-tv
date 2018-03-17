@@ -17,7 +17,8 @@
 
     <div *ngFor="let epizod of filteredEpizodok" class="video">
       <div class="kep">
-        <iframe width="100%" height="100%" [src]="('https://www.youtube.com/embed/' + epizod.youtube) | youtubeEmbed" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        <!-- <iframe width="100%" height="100%" [src]="('https://www.youtube.com/embed/' + epizod.youtube) | youtubeEmbed" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe> -->
+        <img src="https://img.youtube.com/vi/{{ epizod.youtube }}/mqdefault.jpg" alt="{{ epizod.cim }}">
       </div>
       <div class="szoveg">
         <h3 class="szalagcim">{{ epizod.cim }}</h3>
@@ -25,7 +26,7 @@
           <p>{{ epizod.leiras }}</p>
         </div>
         <div class="datum">
-          <p>{{ epizod.createdDate }}</p>
+          <p>{{ epizod.datum }}</p>
         </div>
       </div>
     </div>

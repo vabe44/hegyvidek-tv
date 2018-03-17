@@ -63,6 +63,7 @@ h2 {
     display: flex;
     padding-bottom: 10px;
     width: calc(50% - 10px);
+    max-height: 190px;
 }
 
 .kep {

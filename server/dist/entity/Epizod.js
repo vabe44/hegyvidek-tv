@@ -36,7 +36,7 @@ __decorate([
 ], Epizod.prototype, "kiemelt", void 0);
 __decorate([
     typeorm_1.Column(),
-    __metadata("design:type", String)
+    __metadata("design:type", Date)
 ], Epizod.prototype, "datum", void 0);
 __decorate([
     typeorm_1.Column(),
