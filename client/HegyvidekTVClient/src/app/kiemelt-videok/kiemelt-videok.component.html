@@ -1,67 +1,43 @@
 <div class="content">
   <div class="cim">
     <h2>Kiemelt videók</h2>
-    <div class="lapozas">
-      <span><<  Újabb  </span>|<span>  Régebbi  >></span>
+    <div class="felso lapozas">
+      <div class="ujabb">
+        <span *ngIf="page > 1" (click)="ujabb()"><< Újabb</span>
+      </div>
+      <div class="separator"></div>
+      <div class="regebbi">
+        <span *ngIf="page < maxPageSize" (click)="regebbi()">Régebbi >> </span>
+      </div>
     </div>
   </div>
 
   <div class="videok">
-    <div class="video">
-      <div class="kep"></div>
+
+    <div *ngFor="let epizod of filteredEpizodok" class="video">
+      <div class="kep">
+        <!-- <iframe width="100%" height="100%" [src]="('https://www.youtube.com/embed/' + epizod.youtube) | youtubeEmbed" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe> -->
+        <img src="https://img.youtube.com/vi/{{ epizod.youtube }}/mqdefault.jpg" alt="{{ epizod.cim }}">
+      </div>
       <div class="szoveg">
-        <h3 class="szalagcim">SZALAGCÍM</h3>
+        <h3 class="szalagcim">{{ epizod.cim }}</h3>
         <div class="tartalom">
-          <p>Bővebb információ a videó tartalmáról, akár több soron keresztül.</p>
+          <p>{{ epizod.leiras }}</p>
         </div>
         <div class="datum">
-          <p>2018. februar 16.</p>
+          <p>{{ epizod.datum | datum }}</p>
         </div>
       </div>
     </div>
 
-    <div class="video">
-      <div class="kep"></div>
-      <div class="szoveg">
-        <h3 class="szalagcim">SZALAGCÍM</h3>
-        <div class="tartalom">
-          <p>Bővebb információ a videó tartalmáról, akár több soron keresztül.</p>
-        </div>
-        <div class="datum">
-          <p>2018. februar 16.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="video">
-      <div class="kep"></div>
-      <div class="szoveg">
-        <h3 class="szalagcim">SZALAGCÍM</h3>
-        <div class="tartalom">
-          <p>Bővebb információ a videó tartalmáról, akár több soron keresztül.</p>
-        </div>
-        <div class="datum">
-          <p>2018. februar 16.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="video">
-      <div class="kep"></div>
-      <div class="szoveg">
-        <h3 class="szalagcim">SZALAGCÍM</h3>
-        <div class="tartalom">
-          <p>Bővebb információ a videó tartalmáról, akár több soron keresztül.</p>
-        </div>
-        <div class="datum">
-          <p>2018. februar 16.</p>
-        </div>
-      </div>
-    </div>
   </div>
 
   <div class="lapozas">
-    <span>  <<  Újabb</span>
-    <span>Régebbi  >>  </span>
+    <div class="ujabb">
+      <span *ngIf="page > 1" (click)="ujabb()"><< Újabb</span>
+    </div>
+    <div class="regebbi">
+      <span *ngIf="page < maxPageSize" (click)="regebbi()">Régebbi >> </span>
+    </div>
   </div>
 </div>

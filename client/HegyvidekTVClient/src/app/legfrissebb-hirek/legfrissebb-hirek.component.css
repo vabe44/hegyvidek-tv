@@ -26,6 +26,11 @@ h2 {
     display: flex;
 }
 
+.kep img {
+    height: 100%;
+    width: 100%;
+}
+
 .szoveg {
     background-color: white;
     padding: 10px;

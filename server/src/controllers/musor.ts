@@ -33,6 +33,20 @@ export let getAktivMusor =  async (req: Request, res: Response, next: NextFuncti
 };
 
 /**
+ * GET /aktivmusoraink
+ * Osszes musor.
+ */
+export let getHirek =  async (req: Request, res: Response, next: NextFunction) => {
+
+    const musorok = await Musor.find({ cim: "Hírek" });
+    if (musorok.length) {
+        return res.json({ musorok });
+    } else {
+        return res.json({ message: "Hiba tortent a musorok lekerdezese kozben. Kerem probalja ujra kesobb." });
+    }
+};
+
+/**
  * GET /musoraink/musor
  * Egy musor.
  */

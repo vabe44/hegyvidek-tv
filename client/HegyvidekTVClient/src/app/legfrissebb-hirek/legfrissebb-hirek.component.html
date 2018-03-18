@@ -2,48 +2,18 @@
   <h2>Legfrissebb Híreink</h2>
 </div>
 
-<div class="hirek">
+<div *ngFor="let epizod of filteredEpizodok" class="hirek">
   <div class="hir">
     <div class="kep">
-      <img src="./assets/images/Video1.jpg" alt="">
+      <img src="https://img.youtube.com/vi/{{ epizod.youtube }}/mqdefault.jpg" alt="{{ epizod.cim }}">
     </div>
     <div class="szoveg">
-      <h3 class="szalagcim">JÓL HALAD A BÖLCSÖDE BERUHÁZÁS</h3>
+      <h3 class="szalagcim">{{ epizod.cim }}</h3>
       <div class="tartalom">
-        <p>Áprilisra elkészül az építkezéssel az önkormányzat Költő utcai bölcsöde beruházása.</p>
+        <p>{{ epizod.leiras }}</p>
       </div>
       <div class="datum">
-        <p>2018. februar 16.</p>
-      </div>
-    </div>
-  </div>
-
-  <div class="hir">
-    <div class="kep">
-      <img src="./assets/images/Video2.jpg" alt="">
-    </div>
-    <div class="szoveg">
-      <h3 class="szalagcim">JÓL HALAD A BÖLCSÖDE BERUHÁZÁS</h3>
-      <div class="tartalom">
-        <p>Áprilisra elkészül az építkezéssel az önkormányzat Költő utcai bölcsöde beruházása.</p>
-      </div>
-      <div class="datum">
-        <p>2018. februar 16.</p>
-      </div>
-    </div>
-  </div>
-
-  <div class="hir">
-    <div class="kep">
-      <img src="./assets/images/Video3.jpg" alt="">
-    </div>
-    <div class="szoveg">
-      <h3 class="szalagcim">JÓL HALAD A BÖLCSÖDE BERUHÁZÁS</h3>
-      <div class="tartalom">
-        <p>Áprilisra elkészül az építkezéssel az önkormányzat Költő utcai bölcsöde beruházása.</p>
-      </div>
-      <div class="datum">
-        <p>2018. februar 16.</p>
+        <p>{{ epizod.datum | datum }}</p>
       </div>
     </div>
   </div>

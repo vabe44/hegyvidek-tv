@@ -38,6 +38,19 @@ exports.getAktivMusor = (req, res, next) => __awaiter(this, void 0, void 0, func
     }
 });
 /**
+ * GET /aktivmusoraink
+ * Osszes musor.
+ */
+exports.getHirek = (req, res, next) => __awaiter(this, void 0, void 0, function* () {
+    const musorok = yield Musor_1.Musor.find({ cim: "Hírek" });
+    if (musorok.length) {
+        return res.json({ musorok });
+    }
+    else {
+        return res.json({ message: "Hiba tortent a musorok lekerdezese kozben. Kerem probalja ujra kesobb." });
+    }
+});
+/**
  * GET /musoraink/musor
  * Egy musor.
  */

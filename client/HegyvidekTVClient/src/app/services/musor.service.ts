@@ -19,6 +19,11 @@ export class MusorService {
       .map(response => response.json());
   }
 
+  hirek() {
+    return this.http.get(environment.apiUrl + '/musoraink/url/hirek')
+      .map(response => response.json());
+  }
+
   musor(id) {
     return this.http.get(environment.apiUrl + '/musoraink/' + id)
       .map(response => response.json());

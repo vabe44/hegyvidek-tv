@@ -20,9 +20,29 @@ h2 {
     margin-bottom: unset;
 }
 
-.cim > .lapozas {
+.felso.lapozas {
+    width: 220px;
+    display: flex;
+    align-items: center;
     font-size: 18px;
+    font-family: "Arial", "Helvetica", "Helvetica Neue", sans-serif;
     padding-right: 5px;
+}
+
+.felso.lapozas .separator {
+    width: 2px;
+    height: 18px;
+    margin: 0 10px;
+    background-color: #a7d153;;
+}
+
+.felso.lapozas .ujabb, .felso.lapozas .regebbi {
+    width: 45%;
+    text-align: right;
+}
+
+.lapozas span {
+    cursor: pointer;
 }
 
 .videok {
@@ -35,18 +55,27 @@ h2 {
 .video {
     width: 50%;
     padding: 5px;
+    display: flex;
+    flex-direction: column;
 }
 
-.video > .kep {
-    width: 420px;
-    height: 236px;
+.video .kep {
+    width: 100%;
+    max-height: 236px;
     background-color: black;
 }
 
-.video > .szoveg {
+.video .kep img {
+    min-width: 100%;
+}
+
+.video .szoveg {
+    flex: 1;
     background-color: white;
     padding: 10px;
     padding-top: 5px;
+    display: flex;
+    flex-direction: column;
 }
 
 .szoveg > h3.szalagcim {
@@ -59,6 +88,7 @@ h2 {
 }
 
 .szoveg > .tartalom {
+    flex: 1;
     font-size: 16px;
     line-height: 1.25em;
 }
@@ -70,6 +100,7 @@ h2 {
 .content > .lapozas {
     display: flex;
     justify-content: space-between;
+    font-family: "Arial", "Helvetica", "Helvetica Neue", sans-serif;
     color: white;
     text-align: center;
     font-size: 18px;
