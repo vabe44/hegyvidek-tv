@@ -25,8 +25,8 @@
             </div>
           </div>
           <div class="kereses">
-            <input class="kereses input" type="text" placeholder="Írja ide a keresett kifejezést!">
-            <button routerLink="/kereses" routerLinkActive="active" class="kereses button">Keresés</button>
+            <input #kereses class="kereses input" type="search" placeholder="Írja ide a keresett kifejezést!">
+            <button routerLink="/kereses/{{ kereses.value }}" routerLinkActive="active" class="kereses button">Keresés</button>
           </div>
         </div>
       </div>

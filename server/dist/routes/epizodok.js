@@ -13,6 +13,7 @@ class Epizodok {
         this.router.put("/", epizodController.putEpizod);
         this.router.post("/urlcheck", epizodController.checkUrl);
         this.router.post("/video", epizodController.uploadVideo);
+        this.router.get("/kereses", epizodController.getEpizodKereses);
         this.router.get("/:id", epizodController.getEpizodId);
         this.router.delete("/:id", epizodController.deleteEpizod);
     }

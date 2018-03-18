@@ -10,6 +10,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 const googleapis_1 = require("googleapis");
 const multer = require("multer");
+const typeorm_1 = require("typeorm");
 const Epizod_1 = require("../entity/Epizod");
 const Musor_1 = require("../entity/Musor");
 const OAuth2 = googleapis_1.google.auth.OAuth2;
@@ -20,6 +21,23 @@ const oauth2Client = new OAuth2("15446227899-uo4u0njei3sf26b7r3qmu9hbqide94h3.ap
  */
 exports.getEpizod = (req, res, next) => __awaiter(this, void 0, void 0, function* () {
     const epizodok = yield Epizod_1.Epizod.find();
+    if (epizodok.length) {
+        return res.json({ epizodok });
+    }
+    else {
+        return res.json({ message: "Hiba tortent a epizodok lekerdezese kozben. Kerem probalja ujra kesobb." });
+    }
+});
+/**
+ * GET /epizodok
+ * Osszes epizod.
+ */
+exports.getEpizodKereses = (req, res, next) => __awaiter(this, void 0, void 0, function* () {
+    const epizodok = yield typeorm_1.getConnection()
+        .getRepository(Epizod_1.Epizod)
+        .createQueryBuilder("epizod")
+        .where("epizod.cim like :kereses OR epizod.leiras like :kereses", { kereses: "%" + req.query.szoveg + "%" })
+        .getMany();
     if (epizodok.length) {
         return res.json({ epizodok });
     }

@@ -1,6 +1,7 @@
 import { Component, OnInit, OnChanges, Input, SimpleChanges } from '@angular/core';
 import { Epizod } from '../interfaces/Epizod';
 import { EpizodService } from '../services/epizod.service';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-kereses-talalatok',
@@ -16,19 +17,21 @@ export class KeresesTalalatokComponent implements OnInit {
   pageSize: number;
   maxPageSize: number;
   filteredEpizodok: Epizod[];
-  constructor(private epizodService: EpizodService) {
+  constructor(private router: Router, private epizodService: EpizodService, private route: ActivatedRoute) {
     this.page = 1;
     this.pageSize = 6;
   }
 
   ngOnInit() {
-    this.epizodService.osszes().subscribe(response => {
-      this.epizodok = response.epizodok;
-      this.filteredEpizodok = this.paginate(this.epizodok, this.pageSize, this.page);
-      this.maxPageSize = this.epizodok.length / this.pageSize;
-      this.filterBy = 'datum';
-      this.orderBy = 'desc';
-      this.sort();
+    this.route.paramMap.subscribe(params => {
+      this.epizodService.kereses(params.get('szoveg')).subscribe(response => {
+        this.epizodok = response.epizodok;
+        this.filteredEpizodok = this.paginate(this.epizodok, this.pageSize, this.page);
+        this.maxPageSize = this.epizodok.length / this.pageSize;
+        this.filterBy = 'datum';
+        this.orderBy = 'desc';
+        this.sort();
+      });
     });
   }
 

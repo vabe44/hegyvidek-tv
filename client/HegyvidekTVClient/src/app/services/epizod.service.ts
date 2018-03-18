@@ -20,6 +20,11 @@ export class EpizodService {
       .map(response => response.json());
   }
 
+  kereses(szoveg) {
+    return this.http.get(environment.apiUrl + '/epizodok/kereses?szoveg=' + szoveg)
+      .map(response => response.json());
+  }
+
   uj(epizod) {
     return this.http.post(environment.apiUrl + '/epizodok', epizod)
       .map(response => response.json());

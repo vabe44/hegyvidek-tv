@@ -2,6 +2,7 @@ import * as async from "async";
 import { NextFunction, Request, Response } from "express";
 import { google } from "googleapis";
 import * as multer from "multer";
+import { getConnection } from "typeorm";
 import { Epizod } from "../entity/Epizod";
 import { Musor } from "../entity/Musor";
 import { YouTube } from "../entity/YouTube";
@@ -20,6 +21,25 @@ const oauth2Client = new OAuth2(
 export let getEpizod =  async (req: Request, res: Response, next: NextFunction) => {
 
     const epizodok = await Epizod.find();
+    if (epizodok.length) {
+        return res.json({ epizodok });
+    } else {
+        return res.json({ message: "Hiba tortent a epizodok lekerdezese kozben. Kerem probalja ujra kesobb." });
+    }
+};
+
+/**
+ * GET /epizodok
+ * Osszes epizod.
+ */
+export let getEpizodKereses =  async (req: Request, res: Response, next: NextFunction) => {
+
+    const epizodok = await getConnection()
+        .getRepository(Epizod)
+        .createQueryBuilder("epizod")
+        .where("epizod.cim like :kereses OR epizod.leiras like :kereses", {kereses: "%" + req.query.szoveg + "%" })
+        .getMany();
+
     if (epizodok.length) {
         return res.json({ epizodok });
     } else {
