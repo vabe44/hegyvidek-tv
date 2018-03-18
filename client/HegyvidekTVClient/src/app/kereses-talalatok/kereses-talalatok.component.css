@@ -68,7 +68,8 @@ h2 {
     padding: 0;
 }
 
-.cim2 .lapozas {
+.felso.lapozas {
+    width: 220px;
     display: flex;
     align-items: center;
     font-size: 18px;
@@ -76,17 +77,34 @@ h2 {
     padding-right: 5px;
 }
 
+.felso.lapozas .separator {
+    width: 2px;
+    height: 18px;
+    margin: 0 10px;
+    background-color: #1f50ba;;
+}
+
+.felso.lapozas .ujabb, .felso.lapozas .regebbi {
+    width: 45%;
+    text-align: right;
+}
+
+.lapozas span {
+    cursor: pointer;
+}
+
 .videok {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
     color: black;
-    padding-top: 10px;
 }
 
 .video {
     width: 410px;
     padding-bottom: 15px;
+    display: flex;
+    flex-direction: column;
 }
 
 .video .kep {
@@ -95,22 +113,30 @@ h2 {
     background-color: black;
 }
 
+.video .kep img {
+    min-width: 100%;
+}
+
 .video .szoveg {
+    flex: 1;
     background-color: white;
     padding: 10px;
     padding-top: 5px;
+    display: flex;
+    flex-direction: column;
 }
 
-.szoveg h3.szalagcim {
+.szoveg > h3.szalagcim {
     color: black;
-    font-size: 20px;
+    font-size: 18px;
     margin: unset;
     padding-top: 5px;
     padding-bottom: 5px;
     font-family: "Arial", "Helvetica", "Helvetica Neue", sans-serif;
 }
 
-.szoveg .tartalom {
+.szoveg > .tartalom {
+    flex: 1;
     font-size: 16px;
     line-height: 1.25em;
 }
