@@ -54,13 +54,13 @@
             </div>
             <div class="uzenet">
                 <p class="irjon-nekunk bold">Írjon Nekünk!</p>
-                <form action="/kapcsolat" method="post">
+                <form class="form-ujuyenet" (ngSubmit)="kuldes()">
                     <div class="columns">
                         <div class="column">
                             <div class="field">
                                 <label class="label">Név:</label>
                                 <div class="control">
-                                    <input class="input" type="text">
+                                    <input id="nev" name="nev" class="input" type="text" [(ngModel)]="uzenet.nev" value="{{ uzenet.nev }}">
                                 </div>
                             </div>
                         </div>
@@ -68,7 +68,7 @@
                             <div class="field">
                                 <label class="label">E-mail cím:</label>
                                 <div class="control">
-                                    <input class="input" type="email">
+                                    <input id="email" name="email" class="input" type="email" [(ngModel)]="uzenet.email" value="{{ uzenet.email }}">
                                 </div>
                             </div>
                         </div>
@@ -76,13 +76,13 @@
                     <div class="field">
                         <label class="label">Tárgy:</label>
                         <div class="control">
-                            <input class="input" type="text">
+                            <input id="targy" name="targy" class="input" type="text" [(ngModel)]="uzenet.targy" value="{{ uzenet.targy }}">
                         </div>
                     </div>
                     <div class="field">
                         <label class="label">Levél:</label>
                         <div class="control">
-                            <textarea class="textarea" rows="8"></textarea>
+                            <textarea class="textarea" [(ngModel)]="uzenet.level" id="level" name="level" value="{{ uzenet.level }}"></textarea>
                         </div>
                     </div>
                     <div class="kuldes control">

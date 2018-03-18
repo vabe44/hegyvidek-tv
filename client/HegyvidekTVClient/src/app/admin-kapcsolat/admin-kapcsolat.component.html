@@ -1,0 +1,40 @@
+<main>
+  <section class="content">
+    <app-admin-menu></app-admin-menu>
+
+    <div class="beallitasok">
+      <form class="form-kapcsolatsettings" #f="ngForm" (ngSubmit)="frissites()">
+        <h2 class="title">Kapcsolat Űrlap Beállítások</h2>
+
+        <div *ngIf="gmail" class="field">
+          <div class="field">
+            <p class="control is-expanded">
+              <label class="label">Gmail felhasználói név:</label>
+              <input id="user" name="user" [(ngModel)]="gmail.user" class="input" type="text" placeholder="Access token">
+            </p>
+          </div>
+          <div class="field">
+            <p class="control is-expanded">
+              <label class="label">Gmail jelszó:</label>
+              <input id="pass" name="pass" [(ngModel)]="gmail.pass" class="input" type="password" placeholder="Refresh token">
+            </p>
+          </div>
+          <div class="field">
+            <p class="control is-expanded">
+              <label class="label">Email cím, ahova az üzenetek érkeznek:</label>
+              <input id="sendTo" name="sendTo" [(ngModel)]="gmail.sendTo" class="input" type="email" placeholder="Access token">
+            </p>
+          </div>
+          <div class="field is-grouped">
+              <p class="control">
+                <button class="button is-danger" (click)="torles()">Törlés</button>
+              </p>
+              <p class="control is-expanded">
+                <button class="button is-success" type="submit">Mentés</button>
+              </p>
+            </div>
+        </div>
+      </form>
+    </div>
+  </section>
+</main>

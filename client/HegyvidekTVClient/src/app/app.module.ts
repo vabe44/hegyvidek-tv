@@ -1,5 +1,3 @@
-import { YoutubeService } from './services/youtube.service';
-import { HirService } from './services/hir.service';
 import { HttpClient } from '@angular/common/http';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthHttp, AUTH_PROVIDERS, provideAuth, AuthConfig } from 'angular2-jwt/angular2-jwt';
@@ -15,6 +13,9 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { AuthService } from './services/auth.service';
 import { MusorService } from './services/musor.service';
 import { IdojarasService } from './services/idojaras.service';
+import { KapcsolatService } from './services/kapcsolat.service';
+import { YoutubeService } from './services/youtube.service';
+import { HirService } from './services/hir.service';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -51,6 +52,7 @@ import { EpizodService } from './services/epizod.service';
 import { AdminYoutubeAuthComponent } from './admin-youtube-auth/admin-youtube-auth.component';
 import { YoutubeEmbedPipe } from './pipes/youtube-embed.pipe';
 import { DatumPipe } from './pipes/datum.pipe';
+import { AdminKapcsolatComponent } from './admin-kapcsolat/admin-kapcsolat.component';
 export function getAuthHttp(http, options: RequestOptions) {
   return new AuthHttp(new AuthConfig({
     tokenName: 'token'
@@ -91,7 +93,8 @@ export function getAuthHttp(http, options: RequestOptions) {
     AdminEpizodokModositComponent,
     AdminYoutubeAuthComponent,
     YoutubeEmbedPipe,
-    DatumPipe
+    DatumPipe,
+    AdminKapcsolatComponent
   ],
   imports: [
     BrowserModule,
@@ -115,6 +118,7 @@ export function getAuthHttp(http, options: RequestOptions) {
       { path: 'admin/epizodok/uj', component: AdminEpizodokUjComponent },
       { path: 'admin/epizodok/:id', component: AdminEpizodokModositComponent },
       { path: 'admin/youtube', component: AdminYoutubeAuthComponent },
+      { path: 'admin/kapcsolat', component: AdminKapcsolatComponent },
       { path: 'admin', component: AdminMusorokComponent },
     ])
   ],
@@ -125,6 +129,7 @@ export function getAuthHttp(http, options: RequestOptions) {
     IdojarasService,
     HirService,
     YoutubeService,
+    KapcsolatService,
     AuthHttp,
     {
       provide: AuthHttp,

@@ -1,13 +1,6 @@
-import { Request, Response } from "express";
+import { NextFunction, Request, Response } from "express";
 import * as nodemailer from "nodemailer";
-
-const transporter = nodemailer.createTransport({
-  auth: {
-    pass: process.env.SENDGRID_PASSWORD,
-    user: process.env.SENDGRID_USER,
-  },
-  service: "SendGrid",
-});
+import { Gmail } from "../entity/Gmail";
 
 /**
  * GET /contact
@@ -23,10 +16,8 @@ export let getContact = (req: Request, res: Response) => {
  * POST /contact
  * Send a contact form via Nodemailer.
  */
-export let postContact = (req: Request, res: Response) => {
-  req.assert("name", "Name cannot be blank").notEmpty();
-  req.assert("email", "Email is not valid").isEmail();
-  req.assert("message", "Message cannot be blank").notEmpty();
+export let postContact = async (req: Request, res: Response) => {
+  req.assert("level", "Message cannot be blank").notEmpty();
 
   const errors = req.validationErrors();
 
@@ -35,19 +26,66 @@ export let postContact = (req: Request, res: Response) => {
     return res.redirect("/contact");
   }
 
+  const gmail = await Gmail.findOne();
+
+  const transporter = nodemailer.createTransport({
+    auth: {
+      user: gmail.user,
+      // tslint:disable-next-line:object-literal-sort-keys
+      pass: gmail.pass,
+    },
+    host: "smtp.gmail.com",
+    port: 465,
+    secure: true,
+  });
+
   const mailOptions = {
-    from: `${req.body.name} <${req.body.email}>`,
-    subject: "Contact Form",
-    text: req.body.message,
-    to: "your@email.com",
+    from: `${req.body.nev} <${req.body.email}>`,
+    subject: `[Hegyvidék TV] ${req.body.targy}`,
+    text: req.body.level,
+    to: gmail.sendTo,
   };
 
   transporter.sendMail(mailOptions, (err) => {
     if (err) {
       req.flash("errors", { msg: err.message });
-      return res.redirect("/contact");
+      // tslint:disable-next-line:max-line-length
+      return res.json({ sent: false, message: "Hiba tortent a hir modositasa kozben. Kerem probalja ujra kesobb. " + err.message });
     }
-    req.flash("success", { msg: "Email has been sent successfully!" });
-    res.redirect("/contact");
+    return res.json({ sent: true });
   });
+};
+
+/**
+ * PUT /hirek
+ * Hir modositasa.
+ */
+export let putGmail =  async (req: Request, res: Response, next: NextFunction) => {
+
+  const gmail = await Gmail.findOne();
+  gmail.user = req.body.user;
+  gmail.pass = req.body.pass;
+  await gmail.save();
+
+  if (gmail.id) {
+    return res.json({ gmail });
+  } else {
+    return res.json({ message: "Hiba tortent a hir modositasa kozben. Kerem probalja ujra kesobb." });
+  }
+};
+
+/**
+ * GET /contact
+ * Contact form page.
+ */
+export let getGmailCredentials = async (req: Request, res: Response) => {
+
+  const gmail = await Gmail.findOne();
+
+  if (gmail.id) {
+      return res.json({ gmail });
+  } else {
+      return res.json({ message: "Hiba tortent a Gmail adatok lekerdezese kozben. Kerem probalja ujra kesobb." });
+  }
+
 };

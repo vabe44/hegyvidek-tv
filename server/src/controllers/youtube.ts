@@ -19,8 +19,7 @@ const oauth2Client = new OAuth2(
  */
 export let getSettings =  async (req: Request, res: Response, next: NextFunction) => {
 
-    const youtubes = await YouTube.find();
-    const youtube = youtubes[0];
+    const youtube = await YouTube.findOne();
     if (youtube.id) {
         return res.json({ youtube });
     } else {

@@ -19,8 +19,7 @@ const oauth2Client = new OAuth2("15446227899-uo4u0njei3sf26b7r3qmu9hbqide94h3.ap
  * Egy hir.
  */
 exports.getSettings = (req, res, next) => __awaiter(this, void 0, void 0, function* () {
-    const youtubes = yield YouTube_1.YouTube.find();
-    const youtube = youtubes[0];
+    const youtube = yield YouTube_1.YouTube.findOne();
     if (youtube.id) {
         return res.json({ youtube });
     }

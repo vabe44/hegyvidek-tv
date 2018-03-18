@@ -1,13 +1,15 @@
 "use strict";
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 const nodemailer = require("nodemailer");
-const transporter = nodemailer.createTransport({
-    auth: {
-        pass: process.env.SENDGRID_PASSWORD,
-        user: process.env.SENDGRID_USER,
-    },
-    service: "SendGrid",
-});
+const Gmail_1 = require("../entity/Gmail");
 /**
  * GET /contact
  * Contact form page.
@@ -21,28 +23,66 @@ exports.getContact = (req, res) => {
  * POST /contact
  * Send a contact form via Nodemailer.
  */
-exports.postContact = (req, res) => {
-    req.assert("name", "Name cannot be blank").notEmpty();
-    req.assert("email", "Email is not valid").isEmail();
-    req.assert("message", "Message cannot be blank").notEmpty();
+exports.postContact = (req, res) => __awaiter(this, void 0, void 0, function* () {
+    req.assert("level", "Message cannot be blank").notEmpty();
     const errors = req.validationErrors();
     if (errors) {
         req.flash("errors", errors);
         return res.redirect("/contact");
     }
+    const gmail = yield Gmail_1.Gmail.findOne();
+    const transporter = nodemailer.createTransport({
+        auth: {
+            user: gmail.user,
+            // tslint:disable-next-line:object-literal-sort-keys
+            pass: gmail.pass,
+        },
+        host: "smtp.gmail.com",
+        port: 465,
+        secure: true,
+    });
     const mailOptions = {
-        from: `${req.body.name} <${req.body.email}>`,
-        subject: "Contact Form",
-        text: req.body.message,
-        to: "your@email.com",
+        from: `${req.body.nev} <${req.body.email}>`,
+        subject: `[Hegyvidék TV] ${req.body.targy}`,
+        text: req.body.level,
+        to: gmail.sendTo,
     };
     transporter.sendMail(mailOptions, (err) => {
         if (err) {
             req.flash("errors", { msg: err.message });
-            return res.redirect("/contact");
+            // tslint:disable-next-line:max-line-length
+            return res.json({ sent: false, message: "Hiba tortent a hir modositasa kozben. Kerem probalja ujra kesobb. " + err.message });
         }
-        req.flash("success", { msg: "Email has been sent successfully!" });
-        res.redirect("/contact");
+        return res.json({ sent: true });
     });
-};
+});
+/**
+ * PUT /hirek
+ * Hir modositasa.
+ */
+exports.putGmail = (req, res, next) => __awaiter(this, void 0, void 0, function* () {
+    const gmail = yield Gmail_1.Gmail.findOne();
+    gmail.user = req.body.user;
+    gmail.pass = req.body.pass;
+    yield gmail.save();
+    if (gmail.id) {
+        return res.json({ gmail });
+    }
+    else {
+        return res.json({ message: "Hiba tortent a hir modositasa kozben. Kerem probalja ujra kesobb." });
+    }
+});
+/**
+ * GET /contact
+ * Contact form page.
+ */
+exports.getGmailCredentials = (req, res) => __awaiter(this, void 0, void 0, function* () {
+    const gmail = yield Gmail_1.Gmail.findOne();
+    if (gmail.id) {
+        return res.json({ gmail });
+    }
+    else {
+        return res.json({ message: "Hiba tortent a Gmail adatok lekerdezese kozben. Kerem probalja ujra kesobb." });
+    }
+});
 //# sourceMappingURL=contact.js.map
