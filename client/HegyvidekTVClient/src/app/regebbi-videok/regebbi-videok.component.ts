@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, ChangeDetectionStrategy, OnChanges, SimpleChanges } from '@angular/core';
 import { Epizod } from '../interfaces/Epizod';
+import { Musor } from '../interfaces/Musor';
 
 @Component({
   selector: 'app-regebbi-videok',
@@ -9,8 +10,8 @@ import { Epizod } from '../interfaces/Epizod';
 })
 export class RegebbiVideokComponent implements OnInit, OnChanges {
 
-  @Input() epizodok: Epizod[];
-
+  @Input() musor: Musor;
+  epizodok: Epizod[];
   page: number;
   pageSize: number;
   maxPageSize: number;
@@ -23,11 +24,13 @@ export class RegebbiVideokComponent implements OnInit, OnChanges {
   ngOnChanges(changes: SimpleChanges) {
     // changes.prop contains the old and the new value...
     console.log(changes);
+    this.epizodok = this.musor.epizodok;
     this.filteredEpizodok = this.paginate(this.epizodok, this.pageSize, this.page);
     this.maxPageSize = this.epizodok.length / this.pageSize;
   }
 
   ngOnInit() {
+    this.epizodok = this.musor.epizodok;
     this.filteredEpizodok = this.paginate(this.epizodok, this.pageSize, this.page);
     this.maxPageSize = this.epizodok.length / this.pageSize;
   }

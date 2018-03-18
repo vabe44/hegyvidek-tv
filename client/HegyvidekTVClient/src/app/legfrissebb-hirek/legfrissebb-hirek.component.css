@@ -24,6 +24,7 @@ h2 {
 
 .kep {
     display: flex;
+    cursor: pointer;
 }
 
 .kep img {
@@ -35,6 +36,7 @@ h2 {
     background-color: white;
     padding: 10px;
     padding-top: 5px;
+    cursor: pointer;
 }
 
 h3.szalagcim {

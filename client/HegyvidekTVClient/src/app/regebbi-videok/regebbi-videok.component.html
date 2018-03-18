@@ -15,18 +15,18 @@
 
   <div class="videok">
 
-    <div *ngFor="let epizod of filteredEpizodok" class="video">
+    <div *ngFor="let epizod of filteredEpizodok" class="video" routerLink="/musoraink/{{ musor?.url }}/{{ epizod?.url }}">
       <div class="kep">
         <!-- <iframe width="100%" height="100%" [src]="('https://www.youtube.com/embed/' + epizod.youtube) | youtubeEmbed" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe> -->
-        <img src="https://img.youtube.com/vi/{{ epizod.youtube }}/mqdefault.jpg" alt="{{ epizod.cim }}">
+        <img src="https://img.youtube.com/vi/{{ epizod?.youtube }}/mqdefault.jpg" alt="{{ epizod?.cim }}">
       </div>
       <div class="szoveg">
-        <h3 class="szalagcim">{{ epizod.cim }}</h3>
+        <h3 class="szalagcim">{{ epizod?.cim }}</h3>
         <div class="tartalom">
-          <p>{{ epizod.leiras }}</p>
+          <p>{{ epizod?.leiras }}</p>
         </div>
         <div class="datum">
-          <p>{{ epizod.datum | datum }}</p>
+          <p>{{ epizod?.datum | datum }}</p>
         </div>
       </div>
     </div>

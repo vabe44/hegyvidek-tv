@@ -2,19 +2,19 @@
   <section class="content">
     <div *ngIf="musor" class="musor">
       <div class="media">
-        <iframe width="100%" height="100%" [src]="('https://www.youtube.com/embed/' + musor.epizodok[0].youtube) | youtubeEmbed" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        <iframe width="100%" height="100%" [src]="('https://www.youtube.com/embed/' + epizod.youtube) | youtubeEmbed" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
       </div>
       <div class="details">
         <h1 class="cim">{{ musor.cim }}</h1>
         <div class="szoveg">
           <h2 class="alcim">{{ musor.leiras }}</h2>
-          <p class="bold">{{ musor.epizodok[0].cim | uppercase }}   |   {{ musor.epizodok[0].datum | datum }}</p>
+          <p class="bold">{{ epizod.cim | uppercase }}   |   {{ epizod.datum | datum }}</p>
           <p class="tartalom-cim">Tartalom:</p>
-          <p class="tartalom" [innerHTML]="musor.epizodok[0].leiras"></p>
+          <p class="tartalom" [innerHTML]="epizod.leiras"></p>
         </div>
       </div>
     </div>
 
-    <app-regebbi-videok [epizodok]="musor.epizodok" *ngIf="musor"></app-regebbi-videok>
+    <app-regebbi-videok [musor]="musor" *ngIf="musor"></app-regebbi-videok>
   </section>
 </main>

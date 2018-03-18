@@ -66,6 +66,7 @@ h2 {
     padding-bottom: 15px;
     display: flex;
     flex-direction: column;
+    cursor: pointer;
 }
 
 .video .kep {

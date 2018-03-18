@@ -3,7 +3,7 @@
 </div>
 
 <div *ngFor="let epizod of filteredEpizodok" class="hirek">
-  <div class="hir">
+  <div class="hir" routerLink="/musoraink/hirek/{{ epizod.url }}">
     <div class="kep">
       <img src="https://img.youtube.com/vi/{{ epizod.youtube }}/mqdefault.jpg" alt="{{ epizod.cim }}">
     </div>
