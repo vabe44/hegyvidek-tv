@@ -123,7 +123,21 @@ table td, table th {
     text-transform: uppercase;
 }
 
-.musor p {
+.musor p, .musor span {
     display: flex;
     align-items: center;
+    cursor: pointer;
+}
+
+.sok.musor {
+    display: flex;
+    flex-direction: column;
+}
+
+.sok.musor p {
+    margin-bottom: unset;
+}
+
+.tobbmusor {
+    display: flex;
 }
