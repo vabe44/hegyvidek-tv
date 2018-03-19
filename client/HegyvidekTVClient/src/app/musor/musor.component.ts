@@ -38,7 +38,7 @@ export class MusorComponent implements OnInit {
           this.musor = response.musor;
           if (params.get('epizod')) {
             console.log(params.get('epizod'));
-            this.epizod = this.musor.epizodok.find(function(epizod) {
+            this.epizod = this.musor.epizodok.find(epizod => {
               return epizod.url === params.get('epizod');
             });
           } else {

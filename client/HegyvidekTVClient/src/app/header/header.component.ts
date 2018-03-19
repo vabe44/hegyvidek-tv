@@ -21,7 +21,7 @@ export class HeaderComponent {
         const perc = this.now.getMinutes() < 10 ? '0' + this.now.getMinutes() : this.now.getMinutes();
         const ido = `${ora}:${perc}`;
         this.renderer.setProperty(this.aktualisIdo.nativeElement, 'textContent', ido);
-      }, 1);
+      }, 1000);
     });
   }
 
