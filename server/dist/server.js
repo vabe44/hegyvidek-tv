@@ -34,13 +34,10 @@ dotenv.config({ path: ".env.example" });
 /**
  * Routes
  */
-const account_1 = require("./routes/account");
-const api_1 = require("./routes/api");
 const contact_1 = require("./routes/contact");
 const epizodok_1 = require("./routes/epizodok");
 const hirek_1 = require("./routes/hirek");
 const musoraink_1 = require("./routes/musoraink");
-const oauth_1 = require("./routes/oauth");
 const root_1 = require("./routes/root");
 const youtube_1 = require("./routes/youtube");
 class App {
@@ -53,8 +50,8 @@ class App {
     }
     middleware() {
         this.express.set("port", process.env.PORT || 3000);
-        this.express.set("views", path.join(__dirname, "../views"));
-        this.express.set("view engine", "pug");
+        // this.express.set("views", path.join(process.env.CLIENT_DIST_PATH));
+        // this.express.set("view engine", "pug");
         this.express.use(compression());
         this.express.use(logger("dev"));
         this.express.use(bodyParser.json());
@@ -78,21 +75,22 @@ class App {
             res.locals.user = req.user;
             next();
         });
-        this.express.use(express.static(path.join(__dirname, "public"), { maxAge: 31557600000 }));
+        // tslint:disable-next-line:max-line-length
+        this.express.use(express.static(path.join(__dirname, "../../client/HegyvidekTVClient/dist/assets"), { maxAge: 31557600000 }));
+        // tslint:disable-next-line:max-line-length
+        this.express.use(express.static(path.join(__dirname, "../../server/dist/public"), { maxAge: 31557600000 }));
     }
     /**
      * Primary app routes.
      */
     routes() {
         this.express.use("/", root_1.default);
-        this.express.use("/api", api_1.default);
-        this.express.use("/auth", oauth_1.default);
-        this.express.use("/account", account_1.default);
-        this.express.use("/contact", contact_1.default);
-        this.express.use("/musoraink", musoraink_1.default);
-        this.express.use("/epizodok", epizodok_1.default);
-        this.express.use("/hirek", hirek_1.default);
-        this.express.use("/youtube", youtube_1.default);
+        this.express.use("/api/contact", contact_1.default);
+        this.express.use("/api/musoraink", musoraink_1.default);
+        this.express.use("/api/epizodok", epizodok_1.default);
+        this.express.use("/api/hirek", hirek_1.default);
+        this.express.use("/api/youtube", youtube_1.default);
+        this.express.use("*", root_1.default);
     }
     launchConf() {
         // TypeORM connection

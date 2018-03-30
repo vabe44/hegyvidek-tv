@@ -3,7 +3,6 @@
  */
 import * as bodyParser from "body-parser";
 import * as compression from "compression";  // compresses requests
-import * as mongo from "connect-mongo"; // (session)
 import * as cors from "cors";
 import * as dotenv from "dotenv";
 import * as errorHandler from "errorhandler";
@@ -13,7 +12,6 @@ import * as session from "express-session";
 import expressValidator = require("express-validator");
 import { createServer, Server } from "http";
 import * as lusca from "lusca";
-import * as mongoose from "mongoose";
 import * as logger from "morgan";
 import * as passport from "passport";
 import * as path from "path";
@@ -28,13 +26,10 @@ dotenv.config({ path: ".env.example" });
 /**
  * Routes
  */
-import accountRouter from "./routes/account";
-import apiRouter from "./routes/api";
 import contactRouter from "./routes/contact";
 import epizodokRouter from "./routes/epizodok";
 import hirekRouter from "./routes/hirek";
 import musorainkRouter from "./routes/musoraink";
-import oauthRouter from "./routes/oauth";
 import rootRouter from "./routes/root";
 import youtubeRouter from "./routes/youtube";
 
@@ -58,8 +53,8 @@ class App {
   }
   private middleware(): void {
     this.express.set("port", process.env.PORT || 3000);
-    this.express.set("views", path.join(__dirname, "../views"));
-    this.express.set("view engine", "pug");
+    // this.express.set("views", path.join(process.env.CLIENT_DIST_PATH));
+    // this.express.set("view engine", "pug");
     this.express.use(compression());
     this.express.use(logger("dev"));
     this.express.use(bodyParser.json());
@@ -83,21 +78,22 @@ class App {
       res.locals.user = req.user;
       next();
     });
-    this.express.use(express.static(path.join(__dirname, "public"), { maxAge: 31557600000 }));
+    // tslint:disable-next-line:max-line-length
+    this.express.use(express.static(path.join(__dirname, "../../client/HegyvidekTVClient/dist/assets"), { maxAge: 31557600000 }));
+    // tslint:disable-next-line:max-line-length
+    this.express.use(express.static(path.join(__dirname, "../../server/dist/public"), { maxAge: 31557600000 }));
   }
   /**
    * Primary app routes.
    */
   private routes(): void {
     this.express.use("/", rootRouter);
-    this.express.use("/api", apiRouter);
-    this.express.use("/auth", oauthRouter);
-    this.express.use("/account", accountRouter);
-    this.express.use("/contact", contactRouter);
-    this.express.use("/musoraink", musorainkRouter);
-    this.express.use("/epizodok", epizodokRouter);
-    this.express.use("/hirek", hirekRouter);
-    this.express.use("/youtube", youtubeRouter);
+    this.express.use("/api/contact", contactRouter);
+    this.express.use("/api/musoraink", musorainkRouter);
+    this.express.use("/api/epizodok", epizodokRouter);
+    this.express.use("/api/hirek", hirekRouter);
+    this.express.use("/api/youtube", youtubeRouter);
+    this.express.use("*", rootRouter);
   }
 
   private launchConf() {

@@ -1,6 +1,6 @@
 <div class="menu columns">
   <div class="menu column">
-    <a href="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="menu button">Élő Adás</a>
+    <a href="/" [class.active]="currentUrl === '/'" class="menu button">Élő Adás</a>
   </div>
   <div class="menu column">
     <div class="menu dropdown is-hoverable">

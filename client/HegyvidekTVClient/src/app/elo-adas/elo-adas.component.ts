@@ -70,7 +70,7 @@ export class EloAdasComponent implements OnInit {
           } else if (this.now.getDay() === 6) {
             this.musorUrl = 'kommentar-nelkul';
           } else if (this.now.getDay() === 0) {
-            this.musorUrl = 'alfa_es_omega';
+            this.musorUrl = 'alfa-es-omega';
           }
         // 23 - 7
         } else {
