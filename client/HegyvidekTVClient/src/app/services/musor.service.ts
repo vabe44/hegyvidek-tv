@@ -35,22 +35,22 @@ export class MusorService {
   }
 
   uj(musor) {
-    return this.http.post(environment.apiUrl + '/musoraink', musor)
+    return this.authHttp.post(environment.apiUrl + '/musoraink', musor)
       .map(response => response.json());
   }
 
   modosit(musor) {
-    return this.http.put(environment.apiUrl + '/musoraink', musor)
+    return this.authHttp.put(environment.apiUrl + '/musoraink', musor)
       .map(response => response.json());
   }
 
   torles(id) {
-    return this.http.delete(environment.apiUrl + '/musoraink/' + id)
+    return this.authHttp.delete(environment.apiUrl + '/musoraink/' + id)
       .map(response => response.json());
   }
 
   isUrlUnique(url) {
-    return this.http.post(environment.apiUrl + '/musoraink/urlcheck', url)
+    return this.authHttp.post(environment.apiUrl + '/musoraink/urlcheck', url)
       .map(response => response.json());
   }
 }

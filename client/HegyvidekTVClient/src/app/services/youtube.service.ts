@@ -9,17 +9,17 @@ export class YoutubeService {
   constructor(private authHttp: AuthHttp, private http: Http) { }
 
   beallitasok() {
-    return this.http.get(environment.apiUrl + '/youtube/settings')
+    return this.authHttp.get(environment.apiUrl + '/youtube/settings')
       .map(response => response.json());
   }
 
   frissites(beallitasok) {
-    return this.http.put(environment.apiUrl + '/youtube/settings', beallitasok)
+    return this.authHttp.put(environment.apiUrl + '/youtube/settings', beallitasok)
       .map(response => response.json());
   }
 
   torles() {
-    return this.http.delete(environment.apiUrl + '/youtube/settings')
+    return this.authHttp.delete(environment.apiUrl + '/youtube/settings')
       .map(response => response.json());
   }
 }

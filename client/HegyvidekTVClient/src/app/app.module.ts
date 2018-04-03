@@ -53,6 +53,7 @@ import { AdminYoutubeAuthComponent } from './admin-youtube-auth/admin-youtube-au
 import { YoutubeEmbedPipe } from './pipes/youtube-embed.pipe';
 import { DatumPipe } from './pipes/datum.pipe';
 import { AdminKapcsolatComponent } from './admin-kapcsolat/admin-kapcsolat.component';
+import { AuthGuard } from './services/auth-guard.service';
 export function getAuthHttp(http, options: RequestOptions) {
   return new AuthHttp(new AuthConfig({
     tokenName: 'token'
@@ -111,16 +112,16 @@ export function getAuthHttp(http, options: RequestOptions) {
       { path: 'mediaajanlat', component: MediaajanlatComponent },
       { path: 'kereses/:szoveg', component: KeresesComponent },
       { path: 'login', component: LoginComponent },
-      { path: 'admin/hirek', component: AdminHirekComponent },
-      { path: 'admin/musorok/uj', component: AdminMusorokUjComponent },
-      { path: 'admin/musorok/:id', component: AdminMusorokModositComponent },
-      { path: 'admin/musorok', component: AdminMusorokComponent },
-      { path: 'admin/epizodok', component: AdminEpizodokComponent },
-      { path: 'admin/epizodok/uj', component: AdminEpizodokUjComponent },
-      { path: 'admin/epizodok/:id', component: AdminEpizodokModositComponent },
-      { path: 'admin/youtube', component: AdminYoutubeAuthComponent },
-      { path: 'admin/kapcsolat', component: AdminKapcsolatComponent },
-      { path: 'admin', component: AdminMusorokComponent },
+      { path: 'admin/hirek', component: AdminHirekComponent, canActivate: [AuthGuard] },
+      { path: 'admin/musorok/uj', component: AdminMusorokUjComponent, canActivate: [AuthGuard] },
+      { path: 'admin/musorok/:id', component: AdminMusorokModositComponent, canActivate: [AuthGuard] },
+      { path: 'admin/musorok', component: AdminMusorokComponent, canActivate: [AuthGuard] },
+      { path: 'admin/epizodok', component: AdminEpizodokComponent, canActivate: [AuthGuard] },
+      { path: 'admin/epizodok/uj', component: AdminEpizodokUjComponent, canActivate: [AuthGuard] },
+      { path: 'admin/epizodok/:id', component: AdminEpizodokModositComponent, canActivate: [AuthGuard] },
+      { path: 'admin/youtube', component: AdminYoutubeAuthComponent, canActivate: [AuthGuard] },
+      { path: 'admin/kapcsolat', component: AdminKapcsolatComponent, canActivate: [AuthGuard] },
+      { path: 'admin', component: AdminMusorokComponent, canActivate: [AuthGuard] },
     ])
   ],
   providers: [
@@ -132,6 +133,7 @@ export function getAuthHttp(http, options: RequestOptions) {
     YoutubeService,
     KapcsolatService,
     AuthHttp,
+    AuthGuard,
     {
       provide: AuthHttp,
       useFactory: getAuthHttp,

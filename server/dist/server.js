@@ -76,7 +76,7 @@ class App {
             next();
         });
         // tslint:disable-next-line:max-line-length
-        this.express.use(express.static(path.join(__dirname, "../../client/HegyvidekTVClient/dist/assets"), { maxAge: 31557600000 }));
+        this.express.use(express.static(path.join(__dirname, "../../client/HegyvidekTVClient/dist"), { maxAge: 31557600000 }));
         // tslint:disable-next-line:max-line-length
         this.express.use(express.static(path.join(__dirname, "../../server/dist/public"), { maxAge: 31557600000 }));
     }

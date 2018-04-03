@@ -9,22 +9,22 @@ export class KapcsolatService {
   constructor(private authHttp: AuthHttp, private http: Http) { }
 
   beallitasok() {
-    return this.http.get(environment.apiUrl + '/contact/gmail')
+    return this.authHttp.get(environment.apiUrl + '/contact/gmail')
       .map(response => response.json());
   }
 
   kuldes(uzenet) {
-    return this.http.post(environment.apiUrl + '/contact', uzenet)
+    return this.authHttp.post(environment.apiUrl + '/contact', uzenet)
       .map(response => response.json());
   }
 
   frissites(beallitasok) {
-    return this.http.put(environment.apiUrl + '/contact/gmail', beallitasok)
+    return this.authHttp.put(environment.apiUrl + '/contact/gmail', beallitasok)
       .map(response => response.json());
   }
 
   torles() {
-    return this.http.delete(environment.apiUrl + '/contact/gmail')
+    return this.authHttp.delete(environment.apiUrl + '/contact/gmail')
       .map(response => response.json());
   }
 }

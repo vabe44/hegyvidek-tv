@@ -19,17 +19,17 @@ export class HirService {
   }
 
   uj(hir) {
-    return this.http.post(environment.apiUrl + '/hirek', hir)
+    return this.authHttp.post(environment.apiUrl + '/hirek', hir)
       .map(response => response.json());
   }
 
   modosit(hir) {
-    return this.http.put(environment.apiUrl + '/hirek', hir)
+    return this.authHttp.put(environment.apiUrl + '/hirek', hir)
       .map(response => response.json());
   }
 
   torles(id) {
-    return this.http.delete(environment.apiUrl + '/hirek/' + id)
+    return this.authHttp.delete(environment.apiUrl + '/hirek/' + id)
       .map(response => response.json());
   }
 

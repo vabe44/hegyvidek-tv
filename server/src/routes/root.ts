@@ -10,11 +10,11 @@ class Root {
   }
   private init() {
     this.router.get("/", homeController.index);
-    this.router.get("/login", userController.getLogin);
-    this.router.post("/login", userController.postLogin);
-    this.router.get("/logout", userController.logout);
-    this.router.get("/signup", userController.getSignup);
-    this.router.post("/signup", userController.postSignup);
+    this.router.get("/api/login", userController.getLogin);
+    this.router.post("/api/login", userController.postLogin);
+    this.router.get("/api/logout", userController.logout);
+    this.router.get("/api/signup", userController.getSignup);
+    this.router.post("/api/signup", userController.postSignup);
   }
 }
 

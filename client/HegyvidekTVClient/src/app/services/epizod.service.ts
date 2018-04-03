@@ -26,22 +26,22 @@ export class EpizodService {
   }
 
   uj(epizod) {
-    return this.http.post(environment.apiUrl + '/epizodok', epizod)
+    return this.authHttp.post(environment.apiUrl + '/epizodok', epizod)
       .map(response => response.json());
   }
 
   modosit(epizod) {
-    return this.http.put(environment.apiUrl + '/epizodok', epizod)
+    return this.authHttp.put(environment.apiUrl + '/epizodok', epizod)
       .map(response => response.json());
   }
 
   torles(id) {
-    return this.http.delete(environment.apiUrl + '/epizodok/' + id)
+    return this.authHttp.delete(environment.apiUrl + '/epizodok/' + id)
       .map(response => response.json());
   }
 
   youtube(epizod) {
-    return this.http.post(environment.apiUrl + '/youtube/upload', epizod)
+    return this.authHttp.post(environment.apiUrl + '/youtube/upload', epizod)
       .map(response => response.json());
   }
 
