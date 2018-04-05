@@ -2,6 +2,7 @@ import * as async from "async";
 import { NextFunction, Request, Response } from "express";
 import * as fs from "fs";
 import { google } from "googleapis";
+import * as jwt from "jsonwebtoken";
 import * as multer from "multer";
 import { Epizod } from "../entity/Epizod";
 import { YouTube } from "../entity/YouTube";
@@ -19,6 +20,19 @@ const oauth2Client = new OAuth2(
  */
 export let getSettings =  async (req: Request, res: Response, next: NextFunction) => {
 
+    // tslint:disable-next-line:no-console
+    console.log(req.headers);
+    const token = req.headers.authorization.toString().replace("Bearer ", "");
+    if (!token) {
+      return res.status(403).send({ auth: false, message: "No token provided." });
+    }
+
+    jwt.verify(token, process.env.JWT_SECRET, (err: any, decoded: any) => {
+      if (err) {
+      return res.status(500).send({ auth: false, message: "Failed to authenticate token." });
+      }
+    });
+
     const youtube = await YouTube.findOne();
     if (youtube.id) {
         return res.json({ youtube });
@@ -32,6 +46,19 @@ export let getSettings =  async (req: Request, res: Response, next: NextFunction
  * Hir modositasa.
  */
 export let editSettings =  async (req: Request, res: Response, next: NextFunction) => {
+
+    // tslint:disable-next-line:no-console
+    console.log(req.headers);
+    const token = req.headers.authorization.toString().replace("Bearer ", "");
+    if (!token) {
+      return res.status(403).send({ auth: false, message: "No token provided." });
+    }
+
+    jwt.verify(token, process.env.JWT_SECRET, (err: any, decoded: any) => {
+      if (err) {
+      return res.status(500).send({ auth: false, message: "Failed to authenticate token." });
+      }
+    });
 
     const youtube = await YouTube.findOneById(req.body.id);
     youtube.accessToken = req.body.accessToken;
@@ -201,6 +228,19 @@ export let upload =  async (req: Request, res: Response, next: NextFunction) => 
  * Hir modositasa.
  */
 export let deleteSettings =  async (req: Request, res: Response, next: NextFunction) => {
+
+    // tslint:disable-next-line:no-console
+    console.log(req.headers);
+    const token = req.headers.authorization.toString().replace("Bearer ", "");
+    if (!token) {
+      return res.status(403).send({ auth: false, message: "No token provided." });
+    }
+
+    jwt.verify(token, process.env.JWT_SECRET, (err: any, decoded: any) => {
+      if (err) {
+      return res.status(500).send({ auth: false, message: "Failed to authenticate token." });
+      }
+    });
 
     const youtube = await YouTube.findOne();
     youtube.accessToken = "";

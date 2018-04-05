@@ -86,6 +86,12 @@
           </div>
         </div>
         <div class="field is-grouped">
+          <p class="control is-expanded">
+            <label class="label">Epizód kulcsszavai</label>
+            <input id="kulcsszavak" name="kulcsszavak" [(ngModel)]="epizod.kulcsszavak" class="input" type="text" placeholder="kulcsszó 1, kulcsszó 2, stb.">
+          </p>
+        </div>
+        <div class="field is-grouped">
           <div class="control is-expanded">
             <label class="label">Epizód leírása</label>
             <textarea class="textarea" [(ngModel)]="epizod.leiras" id="leiras" name="leiras" placeholder="Epizód leírása" rows="9"></textarea>

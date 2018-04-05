@@ -1,5 +1,6 @@
 import * as async from "async";
 import { NextFunction, Request, Response } from "express";
+import * as jwt from "jsonwebtoken";
 import * as multer from "multer";
 import { getConnection } from "typeorm";
 import { Musor } from "../entity/Musor";
@@ -87,6 +88,19 @@ export let getMusorUrl =  async (req: Request, res: Response, next: NextFunction
  */
 export let postMusor =  async (req: Request, res: Response, next: NextFunction) => {
 
+    // tslint:disable-next-line:no-console
+    console.log(req.headers);
+    const token = req.headers.authorization.toString().replace("Bearer ", "");
+    if (!token) {
+      return res.status(403).send({ auth: false, message: "No token provided." });
+    }
+
+    jwt.verify(token, process.env.JWT_SECRET, (err: any, decoded: any) => {
+      if (err) {
+      return res.status(500).send({ auth: false, message: "Failed to authenticate token." });
+      }
+    });
+
     const musor = new Musor();
     musor.cim = req.body.cim;
     musor.url = req.body.url;
@@ -108,6 +122,19 @@ export let postMusor =  async (req: Request, res: Response, next: NextFunction) 
  */
 export let putMusor =  async (req: Request, res: Response, next: NextFunction) => {
 
+    // tslint:disable-next-line:no-console
+    console.log(req.headers);
+    const token = req.headers.authorization.toString().replace("Bearer ", "");
+    if (!token) {
+      return res.status(403).send({ auth: false, message: "No token provided." });
+    }
+
+    jwt.verify(token, process.env.JWT_SECRET, (err: any, decoded: any) => {
+      if (err) {
+      return res.status(500).send({ auth: false, message: "Failed to authenticate token." });
+      }
+    });
+
     const musor = await Musor.findOneById(req.body.id);
     musor.cim = req.body.cim;
     musor.url = req.body.url;
@@ -128,6 +155,19 @@ export let putMusor =  async (req: Request, res: Response, next: NextFunction) =
  * Musor torlese.
  */
 export let deleteMusor =  async (req: Request, res: Response, next: NextFunction) => {
+
+    // tslint:disable-next-line:no-console
+    console.log(req.headers);
+    const token = req.headers.authorization.toString().replace("Bearer ", "");
+    if (!token) {
+      return res.status(403).send({ auth: false, message: "No token provided." });
+    }
+
+    jwt.verify(token, process.env.JWT_SECRET, (err: any, decoded: any) => {
+      if (err) {
+      return res.status(500).send({ auth: false, message: "Failed to authenticate token." });
+      }
+    });
 
     const musor = await Musor.findOneById(req.params.id);
     await musor.remove();

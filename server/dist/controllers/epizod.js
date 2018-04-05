@@ -9,6 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const googleapis_1 = require("googleapis");
+const jwt = require("jsonwebtoken");
 const multer = require("multer");
 const typeorm_1 = require("typeorm");
 const Epizod_1 = require("../entity/Epizod");
@@ -36,7 +37,8 @@ exports.getEpizodKereses = (req, res, next) => __awaiter(this, void 0, void 0, f
     const epizodok = yield typeorm_1.getConnection()
         .getRepository(Epizod_1.Epizod)
         .createQueryBuilder("epizod")
-        .where("epizod.cim like :kereses OR epizod.leiras like :kereses", { kereses: "%" + req.query.szoveg + "%" })
+        .where("epizod.cim like :kereses OR epizod.leiras like :kereses OR epizod.kulcsszavak like :kereses", { kereses: "%" + req.query.szoveg + "%" })
+        .innerJoinAndSelect("epizod.musor", "musor")
         .getMany();
     if (epizodok.length) {
         return res.json({ epizodok });
@@ -63,6 +65,17 @@ exports.getEpizodId = (req, res, next) => __awaiter(this, void 0, void 0, functi
  * Uj epizod letrehozasa.
  */
 exports.postEpizod = (req, res, next) => __awaiter(this, void 0, void 0, function* () {
+    // tslint:disable-next-line:no-console
+    console.log(req.headers);
+    const token = req.headers.authorization.toString().replace("Bearer ", "");
+    if (!token) {
+        return res.status(403).send({ auth: false, message: "No token provided." });
+    }
+    jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
+        if (err) {
+            return res.status(500).send({ auth: false, message: "Failed to authenticate token." });
+        }
+    });
     const epizod = new Epizod_1.Epizod();
     epizod.cim = req.body.cim;
     epizod.url = req.body.url;
@@ -73,6 +86,7 @@ exports.postEpizod = (req, res, next) => __awaiter(this, void 0, void 0, functio
     epizod.video = req.body.video;
     epizod.youtube = req.body.youtube;
     epizod.leiras = req.body.leiras;
+    epizod.kulcsszavak = req.body.kulcsszavak;
     epizod.musor = req.body.musor;
     yield epizod.save();
     if (epizod.id) {
@@ -87,6 +101,17 @@ exports.postEpizod = (req, res, next) => __awaiter(this, void 0, void 0, functio
  * Epizod modositasa.
  */
 exports.putEpizod = (req, res, next) => __awaiter(this, void 0, void 0, function* () {
+    // tslint:disable-next-line:no-console
+    console.log(req.headers);
+    const token = req.headers.authorization.toString().replace("Bearer ", "");
+    if (!token) {
+        return res.status(403).send({ auth: false, message: "No token provided." });
+    }
+    jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
+        if (err) {
+            return res.status(500).send({ auth: false, message: "Failed to authenticate token." });
+        }
+    });
     const epizod = yield Epizod_1.Epizod.findOneById(req.body.id);
     epizod.cim = req.body.cim;
     epizod.url = req.body.url;
@@ -97,6 +122,7 @@ exports.putEpizod = (req, res, next) => __awaiter(this, void 0, void 0, function
     epizod.video = req.body.video;
     epizod.youtube = req.body.youtube;
     epizod.leiras = req.body.leiras;
+    epizod.kulcsszavak = req.body.kulcsszavak;
     epizod.musor = yield Musor_1.Musor.findOneById(req.body.musor);
     yield epizod.save();
     if (epizod.id) {
@@ -111,6 +137,17 @@ exports.putEpizod = (req, res, next) => __awaiter(this, void 0, void 0, function
  * Epizod torlese.
  */
 exports.deleteEpizod = (req, res, next) => __awaiter(this, void 0, void 0, function* () {
+    // tslint:disable-next-line:no-console
+    console.log(req.headers);
+    const token = req.headers.authorization.toString().replace("Bearer ", "");
+    if (!token) {
+        return res.status(403).send({ auth: false, message: "No token provided." });
+    }
+    jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
+        if (err) {
+            return res.status(500).send({ auth: false, message: "Failed to authenticate token." });
+        }
+    });
     const epizod = yield Epizod_1.Epizod.findOneById(req.params.id);
     yield epizod.remove();
     if (!epizod.id) {

@@ -55,6 +55,10 @@ __decorate([
     __metadata("design:type", String)
 ], Epizod.prototype, "leiras", void 0);
 __decorate([
+    typeorm_1.Column(),
+    __metadata("design:type", String)
+], Epizod.prototype, "kulcsszavak", void 0);
+__decorate([
     typeorm_1.CreateDateColumn(),
     __metadata("design:type", Date)
 ], Epizod.prototype, "createdDate", void 0);

@@ -1,5 +1,6 @@
 import { NextFunction, Request, Response, Router } from "express";
 import * as hirController from "../controllers/hir";
+// import * as VerifyToken from "../middlewares/verifyJwt";
 
 class Hirek {
   public router: Router;

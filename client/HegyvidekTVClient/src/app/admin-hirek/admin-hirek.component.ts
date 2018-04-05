@@ -15,7 +15,7 @@ export class AdminHirekComponent implements OnInit {
     this.ujHir = {
       id: 0,
       szoveg: '',
-      statusz: 'aktiv',
+      statusz: 'aktív',
       createdDate: undefined,
       updatedDate: undefined
     };

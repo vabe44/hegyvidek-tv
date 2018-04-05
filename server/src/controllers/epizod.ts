@@ -1,6 +1,7 @@
 import * as async from "async";
 import { NextFunction, Request, Response } from "express";
 import { google } from "googleapis";
+import * as jwt from "jsonwebtoken";
 import * as multer from "multer";
 import { getConnection } from "typeorm";
 import { Epizod } from "../entity/Epizod";
@@ -37,7 +38,9 @@ export let getEpizodKereses =  async (req: Request, res: Response, next: NextFun
     const epizodok = await getConnection()
         .getRepository(Epizod)
         .createQueryBuilder("epizod")
-        .where("epizod.cim like :kereses OR epizod.leiras like :kereses", {kereses: "%" + req.query.szoveg + "%" })
+        .where("epizod.cim like :kereses OR epizod.leiras like :kereses OR epizod.kulcsszavak like :kereses",
+            {kereses: "%" + req.query.szoveg + "%" })
+        .innerJoinAndSelect("epizod.musor", "musor")
         .getMany();
 
     if (epizodok.length) {
@@ -67,6 +70,19 @@ export let getEpizodId =  async (req: Request, res: Response, next: NextFunction
  */
 export let postEpizod =  async (req: Request, res: Response, next: NextFunction) => {
 
+    // tslint:disable-next-line:no-console
+    console.log(req.headers);
+    const token = req.headers.authorization.toString().replace("Bearer ", "");
+    if (!token) {
+      return res.status(403).send({ auth: false, message: "No token provided." });
+    }
+
+    jwt.verify(token, process.env.JWT_SECRET, (err: any, decoded: any) => {
+      if (err) {
+      return res.status(500).send({ auth: false, message: "Failed to authenticate token." });
+      }
+    });
+
     const epizod = new Epizod();
     epizod.cim = req.body.cim;
     epizod.url = req.body.url;
@@ -77,6 +93,7 @@ export let postEpizod =  async (req: Request, res: Response, next: NextFunction)
     epizod.video = req.body.video;
     epizod.youtube = req.body.youtube;
     epizod.leiras = req.body.leiras;
+    epizod.kulcsszavak = req.body.kulcsszavak;
     epizod.musor = req.body.musor;
     await epizod.save();
 
@@ -93,6 +110,19 @@ export let postEpizod =  async (req: Request, res: Response, next: NextFunction)
  */
 export let putEpizod =  async (req: Request, res: Response, next: NextFunction) => {
 
+    // tslint:disable-next-line:no-console
+    console.log(req.headers);
+    const token = req.headers.authorization.toString().replace("Bearer ", "");
+    if (!token) {
+      return res.status(403).send({ auth: false, message: "No token provided." });
+    }
+
+    jwt.verify(token, process.env.JWT_SECRET, (err: any, decoded: any) => {
+      if (err) {
+      return res.status(500).send({ auth: false, message: "Failed to authenticate token." });
+      }
+    });
+
     const epizod = await Epizod.findOneById(req.body.id);
     epizod.cim = req.body.cim;
     epizod.url = req.body.url;
@@ -103,6 +133,7 @@ export let putEpizod =  async (req: Request, res: Response, next: NextFunction) 
     epizod.video = req.body.video;
     epizod.youtube = req.body.youtube;
     epizod.leiras = req.body.leiras;
+    epizod.kulcsszavak = req.body.kulcsszavak;
     epizod.musor = await Musor.findOneById(req.body.musor);
     await epizod.save();
 
@@ -118,6 +149,19 @@ export let putEpizod =  async (req: Request, res: Response, next: NextFunction) 
  * Epizod torlese.
  */
 export let deleteEpizod =  async (req: Request, res: Response, next: NextFunction) => {
+
+    // tslint:disable-next-line:no-console
+    console.log(req.headers);
+    const token = req.headers.authorization.toString().replace("Bearer ", "");
+    if (!token) {
+      return res.status(403).send({ auth: false, message: "No token provided." });
+    }
+
+    jwt.verify(token, process.env.JWT_SECRET, (err: any, decoded: any) => {
+      if (err) {
+      return res.status(500).send({ auth: false, message: "Failed to authenticate token." });
+      }
+    });
 
     const epizod = await Epizod.findOneById(req.params.id);
     await epizod.remove();

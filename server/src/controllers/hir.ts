@@ -1,5 +1,6 @@
 import * as async from "async";
 import { NextFunction, Request, Response } from "express";
+import * as jwt from "jsonwebtoken";
 import { getConnection } from "typeorm";
 import { Hir } from "../entity/Hir";
 
@@ -41,6 +42,19 @@ export let getHirId =  async (req: Request, res: Response, next: NextFunction) =
  */
 export let postHir =  async (req: Request, res: Response, next: NextFunction) => {
 
+    // tslint:disable-next-line:no-console
+    console.log(req.headers);
+    const token = req.headers.authorization.toString().replace("Bearer ", "");
+    if (!token) {
+      return res.status(403).send({ auth: false, message: "No token provided." });
+    }
+
+    jwt.verify(token, process.env.JWT_SECRET, (err: any, decoded: any) => {
+      if (err) {
+      return res.status(500).send({ auth: false, message: "Failed to authenticate token." });
+      }
+    });
+
     const hir = new Hir();
     hir.szoveg = req.body.szoveg;
     hir.statusz = req.body.statusz;
@@ -62,6 +76,19 @@ export let postHir =  async (req: Request, res: Response, next: NextFunction) =>
  */
 export let putHir =  async (req: Request, res: Response, next: NextFunction) => {
 
+    // tslint:disable-next-line:no-console
+    console.log(req.headers);
+    const token = req.headers.authorization.toString().replace("Bearer ", "");
+    if (!token) {
+      return res.status(403).send({ auth: false, message: "No token provided." });
+    }
+
+    jwt.verify(token, process.env.JWT_SECRET, (err: any, decoded: any) => {
+      if (err) {
+      return res.status(500).send({ auth: false, message: "Failed to authenticate token." });
+      }
+    });
+
     const hir = await Hir.findOneById(req.body.id);
     hir.szoveg = req.body.szoveg;
     hir.statusz = req.body.statusz;
@@ -79,6 +106,19 @@ export let putHir =  async (req: Request, res: Response, next: NextFunction) => 
  * Hir torlese.
  */
 export let deleteHir =  async (req: Request, res: Response, next: NextFunction) => {
+
+    // tslint:disable-next-line:no-console
+    console.log(req.headers);
+    const token = req.headers.authorization.toString().replace("Bearer ", "");
+    if (!token) {
+      return res.status(403).send({ auth: false, message: "No token provided." });
+    }
+
+    jwt.verify(token, process.env.JWT_SECRET, (err: any, decoded: any) => {
+      if (err) {
+      return res.status(500).send({ auth: false, message: "Failed to authenticate token." });
+      }
+    });
 
     const hir = await Hir.findOneById(req.params.id);
     await hir.remove();

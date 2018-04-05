@@ -34,6 +34,9 @@ export class Epizod extends BaseEntity {
     @Column()
     public leiras: string;
 
+    @Column()
+    public kulcsszavak: string;
+
     @CreateDateColumn()
     public createdDate: Date;
 

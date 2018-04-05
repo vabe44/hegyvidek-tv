@@ -8,6 +8,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+const jwt = require("jsonwebtoken");
 const multer = require("multer");
 const typeorm_1 = require("typeorm");
 const Musor_1 = require("../entity/Musor");
@@ -87,6 +88,17 @@ exports.getMusorUrl = (req, res, next) => __awaiter(this, void 0, void 0, functi
  * Uj musor letrehozasa.
  */
 exports.postMusor = (req, res, next) => __awaiter(this, void 0, void 0, function* () {
+    // tslint:disable-next-line:no-console
+    console.log(req.headers);
+    const token = req.headers.authorization.toString().replace("Bearer ", "");
+    if (!token) {
+        return res.status(403).send({ auth: false, message: "No token provided." });
+    }
+    jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
+        if (err) {
+            return res.status(500).send({ auth: false, message: "Failed to authenticate token." });
+        }
+    });
     const musor = new Musor_1.Musor();
     musor.cim = req.body.cim;
     musor.url = req.body.url;
@@ -106,6 +118,17 @@ exports.postMusor = (req, res, next) => __awaiter(this, void 0, void 0, function
  * Musor modositasa.
  */
 exports.putMusor = (req, res, next) => __awaiter(this, void 0, void 0, function* () {
+    // tslint:disable-next-line:no-console
+    console.log(req.headers);
+    const token = req.headers.authorization.toString().replace("Bearer ", "");
+    if (!token) {
+        return res.status(403).send({ auth: false, message: "No token provided." });
+    }
+    jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
+        if (err) {
+            return res.status(500).send({ auth: false, message: "Failed to authenticate token." });
+        }
+    });
     const musor = yield Musor_1.Musor.findOneById(req.body.id);
     musor.cim = req.body.cim;
     musor.url = req.body.url;
@@ -125,6 +148,17 @@ exports.putMusor = (req, res, next) => __awaiter(this, void 0, void 0, function*
  * Musor torlese.
  */
 exports.deleteMusor = (req, res, next) => __awaiter(this, void 0, void 0, function* () {
+    // tslint:disable-next-line:no-console
+    console.log(req.headers);
+    const token = req.headers.authorization.toString().replace("Bearer ", "");
+    if (!token) {
+        return res.status(403).send({ auth: false, message: "No token provided." });
+    }
+    jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
+        if (err) {
+            return res.status(500).send({ auth: false, message: "Failed to authenticate token." });
+        }
+    });
     const musor = yield Musor_1.Musor.findOneById(req.params.id);
     yield musor.remove();
     if (!musor.id) {

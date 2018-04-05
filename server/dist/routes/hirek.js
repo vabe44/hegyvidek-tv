@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
 const hirController = require("../controllers/hir");
+// import * as VerifyToken from "../middlewares/verifyJwt";
 class Hirek {
     constructor() {
         this.router = express_1.Router();

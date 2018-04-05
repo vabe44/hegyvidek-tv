@@ -10,6 +10,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 const fs = require("fs");
 const googleapis_1 = require("googleapis");
+const jwt = require("jsonwebtoken");
 const Epizod_1 = require("../entity/Epizod");
 const YouTube_1 = require("../entity/YouTube");
 const OAuth2 = googleapis_1.google.auth.OAuth2;
@@ -19,6 +20,17 @@ const oauth2Client = new OAuth2("15446227899-uo4u0njei3sf26b7r3qmu9hbqide94h3.ap
  * Egy hir.
  */
 exports.getSettings = (req, res, next) => __awaiter(this, void 0, void 0, function* () {
+    // tslint:disable-next-line:no-console
+    console.log(req.headers);
+    const token = req.headers.authorization.toString().replace("Bearer ", "");
+    if (!token) {
+        return res.status(403).send({ auth: false, message: "No token provided." });
+    }
+    jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
+        if (err) {
+            return res.status(500).send({ auth: false, message: "Failed to authenticate token." });
+        }
+    });
     const youtube = yield YouTube_1.YouTube.findOne();
     if (youtube.id) {
         return res.json({ youtube });
@@ -32,6 +44,17 @@ exports.getSettings = (req, res, next) => __awaiter(this, void 0, void 0, functi
  * Hir modositasa.
  */
 exports.editSettings = (req, res, next) => __awaiter(this, void 0, void 0, function* () {
+    // tslint:disable-next-line:no-console
+    console.log(req.headers);
+    const token = req.headers.authorization.toString().replace("Bearer ", "");
+    if (!token) {
+        return res.status(403).send({ auth: false, message: "No token provided." });
+    }
+    jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
+        if (err) {
+            return res.status(500).send({ auth: false, message: "Failed to authenticate token." });
+        }
+    });
     const youtube = yield YouTube_1.YouTube.findOneById(req.body.id);
     youtube.accessToken = req.body.accessToken;
     youtube.refreshToken = req.body.refreshToken;
@@ -182,6 +205,17 @@ exports.upload = (req, res, next) => __awaiter(this, void 0, void 0, function* (
  * Hir modositasa.
  */
 exports.deleteSettings = (req, res, next) => __awaiter(this, void 0, void 0, function* () {
+    // tslint:disable-next-line:no-console
+    console.log(req.headers);
+    const token = req.headers.authorization.toString().replace("Bearer ", "");
+    if (!token) {
+        return res.status(403).send({ auth: false, message: "No token provided." });
+    }
+    jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
+        if (err) {
+            return res.status(500).send({ auth: false, message: "Failed to authenticate token." });
+        }
+    });
     const youtube = yield YouTube_1.YouTube.findOne();
     youtube.accessToken = "";
     youtube.refreshToken = "";
