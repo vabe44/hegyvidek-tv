@@ -10,6 +10,7 @@ export interface Epizod {
     video: string;
     youtube: string;
     leiras: string;
+    kulcsszavak: string;
     musor: Musor;
     createdDate: Date;
     updatedDate: Date;
