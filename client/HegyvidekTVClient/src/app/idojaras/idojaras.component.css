@@ -60,11 +60,12 @@ p.datum {
     /* flex: 1; */
     display: flex;
     justify-content: center;
+    flex-direction: column;
 }
 
 i {
     width: 80px;
-    height: 80px;
+    height: 65px;
 }
 
 .owf {
@@ -73,7 +74,7 @@ i {
     justify-content: center;
     align-items: center;
     margin-left: -5.28px;
-    margin-top: 5px;
+    /* margin-top: 5px; */
 }
 
 .szoveg {

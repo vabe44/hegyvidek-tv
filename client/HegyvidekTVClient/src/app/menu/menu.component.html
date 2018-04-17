@@ -14,15 +14,15 @@
         <div class="dropdown-content">
           <div class="dropdown-item">
             <ul>
-              <li>
-                <a routerLink="/musoraink" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Műsorújság</a>
-              </li>
               <li *ngFor="let musor of musorok"><a routerLink="/musoraink/{{ musor.url }}" routerLinkActive="active">{{ musor.cim }}</a></li>
             </ul>
           </div>
         </div>
       </div>
     </div>
+  </div>
+  <div class="menu column">
+    <a routerLink="/musoraink" routerLinkActive="active" class="menu button">Műsorújság</a>
   </div>
   <div class="menu column">
     <a routerLink="/kapcsolat" routerLinkActive="active" class="menu button">Kapcsolat</a>
