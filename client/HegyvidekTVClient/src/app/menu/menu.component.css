@@ -30,7 +30,7 @@
 }
 
 .dropdown-menu {
-    width: 230px;
+    width: 184px;
     padding-top: unset;
 }
 
@@ -57,10 +57,10 @@ li > a:hover {
     background-color: #1f50ba;
 }
 
-li:first-child {
+/* li:first-child {
     padding-top: 15px;
     padding-bottom: 20px
-}
+} */
 
 .active {
     color: white;
