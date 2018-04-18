@@ -77,6 +77,18 @@ time.pontosido {
     justify-content: flex-end;
 }
 
+.banner {
+    display: flex;
+    flex: 1;
+    height: 100%;
+}
+
+app-banner-top {
+    /* height: 100%; */
+    display: flex;
+    flex: 1;
+}
+
 .social {
     display: flex;
     /* justify-content: flex-end; */

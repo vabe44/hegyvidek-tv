@@ -54,6 +54,8 @@ import { YoutubeEmbedPipe } from './pipes/youtube-embed.pipe';
 import { DatumPipe } from './pipes/datum.pipe';
 import { AdminKapcsolatComponent } from './admin-kapcsolat/admin-kapcsolat.component';
 import { AuthGuard } from './services/auth-guard.service';
+import { BannerTopComponent } from './banner-top/banner-top.component';
+import { BannerFooterComponent } from './banner-footer/banner-footer.component';
 export function getAuthHttp(http, options: RequestOptions) {
   return new AuthHttp(new AuthConfig({
     tokenName: 'token'
@@ -95,7 +97,9 @@ export function getAuthHttp(http, options: RequestOptions) {
     AdminYoutubeAuthComponent,
     YoutubeEmbedPipe,
     DatumPipe,
-    AdminKapcsolatComponent
+    AdminKapcsolatComponent,
+    BannerTopComponent,
+    BannerFooterComponent
   ],
   imports: [
     BrowserModule,
