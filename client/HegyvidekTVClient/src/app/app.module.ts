@@ -108,6 +108,7 @@ export function getAuthHttp(http, options: RequestOptions) {
       { path: 'musoraink', component: MusorainkComponent },
       { path: 'musoraink/:musor', component: MusorComponent },
       { path: 'musoraink/:musor/:epizod', component: MusorComponent },
+      { path: 'musorujsag', component: MusorujsagComponent },
       { path: 'kapcsolat', component: KapcsolatComponent },
       { path: 'mediaajanlat', component: MediaajanlatComponent },
       { path: 'kereses/:szoveg', component: KeresesComponent },

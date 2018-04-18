@@ -1,3 +1,19 @@
+main {
+    display: flex;
+    justify-content: center;
+}
+
+section.content {
+    width: 1280px;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    padding-top: 30px;
+    padding-bottom: 50px;
+    background-color: rgba(255,255,255,0.25);
+    margin-top: 180px;
+}
+
 th.musorujsag-cim {
     color: #1f50ba;
     font-size: 20px;
@@ -140,4 +156,44 @@ table td, table th {
 
 .tobbmusor {
     display: flex;
+}
+
+.cim {
+    display: flex;
+    color: #1f50ba;
+    padding: 30px 0;
+}
+
+.musoraink-cim {
+    width: 200px;
+}
+
+h2 {
+    color: #1f50ba;
+    font-size: 20px;
+    line-height: 20px;
+    font-family: "Arial", "Helvetica", "Helvetica Neue", sans-serif;
+    border: 2px solid #1f50ba;
+    text-transform: uppercase;
+    margin-bottom: unset;
+    text-align: center;
+    padding: 10px 30px;
+}
+
+.cim > p {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    font-family: "Arial", "Helvetica", "Helvetica Neue", sans-serif;
+    margin-bottom: unset;
+    padding: 0 10px;
+    color: white;
+    background-color: #1f50ba;
+    min-height: 45px;
+}
+
+.cim > p.kereses {
+    flex: 1;
+    font-size: 16px;
+    font-family: "Arial", "Helvetica", "Helvetica Neue", sans-serif;
 }
