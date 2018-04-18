@@ -81,6 +81,7 @@ time.pontosido {
     display: flex;
     flex: 1;
     height: 100%;
+    padding: 10px 0;
 }
 
 app-banner-top {
@@ -93,7 +94,7 @@ app-banner-top {
     display: flex;
     /* justify-content: flex-end; */
     /* margin-left: 50%; */
-    padding-right: 30px;
+    padding: 0 30px;
 }
 
 .facebook-like, .yt-subscribe {
