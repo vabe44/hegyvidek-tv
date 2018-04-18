@@ -112,7 +112,8 @@ p.telefon {
     color: white;
     background-color: #1f50ba;
     padding: 10px;
-    flex-direction: column;
+    /* flex-direction: column; */
+    position: relative;
 }
 
 .nevjegy > p {
@@ -123,5 +124,13 @@ p.telefon {
 }
 
 a.developer {
-    align-self: flex-end;
+    font-size: 0.95rem;
+    position: absolute;
+    right: 0;
+    padding: 0 20px;
+    color: white;
+}
+
+a.developer:hover  {
+    color: #a7d153;
 }
