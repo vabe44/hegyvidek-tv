@@ -11,13 +11,28 @@ export class Banner extends BaseEntity {
     public nev: string;
 
     @Column()
-    public kep: string;
+    public aktivEttol: Date;
 
     @Column()
-    public pozicio: string;
+    public aktivEddig: Date;
 
     @Column()
     public statusz: string;
+
+    @Column()
+    public tipus: string;
+
+    @Column()
+    public kep: string;
+
+    @Column()
+    public keplink: string;
+
+    @Column()
+    public embedkod: string;
+
+    @Column()
+    public pozicio: string;
 
     @CreateDateColumn()
     public createdDate: Date;

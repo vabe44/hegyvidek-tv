@@ -1,0 +1,168 @@
+<main>
+  <section class="content">
+    <app-admin-menu></app-admin-menu>
+    <div class="uj-hir">
+      <form class="form-banner" (ngSubmit)="letrehozBanner()">
+        <h2 class="title">Új banner megadása, meglévő szerkesztése</h2>
+
+        <div class="field is-grouped">
+          <p class="control is-expanded">
+            <label class="label">Banner neve</label>
+            <input id="nev" [(ngModel)]="banner.nev" name="nev" class="input" type="text" placeholder="Banner neve">
+          </p>
+          <p class="control">
+            <label class="label">Érvényesség kezdete</label>
+            <input id="aktivEttol" [(ngModel)]="banner.aktivEttol" class="input" type="datetime-local" name="aktivEttol">
+          </p>
+          <p class="control">
+            <label class="label">Érvényesség vége</label>
+            <input id="aktivEddig" [(ngModel)]="banner.aktivEddig" class="input" type="datetime-local" name="aktivEddig">
+          </p>
+        </div>
+
+        <div class="field is-grouped">
+          <div class="field is-fullwidth">
+            <label class="label">Banner státusza</label>
+            <div class="control is-expanded">
+              <p class="select is-fullwidth">
+                <select id="statusz" [(ngModel)]="banner.statusz" name="statusz">
+                  <option value="aktív">Aktív</option>
+                  <option value="inaktív">Inaktív</option>
+                </select>
+              </p>
+            </div>
+          </div>
+          <div class="field is-fullwidth">
+            <label class="label">Banner pozíciója</label>
+            <div class="control is-expanded">
+              <p class="select is-fullwidth">
+                <select id="pozicio" [(ngModel)]="banner.pozicio" name="pozicio">
+                  <option value="felső">Felső</option>
+                  <option value="alsó">Alsó</option>
+                </select>
+              </p>
+            </div>
+          </div>
+          <div class="field is-fullwidth">
+            <label class="label">Banner típusa</label>
+            <div class="control is-expanded">
+              <p class="select is-fullwidth">
+                <select id="tipus" [(ngModel)]="banner.tipus" name="tipus">
+                  <option value="kep">Kép fájl linkkel</option>
+                  <option value="embedkod">Embed kód</option>
+                </select>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div *ngIf="banner.tipus === 'kep'" class="field is-grouped">
+          <div class="control is-expanded">
+            <label class="label">Banner Kép</label>
+            <div class="file is-primary is-fullwidth">
+              <label class="file-label">
+                <input class="file-input" type="file" name="photo" ng2FileSelect [uploader]="uploader">
+                <span class="file-cta is-fullwidth">
+                  <span class="file-icon">
+                    <img src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTYuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgd2lkdGg9IjI0cHgiIGhlaWdodD0iMjRweCIgdmlld0JveD0iMCAwIDU0OC4xNzYgNTQ4LjE3NiIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgNTQ4LjE3NiA1NDguMTc2OyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+CjxnPgoJPHBhdGggZD0iTTUyNC4zMjYsMjk3LjM1MmMtMTUuODk2LTE5Ljg5LTM2LjIxLTMyLjc4Mi02MC45NTktMzguNjg0YzcuODEtMTEuOCwxMS43MDQtMjQuOTM0LDExLjcwNC0zOS4zOTkgICBjMC0yMC4xNzctNy4xMzktMzcuNDAxLTIxLjQwOS01MS42NzhjLTE0LjI3My0xNC4yNzItMzEuNDk4LTIxLjQxMS01MS42NzUtMjEuNDExYy0xOC4wODMsMC0zMy44NzksNS45MDEtNDcuMzksMTcuNzAzICAgYy0xMS4yMjUtMjcuNDEtMjkuMTcxLTQ5LjM5My01My44MTctNjUuOTVjLTI0LjY0Ni0xNi41NjItNTEuODE4LTI0Ljg0Mi04MS41MTQtMjQuODQyYy00MC4zNDksMC03NC44MDIsMTQuMjc5LTEwMy4zNTMsNDIuODMgICBjLTI4LjU1MywyOC41NDQtNDIuODI1LDYyLjk5OS00Mi44MjUsMTAzLjM1MWMwLDIuNDc0LDAuMTkxLDYuNTY3LDAuNTcxLDEyLjI3NWMtMjIuNDU5LDEwLjQ2OS00MC4zNDksMjYuMTcxLTUzLjY3Niw0Ny4xMDYgICBDNi42NjEsMjk5LjU5NCwwLDMyMi40MywwLDM0Ny4xNzljMCwzNS4yMTQsMTIuNTE3LDY1LjMyOSwzNy41NDQsOTAuMzU4YzI1LjAyOCwyNS4wMzcsNTUuMTUsMzcuNTQ4LDkwLjM2MiwzNy41NDhoMzEwLjYzNiAgIGMzMC4yNTksMCw1Ni4wOTYtMTAuNzExLDc3LjUxMi0zMi4xMmMyMS40MTMtMjEuNDA5LDMyLjEyMS00Ny4yNDYsMzIuMTIxLTc3LjUxNkM1NDguMTcyLDMzOS45NDQsNTQwLjIyMywzMTcuMjQ4LDUyNC4zMjYsMjk3LjM1MiAgIHogTTM2Mi43MjksMjg5LjY0OGMtMS44MTMsMS44MDQtMy45NDksMi43MDctNi40MiwyLjcwN2gtNjMuOTUzdjEwMC41MDJjMCwyLjQ3MS0wLjkwMyw0LjYxMy0yLjcxMSw2LjQyICAgYy0xLjgxMywxLjgxMy0zLjk0OSwyLjcxMS02LjQyLDIuNzExaC01NC44MjZjLTIuNDc0LDAtNC42MTUtMC44OTctNi40MjMtMi43MTFjLTEuODA0LTEuODA3LTIuNzEyLTMuOTQ5LTIuNzEyLTYuNDJWMjkyLjM1NSAgIEgxNTUuMzFjLTIuNjYyLDAtNC44NTMtMC44NTUtNi41NjMtMi41NjNjLTEuNzEzLTEuNzE0LTIuNTY4LTMuOTA0LTIuNTY4LTYuNTY2YzAtMi4yODYsMC45NS00LjU3MiwyLjg1Mi02Ljg1NWwxMDAuMjEzLTEwMC4yMSAgIGMxLjcxMy0xLjcxNCwzLjkwMy0yLjU3LDYuNTY3LTIuNTdjMi42NjYsMCw0Ljg1NiwwLjg1Niw2LjU2NywyLjU3bDEwMC40OTksMTAwLjQ5NWMxLjcxNCwxLjcxMiwyLjU2MiwzLjkwMSwyLjU2Miw2LjU3MSAgIEMzNjUuNDM4LDI4NS42OTYsMzY0LjUzNSwyODcuODQ1LDM2Mi43MjksMjg5LjY0OHoiIGZpbGw9IiNGRkZGRkYiLz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8L3N2Zz4K"
+                    />
+                  </span>
+                  <span class="file-label">
+                    Kép feltöltése
+                  </span>
+                </span>
+              </label>
+            </div>
+          </div>
+          <p class="control is-expanded">
+            <label class="label">Átkattintási URL</label>
+            <input id="keplink" [(ngModel)]="banner.keplink" name="keplink" class="input" type="text" placeholder="Átkattintási URL">
+          </p>
+        </div>
+
+        <div *ngIf="banner.tipus === 'embedkod'" class="field">
+          <label class="label">Embed kód</label>
+          <div class="control is-expanded">
+            <textarea class="textarea" [(ngModel)]="banner.embedkod" id="embedkod" name="embedkod" placeholder="Embed kód"></textarea>
+          </div>
+        </div>
+
+        <div *ngIf="banner.kep" class="kep elonezet control is-expanded">
+          <figure class="image">
+            <img [attr.src]="banner?.kep">
+          </figure>
+        </div>
+
+        <div class="field">
+          <p class="control is-expanded">
+            <button class="mentes button is-success is-medium is-fullwidth" type="submit">Mentés</button>
+          </p>
+        </div>
+      </form>
+    </div>
+
+    <div class="bannerek">
+      <h2 class="title">Bannerek</h2>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Név</th>
+            <th>Státusz</th>
+            <th>Pozíció</th>
+            <th>Típus</th>
+            <th class="right">Műveletek</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let banner of bannerek; let index = index;trackBy:trackByIndex;">
+            <td>{{ banner.nev }}</td>
+            <td>{{ banner.statusz }}</td>
+            <td>{{ banner.pozicio }}</td>
+            <td>{{ banner.tipus }}</td>
+            <td>
+              <div class="muveletek field is-grouped">
+                <p class="control">
+                  <button class="button is-primary" (click)="modositBanner(banner)">Módosítás</button>
+                </p>
+                <p class="control">
+                  <button class="button is-danger" (click)="torlesBanner(banner)">Törlés</button>
+                </p>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- <div class="bannerek">
+      <h2 class="title">Inaktív Bannerek</h2>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Név</th>
+            <th>Pozíció</th>
+            <th>Típus</th>
+            <th class="right">Műveletek</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let banner of inaktivBannerek; let index = index;trackBy:trackByIndex;">
+            <td>{{ banner.nev }}</td>
+            <td>{{ banner.pozicio }}</td>
+            <td>{{ banner.tipus }}</td>
+            <td>
+              <div class="muveletek field is-grouped">
+                <p class="control">
+                  <button class="button is-primary" (click)="modositBanner(banner)">Módosítás</button>
+                </p>
+                <p class="control">
+                  <button class="button is-danger" (click)="torlesBanner(banner)">Törlés</button>
+                </p>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div> -->
+  </section>
+</main>

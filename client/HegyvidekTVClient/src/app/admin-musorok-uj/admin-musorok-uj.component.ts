@@ -13,7 +13,7 @@ import { environment } from '../../environments/environment';
 export class AdminMusorokUjComponent implements OnInit {
 
   // define the constant url we would be uploading to.
-  URL = 'http://localhost:3000/musoraink/picture';
+  URL = environment.apiUrl + '/musoraink/picture';
   public uploader: FileUploader = new FileUploader({url: this.URL, itemAlias: 'photo'});
   musor: Musor;
   urlUnique: boolean;

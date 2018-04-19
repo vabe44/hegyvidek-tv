@@ -23,16 +23,36 @@ __decorate([
 ], Banner.prototype, "nev", void 0);
 __decorate([
     typeorm_1.Column(),
+    __metadata("design:type", Date)
+], Banner.prototype, "aktivEttol", void 0);
+__decorate([
+    typeorm_1.Column(),
+    __metadata("design:type", Date)
+], Banner.prototype, "aktivEddig", void 0);
+__decorate([
+    typeorm_1.Column(),
+    __metadata("design:type", String)
+], Banner.prototype, "statusz", void 0);
+__decorate([
+    typeorm_1.Column(),
+    __metadata("design:type", String)
+], Banner.prototype, "tipus", void 0);
+__decorate([
+    typeorm_1.Column(),
     __metadata("design:type", String)
 ], Banner.prototype, "kep", void 0);
 __decorate([
     typeorm_1.Column(),
     __metadata("design:type", String)
-], Banner.prototype, "pozicio", void 0);
+], Banner.prototype, "keplink", void 0);
 __decorate([
     typeorm_1.Column(),
     __metadata("design:type", String)
-], Banner.prototype, "statusz", void 0);
+], Banner.prototype, "embedkod", void 0);
+__decorate([
+    typeorm_1.Column(),
+    __metadata("design:type", String)
+], Banner.prototype, "pozicio", void 0);
 __decorate([
     typeorm_1.CreateDateColumn(),
     __metadata("design:type", Date)

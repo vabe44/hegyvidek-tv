@@ -26,6 +26,7 @@ dotenv.config({ path: ".env.example" });
 /**
  * Routes
  */
+import bannerekRouter from "./routes/bannerek";
 import contactRouter from "./routes/contact";
 import epizodokRouter from "./routes/epizodok";
 import hirekRouter from "./routes/hirek";
@@ -88,6 +89,7 @@ class App {
    */
   private routes(): void {
     this.express.use("/", rootRouter);
+    this.express.use("/api/bannerek", bannerekRouter);
     this.express.use("/api/contact", contactRouter);
     this.express.use("/api/musoraink", musorainkRouter);
     this.express.use("/api/epizodok", epizodokRouter);

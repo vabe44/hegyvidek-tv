@@ -1,3 +1,9 @@
 <div class="container">
-  <div class="banner"></div>
+  <div class="banner">
+    <figure *ngIf="bannerek.length" class="image">
+      <a [attr.href]="bannerek[0]?.keplink">
+        <img [attr.src]="bannerek[0]?.kep">
+      </a>
+    </figure>
+  </div>
 </div>

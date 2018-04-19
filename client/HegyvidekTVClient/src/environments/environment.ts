@@ -5,6 +5,7 @@
 
 export const environment = {
   production: false,
+  url: 'http://localhost:3001',
   apiUrl: 'http://localhost:3001/api',
   weatherApiKey: '2d51d2c195bd413f69941502a3e9282a',
   facebook: 'https://www.facebook.com/hegyvidektelevizio',

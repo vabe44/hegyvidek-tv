@@ -16,6 +16,7 @@ import { IdojarasService } from './services/idojaras.service';
 import { KapcsolatService } from './services/kapcsolat.service';
 import { YoutubeService } from './services/youtube.service';
 import { HirService } from './services/hir.service';
+import { BannerService } from './services/banner.service';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -56,6 +57,7 @@ import { AdminKapcsolatComponent } from './admin-kapcsolat/admin-kapcsolat.compo
 import { AuthGuard } from './services/auth-guard.service';
 import { BannerTopComponent } from './banner-top/banner-top.component';
 import { BannerFooterComponent } from './banner-footer/banner-footer.component';
+import { AdminBannerekComponent } from './admin-bannerek/admin-bannerek.component';
 export function getAuthHttp(http, options: RequestOptions) {
   return new AuthHttp(new AuthConfig({
     tokenName: 'token'
@@ -99,7 +101,8 @@ export function getAuthHttp(http, options: RequestOptions) {
     DatumPipe,
     AdminKapcsolatComponent,
     BannerTopComponent,
-    BannerFooterComponent
+    BannerFooterComponent,
+    AdminBannerekComponent
   ],
   imports: [
     BrowserModule,
@@ -124,7 +127,8 @@ export function getAuthHttp(http, options: RequestOptions) {
       { path: 'admin/epizodok', component: AdminEpizodokComponent, canActivate: [AuthGuard] },
       { path: 'admin/epizodok/uj', component: AdminEpizodokUjComponent, canActivate: [AuthGuard] },
       { path: 'admin/epizodok/:id', component: AdminEpizodokModositComponent, canActivate: [AuthGuard] },
-      { path: 'admin/youtube', component: AdminYoutubeAuthComponent, canActivate: [AuthGuard] },
+      // { path: 'admin/youtube', component: AdminYoutubeAuthComponent, canActivate: [AuthGuard] },
+      { path: 'admin/bannerek', component: AdminBannerekComponent, canActivate: [AuthGuard] },
       { path: 'admin/kapcsolat', component: AdminKapcsolatComponent, canActivate: [AuthGuard] },
       { path: 'admin', component: AdminMusorokComponent, canActivate: [AuthGuard] },
     ])
@@ -135,6 +139,7 @@ export function getAuthHttp(http, options: RequestOptions) {
     EpizodService,
     IdojarasService,
     HirService,
+    BannerService,
     YoutubeService,
     KapcsolatService,
     AuthHttp,

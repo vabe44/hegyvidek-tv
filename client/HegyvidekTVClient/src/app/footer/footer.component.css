@@ -123,14 +123,23 @@ p.telefon {
     text-transform: uppercase;
 }
 
-a.developer {
+.developer {
+    display: flex;
     font-size: 0.95rem;
     position: absolute;
     right: 0;
+    align-items: baseline;
+}
+
+img.code {
+    height: 14px
+}
+
+a.developer-link {
     padding: 0 20px;
     color: white;
 }
 
-a.developer:hover  {
+a.developer-link:hover  {
     color: #a7d153;
 }
