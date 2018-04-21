@@ -66,5 +66,79 @@
         </div>
       </form>
     </div>
+
+    <div *ngIf="adas" class="uj-adas">
+      <form class="form-banner" (ngSubmit)="letrehozAdas()">
+        <h2 class="title">Új adás létrehozása műsorújsághoz</h2>
+
+        <div class="field is-grouped">
+          <div class="field is-fullwidth">
+            <label class="label">Adás napja</label>
+            <div class="control is-expanded">
+              <p class="select is-fullwidth">
+                <select id="nap" [(ngModel)]="adas.nap" name="nap">
+                  <option value="1">Hétfő</option>
+                  <option value="2">Kedd</option>
+                  <option value="3">Szerda</option>
+                  <option value="4">Csütörtök</option>
+                  <option value="5">Péntek</option>
+                  <option value="6">Szombat</option>
+                  <option value="7">Vasárnap</option>
+                </select>
+              </p>
+            </div>
+          </div>
+          <p class="control">
+            <label class="label">Adás kezdete</label>
+            <input id="aktivEttol" [(ngModel)]="adas.aktivEttol" class="input" type="time" name="aktivEttol">
+          </p>
+          <p class="control">
+            <label class="label">Adás vége</label>
+            <input id="aktivEddig" [(ngModel)]="adas.aktivEddig" class="input" type="time" name="aktivEddig">
+          </p>
+        </div>
+
+        <div class="field">
+          <p class="control is-expanded">
+            <button class="mentes button is-success is-medium is-fullwidth" type="submit">Mentés</button>
+          </p>
+        </div>
+      </form>
+    </div>
+
+    <div class="adasok">
+      <h2 class="title">Adasok</h2>
+      <form *ngFor="let adas of adasok; let index = index;trackBy:trackByIndex;" class="form-modositAdas">
+        <div class="field is-grouped">
+          <div class="control">
+            <div class="select">
+              <select id="nap" [(ngModel)]="adas.nap" name="nap">
+                  <option value="1" [attr.selected]="adas.nap === 1 ? true : false">Hétfő</option>
+                  <option value="2" [attr.selected]="adas.nap === 2 ? true : false">Kedd</option>
+                  <option value="3" [attr.selected]="adas.nap === 3 ? true : false">Szerda</option>
+                  <option value="4" [attr.selected]="adas.nap === 4 ? true : false">Csütörtök</option>
+                  <option value="5" [attr.selected]="adas.nap === 5 ? true : false">Péntek</option>
+                  <option value="6" [attr.selected]="adas.nap === 6 ? true : false">Szombat</option>
+                  <option value="7" [attr.selected]="adas.nap === 7 ? true : false">Vasárnap</option>
+              </select>
+            </div>
+          </div>
+          <p class="control">
+            <!-- <label class="label">Adás kezdete</label> -->
+            <input id="aktivEttol" [(ngModel)]="adas.aktivEttol" class="input" type="time" name="aktivEttol">
+          </p>
+          <p class="control">
+            <!-- <label class="label">Adás vége</label> -->
+            <input id="aktivEddig" [(ngModel)]="adas.aktivEddig" class="input" type="time" name="aktivEddig">
+          </p>
+          <p class="control">
+            <button class="button is-primary" (click)="modositAdas(adas)">Frissítés</button>
+          </p>
+          <p class="control">
+            <button class="button is-danger" (click)="torlesAdas(adas)">Törlés</button>
+          </p>
+        </div>
+      </form>
+    </div>
   </section>
 </main>

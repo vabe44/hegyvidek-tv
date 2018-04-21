@@ -52,7 +52,7 @@ exports.getEpizodKereses = (req, res, next) => __awaiter(this, void 0, void 0, f
  * Egy epizod.
  */
 exports.getEpizodId = (req, res, next) => __awaiter(this, void 0, void 0, function* () {
-    const epizod = yield Epizod_1.Epizod.findOneById(req.params.id);
+    const epizod = yield Epizod_1.Epizod.findOne(req.params.id);
     if (epizod.id) {
         return res.json({ epizod });
     }
@@ -112,7 +112,7 @@ exports.putEpizod = (req, res, next) => __awaiter(this, void 0, void 0, function
             return res.status(500).send({ auth: false, message: "Failed to authenticate token." });
         }
     });
-    const epizod = yield Epizod_1.Epizod.findOneById(req.body.id);
+    const epizod = yield Epizod_1.Epizod.findOne(req.body.id);
     epizod.cim = req.body.cim;
     epizod.url = req.body.url;
     epizod.statusz = req.body.statusz;
@@ -123,7 +123,7 @@ exports.putEpizod = (req, res, next) => __awaiter(this, void 0, void 0, function
     epizod.youtube = req.body.youtube;
     epizod.leiras = req.body.leiras;
     epizod.kulcsszavak = req.body.kulcsszavak;
-    epizod.musor = yield Musor_1.Musor.findOneById(req.body.musor);
+    epizod.musor = yield Musor_1.Musor.findOne(req.body.musor);
     yield epizod.save();
     if (epizod.id) {
         return res.json({ epizod });
@@ -148,7 +148,7 @@ exports.deleteEpizod = (req, res, next) => __awaiter(this, void 0, void 0, funct
             return res.status(500).send({ auth: false, message: "Failed to authenticate token." });
         }
     });
-    const epizod = yield Epizod_1.Epizod.findOneById(req.params.id);
+    const epizod = yield Epizod_1.Epizod.findOne(req.params.id);
     yield epizod.remove();
     if (!epizod.id) {
         return res.json({ epizod });

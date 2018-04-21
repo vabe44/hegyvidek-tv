@@ -60,7 +60,7 @@ export let editSettings =  async (req: Request, res: Response, next: NextFunctio
       }
     });
 
-    const youtube = await YouTube.findOneById(req.body.id);
+    const youtube = await YouTube.findOne(req.body.id);
     youtube.accessToken = req.body.accessToken;
     youtube.refreshToken = req.body.refreshToken;
     await youtube.save();

@@ -56,7 +56,7 @@ exports.getHirek = (req, res, next) => __awaiter(this, void 0, void 0, function*
  * Egy musor.
  */
 exports.getMusorId = (req, res, next) => __awaiter(this, void 0, void 0, function* () {
-    const musor = yield Musor_1.Musor.findOneById(req.params.id);
+    const musor = yield Musor_1.Musor.findOne(req.params.id);
     if (musor.id) {
         return res.json({ musor });
     }
@@ -129,7 +129,7 @@ exports.putMusor = (req, res, next) => __awaiter(this, void 0, void 0, function*
             return res.status(500).send({ auth: false, message: "Failed to authenticate token." });
         }
     });
-    const musor = yield Musor_1.Musor.findOneById(req.body.id);
+    const musor = yield Musor_1.Musor.findOne(req.body.id);
     musor.cim = req.body.cim;
     musor.url = req.body.url;
     musor.statusz = req.body.statusz;
@@ -159,7 +159,7 @@ exports.deleteMusor = (req, res, next) => __awaiter(this, void 0, void 0, functi
             return res.status(500).send({ auth: false, message: "Failed to authenticate token." });
         }
     });
-    const musor = yield Musor_1.Musor.findOneById(req.params.id);
+    const musor = yield Musor_1.Musor.findOne(req.params.id);
     yield musor.remove();
     if (!musor.id) {
         return res.json({ musor });

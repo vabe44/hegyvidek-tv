@@ -1,9 +1,11 @@
+import { MusorujsagService } from './../services/musorujsag.service';
 import { Component, OnInit } from '@angular/core';
 import { MusorService } from '../services/musor.service';
 import { Musor } from '../interfaces/Musor';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FileUploader } from 'ng2-file-upload/ng2-file-upload';
 import { environment } from '../../environments/environment';
+import { Musorujsag } from '../interfaces/Musorujsag';
 
 @Component({
   selector: 'app-admin-musorok-modosit',
@@ -13,17 +15,31 @@ import { environment } from '../../environments/environment';
 export class AdminMusorokModositComponent implements OnInit {
 
   musor: any = {};
+  adas: Musorujsag;
+  adasok: Musorujsag[];
   // define the constant url we would be uploading to.
   URL = environment.apiUrl + '/musoraink/picture';
   public uploader: FileUploader = new FileUploader({url: this.URL, itemAlias: 'photo'});
   urlUnique: boolean;
   constructor(
   private router: Router,
-  private musorService: MusorService, private route: ActivatedRoute) {}
+  private route: ActivatedRoute,
+  private musorService: MusorService,
+  private musorujsagService: MusorujsagService) {}
 
   ngOnInit() {
     this.musorService.musor(this.route.snapshot.params.id).subscribe(response => {
       this.musor = response.musor;
+      this.adas = {
+        id: 0,
+        nap: 1,
+        aktivEttol: undefined,
+        aktivEddig: undefined,
+        musor: this.musor,
+        createdDate: undefined,
+        updatedDate: undefined
+      };
+      this.musorujsagService.musor(this.musor.id).subscribe(response2 => this.adasok = response2.adasok);
     });
     // override the onAfterAddingfile property of the uploader so it doesn't authenticate with //credentials.
     this.uploader.onAfterAddingFile = (file) => {
@@ -88,4 +104,55 @@ export class AdminMusorokModositComponent implements OnInit {
     });
   }
 
+  trackByIndex(index: number, obj: any): any {
+    return index;
+  }
+
+  letrehozAdas() {
+    console.log(this.adas);
+    this.musorujsagService.uj(this.adas)
+      .subscribe(response => {
+        console.log(response);
+        if (response.musorujsag) {
+          this.adasok.unshift(response.musorujsag);
+          this.adas = {
+            id: 0,
+            nap: 1,
+            aktivEttol: undefined,
+            aktivEddig: undefined,
+            musor: this.musor,
+            createdDate: undefined,
+            updatedDate: undefined
+          };
+        } else {
+          alert(response.message);
+        }
+        if (this.adas.id === 0) {
+          // this.musorujsag.unshift(response.musorujsag);
+        }
+      });
+  }
+
+  modositAdas(adas) {
+    this.musorujsagService.modosit(adas)
+      .subscribe(response => {
+        alert(response.message);
+      });
+  }
+
+  torlesAdas(adas) {
+    const shouldDelete = confirm('Biztos benne, hogy törölni akarja az adást?');
+    if (shouldDelete) {
+      this.musorujsagService.torles(adas.id)
+        .subscribe(response => {
+          console.log(response);
+          if (response.musorujsag) {
+            console.log('siker');
+            this.adasok.splice(this.adasok.indexOf(adas), 1);
+          } else  {
+            console.log('error');
+          }
+        });
+    }
+  }
 }

@@ -34,7 +34,7 @@ exports.getBannerek = (req, res, next) => __awaiter(this, void 0, void 0, functi
  * Egy banner.
  */
 exports.getBannerId = (req, res, next) => __awaiter(this, void 0, void 0, function* () {
-    const banner = yield Banner_1.Banner.findOneById(req.params.id);
+    const banner = yield Banner_1.Banner.findOne(req.params.id);
     if (banner.id) {
         return res.json({ banner });
     }
@@ -94,7 +94,7 @@ exports.putBanner = (req, res, next) => __awaiter(this, void 0, void 0, function
             return res.status(500).send({ auth: false, message: "Failed to authenticate token." });
         }
     });
-    const banner = yield Banner_1.Banner.findOneById(req.body.id);
+    const banner = yield Banner_1.Banner.findOne(req.body.id);
     banner.nev = req.body.nev;
     banner.aktivEttol = req.body.aktivEttol;
     banner.aktivEddig = req.body.aktivEddig;
@@ -128,7 +128,7 @@ exports.deleteBanner = (req, res, next) => __awaiter(this, void 0, void 0, funct
             return res.status(500).send({ auth: false, message: "Failed to authenticate token." });
         }
     });
-    const banner = yield Banner_1.Banner.findOneById(req.params.id);
+    const banner = yield Banner_1.Banner.findOne(req.params.id);
     yield banner.remove();
     if (!banner.id) {
         return res.json({ banner });

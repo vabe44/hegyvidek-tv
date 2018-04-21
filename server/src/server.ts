@@ -31,6 +31,7 @@ import contactRouter from "./routes/contact";
 import epizodokRouter from "./routes/epizodok";
 import hirekRouter from "./routes/hirek";
 import musorainkRouter from "./routes/musoraink";
+import musorujsagRouter from "./routes/musorujsag";
 import rootRouter from "./routes/root";
 import youtubeRouter from "./routes/youtube";
 
@@ -92,6 +93,7 @@ class App {
     this.express.use("/api/bannerek", bannerekRouter);
     this.express.use("/api/contact", contactRouter);
     this.express.use("/api/musoraink", musorainkRouter);
+    this.express.use("/api/musorujsag", musorujsagRouter);
     this.express.use("/api/epizodok", epizodokRouter);
     this.express.use("/api/hirek", hirekRouter);
     this.express.use("/api/youtube", youtubeRouter);

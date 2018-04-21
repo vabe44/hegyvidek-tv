@@ -55,7 +55,7 @@ exports.editSettings = (req, res, next) => __awaiter(this, void 0, void 0, funct
             return res.status(500).send({ auth: false, message: "Failed to authenticate token." });
         }
     });
-    const youtube = yield YouTube_1.YouTube.findOneById(req.body.id);
+    const youtube = yield YouTube_1.YouTube.findOne(req.body.id);
     youtube.accessToken = req.body.accessToken;
     youtube.refreshToken = req.body.refreshToken;
     yield youtube.save();

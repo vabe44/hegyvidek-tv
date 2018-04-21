@@ -28,7 +28,7 @@ export let getHirek =  async (req: Request, res: Response, next: NextFunction) =
  */
 export let getHirId =  async (req: Request, res: Response, next: NextFunction) => {
 
-    const hir = await Hir.findOneById(req.params.id);
+    const hir = await Hir.findOne(req.params.id);
     if (hir.id) {
         return res.json({ hir });
     } else {
@@ -89,7 +89,7 @@ export let putHir =  async (req: Request, res: Response, next: NextFunction) => 
       }
     });
 
-    const hir = await Hir.findOneById(req.body.id);
+    const hir = await Hir.findOne(req.body.id);
     hir.szoveg = req.body.szoveg;
     hir.statusz = req.body.statusz;
     await hir.save();
@@ -120,7 +120,7 @@ export let deleteHir =  async (req: Request, res: Response, next: NextFunction) 
       }
     });
 
-    const hir = await Hir.findOneById(req.params.id);
+    const hir = await Hir.findOne(req.params.id);
     await hir.remove();
 
     if (!hir.id) {

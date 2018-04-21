@@ -1,6 +1,7 @@
 // tslint:disable-next-line:max-line-length
 import { BaseEntity, Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 import { Epizod } from "./Epizod";
+import { Musorujsag } from "./Musorujsag";
 
 @Entity()
 export class Musor extends BaseEntity {
@@ -33,4 +34,7 @@ export class Musor extends BaseEntity {
     @OneToMany(type => Epizod, epizod => epizod.musor) // note: we will create author property in the Photo class below
     public epizodok: Epizod[];
 
+    // tslint:disable-next-line:arrow-parens
+    @OneToMany(type => Musorujsag, musorujsag => musorujsag.musor)
+    public adasok: Musorujsag[];
 }

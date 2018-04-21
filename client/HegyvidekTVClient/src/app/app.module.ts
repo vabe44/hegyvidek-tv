@@ -58,6 +58,7 @@ import { AuthGuard } from './services/auth-guard.service';
 import { BannerTopComponent } from './banner-top/banner-top.component';
 import { BannerFooterComponent } from './banner-footer/banner-footer.component';
 import { AdminBannerekComponent } from './admin-bannerek/admin-bannerek.component';
+import { MusorujsagService } from './services/musorujsag.service';
 export function getAuthHttp(http, options: RequestOptions) {
   return new AuthHttp(new AuthConfig({
     tokenName: 'token'
@@ -136,6 +137,7 @@ export function getAuthHttp(http, options: RequestOptions) {
   providers: [
     AuthService,
     MusorService,
+    MusorujsagService,
     EpizodService,
     IdojarasService,
     HirService,

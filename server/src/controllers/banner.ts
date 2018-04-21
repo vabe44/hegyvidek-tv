@@ -29,7 +29,7 @@ export let getBannerek =  async (req: Request, res: Response, next: NextFunction
  */
 export let getBannerId =  async (req: Request, res: Response, next: NextFunction) => {
 
-    const banner = await Banner.findOneById(req.params.id);
+    const banner = await Banner.findOne(req.params.id);
     if (banner.id) {
         return res.json({ banner });
     } else {
@@ -97,7 +97,7 @@ export let putBanner =  async (req: Request, res: Response, next: NextFunction) 
       }
     });
 
-    const banner = await Banner.findOneById(req.body.id);
+    const banner = await Banner.findOne(req.body.id);
     banner.nev = req.body.nev;
     banner.aktivEttol = req.body.aktivEttol;
     banner.aktivEddig = req.body.aktivEddig;
@@ -135,7 +135,7 @@ export let deleteBanner =  async (req: Request, res: Response, next: NextFunctio
       }
     });
 
-    const banner = await Banner.findOneById(req.params.id);
+    const banner = await Banner.findOne(req.params.id);
     await banner.remove();
 
     if (!banner.id) {

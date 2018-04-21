@@ -33,7 +33,7 @@ exports.getHirek = (req, res, next) => __awaiter(this, void 0, void 0, function*
  * Egy hir.
  */
 exports.getHirId = (req, res, next) => __awaiter(this, void 0, void 0, function* () {
-    const hir = yield Hir_1.Hir.findOneById(req.params.id);
+    const hir = yield Hir_1.Hir.findOne(req.params.id);
     if (hir.id) {
         return res.json({ hir });
     }
@@ -86,7 +86,7 @@ exports.putHir = (req, res, next) => __awaiter(this, void 0, void 0, function* (
             return res.status(500).send({ auth: false, message: "Failed to authenticate token." });
         }
     });
-    const hir = yield Hir_1.Hir.findOneById(req.body.id);
+    const hir = yield Hir_1.Hir.findOne(req.body.id);
     hir.szoveg = req.body.szoveg;
     hir.statusz = req.body.statusz;
     yield hir.save();
@@ -113,7 +113,7 @@ exports.deleteHir = (req, res, next) => __awaiter(this, void 0, void 0, function
             return res.status(500).send({ auth: false, message: "Failed to authenticate token." });
         }
     });
-    const hir = yield Hir_1.Hir.findOneById(req.params.id);
+    const hir = yield Hir_1.Hir.findOne(req.params.id);
     yield hir.remove();
     if (!hir.id) {
         return res.json({ hir });

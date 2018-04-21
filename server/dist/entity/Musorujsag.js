@@ -11,53 +11,41 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 // tslint:disable-next-line:max-line-length
 const typeorm_1 = require("typeorm");
-const Epizod_1 = require("./Epizod");
-const Musorujsag_1 = require("./Musorujsag");
-let Musor = class Musor extends typeorm_1.BaseEntity {
+const Musor_1 = require("./Musor");
+let Musorujsag = class Musorujsag extends typeorm_1.BaseEntity {
 };
 __decorate([
     typeorm_1.PrimaryGeneratedColumn(),
     __metadata("design:type", Number)
-], Musor.prototype, "id", void 0);
+], Musorujsag.prototype, "id", void 0);
+__decorate([
+    typeorm_1.ManyToOne(type => Musor_1.Musor, musor => musor.epizodok, {
+        eager: true,
+    }),
+    __metadata("design:type", Musor_1.Musor)
+], Musorujsag.prototype, "musor", void 0);
 __decorate([
     typeorm_1.Column(),
-    __metadata("design:type", String)
-], Musor.prototype, "cim", void 0);
+    __metadata("design:type", Number)
+], Musorujsag.prototype, "nap", void 0);
 __decorate([
-    typeorm_1.Column(),
-    __metadata("design:type", String)
-], Musor.prototype, "url", void 0);
+    typeorm_1.Column("time"),
+    __metadata("design:type", Date)
+], Musorujsag.prototype, "aktivEttol", void 0);
 __decorate([
-    typeorm_1.Column(),
-    __metadata("design:type", String)
-], Musor.prototype, "statusz", void 0);
-__decorate([
-    typeorm_1.Column(),
-    __metadata("design:type", String)
-], Musor.prototype, "kep", void 0);
-__decorate([
-    typeorm_1.Column(),
-    __metadata("design:type", String)
-], Musor.prototype, "leiras", void 0);
+    typeorm_1.Column("time"),
+    __metadata("design:type", Date)
+], Musorujsag.prototype, "aktivEddig", void 0);
 __decorate([
     typeorm_1.CreateDateColumn(),
     __metadata("design:type", Date)
-], Musor.prototype, "createdDate", void 0);
+], Musorujsag.prototype, "createdDate", void 0);
 __decorate([
     typeorm_1.UpdateDateColumn(),
     __metadata("design:type", Date)
-], Musor.prototype, "updatedDate", void 0);
-__decorate([
-    typeorm_1.OneToMany(type => Epizod_1.Epizod, epizod => epizod.musor) // note: we will create author property in the Photo class below
-    ,
-    __metadata("design:type", Array)
-], Musor.prototype, "epizodok", void 0);
-__decorate([
-    typeorm_1.OneToMany(type => Musorujsag_1.Musorujsag, musorujsag => musorujsag.musor),
-    __metadata("design:type", Array)
-], Musor.prototype, "adasok", void 0);
-Musor = __decorate([
+], Musorujsag.prototype, "updatedDate", void 0);
+Musorujsag = __decorate([
     typeorm_1.Entity()
-], Musor);
-exports.Musor = Musor;
-//# sourceMappingURL=Musor.js.map
+], Musorujsag);
+exports.Musorujsag = Musorujsag;
+//# sourceMappingURL=Musorujsag.js.map

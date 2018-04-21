@@ -39,6 +39,7 @@ const contact_1 = require("./routes/contact");
 const epizodok_1 = require("./routes/epizodok");
 const hirek_1 = require("./routes/hirek");
 const musoraink_1 = require("./routes/musoraink");
+const musorujsag_1 = require("./routes/musorujsag");
 const root_1 = require("./routes/root");
 const youtube_1 = require("./routes/youtube");
 class App {
@@ -89,6 +90,7 @@ class App {
         this.express.use("/api/bannerek", bannerek_1.default);
         this.express.use("/api/contact", contact_1.default);
         this.express.use("/api/musoraink", musoraink_1.default);
+        this.express.use("/api/musorujsag", musorujsag_1.default);
         this.express.use("/api/epizodok", epizodok_1.default);
         this.express.use("/api/hirek", hirek_1.default);
         this.express.use("/api/youtube", youtube_1.default);

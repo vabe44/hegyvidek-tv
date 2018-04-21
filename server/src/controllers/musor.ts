@@ -53,7 +53,7 @@ export let getHirek =  async (req: Request, res: Response, next: NextFunction) =
  */
 export let getMusorId =  async (req: Request, res: Response, next: NextFunction) => {
 
-    const musor = await Musor.findOneById(req.params.id);
+    const musor = await Musor.findOne(req.params.id);
     if (musor.id) {
         return res.json({ musor });
     } else {
@@ -135,7 +135,7 @@ export let putMusor =  async (req: Request, res: Response, next: NextFunction) =
       }
     });
 
-    const musor = await Musor.findOneById(req.body.id);
+    const musor = await Musor.findOne(req.body.id);
     musor.cim = req.body.cim;
     musor.url = req.body.url;
     musor.statusz = req.body.statusz;
@@ -169,7 +169,7 @@ export let deleteMusor =  async (req: Request, res: Response, next: NextFunction
       }
     });
 
-    const musor = await Musor.findOneById(req.params.id);
+    const musor = await Musor.findOne(req.params.id);
     await musor.remove();
 
     if (!musor.id) {

@@ -56,7 +56,7 @@ export let getEpizodKereses =  async (req: Request, res: Response, next: NextFun
  */
 export let getEpizodId =  async (req: Request, res: Response, next: NextFunction) => {
 
-    const epizod = await Epizod.findOneById(req.params.id);
+    const epizod = await Epizod.findOne(req.params.id);
     if (epizod.id) {
         return res.json({ epizod });
     } else {
@@ -123,7 +123,7 @@ export let putEpizod =  async (req: Request, res: Response, next: NextFunction) 
       }
     });
 
-    const epizod = await Epizod.findOneById(req.body.id);
+    const epizod = await Epizod.findOne(req.body.id);
     epizod.cim = req.body.cim;
     epizod.url = req.body.url;
     epizod.statusz = req.body.statusz;
@@ -134,7 +134,7 @@ export let putEpizod =  async (req: Request, res: Response, next: NextFunction) 
     epizod.youtube = req.body.youtube;
     epizod.leiras = req.body.leiras;
     epizod.kulcsszavak = req.body.kulcsszavak;
-    epizod.musor = await Musor.findOneById(req.body.musor);
+    epizod.musor = await Musor.findOne(req.body.musor);
     await epizod.save();
 
     if (epizod.id) {
@@ -163,7 +163,7 @@ export let deleteEpizod =  async (req: Request, res: Response, next: NextFunctio
       }
     });
 
-    const epizod = await Epizod.findOneById(req.params.id);
+    const epizod = await Epizod.findOne(req.params.id);
     await epizod.remove();
 
     if (!epizod.id) {
