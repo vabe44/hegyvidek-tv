@@ -27,6 +27,18 @@ __decorate([
 __decorate([
     typeorm_1.Column(),
     __metadata("design:type", Number)
+], Musorujsag.prototype, "sorrend", void 0);
+__decorate([
+    typeorm_1.Column(),
+    __metadata("design:type", String)
+], Musorujsag.prototype, "adascim", void 0);
+__decorate([
+    typeorm_1.Column(),
+    __metadata("design:type", String)
+], Musorujsag.prototype, "link", void 0);
+__decorate([
+    typeorm_1.Column(),
+    __metadata("design:type", Number)
 ], Musorujsag.prototype, "nap", void 0);
 __decorate([
     typeorm_1.Column("time"),

@@ -15,6 +15,15 @@ export class Musorujsag extends BaseEntity {
     public musor: Musor;
 
     @Column()
+    public sorrend: number;
+
+    @Column()
+    public adascim: string;
+
+    @Column()
+    public link: string;
+
+    @Column()
     public nap: number;
 
     @Column("time")

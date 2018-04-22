@@ -1,97 +1,119 @@
 <main>
   <section class="content">
     <div class="musorujsag">
-      <div class="fejlec">
-        <div class="musorujsag-cim"><p>Műsorújság</p></div>
-        <div class="nap"><p>Hétfő</p></div>
-        <div class="nap"><p>Kedd</p></div>
-        <div class="nap"><p>Szerda</p></div>
-        <div class="nap"><p>Csütörtök</p></div>
-        <div class="nap"><p>Péntek</p></div>
-        <div class="nap"><p>Szombat</p></div>
-        <div class="nap"><p>Vasárnap</p></div>
-      </div>
-      <div class="idosav">
-        <div class="elso ido">
-          <p>07:00</p></div>
-        <div class="musor"><p routerLink="/musoraink/utinform-idojaras">Útinform,<br> Időjárás</p></div>
-        <div class="musor"><p routerLink="/musoraink/utinform-idojaras">Útinform,<br> Időjárás</p></div>
-        <div class="musor"><p routerLink="/musoraink/utinform-idojaras">Útinform,<br> Időjárás</p></div>
-        <div class="musor"><p routerLink="/musoraink/utinform-idojaras">Útinform,<br> Időjárás</p></div>
-        <div class="musor"><p routerLink="/musoraink/utinform-idojaras">Útinform,<br> Időjárás</p></div>
-        <div class="musor"><p>Ismétlés</p></div>
-        <div class="musor"><p>Ismétlés</p></div>
-      </div>
-      <div class="idosav">
-        <div class="ido"><p>10:00</p></div>
-        <div class="musor"><p>Ismétlés</p></div>
-        <div class="musor"><p>Ismétlés</p></div>
-        <div class="musor"><p>Ismétlés</p></div>
-        <div class="musor"><p>Ismétlés</p></div>
-        <div class="musor"><p>Ismétlés</p></div>
-        <div class="musor"><p>Ismétlés</p></div>
-        <div class="musor"><p>Ismétlés</p></div>
-      </div>
-      <div class="idosav">
-        <div class="ido"><p>15:00</p></div>
-        <div class="musor"><p routerLink="/musoraink/kepujsag">Képújság</p></div>
-        <div class="musor"><p routerLink="/musoraink/kepujsag">Képújság</p></div>
-        <div class="musor"><p routerLink="/musoraink/kepujsag">Képújság</p></div>
-        <div class="musor"><p routerLink="/musoraink/kepujsag">Képújság</p></div>
-        <div class="musor"><p routerLink="/musoraink/kepujsag">Képújság</p></div>
-        <div class="musor"><p routerLink="/musoraink/kepujsag">Képújság</p></div>
-        <div class="musor"><p routerLink="/musoraink/kepujsag">Képújság</p></div>
-      </div>
-      <div class="idosav">
-        <div class="ido"><p>19:00</p></div>
-        <div class="musor"><p routerLink="/musoraink/budai-hirado">Budai Híradó</p></div>
-        <div class="musor"><p routerLink="/musoraink/budai-hirado">Budai Híradó</p></div>
-        <div class="musor"><p routerLink="/musoraink/budai-hirado">Budai Híradó</p></div>
-        <div class="musor"><p routerLink="/musoraink/budai-hirado">Budai Híradó</p></div>
-        <div class="musor"><p routerLink="/musoraink/budai-hirado">Budai Híradó</p></div>
-        <div class="musor"><p routerLink="/musoraink/budai-hirado">Budai Híradó</p></div>
-        <div class="musor"><p routerLink="/musoraink/budai-hirado">Budai Híradó</p></div>
-      </div>
-      <div class="idosav">
-        <div class="ido"><p>20:00</p></div>
-        <div class="musor"><p routerLink="/musoraink/hegylako-magazin">Hegylakó <br> Magazin</p></div>
-        <div class="musor"><p routerLink="/musoraink/minosegi-ido">Minőségi Idő</p></div>
-        <div class="musor"><p routerLink="/musoraink/kulturpont">Kultúrpont</p></div>
-        <div class="musor"><p routerLink="/musoraink/lelekemelo">Lélekemelő</p></div>
-        <div class="musor"><p routerLink="/musoraink/kek-hirek">Kék Hírek</p></div>
-        <div class="sok musor">
-          <p routerLink="/musoraink/kommentar-nelkul">Kommentár</p>
-          <div class="tobbmusor">
-            <span routerLink="/musoraink/kommentar-nelkul">Nélkül</span> / <span routerLink="/musoraink/duett">Duett</span>
+      <div class="nap-container">
+        <div class="nap">Hétfő</div>
+        <div *ngFor="let adas of hetfoiAdasok | sort:'sorrend'" class="adas">
+          <div class="ido">
+            <p>{{ adas.aktivEttol | ora }}-</p>
+            <p>{{ adas.aktivEddig | ora }}</p>
+          </div>
+          <div class="musor">
+            <p>{{ adas.adascim }}</p>
           </div>
         </div>
-        <div class="musor"><p routerLink="/musoraink/alfa-es-omega">Alfa és Omega</p></div>
+        <div class="filler adas">
+          <div class="ido"></div>
+          <div class="musor"></div>
+        </div>
       </div>
-      <div class="idosav">
-        <div class="ido"><p>21:00</p></div>
-        <div class="musor"><p routerLink="/musoraink/budai-hirado">Budai Híradó</p></div>
-        <div class="musor"><p routerLink="/musoraink/budai-hirado">Budai Híradó</p></div>
-        <div class="musor"><p routerLink="/musoraink/budai-hirado">Budai Híradó</p></div>
-        <div class="musor"><p routerLink="/musoraink/budai-hirado">Budai Híradó</p></div>
-        <div class="musor"><p routerLink="/musoraink/budai-hirado">Budai Híradó</p></div>
-        <div class="musor"><p routerLink="/musoraink/budai-hirado">Budai Híradó</p></div>
-        <div class="musor"><p routerLink="/musoraink/budai-hirado">Budai Híradó</p></div>
+      <div class="nap-container">
+        <div class="nap">Kedd</div>
+        <div *ngFor="let adas of keddiAdasok | sort:'sorrend'" class="adas">
+          <div class="ido">
+            <p>{{ adas.aktivEttol | ora }}-</p>
+            <p>{{ adas.aktivEddig | ora }}</p>
+          </div>
+          <div class="musor">
+            <p>{{ adas.adascim }}</p>
+          </div>
+        </div>
+        <div class="filler adas">
+          <div class="ido"></div>
+          <div class="musor"></div>
+        </div>
       </div>
-      <div class="idosav">
-        <div class="ido"><p>23:00</p></div>
-        <div class="musor"><p routerLink="/musoraink/budai-hirado">Budai Híradó</p></div>
-        <div class="musor"><p routerLink="/musoraink/budai-hirado">Budai Híradó</p></div>
-        <div class="musor"><p routerLink="/musoraink/budai-hirado">Budai Híradó</p></div>
-        <div class="musor"><p routerLink="/musoraink/budai-hirado">Budai Híradó</p></div>
-        <div class="musor"><p routerLink="/musoraink/budai-hirado">Budai Híradó</p></div>
-        <div class="musor"><p routerLink="/musoraink/budai-hirado">Budai Híradó</p></div>
-        <div class="musor"><p routerLink="/musoraink/budai-hirado">Budai Híradó</p></div>
+      <div class="nap-container">
+        <div class="nap">Szerda</div>
+        <div *ngFor="let adas of szerdaiAdasok | sort:'sorrend'" class="adas">
+          <div class="ido">
+            <p>{{ adas.aktivEttol | ora }}-</p>
+            <p>{{ adas.aktivEddig | ora }}</p>
+          </div>
+          <div class="musor">
+            <p>{{ adas.adascim }}</p>
+          </div>
+        </div>
+        <div class="filler adas">
+          <div class="ido"></div>
+          <div class="musor"></div>
+        </div>
       </div>
-      <div class="cim">
-        <!-- <h2 class="musoraink-cim">Műsoraink</h2> -->
-        <p class="kereses">A műsoraink között való kereséshez kérjük használja a fenti 'KERESÉS' mezőt.</p>
-        <p>A műsorváltoztatás jogát fenntartjuk!</p>
+      <div class="nap-container">
+        <div class="nap">Csütörtök</div>
+        <div *ngFor="let adas of csutortokiAdasok | sort:'sorrend'" class="adas">
+          <div class="ido">
+            <p>{{ adas.aktivEttol | ora }}-</p>
+            <p>{{ adas.aktivEddig | ora }}</p>
+          </div>
+          <div class="musor">
+            <p>{{ adas.adascim }}</p>
+          </div>
+        </div>
+        <div class="filler adas">
+          <div class="ido"></div>
+          <div class="musor"></div>
+        </div>
+      </div>
+      <div class="nap-container">
+        <div class="nap">Péntek</div>
+        <div *ngFor="let adas of pentekiAdasok | sort:'sorrend'" class="adas">
+          <div class="ido">
+            <p>{{ adas.aktivEttol | ora }}-</p>
+            <p>{{ adas.aktivEddig | ora }}</p>
+          </div>
+          <div class="musor">
+            <p>{{ adas.adascim }}</p>
+          </div>
+        </div>
+        <div class="filler adas">
+          <div class="ido"></div>
+          <div class="musor"></div>
+        </div>
+      </div>
+      <div class="nap-container">
+        <div class="nap">Szombat</div>
+        <div *ngFor="let adas of szombatiAdasok | sort:'sorrend'" class="adas">
+          <div class="ido">
+            <p>{{ adas.aktivEttol | ora }}-</p>
+            <p>{{ adas.aktivEddig | ora }}</p>
+          </div>
+          <div class="musor">
+            <p>{{ adas.adascim }}</p>
+          </div>
+        </div>
+        <div class="filler adas">
+          <div class="ido"></div>
+          <div class="musor"></div>
+        </div>
+      </div>
+      <div class="nap-container">
+        <div class="nap">Vasárnap</div>
+        <div *ngFor="let adas of vasarnapiAdasok | sort:'sorrend'" class="adas">
+          <div class="ido">
+            <p>{{ adas.aktivEttol | ora }}-</p>
+            <p>{{ adas.aktivEddig | ora }}</p>
+          </div>
+          <div class="musor">
+            <p>{{ adas.adascim }}</p>
+          </div>
+        </div>
+        <div class="filler adas">
+          <div class="ido"></div>
+          <div class="musor"></div>
+        </div>
       </div>
     </div>
+
   </section>
 </main>

@@ -14,186 +14,86 @@ section.content {
     margin-top: 180px;
 }
 
-th.musorujsag-cim {
-    color: #1f50ba;
-    font-size: 20px;
-    line-height: 20px;
-    font-weight: 400;
-    font-family: "Arial", "Helvetica", "Helvetica Neue", sans-serif;
-    border: 2px solid #1f50ba;
-    text-transform: uppercase;
-    padding: 10px 30px;
-}
-
-th.nap {
-    color: white;
-    background-color: #1f50ba;
-    font-size: 16px;
-    line-height: 16px;
-    font-weight: 400;
-    font-family: "Arial", "Helvetica", "Helvetica Neue", sans-serif;
-    border: 2px solid #1f50ba;
-    text-transform: uppercase;
-}
-
-td:nth-child(even) {
-    background-color: white;
-}
-
-.cella {
-    color: black;
-    font-size: 16px;
-    border: unset;
-    text-transform: uppercase;
-}
-
-td.ido.cella {
-    height: 100%;
-    text-align: center;
-    vertical-align: middle;
-}
-
-td.ido.cella > p {
-    color: white;
-    font-size: 18px;
-    width: 33%;
-    float: right;
-    background-color: #a7d153;
-}
-
-table td, table th {
-    vertical-align: middle;
-}
-
-/* UJAK */
-
-.fejlec {
+.nap-container {
     display: flex;
-    margin-bottom: 20px;
-}
-
-.idosav {
-    display: flex;
-}
-
-.musorujsag-cim {
-    width: 200px;
-    display: flex;
-    color: #1f50ba;
-    font-size: 20px;
-    line-height: 20px;
-    font-weight: 400;
-    font-family: "Arial", "Helvetica", "Helvetica Neue", sans-serif;
-    border: 2px solid #1f50ba;
-    text-transform: uppercase;
-    padding: 10px 30px;
+    flex-direction: column;
 }
 
 .nap {
-    flex: 1;
+    /* flex: 1; */
     display: flex;
     align-items: center;
+    justify-content: center;
     padding: 10px;
     color: white;
     background-color: #1f50ba;
-    font-size: 18px;
-    line-height: 18px;
-    font-weight: 400;
+    font-size: 9pt;
+    /* line-height: 18px; */
+    font-weight: 700;
     font-family: "Arial", "Helvetica", "Helvetica Neue", sans-serif;
     border: 2px solid #1f50ba;
     text-transform: uppercase;
 }
 
-.musor:nth-of-type(even) {
+.musor {
+    flex: 1;
+    /* width: 75%; */
+    width: 135px;
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    color: black;
+    font-size: 16px;
+    line-height: 16px;
+    text-transform: uppercase;
     background-color: white;
 }
 
-.ido {
-    width: 200px;
-    display: flex;
-    justify-content: flex-end;
-    padding-right: 30px;
+.musor p {
+    color: #000000;
+    font-weight: 400;
+    text-decoration: none;
+    vertical-align: baseline;
+    font-size: 8pt;
+    font-family: "Arial";
+    font-style: normal;
+    text-align: center;
 }
 
-.elso.ido {
-    margin-top: 10px;
+.musorujsag {
+    display: flex;
+}
+
+.adas {
+    display: flex;
+}
+
+.filler.adas {
+    flex: 1;
+}
+
+.ido {
+    /* width: 25%; */
+    width: 45px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    background-color: #a7d153;
 }
 
 .ido p {
     display: flex;
     align-items: center;
     color: white;
-    font-size: 18px;
-    line-height: 18px;
-    padding: 10px 20px;
-    background-color: #a7d153;
+    font-size: 8pt;
+    /* background-color: #a7d153; */
+    font-weight: 700;
+    padding: unset;
+    margin: unset;
 }
 
-.musor {
-    flex: 1;
-    display: flex;
-    padding: 10px;
-    color: black;
-    font-size: 16px;
-    line-height: 16px;
-    text-transform: uppercase;
-}
-
-.musor p, .musor span {
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-}
-
-.sok.musor {
-    display: flex;
-    flex-direction: column;
-}
-
-.sok.musor p {
-    margin-bottom: unset;
-}
-
-.tobbmusor {
-    display: flex;
-}
-
-.cim {
-    display: flex;
-    color: #1f50ba;
-    padding: 30px 0;
-}
-
-.musoraink-cim {
-    width: 200px;
-}
-
-h2 {
-    color: #1f50ba;
-    font-size: 20px;
-    line-height: 20px;
-    font-family: "Arial", "Helvetica", "Helvetica Neue", sans-serif;
-    border: 2px solid #1f50ba;
-    text-transform: uppercase;
-    margin-bottom: unset;
-    text-align: center;
-    padding: 10px 30px;
-}
-
-.cim > p {
-    display: flex;
-    align-items: center;
-    font-size: 16px;
-    font-family: "Arial", "Helvetica", "Helvetica Neue", sans-serif;
-    margin-bottom: unset;
-    padding: 0 10px;
-    color: white;
-    background-color: #1f50ba;
-    min-height: 45px;
-}
-
-.cim > p.kereses {
-    flex: 1;
-    font-size: 16px;
-    font-family: "Arial", "Helvetica", "Helvetica Neue", sans-serif;
+.adascim {
+    width: 80%;
 }

@@ -11,3 +11,8 @@
 .admin-menu {
     margin-top: unset !important;
 }
+
+.adminmenu {
+    margin: unset;
+    padding: 30px;
+}

@@ -32,10 +32,13 @@ export class AdminMusorokModositComponent implements OnInit {
       this.musor = response.musor;
       this.adas = {
         id: 0,
+        sorrend: 0,
         nap: 1,
+        adascim: '',
+        link: '',
         aktivEttol: undefined,
         aktivEddig: undefined,
-        musor: this.musor,
+        // musor: this.musor,
         createdDate: undefined,
         updatedDate: undefined
       };
@@ -117,10 +120,13 @@ export class AdminMusorokModositComponent implements OnInit {
           this.adasok.unshift(response.musorujsag);
           this.adas = {
             id: 0,
+            sorrend: 0,
             nap: 1,
+            adascim: '',
+            link: '',
             aktivEttol: undefined,
             aktivEddig: undefined,
-            musor: this.musor,
+            // musor: this.musor,
             createdDate: undefined,
             updatedDate: undefined
           };

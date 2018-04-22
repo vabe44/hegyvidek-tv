@@ -7,7 +7,7 @@ import { Banner } from '../interfaces/Banner';
   templateUrl: './banner-top.component.html',
   styleUrls: ['./banner-top.component.css']
 })
-export class BannerTopComponent implements OnInit {
+export class BannerTopComponent implements OnInit, AfterViewInit {
 
   // @ViewChildren('slide')
   // slideElements: QueryList<ElementRef>;
@@ -22,6 +22,7 @@ export class BannerTopComponent implements OnInit {
       console.log(this.bannerek);
 
       const slides = document.querySelectorAll('#slides .slide');
+      console.log(slides);
       let currentSlide = 0;
       const slideInterval = setInterval(nextSlide, 5000);
 
@@ -33,20 +34,15 @@ export class BannerTopComponent implements OnInit {
     });
   }
 
-  // ngAfterViewInit() {
-  //   console.log('--- using QueryList.first ---');
-  //   const firstEl = this.slideElements.first;
-  //   console.log(firstEl.nativeElement.innerHTML);
+  ngAfterViewInit() {
+    // const slides = document.querySelectorAll('#slides .slide');
+    // let currentSlide = 0;
+    // const slideInterval = setInterval(nextSlide, 5000);
 
-  //   this.slides = this.slideElements.toArray();
-  //   const slideInterval = setInterval(this.nextSlide(this.renderer), 2000);
-  // }
-  // nextSlide(renderer: Renderer) {
-  //   // this.slides[this.currentSlide].nativeElement = 'slide';
-  //   renderer.setElementClass(this.slides[this.currentSlide].nativeElement, 'slide', true);
-  //   this.currentSlide = (this.currentSlide + 1) % this.slideElements.length;
-  //   renderer.setElementClass(this.slides[this.currentSlide].nativeElement, 'slide', true);
-  //   renderer.setElementClass(this.slides[this.currentSlide].nativeElement, 'showing', true);
-  //   // this.slideElements[this.currentSlide].className = 'slide showing';
-  // }
+    // function nextSlide() {
+    //   slides[currentSlide].className = 'slide';
+    //   currentSlide = (currentSlide + 1) % slides.length;
+    //   slides[currentSlide].className = 'slide showing';
+    // }
+  }
 }

@@ -10,7 +10,6 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 const jwt = require("jsonwebtoken");
 const typeorm_1 = require("typeorm");
-const Musor_1 = require("../entity/Musor");
 const Musorujsag_1 = require("../entity/Musorujsag");
 /**
  * GET /hirek
@@ -77,14 +76,17 @@ exports.postMusorujsag = (req, res, next) => __awaiter(this, void 0, void 0, fun
     });
     const musorujsag = new Musorujsag_1.Musorujsag();
     musorujsag.nap = req.body.nap;
+    musorujsag.sorrend = req.body.sorrend;
+    musorujsag.adascim = req.body.adascim;
+    musorujsag.link = req.body.link;
     musorujsag.aktivEttol = req.body.aktivEttol;
     musorujsag.aktivEddig = req.body.aktivEddig;
-    musorujsag.musor = yield Musor_1.Musor.findOne(req.body.musor.id);
+    // musorujsag.musor = await Musor.findOne(req.body.musor.id);
     yield musorujsag.save();
     // tslint:disable-next-line:no-console
     console.log(req.body);
     if (musorujsag.id) {
-        return res.json({ musorujsag });
+        return res.json({ musorujsag, message: "Az adas sikeresen elmentve." });
     }
     else {
         return res.json({ message: "Hiba tortent az adas letrehozasa kozben. Kerem probalja ujra kesobb." });
@@ -108,6 +110,9 @@ exports.putMusorujsag = (req, res, next) => __awaiter(this, void 0, void 0, func
     });
     const musorujsag = yield Musorujsag_1.Musorujsag.findOne(req.body.id);
     musorujsag.nap = req.body.nap;
+    musorujsag.sorrend = req.body.sorrend;
+    musorujsag.adascim = req.body.adascim;
+    musorujsag.link = req.body.link;
     musorujsag.aktivEttol = req.body.aktivEttol;
     musorujsag.aktivEddig = req.body.aktivEddig;
     yield musorujsag.save();

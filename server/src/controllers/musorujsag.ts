@@ -78,16 +78,19 @@ export let postMusorujsag =  async (req: Request, res: Response, next: NextFunct
 
     const musorujsag = new Musorujsag();
     musorujsag.nap = req.body.nap;
+    musorujsag.sorrend = req.body.sorrend;
+    musorujsag.adascim = req.body.adascim;
+    musorujsag.link = req.body.link;
     musorujsag.aktivEttol = req.body.aktivEttol;
     musorujsag.aktivEddig = req.body.aktivEddig;
-    musorujsag.musor = await Musor.findOne(req.body.musor.id);
+    // musorujsag.musor = await Musor.findOne(req.body.musor.id);
     await musorujsag.save();
 
     // tslint:disable-next-line:no-console
     console.log(req.body);
 
     if (musorujsag.id) {
-        return res.json({ musorujsag });
+        return res.json({ musorujsag, message: "Az adas sikeresen elmentve." });
     } else {
         return res.json({ message: "Hiba tortent az adas letrehozasa kozben. Kerem probalja ujra kesobb." });
     }
@@ -114,6 +117,9 @@ export let putMusorujsag =  async (req: Request, res: Response, next: NextFuncti
 
     const musorujsag = await Musorujsag.findOne(req.body.id);
     musorujsag.nap = req.body.nap;
+    musorujsag.sorrend = req.body.sorrend;
+    musorujsag.adascim = req.body.adascim;
+    musorujsag.link = req.body.link;
     musorujsag.aktivEttol = req.body.aktivEttol;
     musorujsag.aktivEddig = req.body.aktivEddig;
     await musorujsag.save();

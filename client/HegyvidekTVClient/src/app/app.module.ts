@@ -59,6 +59,10 @@ import { BannerTopComponent } from './banner-top/banner-top.component';
 import { BannerFooterComponent } from './banner-footer/banner-footer.component';
 import { AdminBannerekComponent } from './admin-bannerek/admin-bannerek.component';
 import { MusorujsagService } from './services/musorujsag.service';
+import { AdminMusorujsagComponent } from './admin-musorujsag/admin-musorujsag.component';
+import { CallbackPipe } from './pipes/callback.pipe';
+import { OraPipe } from './pipes/ora.pipe';
+import { SortPipe } from './pipes/sort.pipe';
 export function getAuthHttp(http, options: RequestOptions) {
   return new AuthHttp(new AuthConfig({
     tokenName: 'token'
@@ -103,7 +107,11 @@ export function getAuthHttp(http, options: RequestOptions) {
     AdminKapcsolatComponent,
     BannerTopComponent,
     BannerFooterComponent,
-    AdminBannerekComponent
+    AdminBannerekComponent,
+    AdminMusorujsagComponent,
+    CallbackPipe,
+    OraPipe,
+    SortPipe
   ],
   imports: [
     BrowserModule,
@@ -130,6 +138,7 @@ export function getAuthHttp(http, options: RequestOptions) {
       { path: 'admin/epizodok/:id', component: AdminEpizodokModositComponent, canActivate: [AuthGuard] },
       // { path: 'admin/youtube', component: AdminYoutubeAuthComponent, canActivate: [AuthGuard] },
       { path: 'admin/bannerek', component: AdminBannerekComponent, canActivate: [AuthGuard] },
+      { path: 'admin/musorujsag', component: AdminMusorujsagComponent, canActivate: [AuthGuard] },
       { path: 'admin/kapcsolat', component: AdminKapcsolatComponent, canActivate: [AuthGuard] },
       { path: 'admin', component: AdminMusorokComponent, canActivate: [AuthGuard] },
     ])
