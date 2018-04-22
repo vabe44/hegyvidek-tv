@@ -16,7 +16,7 @@ import { SafeResourceUrl, DomSanitizer } from '@angular/platform-browser';
 export class AdminEpizodokUjComponent implements OnInit {
 
   // define the constant url we would be uploading to.
-  URL = 'http://localhost:3000/epizodok/video';
+  URL = environment.apiUrl + '/epizodok/video';
   public uploader: FileUploader = new FileUploader({url: this.URL, itemAlias: 'video'});
   urlUnique: boolean;
   epizod: any = {};
@@ -101,11 +101,9 @@ export class AdminEpizodokUjComponent implements OnInit {
   ujEpizod() {
     this.epizodService.uj(this.epizod)
       .subscribe(response => {
-        console.log(response);
+        alert(response.message);
         if (response.epizod) {
           this.router.navigate(['/admin/epizodok']);
-        } else  {
-          console.log('error');
         }
     });
   }

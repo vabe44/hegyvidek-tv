@@ -24,19 +24,15 @@ export class KapcsolatComponent implements OnInit {
   kuldes() {
     this.kapcsolatService.kuldes(this.uzenet)
       .subscribe(response => {
-        console.log(response);
+        alert(response.message);
         if (response.sent) {
-          alert('Siker! Üzenet elküldve.');
           this.uzenet = {
             nev: '',
             email: '',
             targy: '',
             level: '',
           };
-        } else  {
-          alert(response.message);
         }
       });
   }
-
 }

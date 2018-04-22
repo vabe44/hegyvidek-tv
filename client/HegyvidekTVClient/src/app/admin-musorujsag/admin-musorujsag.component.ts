@@ -93,9 +93,8 @@ export class AdminMusorujsagComponent implements OnInit {
     if (shouldDelete) {
       this.musorujsagService.torles(adas.id)
         .subscribe(response => {
-          console.log(response);
+          alert(response.message);
           if (response.musorujsag) {
-            console.log('siker');
             // tslint:disable-next-line:triple-equals
             if (response.musorujsag.nap == 1) {
               this.hetfoiAdasok.splice(this.hetfoiAdasok.indexOf(adas), 1);
@@ -118,8 +117,6 @@ export class AdminMusorujsagComponent implements OnInit {
             } else if (response.musorujsag.nap == 7) {
               this.vasarnapiAdasok.splice(this.vasarnapiAdasok.indexOf(adas), 1);
             }
-          } else {
-            console.log('error');
           }
         });
     }

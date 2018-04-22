@@ -25,7 +25,7 @@ exports.getHirek = (req, res, next) => __awaiter(this, void 0, void 0, function*
         return res.json({ hirek });
     }
     else {
-        return res.json({ message: "Hiba tortent a hirek lekerdezese kozben. Kerem probalja ujra kesobb." });
+        return res.json({ message: "Hiba történt a hírek lekérdezése közben. Kérem próbálja újra később." });
     }
 });
 /**
@@ -38,7 +38,7 @@ exports.getHirId = (req, res, next) => __awaiter(this, void 0, void 0, function*
         return res.json({ hir });
     }
     else {
-        return res.json({ message: "Hiba tortent a hir lekerdezese kozben. Kerem probalja ujra kesobb." });
+        return res.json({ message: "Hiba történt a hír lekérdezése közben. Kérem próbálja újra később." });
     }
 });
 /**
@@ -64,10 +64,10 @@ exports.postHir = (req, res, next) => __awaiter(this, void 0, void 0, function* 
     // tslint:disable-next-line:no-console
     console.log(req.body);
     if (hir.id) {
-        return res.json({ hir });
+        return res.json({ hir, message: "A hír létrehozása sikeres." });
     }
     else {
-        return res.json({ message: "Hiba tortent a hir letrehozasa kozben. Kerem probalja ujra kesobb." });
+        return res.json({ message: "Hiba történt a hír létrehozása közben. Kérem próbálja újra később." });
     }
 });
 /**
@@ -91,10 +91,10 @@ exports.putHir = (req, res, next) => __awaiter(this, void 0, void 0, function* (
     hir.statusz = req.body.statusz;
     yield hir.save();
     if (hir.id) {
-        return res.json({ hir });
+        return res.json({ hir, message: "A hír módosítása sikeres." });
     }
     else {
-        return res.json({ message: "Hiba tortent a hir modositasa kozben. Kerem probalja ujra kesobb." });
+        return res.json({ message: "Hiba történt a hír módosítása közben. Kérem próbálja újra később." });
     }
 });
 /**
@@ -116,10 +116,10 @@ exports.deleteHir = (req, res, next) => __awaiter(this, void 0, void 0, function
     const hir = yield Hir_1.Hir.findOne(req.params.id);
     yield hir.remove();
     if (!hir.id) {
-        return res.json({ hir });
+        return res.json({ hir, message: "A hír törlése sikeres." });
     }
     else {
-        return res.json({ message: "Hiba tortent a hir torlese kozben. Kerem probalja ujra kesobb." });
+        return res.json({ message: "Hiba történt a hír törlése közben. Kérem próbálja újra később." });
     }
 });
 //# sourceMappingURL=hir.js.map

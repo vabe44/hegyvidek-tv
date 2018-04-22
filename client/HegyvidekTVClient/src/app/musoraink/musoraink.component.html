@@ -10,7 +10,7 @@
 
         <a *ngFor="let musor of musorok" [routerLink]="['/musoraink/', musor.url]" class="musor">
           <div class="kep">
-            <img [src]="musor.kep" alt="{{ musor.cim }}">
+            <img class="image" [src]="musor.kep" alt="{{ musor.cim }}">
           </div>
           <div class="reszletek">
             <h3>{{ musor.cim }}</h3>

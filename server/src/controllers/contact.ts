@@ -50,9 +50,9 @@ export let postContact = async (req: Request, res: Response) => {
     if (err) {
       req.flash("errors", { msg: err.message });
       // tslint:disable-next-line:max-line-length
-      return res.json({ sent: false, message: "Hiba tortent a hir modositasa kozben. Kerem probalja ujra kesobb. " + err.message });
+      return res.json({ sent: false, message: "Hiba történt az üzenet küldése közben. Kérem próbálja újra később. " + err.message });
     }
-    return res.json({ sent: true });
+    return res.json({ sent: true, message: "Az üzenet küldése sikeres." });
   });
 };
 
@@ -68,9 +68,9 @@ export let putGmail =  async (req: Request, res: Response, next: NextFunction) =
   await gmail.save();
 
   if (gmail.id) {
-    return res.json({ gmail });
+    return res.json({ gmail, message: "Az adatok módosítása sikeres." });
   } else {
-    return res.json({ message: "Hiba tortent a hir modositasa kozben. Kerem probalja ujra kesobb." });
+    return res.json({ message: "Hiba történt az adatok módosítása közben. Kérem próbálja újra később." });
   }
 };
 
@@ -85,7 +85,7 @@ export let getGmailCredentials = async (req: Request, res: Response) => {
   if (gmail.id) {
       return res.json({ gmail });
   } else {
-      return res.json({ message: "Hiba tortent a Gmail adatok lekerdezese kozben. Kerem probalja ujra kesobb." });
+      return res.json({ message: "Hiba történt az adatok lekérdezése közben. Kérem próbálja újra később." });
   }
 
 };

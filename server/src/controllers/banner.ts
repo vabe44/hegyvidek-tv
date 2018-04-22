@@ -19,7 +19,7 @@ export let getBannerek =  async (req: Request, res: Response, next: NextFunction
     if (bannerek.length) {
         return res.json({ bannerek });
     } else {
-        return res.json({ message: "Hiba tortent a bannerek lekerdezese kozben. Kerem probalja ujra kesobb." });
+        return res.json({ message: "Hiba történt a bannerek lekérdezése közben. Kérem próbálja újra később." });
     }
 };
 
@@ -33,7 +33,7 @@ export let getBannerId =  async (req: Request, res: Response, next: NextFunction
     if (banner.id) {
         return res.json({ banner });
     } else {
-        return res.json({ message: "Hiba tortent a banner lekerdezese kozben. Kerem probalja ujra kesobb." });
+        return res.json({ message: "Hiba történt a banner lekérdezése közben. Kérem próbálja újra később." });
     }
 };
 
@@ -72,9 +72,9 @@ export let postBanner =  async (req: Request, res: Response, next: NextFunction)
     console.log(req.body);
 
     if (banner.id) {
-        return res.json({ banner });
+        return res.json({ banner, message: "A banner létrehozása sikeres." });
     } else {
-        return res.json({ message: "Hiba tortent a banner letrehozasa kozben. Kerem probalja ujra kesobb." });
+        return res.json({ message: "Hiba történt a banner létrehozása közben. Kérem próbálja újra később." });
     }
 };
 
@@ -110,9 +110,9 @@ export let putBanner =  async (req: Request, res: Response, next: NextFunction) 
     await banner.save();
 
     if (banner.id) {
-        return res.json({ banner });
+        return res.json({ banner, message: "A banner módosítása sikeres." });
     } else {
-        return res.json({ message: "Hiba tortent a banner modositasa kozben. Kerem probalja ujra kesobb." });
+        return res.json({ message: "Hiba történt a banner módosítása közben. Kérem próbálja újra később." });
     }
 };
 
@@ -139,9 +139,9 @@ export let deleteBanner =  async (req: Request, res: Response, next: NextFunctio
     await banner.remove();
 
     if (!banner.id) {
-        return res.json({ banner });
+        return res.json({ banner, message: "A banner törlése sikeres." });
     } else {
-        return res.json({ message: "Hiba tortent a banner torlese kozben. Kerem probalja ujra kesobb." });
+        return res.json({ message: "Hiba történt a banner törlése közben. Kérem próbálja újra később." });
     }
 };
 

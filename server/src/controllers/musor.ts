@@ -15,7 +15,7 @@ export let getMusor =  async (req: Request, res: Response, next: NextFunction) =
     if (musorok.length) {
         return res.json({ musorok });
     } else {
-        return res.json({ message: "Hiba tortent a musorok lekerdezese kozben. Kerem probalja ujra kesobb." });
+        return res.json({ message: "Hiba történt a műsorok lekérdezése közben. Kérem próbálja újra később." });
     }
 };
 
@@ -29,7 +29,7 @@ export let getAktivMusor =  async (req: Request, res: Response, next: NextFuncti
     if (musorok.length) {
         return res.json({ musorok });
     } else {
-        return res.json({ message: "Hiba tortent a musorok lekerdezese kozben. Kerem probalja ujra kesobb." });
+        return res.json({ message: "Hiba történt a műsorok lekérdezése közben. Kérem próbálja újra később." });
     }
 };
 
@@ -43,7 +43,7 @@ export let getHirek =  async (req: Request, res: Response, next: NextFunction) =
     if (musorok.length) {
         return res.json({ musorok });
     } else {
-        return res.json({ message: "Hiba tortent a musorok lekerdezese kozben. Kerem probalja ujra kesobb." });
+        return res.json({ message: "Hiba történt a műsorok lekérdezése közben. Kérem próbálja újra később." });
     }
 };
 
@@ -57,7 +57,7 @@ export let getMusorId =  async (req: Request, res: Response, next: NextFunction)
     if (musor.id) {
         return res.json({ musor });
     } else {
-        return res.json({ message: "Hiba tortent a musor lekerdezese kozben. Kerem probalja ujra kesobb." });
+        return res.json({ message: "Hiba történt a műsor lekérdezése közben. Kérem próbálja újra később." });
     }
 };
 
@@ -78,7 +78,7 @@ export let getMusorUrl =  async (req: Request, res: Response, next: NextFunction
     if (musor.id) {
         return res.json({ musor });
     } else {
-        return res.json({ message: "Hiba tortent a musor lekerdezese kozben. Kerem probalja ujra kesobb." });
+        return res.json({ message: "Hiba történt a műsor lekérdezése közben. Kérem próbálja újra később." });
     }
 };
 
@@ -110,9 +110,9 @@ export let postMusor =  async (req: Request, res: Response, next: NextFunction) 
     await musor.save();
 
     if (musor.id) {
-        return res.json({ musor });
+        return res.json({ musor, message: "A műsor létrehozása sikeres." });
     } else {
-        return res.json({ message: "Hiba tortent a musor letrehozasa kozben. Kerem probalja ujra kesobb." });
+        return res.json({ message: "Hiba történt a műsor létrehozása közben. Kérem próbálja újra később." });
     }
 };
 
@@ -144,9 +144,9 @@ export let putMusor =  async (req: Request, res: Response, next: NextFunction) =
     await musor.save();
 
     if (musor.id) {
-        return res.json({ musor });
+        return res.json({ musor, message: "A műsor módosítása sikeres." });
     } else {
-        return res.json({ message: "Hiba tortent a musor modositasa kozben. Kerem probalja ujra kesobb." });
+        return res.json({ message: "Hiba törtent a műsor módosítása közben. Kérem próbalja újra később." });
     }
 };
 
@@ -173,9 +173,9 @@ export let deleteMusor =  async (req: Request, res: Response, next: NextFunction
     await musor.remove();
 
     if (!musor.id) {
-        return res.json({ musor });
+        return res.json({ musor, message: "A műsor törlése sikeres." });
     } else {
-        return res.json({ message: "Hiba tortent a musor torlese kozben. Kerem probalja ujra kesobb." });
+        return res.json({ message: "Hiba történt a műsor törlése közben. Kérem próbálja újra később." });
     }
 };
 

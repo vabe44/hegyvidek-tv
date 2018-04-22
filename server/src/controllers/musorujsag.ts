@@ -19,7 +19,7 @@ export let getMusorujsag =  async (req: Request, res: Response, next: NextFuncti
     if (musorujsag.length) {
         return res.json({ musorujsag });
     } else {
-        return res.json({ message: "Hiba tortent a musorujsag lekerdezese kozben. Kerem probalja ujra kesobb." });
+        return res.json({ message: "Hiba történt a műsorújság lekérdezése közben. Kérem próbálja újra később." });
     }
 };
 
@@ -33,7 +33,7 @@ export let getMusorujsagId =  async (req: Request, res: Response, next: NextFunc
     if (musorujsag.id) {
         return res.json({ musorujsag });
     } else {
-        return res.json({ message: "Hiba tortent a musorujsag lekerdezese kozben. Kerem probalja ujra kesobb." });
+        return res.json({ message: "Hiba történt az adás lekérdezése közben. Kérem próbálja újra később." });
     }
 };
 
@@ -53,7 +53,7 @@ export let getMusorAdasok =  async (req: Request, res: Response, next: NextFunct
     if (adasok.length) {
         return res.json({ adasok });
     } else {
-        return res.json({ message: "Hiba tortent az adasok lekerdezese kozben. Kerem probalja ujra kesobb." });
+        return res.json({ message: "Hiba történt az adások lekérdezése közben. Kérem próbálja újra később." });
     }
 };
 
@@ -90,9 +90,9 @@ export let postMusorujsag =  async (req: Request, res: Response, next: NextFunct
     console.log(req.body);
 
     if (musorujsag.id) {
-        return res.json({ musorujsag, message: "Az adas sikeresen elmentve." });
+        return res.json({ musorujsag, message: "Az adás létrehozása sikeres." });
     } else {
-        return res.json({ message: "Hiba tortent az adas letrehozasa kozben. Kerem probalja ujra kesobb." });
+        return res.json({ message: "Hiba törtent az adás létrehozása közben. Kérem próbálja újra később." });
     }
 };
 
@@ -125,9 +125,9 @@ export let putMusorujsag =  async (req: Request, res: Response, next: NextFuncti
     await musorujsag.save();
 
     if (musorujsag.id) {
-        return res.json({ musorujsag, message: "Az adas modositasai sikeresen elmentve." });
+        return res.json({ musorujsag, message: "Az adás módosítása sikeres." });
     } else {
-        return res.json({ message: "Hiba tortent az adas modositasa kozben. Kerem probalja ujra kesobb." });
+        return res.json({ message: "Hiba törtent az adás módosítása közben. Kérem próbálja újra később." });
     }
 };
 
@@ -154,8 +154,8 @@ export let deleteMusorujsag =  async (req: Request, res: Response, next: NextFun
     await musorujsag.remove();
 
     if (!musorujsag.id) {
-        return res.json({ musorujsag });
+        return res.json({ musorujsag, message: "Az adás törlése sikeres." });
     } else {
-        return res.json({ message: "Hiba tortent a adas torlese kozben. Kerem probalja ujra kesobb." });
+        return res.json({ message: "Hiba történt az adás törlése közben. Kérem próbálja újra később." });
     }
 };

@@ -10,7 +10,7 @@ class Contact {
   private init() {
     this.router.get("/", contactController.getContact);
     this.router.post("/", contactController.postContact);
-    this.router.put("/", contactController.putGmail);
+    this.router.put("/gmail", contactController.putGmail);
     this.router.get("/gmail", contactController.getGmailCredentials);
   }
 }

@@ -26,7 +26,7 @@ exports.getEpizod = (req, res, next) => __awaiter(this, void 0, void 0, function
         return res.json({ epizodok });
     }
     else {
-        return res.json({ message: "Hiba tortent a epizodok lekerdezese kozben. Kerem probalja ujra kesobb." });
+        return res.json({ message: "Hiba történt az epizódok lekérdezése közben. Kérem próbálja újra később." });
     }
 });
 /**
@@ -44,7 +44,7 @@ exports.getEpizodKereses = (req, res, next) => __awaiter(this, void 0, void 0, f
         return res.json({ epizodok });
     }
     else {
-        return res.json({ message: "Hiba tortent a epizodok lekerdezese kozben. Kerem probalja ujra kesobb." });
+        return res.json({ message: "Hiba történt az epizódok lekérdezése közben. Kérem próbálja újra később." });
     }
 });
 /**
@@ -57,7 +57,7 @@ exports.getEpizodId = (req, res, next) => __awaiter(this, void 0, void 0, functi
         return res.json({ epizod });
     }
     else {
-        return res.json({ message: "Hiba tortent a epizod lekerdezese kozben. Kerem probalja ujra kesobb." });
+        return res.json({ message: "Hiba történt az epizód lekérdezése közben. Kérem próbálja újra később." });
     }
 });
 /**
@@ -90,10 +90,10 @@ exports.postEpizod = (req, res, next) => __awaiter(this, void 0, void 0, functio
     epizod.musor = req.body.musor;
     yield epizod.save();
     if (epizod.id) {
-        return res.json({ epizod });
+        return res.json({ epizod, message: "Az epizód létrehozása sikeres." });
     }
     else {
-        return res.json({ message: "Hiba tortent a epizod letrehozasa kozben. Kerem probalja ujra kesobb." });
+        return res.json({ message: "Hiba törtent az epizód létrehozása közben. Kérem próbálja újra később." });
     }
 });
 /**
@@ -126,10 +126,10 @@ exports.putEpizod = (req, res, next) => __awaiter(this, void 0, void 0, function
     epizod.musor = yield Musor_1.Musor.findOne(req.body.musor);
     yield epizod.save();
     if (epizod.id) {
-        return res.json({ epizod });
+        return res.json({ epizod, message: "Az epizód módosítása sikeres." });
     }
     else {
-        return res.json({ message: "Hiba tortent a epizod modositasa kozben. Kerem probalja ujra kesobb." });
+        return res.json({ message: "Hiba törtent az epizód módosítása közben. Kérem próbálja újra később." });
     }
 });
 /**
@@ -151,10 +151,10 @@ exports.deleteEpizod = (req, res, next) => __awaiter(this, void 0, void 0, funct
     const epizod = yield Epizod_1.Epizod.findOne(req.params.id);
     yield epizod.remove();
     if (!epizod.id) {
-        return res.json({ epizod });
+        return res.json({ epizod, message: "Az epizód törlése sikeres." });
     }
     else {
-        return res.json({ message: "Hiba tortent a epizod torlese kozben. Kerem probalja ujra kesobb." });
+        return res.json({ message: "Hiba történt az epizód törlése közben. Kérem próbálja újra később." });
     }
 });
 /**

@@ -69,6 +69,18 @@ h2 {
     min-width: 360px;
     min-height: 200px;
     background-color: black;
+    max-width: 360px;
+    max-height: 220px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.kep .image {
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+    width: 100%;
 }
 
 .reszletek {

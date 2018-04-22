@@ -95,3 +95,7 @@ h2 {
     padding: 10px;
     line-height: 20px;
 }
+
+.field.is-horizontal.szures {
+    justify-content: flex-end;
+}

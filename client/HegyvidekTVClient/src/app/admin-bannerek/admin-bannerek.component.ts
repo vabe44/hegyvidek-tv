@@ -51,7 +51,7 @@ export class AdminBannerekComponent implements OnInit {
   letrehozBanner() {
     this.bannerService.uj(this.banner)
       .subscribe(response => {
-        console.log(response);
+        alert(response.message);
         if (response.banner) {
           this.banner = {
             id: 0,
@@ -71,7 +71,6 @@ export class AdminBannerekComponent implements OnInit {
         if (this.banner.id === 0) {
           this.bannerek.unshift(response.banner);
         }
-        alert(response.message);
       });
   }
 
@@ -79,12 +78,27 @@ export class AdminBannerekComponent implements OnInit {
     this.banner = banner;
   }
 
+  frissitBanner() {
+    this.bannerService.modosit(this.banner)
+    .subscribe(response => {
+      alert(response.message);
+    });
+  }
+
+  letrehozOrFrissitBanner() {
+    if (this.banner.id === 0) {
+      this.letrehozBanner();
+    } else {
+      this.frissitBanner();
+    }
+  }
+
   torlesBanner(banner) {
     const shouldDelete = confirm('Biztos benne, hogy törölni akarja a bannert?');
     if (shouldDelete) {
       this.bannerService.torles(banner.id)
         .subscribe(response => {
-          console.log(response);
+          alert(response.message);
           if (response.banner) {
             this.bannerek.splice(this.bannerek.indexOf(banner), 1);
             this.banner = {
@@ -102,7 +116,6 @@ export class AdminBannerekComponent implements OnInit {
               updatedDate: undefined
             };
           }
-          alert(response.message);
         });
     }
   }

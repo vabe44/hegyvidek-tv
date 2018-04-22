@@ -28,12 +28,10 @@ export class AdminHirekComponent implements OnInit {
   letrehozHir(hir) {
     this.hirService.uj(hir)
       .subscribe(response => {
-        console.log(response);
+        alert(response.message);
         if (response.hir) {
           this.hirek.unshift(response.hir);
           this.ujHir.szoveg = '';
-        } else  {
-          alert(response.message);
         }
       });
   }
@@ -41,12 +39,7 @@ export class AdminHirekComponent implements OnInit {
   modositHir(hir) {
     this.hirService.modosit(hir)
       .subscribe(response => {
-        console.log(response);
-        if (response.hir) {
-          console.log('siker');
-        } else  {
-          console.log('error');
-        }
+        alert(response.message);
       });
   }
 
@@ -55,12 +48,9 @@ export class AdminHirekComponent implements OnInit {
     if (shouldDelete) {
       this.hirService.torles(hir.id)
         .subscribe(response => {
-          console.log(response);
+          alert(response.message);
           if (response.hir) {
-            console.log('siker');
             this.hirek.splice(this.hirek.indexOf(hir), 1);
-          } else  {
-            console.log('error');
           }
         });
     }

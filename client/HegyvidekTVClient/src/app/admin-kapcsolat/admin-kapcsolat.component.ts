@@ -20,24 +20,16 @@ export class AdminKapcsolatComponent implements OnInit {
   frissites() {
     this.kapcsolatService.frissites(this.gmail)
       .subscribe(response => {
-        console.log(response);
-        if (response.gmail) {
-          console.log('siker');
-        } else  {
-          console.log('error');
-        }
+        alert(response.message);
       });
   }
 
   torles() {
     this.kapcsolatService.torles()
     .subscribe(response => {
-      console.log(response);
+      alert(response.message);
       if (response.gmail) {
         this.gmail = response.gmail;
-        console.log('siker');
-      } else  {
-        console.log('error');
       }
     });
   }

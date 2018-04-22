@@ -26,7 +26,7 @@ exports.getBannerek = (req, res, next) => __awaiter(this, void 0, void 0, functi
         return res.json({ bannerek });
     }
     else {
-        return res.json({ message: "Hiba tortent a bannerek lekerdezese kozben. Kerem probalja ujra kesobb." });
+        return res.json({ message: "Hiba történt a bannerek lekérdezése közben. Kérem próbálja újra később." });
     }
 });
 /**
@@ -39,7 +39,7 @@ exports.getBannerId = (req, res, next) => __awaiter(this, void 0, void 0, functi
         return res.json({ banner });
     }
     else {
-        return res.json({ message: "Hiba tortent a banner lekerdezese kozben. Kerem probalja ujra kesobb." });
+        return res.json({ message: "Hiba történt a banner lekérdezése közben. Kérem próbálja újra később." });
     }
 });
 /**
@@ -72,10 +72,10 @@ exports.postBanner = (req, res, next) => __awaiter(this, void 0, void 0, functio
     // tslint:disable-next-line:no-console
     console.log(req.body);
     if (banner.id) {
-        return res.json({ banner });
+        return res.json({ banner, message: "A banner létrehozása sikeres." });
     }
     else {
-        return res.json({ message: "Hiba tortent a banner letrehozasa kozben. Kerem probalja ujra kesobb." });
+        return res.json({ message: "Hiba történt a banner létrehozása közben. Kérem próbálja újra később." });
     }
 });
 /**
@@ -106,10 +106,10 @@ exports.putBanner = (req, res, next) => __awaiter(this, void 0, void 0, function
     banner.pozicio = req.body.pozicio;
     yield banner.save();
     if (banner.id) {
-        return res.json({ banner });
+        return res.json({ banner, message: "A banner módosítása sikeres." });
     }
     else {
-        return res.json({ message: "Hiba tortent a banner modositasa kozben. Kerem probalja ujra kesobb." });
+        return res.json({ message: "Hiba történt a banner módosítása közben. Kérem próbálja újra később." });
     }
 });
 /**
@@ -131,10 +131,10 @@ exports.deleteBanner = (req, res, next) => __awaiter(this, void 0, void 0, funct
     const banner = yield Banner_1.Banner.findOne(req.params.id);
     yield banner.remove();
     if (!banner.id) {
-        return res.json({ banner });
+        return res.json({ banner, message: "A banner törlése sikeres." });
     }
     else {
-        return res.json({ message: "Hiba tortent a banner torlese kozben. Kerem probalja ujra kesobb." });
+        return res.json({ message: "Hiba történt a banner törlése közben. Kérem próbálja újra később." });
     }
 });
 /**

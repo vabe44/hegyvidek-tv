@@ -22,7 +22,7 @@ exports.getMusor = (req, res, next) => __awaiter(this, void 0, void 0, function*
         return res.json({ musorok });
     }
     else {
-        return res.json({ message: "Hiba tortent a musorok lekerdezese kozben. Kerem probalja ujra kesobb." });
+        return res.json({ message: "Hiba történt a műsorok lekérdezése közben. Kérem próbálja újra később." });
     }
 });
 /**
@@ -35,7 +35,7 @@ exports.getAktivMusor = (req, res, next) => __awaiter(this, void 0, void 0, func
         return res.json({ musorok });
     }
     else {
-        return res.json({ message: "Hiba tortent a musorok lekerdezese kozben. Kerem probalja ujra kesobb." });
+        return res.json({ message: "Hiba történt a műsorok lekérdezése közben. Kérem próbálja újra később." });
     }
 });
 /**
@@ -48,7 +48,7 @@ exports.getHirek = (req, res, next) => __awaiter(this, void 0, void 0, function*
         return res.json({ musorok });
     }
     else {
-        return res.json({ message: "Hiba tortent a musorok lekerdezese kozben. Kerem probalja ujra kesobb." });
+        return res.json({ message: "Hiba történt a műsorok lekérdezése közben. Kérem próbálja újra később." });
     }
 });
 /**
@@ -61,7 +61,7 @@ exports.getMusorId = (req, res, next) => __awaiter(this, void 0, void 0, functio
         return res.json({ musor });
     }
     else {
-        return res.json({ message: "Hiba tortent a musor lekerdezese kozben. Kerem probalja ujra kesobb." });
+        return res.json({ message: "Hiba történt a műsor lekérdezése közben. Kérem próbálja újra később." });
     }
 });
 /**
@@ -80,7 +80,7 @@ exports.getMusorUrl = (req, res, next) => __awaiter(this, void 0, void 0, functi
         return res.json({ musor });
     }
     else {
-        return res.json({ message: "Hiba tortent a musor lekerdezese kozben. Kerem probalja ujra kesobb." });
+        return res.json({ message: "Hiba történt a műsor lekérdezése közben. Kérem próbálja újra később." });
     }
 });
 /**
@@ -107,10 +107,10 @@ exports.postMusor = (req, res, next) => __awaiter(this, void 0, void 0, function
     musor.leiras = req.body.leiras;
     yield musor.save();
     if (musor.id) {
-        return res.json({ musor });
+        return res.json({ musor, message: "A műsor létrehozása sikeres." });
     }
     else {
-        return res.json({ message: "Hiba tortent a musor letrehozasa kozben. Kerem probalja ujra kesobb." });
+        return res.json({ message: "Hiba történt a műsor létrehozása közben. Kérem próbálja újra később." });
     }
 });
 /**
@@ -137,10 +137,10 @@ exports.putMusor = (req, res, next) => __awaiter(this, void 0, void 0, function*
     musor.leiras = req.body.leiras;
     yield musor.save();
     if (musor.id) {
-        return res.json({ musor });
+        return res.json({ musor, message: "A műsor módosítása sikeres." });
     }
     else {
-        return res.json({ message: "Hiba tortent a musor modositasa kozben. Kerem probalja ujra kesobb." });
+        return res.json({ message: "Hiba törtent a műsor módosítása közben. Kérem próbalja újra később." });
     }
 });
 /**
@@ -162,10 +162,10 @@ exports.deleteMusor = (req, res, next) => __awaiter(this, void 0, void 0, functi
     const musor = yield Musor_1.Musor.findOne(req.params.id);
     yield musor.remove();
     if (!musor.id) {
-        return res.json({ musor });
+        return res.json({ musor, message: "A műsor törlése sikeres." });
     }
     else {
-        return res.json({ message: "Hiba tortent a musor torlese kozben. Kerem probalja ujra kesobb." });
+        return res.json({ message: "Hiba történt a műsor törlése közben. Kérem próbálja újra később." });
     }
 });
 /**

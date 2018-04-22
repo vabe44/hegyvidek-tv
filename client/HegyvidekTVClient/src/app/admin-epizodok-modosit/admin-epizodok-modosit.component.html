@@ -48,7 +48,7 @@
               </select>
             </div>
           </div>
-          <div class="control">
+          <!-- <div class="control">
             <label class="label">YouTube videó</label>
             <div class="select">
               <select id="youtubeVideo" name="youtubeVideo" [(ngModel)]="youtubeVideo">
@@ -56,10 +56,10 @@
                 <option value="feltoltes">Feltöltés</option>
               </select>
             </div>
-          </div>
+          </div> -->
           <div class="control">
             <div *ngIf="youtubeVideo === 'link'" class="field">
-              <label class="label">Azonosító</label>
+              <label class="label">YouTube Videó Azonosító</label>
               <input id="yt" name="yt" [(ngModel)]="epizod.youtube" (change)="updateYoutubeVideoEmbedUrl(epizod.youtube)" class="input"
                 type="text" placeholder="YouTube azonosító">
             </div>

@@ -25,7 +25,7 @@ export let getEpizod =  async (req: Request, res: Response, next: NextFunction) 
     if (epizodok.length) {
         return res.json({ epizodok });
     } else {
-        return res.json({ message: "Hiba tortent a epizodok lekerdezese kozben. Kerem probalja ujra kesobb." });
+        return res.json({ message: "Hiba történt az epizódok lekérdezése közben. Kérem próbálja újra később." });
     }
 };
 
@@ -46,7 +46,7 @@ export let getEpizodKereses =  async (req: Request, res: Response, next: NextFun
     if (epizodok.length) {
         return res.json({ epizodok });
     } else {
-        return res.json({ message: "Hiba tortent a epizodok lekerdezese kozben. Kerem probalja ujra kesobb." });
+        return res.json({ message: "Hiba történt az epizódok lekérdezése közben. Kérem próbálja újra később." });
     }
 };
 
@@ -60,7 +60,7 @@ export let getEpizodId =  async (req: Request, res: Response, next: NextFunction
     if (epizod.id) {
         return res.json({ epizod });
     } else {
-        return res.json({ message: "Hiba tortent a epizod lekerdezese kozben. Kerem probalja ujra kesobb." });
+        return res.json({ message: "Hiba történt az epizód lekérdezése közben. Kérem próbálja újra később." });
     }
 };
 
@@ -98,9 +98,9 @@ export let postEpizod =  async (req: Request, res: Response, next: NextFunction)
     await epizod.save();
 
     if (epizod.id) {
-        return res.json({ epizod });
+        return res.json({ epizod, message: "Az epizód létrehozása sikeres." });
     } else {
-        return res.json({ message: "Hiba tortent a epizod letrehozasa kozben. Kerem probalja ujra kesobb." });
+        return res.json({ message: "Hiba törtent az epizód létrehozása közben. Kérem próbálja újra később." });
     }
 };
 
@@ -138,9 +138,9 @@ export let putEpizod =  async (req: Request, res: Response, next: NextFunction) 
     await epizod.save();
 
     if (epizod.id) {
-        return res.json({ epizod });
+        return res.json({ epizod, message: "Az epizód módosítása sikeres." });
     } else {
-        return res.json({ message: "Hiba tortent a epizod modositasa kozben. Kerem probalja ujra kesobb." });
+        return res.json({ message: "Hiba törtent az epizód módosítása közben. Kérem próbálja újra később." });
     }
 };
 
@@ -167,9 +167,9 @@ export let deleteEpizod =  async (req: Request, res: Response, next: NextFunctio
     await epizod.remove();
 
     if (!epizod.id) {
-        return res.json({ epizod });
+        return res.json({ epizod, message: "Az epizód törlése sikeres." });
     } else {
-        return res.json({ message: "Hiba tortent a epizod torlese kozben. Kerem probalja ujra kesobb." });
+        return res.json({ message: "Hiba történt az epizód törlése közben. Kérem próbálja újra később." });
     }
 };
 

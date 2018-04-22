@@ -18,7 +18,7 @@ export let getHirek =  async (req: Request, res: Response, next: NextFunction) =
     if (hirek.length) {
         return res.json({ hirek });
     } else {
-        return res.json({ message: "Hiba tortent a hirek lekerdezese kozben. Kerem probalja ujra kesobb." });
+        return res.json({ message: "Hiba történt a hírek lekérdezése közben. Kérem próbálja újra később." });
     }
 };
 
@@ -32,7 +32,7 @@ export let getHirId =  async (req: Request, res: Response, next: NextFunction) =
     if (hir.id) {
         return res.json({ hir });
     } else {
-        return res.json({ message: "Hiba tortent a hir lekerdezese kozben. Kerem probalja ujra kesobb." });
+        return res.json({ message: "Hiba történt a hír lekérdezése közben. Kérem próbálja újra később." });
     }
 };
 
@@ -64,9 +64,9 @@ export let postHir =  async (req: Request, res: Response, next: NextFunction) =>
     console.log(req.body);
 
     if (hir.id) {
-        return res.json({ hir });
+        return res.json({ hir, message: "A hír létrehozása sikeres." });
     } else {
-        return res.json({ message: "Hiba tortent a hir letrehozasa kozben. Kerem probalja ujra kesobb." });
+        return res.json({ message: "Hiba történt a hír létrehozása közben. Kérem próbálja újra később." });
     }
 };
 
@@ -95,9 +95,9 @@ export let putHir =  async (req: Request, res: Response, next: NextFunction) => 
     await hir.save();
 
     if (hir.id) {
-        return res.json({ hir });
+        return res.json({ hir, message: "A hír módosítása sikeres." });
     } else {
-        return res.json({ message: "Hiba tortent a hir modositasa kozben. Kerem probalja ujra kesobb." });
+        return res.json({ message: "Hiba történt a hír módosítása közben. Kérem próbálja újra később." });
     }
 };
 
@@ -124,8 +124,8 @@ export let deleteHir =  async (req: Request, res: Response, next: NextFunction) 
     await hir.remove();
 
     if (!hir.id) {
-        return res.json({ hir });
+        return res.json({ hir, message: "A hír törlése sikeres." });
     } else {
-        return res.json({ message: "Hiba tortent a hir torlese kozben. Kerem probalja ujra kesobb." });
+        return res.json({ message: "Hiba történt a hír törlése közben. Kérem próbálja újra később." });
     }
 };

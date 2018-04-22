@@ -41,22 +41,14 @@ export class EloAdasComponent implements OnInit {
     private zone: NgZone, private renderer: Renderer2) {
     this.zone.runOutsideAngular(() => {
       setInterval(() => {
-        this.now = new Date();
-        const ora = this.now.getHours();
-        const perc = this.now.getMinutes();
-
         this.adas = this.musorujsag.find(function(element) {
-          const now2 = new Date();
-          const month = now2.getMonth() + 1;
+          const now = new Date();
+          const month = now.getMonth() + 1;
           const month2 = month < 10 ? '0' + month : '' + month; // ('' + month) for string result
-          const ettol = new Date(`${now2.getFullYear()}-${month2}-${now2.getDate()}T${element.aktivEttol}`);
-          // console.log(`${now2.getFullYear()}-${month2}-${now2.getDate()}T${element.aktivEttol}`);
-          // console.log('ettol', ettol);
-          const eddig = new Date(`${now2.getFullYear()}-${month2}-${now2.getDate()}T${element.aktivEddig}`);
+          const ettol = new Date(`${now.getFullYear()}-${month2}-${now.getDate()}T${element.aktivEttol}`);
+          const eddig = new Date(`${now.getFullYear()}-${month2}-${now.getDate()}T${element.aktivEddig}`);
           return ettol <= new Date() && eddig >= new Date();
         });
-        // console.log(this.adas);
-        // console.log(this.musorujsag[0], this.musorujsag[0].aktivEttol > new Date());
 
         this.renderer.setProperty(this.musorCim.nativeElement, 'textContent', this.adas.adascim);
         // this.renderer.setProperty(this.musorLeiras.nativeElement, 'textContent', this.musor.leiras);

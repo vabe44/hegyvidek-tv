@@ -11,7 +11,9 @@
       <div class="musorok">
         <a *ngFor="let musor of musorok" [routerLink]="['/admin/musorok', musor.id]" class="musor">
           <div class="kep">
-            <img [src]="musor.kep" alt="{{ musor.cim }}">
+            <!-- <figure class="image"> -->
+              <img class="image" [src]="musor.kep" alt="{{ musor.cim }}">
+            <!-- </figure> -->
           </div>
           <div class="reszletek">
             <h3>{{ musor.cim }}</h3>

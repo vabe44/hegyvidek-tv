@@ -9,27 +9,36 @@
         <div class="field is-grouped">
           <p class="control is-expanded">
             <label class="label">Epizód címe</label>
-            <input id="cim" name="cim" [(ngModel)]="epizod.cim" (keyup)="toUrlFormat(epizod.cim)" (change)="toUrlFormat(epizod.cim)" class="input" type="text" placeholder="Epizód címe">
+            <input id="cim" name="cim" [(ngModel)]="epizod.cim" (keyup)="toUrlFormat(epizod.cim)" (change)="toUrlFormat(epizod.cim)"
+              class="input" type="text" placeholder="Epizód címe">
           </p>
           <div class="control is-expanded">
             <label class="label">Beszédes URL</label>
-            <input type="text" id="url" name="url" [(ngModel)]="epizod.url" class="input" [class.is-success]="urlUnique" [class.is-danger]="!urlUnique" placeholder="Beszédes URL" required>
+            <input type="text" id="url" name="url" [(ngModel)]="epizod.url" class="input" [class.is-success]="urlUnique" [class.is-danger]="!urlUnique"
+              placeholder="Beszédes URL" required>
             <p *ngIf="!urlUnique" class="help is-danger">Ez az URL már létezik</p>
           </div>
+        </div>
+        <div class="field is-grouped">
           <div class="control">
             <label class="label">Műsor</label>
             <div class="select">
-              <select id="musor" [(ngModel)]="epizod.musor.id" name="musor">
-                <option *ngFor="let musor of musorok" [value]="musor.id">{{ musor.cim }}</option>
+              <select id="musor" *ngIf="epizod.musor" [(ngModel)]="epizod.musor.id" name="musor">
+                <option *ngFor="let musor of musorok" [attr.selected]="epizod.musor.id == musor.id ? true : false" [value]="musor.id">{{ musor.cim }}</option>
               </select>
             </div>
+          </div>
+          <div class="control is-expanded">
+            <label class="label">Dátum</label>
+            <input id="datum" [ngModel]="epizod.datum | date:'yyyy-MM-dd'" (ngModelChange)="epizod.datum = $event" class="input" type="date"
+              name="datum">
           </div>
           <div class="control">
             <label class="label">Státusz</label>
             <div class="select">
               <select id="statusz" [(ngModel)]="epizod.statusz" name="statusz">
-                <option value="aktív" [attr.selected]="epizod.statusz === 'aktív' ? true : false">Aktív</option>
-                <option value="inaktív" [attr.selected]="epizod.statusz === 'inaktív' ? true : false">Inaktív</option>
+                <option value="aktív" [attr.selected]="epizod.statusz == 'aktív' ? true : false">Aktív</option>
+                <option value="inaktív" [attr.selected]="epizod.statusz == 'inaktív' ? true : false">Inaktív</option>
               </select>
             </div>
           </div>
@@ -37,28 +46,25 @@
             <label class="label">Kiemelt</label>
             <div class="select">
               <select id="kiemelt" [(ngModel)]="epizod.kiemelt" name="kiemelt">
-                <option value="true" [attr.selected]="epizod.kiemelt ? true : false">Igen</option>
-                <option value="false" [attr.selected]="!epizod.kiemelt ? false : true">Nem</option>
+                <option value="true" [attr.selected]="epizod.kiemelt == 1 ? true : false">Igen</option>
+                <option value="false" [attr.selected]="epizod.kiemelt == 0 ? false : true">Nem</option>
               </select>
             </div>
           </div>
-        </div>
-        <div class="field is-grouped">
-          <div class="control is-expanded">
-            <label class="label">Epizód leírása</label>
-            <textarea class="textarea" [(ngModel)]="epizod.leiras" id="leiras" name="leiras" placeholder="Epizód leírása"></textarea>
-          </div>
+          <!-- <div class="control">
+                      <label class="label">YouTube videó</label>
+                      <div class="select">
+                        <select id="youtubeVideo" name="youtubeVideo" [(ngModel)]="youtubeVideo">
+                          <option value="link">Linkelés</option>
+                          <option value="feltoltes">Feltöltés</option>
+                        </select>
+                      </div>
+                    </div> -->
           <div class="control">
-            <label class="label">YouTube videó</label>
-            <div class="select">
-              <select id="youtubeVideo" name="youtubeVideo" [(ngModel)]="youtubeVideo">
-                <option value="link">Linkelés</option>
-                <option value="feltoltes">Feltöltés</option>
-              </select>
-            </div>
             <div *ngIf="youtubeVideo === 'link'" class="field">
-              <label class="label">Azonosító</label>
-              <input id="yt" name="yt" [(ngModel)]="epizod.youtube" (change)="updateYoutubeVideoEmbedUrl(epizod.youtube)" class="input" type="text" placeholder="YouTube azonosító">
+              <label class="label">YouTube Videó Azonosító</label>
+              <input id="yt" name="yt" [(ngModel)]="epizod.youtube" (change)="updateYoutubeVideoEmbedUrl(epizod.youtube)" class="input"
+                type="text" placeholder="YouTube azonosító">
             </div>
             <div *ngIf="youtubeVideo === 'feltoltes'" class="field">
               <label class="label">Új videó feltöltése</label>
@@ -81,15 +87,24 @@
               </div>
             </div>
           </div>
+        </div>
+        <div class="field is-grouped">
+          <p class="control is-expanded">
+            <label class="label">Epizód kulcsszavai</label>
+            <input id="kulcsszavak" name="kulcsszavak" [(ngModel)]="epizod.kulcsszavak" class="input" type="text" placeholder="kulcsszó 1, kulcsszó 2, stb.">
+          </p>
+        </div>
+        <div class="field is-grouped">
+          <div class="control is-expanded">
+            <label class="label">Epizód leírása</label>
+            <textarea class="textarea" [(ngModel)]="epizod.leiras" id="leiras" name="leiras" placeholder="Epizód leírása" rows="9"></textarea>
+          </div>
           <div *ngIf="epizod.youtube" class="control">
             <label class="label">YouTube</label>
-            <iframe width="280" height="157" [src]="youtubeEmbed" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            <iframe width="410" height="230" [src]="youtubeEmbed" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
           </div>
         </div>
         <div class="field is-grouped">
-          <!-- <p class="control">
-              <button type="button" [class.is-loading]="ytUploading" class="button is-primary" *ngIf="epizod.video" (click)="uploadYouTube()">YouTube</button>
-          </p> -->
           <p class="control is-expanded">
             <button class="button is-success" type="submit">Mentés</button>
           </p>

@@ -51,9 +51,9 @@ exports.postContact = (req, res) => __awaiter(this, void 0, void 0, function* ()
         if (err) {
             req.flash("errors", { msg: err.message });
             // tslint:disable-next-line:max-line-length
-            return res.json({ sent: false, message: "Hiba tortent a hir modositasa kozben. Kerem probalja ujra kesobb. " + err.message });
+            return res.json({ sent: false, message: "Hiba történt az üzenet küldése közben. Kérem próbálja újra később. " + err.message });
         }
-        return res.json({ sent: true });
+        return res.json({ sent: true, message: "Az üzenet küldése sikeres." });
     });
 });
 /**
@@ -66,10 +66,10 @@ exports.putGmail = (req, res, next) => __awaiter(this, void 0, void 0, function*
     gmail.pass = req.body.pass;
     yield gmail.save();
     if (gmail.id) {
-        return res.json({ gmail });
+        return res.json({ gmail, message: "Az adatok módosítása sikeres." });
     }
     else {
-        return res.json({ message: "Hiba tortent a hir modositasa kozben. Kerem probalja ujra kesobb." });
+        return res.json({ message: "Hiba történt az adatok módosítása közben. Kérem próbálja újra később." });
     }
 });
 /**
@@ -82,7 +82,7 @@ exports.getGmailCredentials = (req, res) => __awaiter(this, void 0, void 0, func
         return res.json({ gmail });
     }
     else {
-        return res.json({ message: "Hiba tortent a Gmail adatok lekerdezese kozben. Kerem probalja ujra kesobb." });
+        return res.json({ message: "Hiba történt az adatok lekérdezése közben. Kérem próbálja újra később." });
     }
 });
 //# sourceMappingURL=contact.js.map

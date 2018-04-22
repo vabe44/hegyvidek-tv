@@ -43,7 +43,7 @@ export class AdminMusorokUjComponent implements OnInit {
     // able to deal with the server response.
     this.uploader.onCompleteItem = (item: any, response: any, status: any, headers: any) => {
       const filename = JSON.parse(response).file.filename;
-      this.musor.kep = `${environment.apiUrl}/images/${filename}`;
+      this.musor.kep = `${environment.url}/images/${filename}`;
       this.urlUnique = true;
     };
   }
@@ -51,11 +51,9 @@ export class AdminMusorokUjComponent implements OnInit {
   ujMusor() {
     this.musorService.uj(this.musor)
       .subscribe(response => {
-        console.log(response);
+        alert(response.message);
         if (response.musor) {
           this.router.navigate(['/admin/musorok']);
-        } else  {
-          console.log('error');
         }
     });
   }
