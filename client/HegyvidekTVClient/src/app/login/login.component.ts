@@ -1,19 +1,15 @@
 import { Router, ActivatedRoute } from '@angular/router';
 import { AuthService } from './../services/auth.service';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
 
-  invalidLogin: boolean;
   constructor(private authService: AuthService, private router: Router, private route: ActivatedRoute) { }
-
-  ngOnInit() {
-  }
 
   belepes(credentials) {
     this.authService.login(credentials)
@@ -22,7 +18,7 @@ export class LoginComponent implements OnInit {
         const returnUrl = this.route.snapshot.queryParamMap.get('returnUrl');
         this.router.navigate([returnUrl || '/admin']);
       } else {
-        this.invalidLogin = true;
+        alert('Hibás felhasználói név és/vagy jelszó.');
       }
     });
   }

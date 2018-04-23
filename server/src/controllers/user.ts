@@ -41,7 +41,7 @@ export let postLogin = async (req: Request, res: Response, next: NextFunction) =
   const user = await User.findOne({ email: req.body.email });
 
   if ( !user ) {
-    res.status(401).json({message: "No such user found."});
+    return res.json({message: "Ez a felhasználó nem található."});
   }
 
   if (bcrypt.compareSync(req.body.password, user.password)) {
@@ -53,9 +53,9 @@ export let postLogin = async (req: Request, res: Response, next: NextFunction) =
       username: user.username,
     };
     const token = jwt.sign(payload, process.env.JWT_SECRET);
-    res.json({ message: "ok", token });
+    return res.json({ message: "ok", token });
   } else {
-    res.status(401).json({message: "Passwords did not match"});
+    return res.json({message: "Helytelen jelszó."});
   }
 };
 

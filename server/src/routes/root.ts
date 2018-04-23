@@ -13,8 +13,8 @@ class Root {
     this.router.get("/api/login", userController.getLogin);
     this.router.post("/api/login", userController.postLogin);
     this.router.get("/api/logout", userController.logout);
-    this.router.get("/api/signup", userController.getSignup);
-    this.router.post("/api/signup", userController.postSignup);
+    // this.router.get("/api/signup", userController.getSignup);
+    // this.router.post("/api/signup", userController.postSignup);
   }
 }
 

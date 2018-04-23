@@ -39,7 +39,7 @@ exports.postLogin = (req, res, next) => __awaiter(this, void 0, void 0, function
     }
     const user = yield User_1.User.findOne({ email: req.body.email });
     if (!user) {
-        res.status(401).json({ message: "No such user found." });
+        return res.json({ message: "Ez a felhasználó nem található." });
     }
     if (bcrypt.compareSync(req.body.password, user.password)) {
         // from now on we'll identify the user by the id
@@ -50,10 +50,10 @@ exports.postLogin = (req, res, next) => __awaiter(this, void 0, void 0, function
             username: user.username,
         };
         const token = jwt.sign(payload, process.env.JWT_SECRET);
-        res.json({ message: "ok", token });
+        return res.json({ message: "ok", token });
     }
     else {
-        res.status(401).json({ message: "Passwords did not match" });
+        return res.json({ message: "Helytelen jelszó." });
     }
 });
 /**

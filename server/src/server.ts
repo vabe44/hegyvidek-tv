@@ -21,7 +21,7 @@ import { createConnection } from "typeorm";
 /**
  * Load environment variables from .env file, where API keys and passwords are configured.
  */
-dotenv.config({ path: ".env.example" });
+dotenv.config({ path: ".env" });
 
 /**
  * Routes
