@@ -82,7 +82,6 @@ export class AdminEpizodokUjComponent implements OnInit {
   uploadYouTube() {
     this.epizodService.youtube(this.epizod).subscribe(res => {
       this.ytUploading = true;
-      console.log(res);
       this.epizod.youtube = res.data.id;
       this.updateYoutubeVideoEmbedUrl(this.epizod.youtube);
       this.ytUploading = false;

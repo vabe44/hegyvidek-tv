@@ -10,6 +10,7 @@ class Bannerek {
   }
   private init() {
     this.router.get("/", bannerController.getBannerek);
+    this.router.get("/ervenyes", bannerController.getErvenyesBannerek);
     this.router.get("/:id", bannerController.getBannerId);
     this.router.post("/", bannerController.postBanner);
     this.router.put("/", bannerController.putBanner);

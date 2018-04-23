@@ -63,6 +63,7 @@ import { AdminMusorujsagComponent } from './admin-musorujsag/admin-musorujsag.co
 import { CallbackPipe } from './pipes/callback.pipe';
 import { OraPipe } from './pipes/ora.pipe';
 import { SortPipe } from './pipes/sort.pipe';
+import { SortDescPipe } from './pipes/sort-desc.pipe';
 export function getAuthHttp(http, options: RequestOptions) {
   return new AuthHttp(new AuthConfig({
     tokenName: 'token'
@@ -111,7 +112,8 @@ export function getAuthHttp(http, options: RequestOptions) {
     AdminMusorujsagComponent,
     CallbackPipe,
     OraPipe,
-    SortPipe
+    SortPipe,
+    SortDescPipe
   ],
   imports: [
     BrowserModule,

@@ -17,3 +17,11 @@ section.content {
 .field.is-grouped {
     margin-bottom: 1rem;
 }
+
+.mentes.field {
+    padding: 20px 0;
+}
+
+.adasok h2.title {
+    padding-top: 20px;
+}

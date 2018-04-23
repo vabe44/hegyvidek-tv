@@ -38,6 +38,25 @@ export let getBannerId =  async (req: Request, res: Response, next: NextFunction
 };
 
 /**
+ * GET /epizodok
+ * Osszes epizod.
+ */
+export let getErvenyesBannerek =  async (req: Request, res: Response, next: NextFunction) => {
+
+    const bannerek = await getConnection()
+        .getRepository(Banner)
+        .createQueryBuilder("banner")
+        .where("NOW() >= banner.aktivEttol AND NOW() <= banner.aktivEddig AND banner.statusz like 'aktív'")
+        .getMany();
+
+    if (bannerek.length) {
+        return res.json({ bannerek });
+    } else {
+        return res.json({ message: "Hiba történt az bannerek lekérdezése közben. Kérem próbálja újra később." });
+    }
+};
+
+/**
  * POST /bannerek
  * Uj banner letrehozasa.
  */

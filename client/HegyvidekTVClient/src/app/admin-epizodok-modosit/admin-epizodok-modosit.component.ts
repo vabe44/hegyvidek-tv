@@ -37,11 +37,9 @@ export class AdminEpizodokModositComponent implements OnInit {
   ngOnInit() {
     this.musorService.osszes().subscribe(response => this.musorok = response.musorok);
     this.epizodService.epizod(this.route.snapshot.params.id).subscribe(response => {
-      console.log(response);
       this.epizod = response.epizod;
       this.updateYoutubeVideoEmbedUrl(this.epizod.youtube);
       this.epizod.datum = new Date(this.epizod.datum);
-      console.log(this.epizod);
     });
     // override the onAfterAddingfile property of the uploader so it doesn't authenticate with //credentials.
     this.uploader.onAfterAddingFile = (file) => {
@@ -52,7 +50,6 @@ export class AdminEpizodokModositComponent implements OnInit {
     // overide the onCompleteItem property of the uploader so we are
     // able to deal with the server response.
     this.uploader.onCompleteItem = (item: any, response: any, status: any, headers: any) => {
-      console.log(response);
       const filename = JSON.parse(response).file.filename;
       this.epizod.video = filename;
       this.uploadYouTube();
@@ -67,7 +64,6 @@ export class AdminEpizodokModositComponent implements OnInit {
   uploadYouTube() {
     this.epizodService.youtube(this.epizod).subscribe(res => {
       this.ytUploading = true;
-      console.log(res);
       this.epizod.youtube = res.data.id;
       this.updateYoutubeVideoEmbedUrl(this.epizod.youtube);
       this.ytUploading = false;

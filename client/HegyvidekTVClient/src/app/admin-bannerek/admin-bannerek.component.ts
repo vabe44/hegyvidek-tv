@@ -13,6 +13,7 @@ export class AdminBannerekComponent implements OnInit {
 
   // define the constant url we would be uploading to.
   URL = environment.apiUrl + '/musoraink/picture';
+  kepUrl: string;
   public uploader: FileUploader = new FileUploader({url: this.URL, itemAlias: 'photo'});
   bannerek: Banner[];
   banner: Banner;
@@ -44,7 +45,8 @@ export class AdminBannerekComponent implements OnInit {
     // able to deal with the server response.
     this.uploader.onCompleteItem = (item: any, response: any, status: any, headers: any) => {
       const filename = JSON.parse(response).file.filename;
-      this.banner.kep = `${environment.url}/images/${filename}`;
+      this.banner.kep = `/images/${filename}`;
+      this.kepUrl = `${environment.url}/images/${filename}`;
     };
   }
 

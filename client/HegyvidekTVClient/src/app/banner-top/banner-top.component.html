@@ -1,19 +1,9 @@
 <div class="container">
   <div class="banner">
-    <ul id="slides">
-      <li #slide *ngFor="let banner of bannerek; let first = first;" class="slide" [class.showing]="first">
-        <figure class="image">
-          <a [attr.href]="banner?.keplink">
-            <img [attr.src]="banner.kep">
-          </a>
-        </figure>
-      </li>
-      <li #slide class="slide">Slide 3</li>
-      <li #slide class="slide">Slide 4</li>
-      <!-- <li #slide class="slide">Slide 2</li>
-      <li #slide class="slide">Slide 3</li>
-      <li #slide class="slide">Slide 4</li>
-      <li #slide class="slide">Slide 5</li> -->
-    </ul>
+    <figure class="image">
+      <a [attr.href]="banner?.keplink">
+        <img [attr.src]="banner?.kep">
+      </a>
+    </figure>
   </div>
 </div>

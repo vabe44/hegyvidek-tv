@@ -43,6 +43,23 @@ exports.getBannerId = (req, res, next) => __awaiter(this, void 0, void 0, functi
     }
 });
 /**
+ * GET /epizodok
+ * Osszes epizod.
+ */
+exports.getErvenyesBannerek = (req, res, next) => __awaiter(this, void 0, void 0, function* () {
+    const bannerek = yield typeorm_1.getConnection()
+        .getRepository(Banner_1.Banner)
+        .createQueryBuilder("banner")
+        .where("NOW() >= banner.aktivEttol AND NOW() <= banner.aktivEddig AND banner.statusz like 'aktív'")
+        .getMany();
+    if (bannerek.length) {
+        return res.json({ bannerek });
+    }
+    else {
+        return res.json({ message: "Hiba történt az bannerek lekérdezése közben. Kérem próbálja újra később." });
+    }
+});
+/**
  * POST /bannerek
  * Uj banner letrehozasa.
  */

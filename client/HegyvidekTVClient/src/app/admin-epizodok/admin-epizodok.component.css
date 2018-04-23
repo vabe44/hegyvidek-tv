@@ -36,7 +36,7 @@ h2 {
     padding: 10px 30px;
 }
 
-.cim > p {
+.cim p {
     display: flex;
     align-items: center;
     font-size: 16px;
@@ -47,7 +47,7 @@ h2 {
     background-color: #1f50ba;
 }
 
-.cim > p.kereses {
+.cim p.kereses {
     flex: 1;
     font-size: 16px;
     font-family: "Arial", "Helvetica", "Helvetica Neue", sans-serif;
@@ -74,12 +74,13 @@ h2 {
 
 .reszletek {
     flex: 1;
-    /* max-width: 260px; */
     padding: 10px;
     background-color: white;
+    display: flex;
+    flex-direction: column;
 }
 
-.reszletek > h3 {
+.reszletek h3 {
     color: white;
     font-size: 20px;
     line-height: 20px;
@@ -90,10 +91,20 @@ h2 {
     background-color: #a7d153;
 }
 
-.reszletek > p.leiras {
+.reszletek p.leiras {
     color: black;
     padding: 10px;
     line-height: 20px;
+    margin: unset;
+    flex: 1;
+}
+
+.reszletek p.datum {
+    text-align: right;
+}
+
+.reszletek p.datum, .reszletek p.datum:hover, .reszletek p.datum:active, .reszletek p.datum:focus {
+    color: black;
 }
 
 .field.is-horizontal.szures {

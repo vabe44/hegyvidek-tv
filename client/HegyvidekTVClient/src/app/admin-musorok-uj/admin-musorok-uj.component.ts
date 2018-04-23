@@ -14,6 +14,7 @@ export class AdminMusorokUjComponent implements OnInit {
 
   // define the constant url we would be uploading to.
   URL = environment.apiUrl + '/musoraink/picture';
+  kepUrl: string;
   public uploader: FileUploader = new FileUploader({url: this.URL, itemAlias: 'photo'});
   musor: Musor;
   urlUnique: boolean;
@@ -43,7 +44,8 @@ export class AdminMusorokUjComponent implements OnInit {
     // able to deal with the server response.
     this.uploader.onCompleteItem = (item: any, response: any, status: any, headers: any) => {
       const filename = JSON.parse(response).file.filename;
-      this.musor.kep = `${environment.url}/images/${filename}`;
+      this.musor.kep = `/images/${filename}`;
+      this.kepUrl = `${environment.url}/images/${filename}`;
       this.urlUnique = true;
     };
   }

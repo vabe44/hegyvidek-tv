@@ -19,6 +19,11 @@ export class BannerService {
       .map(response => response.json());
   }
 
+  ervenyesBannerek() {
+    return this.http.get(environment.apiUrl + '/bannerek/ervenyes')
+      .map(response => response.json());
+  }
+
   uj(banner) {
     return this.authHttp.post(environment.apiUrl + '/bannerek', banner)
       .map(response => response.json());
@@ -41,5 +46,4 @@ export class BannerService {
   inaktivBannerek(bannerek: Banner[]): Banner[] {
     return bannerek.filter(banner => banner.statusz === 'inaktív');
   }
-
 }

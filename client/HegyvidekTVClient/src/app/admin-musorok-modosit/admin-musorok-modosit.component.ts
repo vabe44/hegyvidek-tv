@@ -16,6 +16,7 @@ export class AdminMusorokModositComponent implements OnInit {
   musor: any = {};
   // define the constant url we would be uploading to.
   URL = environment.apiUrl + '/musoraink/picture';
+  kepUrl: string;
   public uploader: FileUploader = new FileUploader({url: this.URL, itemAlias: 'photo'});
   urlUnique: boolean;
   constructor(
@@ -25,7 +26,10 @@ export class AdminMusorokModositComponent implements OnInit {
   private musorujsagService: MusorujsagService) {}
 
   ngOnInit() {
-    this.musorService.musor(this.route.snapshot.params.id).subscribe(response => this.musor = response.musor);
+    this.musorService.musor(this.route.snapshot.params.id).subscribe(response => {
+      this.musor = response.musor;
+      this.kepUrl = environment.url + this.musor.kep;
+    });
     // override the onAfterAddingfile property of the uploader so it doesn't authenticate with //credentials.
     this.uploader.onAfterAddingFile = (file) => {
       file.withCredentials = false;
@@ -35,7 +39,8 @@ export class AdminMusorokModositComponent implements OnInit {
     // able to deal with the server response.
     this.uploader.onCompleteItem = (item: any, response: any, status: any, headers: any) => {
       const filename = JSON.parse(response).file.filename;
-      this.musor.kep = `${environment.url}/images/${filename}`;
+      this.musor.kep = `/images/${filename}`;
+      this.kepUrl = `${environment.url}/images/${filename}`;
     };
     this.urlUnique = true;
   }

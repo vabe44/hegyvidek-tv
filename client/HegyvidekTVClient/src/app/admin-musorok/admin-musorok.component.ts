@@ -1,3 +1,4 @@
+import { environment } from './../../environments/environment';
 import { Component, OnInit } from '@angular/core';
 import { Musor } from '../interfaces/Musor';
 import { MusorService } from '../services/musor.service';
@@ -13,7 +14,10 @@ export class AdminMusorokComponent implements OnInit {
   constructor(private musorService: MusorService) { }
 
   ngOnInit() {
-    this.musorService.osszes().subscribe(response => this.musorok = response.musorok);
+    this.musorService.osszes().subscribe(response => this.musorok = response.musorok.map(musor => {
+      musor.kep = environment.url + musor.kep;
+      return musor;
+    }));
   }
 
 }
