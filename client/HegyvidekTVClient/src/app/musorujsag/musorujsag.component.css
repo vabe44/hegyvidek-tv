@@ -97,3 +97,7 @@ section.content {
 .adascim {
     width: 80%;
 }
+
+.nolink:hover {
+    cursor: default;
+}

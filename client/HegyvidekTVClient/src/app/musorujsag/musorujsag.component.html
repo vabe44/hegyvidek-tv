@@ -1,7 +1,7 @@
 <main>
   <section class="content">
     <div class="musorujsag">
-      <div class="nap-container">
+      <div class="nap-container" *ngIf="hetfoiAdasok">
         <div class="nap">Hétfő</div>
         <div *ngFor="let adas of hetfoiAdasok | sort:'sorrend'" class="adas">
           <div class="ido">
@@ -9,7 +9,9 @@
             <p>{{ adas.aktivEddig | ora }}</p>
           </div>
           <div class="musor">
-            <p>{{ adas.adascim }}</p>
+            <a [href]="adas.link || 'javascript:void(0)'" [class.nolink]="!adas.link">
+              <p>{{ adas.adascim }}</p>
+            </a>
           </div>
         </div>
         <div class="filler adas">
@@ -17,7 +19,7 @@
           <div class="musor"></div>
         </div>
       </div>
-      <div class="nap-container">
+      <div class="nap-container" *ngIf="keddiAdasok">
         <div class="nap">Kedd</div>
         <div *ngFor="let adas of keddiAdasok | sort:'sorrend'" class="adas">
           <div class="ido">
@@ -25,7 +27,9 @@
             <p>{{ adas.aktivEddig | ora }}</p>
           </div>
           <div class="musor">
-            <p>{{ adas.adascim }}</p>
+            <a [href]="adas.link || 'javascript:void(0)'" [class.nolink]="!adas.link">
+              <p>{{ adas.adascim }}</p>
+            </a>
           </div>
         </div>
         <div class="filler adas">
@@ -33,7 +37,7 @@
           <div class="musor"></div>
         </div>
       </div>
-      <div class="nap-container">
+      <div class="nap-container" *ngIf="szerdaiAdasok">
         <div class="nap">Szerda</div>
         <div *ngFor="let adas of szerdaiAdasok | sort:'sorrend'" class="adas">
           <div class="ido">
@@ -41,7 +45,9 @@
             <p>{{ adas.aktivEddig | ora }}</p>
           </div>
           <div class="musor">
-            <p>{{ adas.adascim }}</p>
+            <a [href]="adas.link || 'javascript:void(0)'" [class.nolink]="!adas.link">
+              <p>{{ adas.adascim }}</p>
+            </a>
           </div>
         </div>
         <div class="filler adas">
@@ -49,7 +55,7 @@
           <div class="musor"></div>
         </div>
       </div>
-      <div class="nap-container">
+      <div class="nap-container" *ngIf="csutortokiAdasok">
         <div class="nap">Csütörtök</div>
         <div *ngFor="let adas of csutortokiAdasok | sort:'sorrend'" class="adas">
           <div class="ido">
@@ -57,7 +63,9 @@
             <p>{{ adas.aktivEddig | ora }}</p>
           </div>
           <div class="musor">
-            <p>{{ adas.adascim }}</p>
+            <a [href]="adas.link || 'javascript:void(0)'" [class.nolink]="!adas.link">
+              <p>{{ adas.adascim }}</p>
+            </a>
           </div>
         </div>
         <div class="filler adas">
@@ -65,7 +73,7 @@
           <div class="musor"></div>
         </div>
       </div>
-      <div class="nap-container">
+      <div class="nap-container" *ngIf="pentekiAdasok">
         <div class="nap">Péntek</div>
         <div *ngFor="let adas of pentekiAdasok | sort:'sorrend'" class="adas">
           <div class="ido">
@@ -73,7 +81,9 @@
             <p>{{ adas.aktivEddig | ora }}</p>
           </div>
           <div class="musor">
-            <p>{{ adas.adascim }}</p>
+            <a [href]="adas.link || 'javascript:void(0)'" [class.nolink]="!adas.link">
+              <p>{{ adas.adascim }}</p>
+            </a>
           </div>
         </div>
         <div class="filler adas">
@@ -81,7 +91,7 @@
           <div class="musor"></div>
         </div>
       </div>
-      <div class="nap-container">
+      <div class="nap-container" *ngIf="szombatiAdasok">
         <div class="nap">Szombat</div>
         <div *ngFor="let adas of szombatiAdasok | sort:'sorrend'" class="adas">
           <div class="ido">
@@ -89,7 +99,9 @@
             <p>{{ adas.aktivEddig | ora }}</p>
           </div>
           <div class="musor">
-            <p>{{ adas.adascim }}</p>
+            <a [href]="adas.link || 'javascript:void(0)'" [class.nolink]="!adas.link">
+              <p>{{ adas.adascim }}</p>
+            </a>
           </div>
         </div>
         <div class="filler adas">
@@ -97,7 +109,7 @@
           <div class="musor"></div>
         </div>
       </div>
-      <div class="nap-container">
+      <div class="nap-container" *ngIf="vasarnapiAdasok">
         <div class="nap">Vasárnap</div>
         <div *ngFor="let adas of vasarnapiAdasok | sort:'sorrend'" class="adas">
           <div class="ido">
@@ -105,7 +117,9 @@
             <p>{{ adas.aktivEddig | ora }}</p>
           </div>
           <div class="musor">
-            <p>{{ adas.adascim }}</p>
+            <a [href]="adas.link || 'javascript:void(0)'" [class.nolink]="!adas.link">
+              <p>{{ adas.adascim }}</p>
+            </a>
           </div>
         </div>
         <div class="filler adas">
@@ -114,6 +128,5 @@
         </div>
       </div>
     </div>
-
   </section>
 </main>
