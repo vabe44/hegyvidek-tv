@@ -62,8 +62,6 @@ export let getErvenyesBannerek =  async (req: Request, res: Response, next: Next
  */
 export let postBanner =  async (req: Request, res: Response, next: NextFunction) => {
 
-    // tslint:disable-next-line:no-console
-    console.log(req.headers);
     const token = req.headers.authorization.toString().replace("Bearer ", "");
     if (!token) {
       return res.status(403).send({ auth: false, message: "No token provided." });

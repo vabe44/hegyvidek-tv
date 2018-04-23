@@ -64,8 +64,6 @@ exports.getErvenyesBannerek = (req, res, next) => __awaiter(this, void 0, void 0
  * Uj banner letrehozasa.
  */
 exports.postBanner = (req, res, next) => __awaiter(this, void 0, void 0, function* () {
-    // tslint:disable-next-line:no-console
-    console.log(req.headers);
     const token = req.headers.authorization.toString().replace("Bearer ", "");
     if (!token) {
         return res.status(403).send({ auth: false, message: "No token provided." });

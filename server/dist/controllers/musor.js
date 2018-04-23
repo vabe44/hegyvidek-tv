@@ -88,8 +88,6 @@ exports.getMusorUrl = (req, res, next) => __awaiter(this, void 0, void 0, functi
  * Uj musor letrehozasa.
  */
 exports.postMusor = (req, res, next) => __awaiter(this, void 0, void 0, function* () {
-    // tslint:disable-next-line:no-console
-    console.log(req.headers);
     const token = req.headers.authorization.toString().replace("Bearer ", "");
     if (!token) {
         return res.status(403).send({ auth: false, message: "No token provided." });
@@ -118,8 +116,6 @@ exports.postMusor = (req, res, next) => __awaiter(this, void 0, void 0, function
  * Musor modositasa.
  */
 exports.putMusor = (req, res, next) => __awaiter(this, void 0, void 0, function* () {
-    // tslint:disable-next-line:no-console
-    console.log(req.headers);
     const token = req.headers.authorization.toString().replace("Bearer ", "");
     if (!token) {
         return res.status(403).send({ auth: false, message: "No token provided." });
@@ -148,8 +144,6 @@ exports.putMusor = (req, res, next) => __awaiter(this, void 0, void 0, function*
  * Musor torlese.
  */
 exports.deleteMusor = (req, res, next) => __awaiter(this, void 0, void 0, function* () {
-    // tslint:disable-next-line:no-console
-    console.log(req.headers);
     const token = req.headers.authorization.toString().replace("Bearer ", "");
     if (!token) {
         return res.status(403).send({ auth: false, message: "No token provided." });

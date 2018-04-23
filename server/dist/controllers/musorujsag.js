@@ -63,8 +63,6 @@ exports.getMusorAdasok = (req, res, next) => __awaiter(this, void 0, void 0, fun
  * Uj banner letrehozasa.
  */
 exports.postMusorujsag = (req, res, next) => __awaiter(this, void 0, void 0, function* () {
-    // tslint:disable-next-line:no-console
-    console.log(req.headers);
     const token = req.headers.authorization.toString().replace("Bearer ", "");
     if (!token) {
         return res.status(403).send({ auth: false, message: "No token provided." });
@@ -83,8 +81,6 @@ exports.postMusorujsag = (req, res, next) => __awaiter(this, void 0, void 0, fun
     musorujsag.aktivEddig = req.body.aktivEddig;
     // musorujsag.musor = await Musor.findOne(req.body.musor.id);
     yield musorujsag.save();
-    // tslint:disable-next-line:no-console
-    console.log(req.body);
     if (musorujsag.id) {
         return res.json({ musorujsag, message: "Az adás létrehozása sikeres." });
     }
@@ -97,8 +93,6 @@ exports.postMusorujsag = (req, res, next) => __awaiter(this, void 0, void 0, fun
  * Banner modositasa.
  */
 exports.putMusorujsag = (req, res, next) => __awaiter(this, void 0, void 0, function* () {
-    // tslint:disable-next-line:no-console
-    console.log(req.headers);
     const token = req.headers.authorization.toString().replace("Bearer ", "");
     if (!token) {
         return res.status(403).send({ auth: false, message: "No token provided." });
@@ -128,8 +122,6 @@ exports.putMusorujsag = (req, res, next) => __awaiter(this, void 0, void 0, func
  * Banner torlese.
  */
 exports.deleteMusorujsag = (req, res, next) => __awaiter(this, void 0, void 0, function* () {
-    // tslint:disable-next-line:no-console
-    console.log(req.headers);
     const token = req.headers.authorization.toString().replace("Bearer ", "");
     if (!token) {
         return res.status(403).send({ auth: false, message: "No token provided." });

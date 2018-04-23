@@ -20,8 +20,6 @@ const oauth2Client = new OAuth2(
  */
 export let getSettings =  async (req: Request, res: Response, next: NextFunction) => {
 
-    // tslint:disable-next-line:no-console
-    console.log(req.headers);
     const token = req.headers.authorization.toString().replace("Bearer ", "");
     if (!token) {
       return res.status(403).send({ auth: false, message: "No token provided." });
@@ -47,8 +45,6 @@ export let getSettings =  async (req: Request, res: Response, next: NextFunction
  */
 export let editSettings =  async (req: Request, res: Response, next: NextFunction) => {
 
-    // tslint:disable-next-line:no-console
-    console.log(req.headers);
     const token = req.headers.authorization.toString().replace("Bearer ", "");
     if (!token) {
       return res.status(403).send({ auth: false, message: "No token provided." });
@@ -104,9 +100,6 @@ export let oauth =  async (req: Request, res: Response, next: NextFunction) => {
  * Epizod video feltoltese.
  */
 export let saveTokens =  async (req: Request, res: Response, next: NextFunction) => {
-
-    // tslint:disable-next-line:no-console
-    console.log(req.query);
 
     oauth2Client.getToken(req.query.code, async (err, tokens) => {
         // Now tokens contains an access_token and an optional refresh_token. Save them.
@@ -192,9 +185,6 @@ export let upload =  async (req: Request, res: Response, next: NextFunction) => 
             // number of bytes uploaded to this point.
             onUploadProgress: (evt: any) => {
                 const progress = (evt.bytesRead / fileSize) * 100;
-                // process.stdout.clearLine();
-                // process.stdout.cursorTo(0);
-                // console.log(`${Math.round(progress)}% complete`);
             },
             }, (err: any, res: any) => {
             if (err) {
@@ -204,14 +194,10 @@ export let upload =  async (req: Request, res: Response, next: NextFunction) => 
                 if (error) {
                     throw error;
                 }
-                // tslint:disable-next-line:no-console
-                console.log("Deleted video from server");
                 const epizod = await Epizod.findOne({ video: req.body.video });
                 epizod.video = "";
                 epizod.save();
             });
-            // console.log("\n\n");
-            // console.log(res.data);
             callback(res.data);
             });
         }
@@ -229,8 +215,6 @@ export let upload =  async (req: Request, res: Response, next: NextFunction) => 
  */
 export let deleteSettings =  async (req: Request, res: Response, next: NextFunction) => {
 
-    // tslint:disable-next-line:no-console
-    console.log(req.headers);
     const token = req.headers.authorization.toString().replace("Bearer ", "");
     if (!token) {
       return res.status(403).send({ auth: false, message: "No token provided." });

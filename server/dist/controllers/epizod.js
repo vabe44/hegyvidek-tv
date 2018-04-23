@@ -65,8 +65,6 @@ exports.getEpizodId = (req, res, next) => __awaiter(this, void 0, void 0, functi
  * Uj epizod letrehozasa.
  */
 exports.postEpizod = (req, res, next) => __awaiter(this, void 0, void 0, function* () {
-    // tslint:disable-next-line:no-console
-    console.log(req.headers);
     const token = req.headers.authorization.toString().replace("Bearer ", "");
     if (!token) {
         return res.status(403).send({ auth: false, message: "No token provided." });
@@ -101,8 +99,6 @@ exports.postEpizod = (req, res, next) => __awaiter(this, void 0, void 0, functio
  * Epizod modositasa.
  */
 exports.putEpizod = (req, res, next) => __awaiter(this, void 0, void 0, function* () {
-    // tslint:disable-next-line:no-console
-    console.log(req.headers);
     const token = req.headers.authorization.toString().replace("Bearer ", "");
     if (!token) {
         return res.status(403).send({ auth: false, message: "No token provided." });
@@ -137,8 +133,6 @@ exports.putEpizod = (req, res, next) => __awaiter(this, void 0, void 0, function
  * Epizod torlese.
  */
 exports.deleteEpizod = (req, res, next) => __awaiter(this, void 0, void 0, function* () {
-    // tslint:disable-next-line:no-console
-    console.log(req.headers);
     const token = req.headers.authorization.toString().replace("Bearer ", "");
     if (!token) {
         return res.status(403).send({ auth: false, message: "No token provided." });

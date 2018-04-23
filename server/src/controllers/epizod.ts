@@ -70,8 +70,6 @@ export let getEpizodId =  async (req: Request, res: Response, next: NextFunction
  */
 export let postEpizod =  async (req: Request, res: Response, next: NextFunction) => {
 
-    // tslint:disable-next-line:no-console
-    console.log(req.headers);
     const token = req.headers.authorization.toString().replace("Bearer ", "");
     if (!token) {
       return res.status(403).send({ auth: false, message: "No token provided." });
@@ -110,8 +108,6 @@ export let postEpizod =  async (req: Request, res: Response, next: NextFunction)
  */
 export let putEpizod =  async (req: Request, res: Response, next: NextFunction) => {
 
-    // tslint:disable-next-line:no-console
-    console.log(req.headers);
     const token = req.headers.authorization.toString().replace("Bearer ", "");
     if (!token) {
       return res.status(403).send({ auth: false, message: "No token provided." });
@@ -150,8 +146,6 @@ export let putEpizod =  async (req: Request, res: Response, next: NextFunction) 
  */
 export let deleteEpizod =  async (req: Request, res: Response, next: NextFunction) => {
 
-    // tslint:disable-next-line:no-console
-    console.log(req.headers);
     const token = req.headers.authorization.toString().replace("Bearer ", "");
     if (!token) {
       return res.status(403).send({ auth: false, message: "No token provided." });

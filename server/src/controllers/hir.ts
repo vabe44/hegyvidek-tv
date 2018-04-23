@@ -42,8 +42,6 @@ export let getHirId =  async (req: Request, res: Response, next: NextFunction) =
  */
 export let postHir =  async (req: Request, res: Response, next: NextFunction) => {
 
-    // tslint:disable-next-line:no-console
-    console.log(req.headers);
     const token = req.headers.authorization.toString().replace("Bearer ", "");
     if (!token) {
       return res.status(403).send({ auth: false, message: "No token provided." });
@@ -60,9 +58,6 @@ export let postHir =  async (req: Request, res: Response, next: NextFunction) =>
     hir.statusz = req.body.statusz;
     await hir.save();
 
-    // tslint:disable-next-line:no-console
-    console.log(req.body);
-
     if (hir.id) {
         return res.json({ hir, message: "A hír létrehozása sikeres." });
     } else {
@@ -76,8 +71,6 @@ export let postHir =  async (req: Request, res: Response, next: NextFunction) =>
  */
 export let putHir =  async (req: Request, res: Response, next: NextFunction) => {
 
-    // tslint:disable-next-line:no-console
-    console.log(req.headers);
     const token = req.headers.authorization.toString().replace("Bearer ", "");
     if (!token) {
       return res.status(403).send({ auth: false, message: "No token provided." });
@@ -107,8 +100,6 @@ export let putHir =  async (req: Request, res: Response, next: NextFunction) => 
  */
 export let deleteHir =  async (req: Request, res: Response, next: NextFunction) => {
 
-    // tslint:disable-next-line:no-console
-    console.log(req.headers);
     const token = req.headers.authorization.toString().replace("Bearer ", "");
     if (!token) {
       return res.status(403).send({ auth: false, message: "No token provided." });

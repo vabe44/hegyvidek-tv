@@ -20,8 +20,6 @@ const oauth2Client = new OAuth2("15446227899-uo4u0njei3sf26b7r3qmu9hbqide94h3.ap
  * Egy hir.
  */
 exports.getSettings = (req, res, next) => __awaiter(this, void 0, void 0, function* () {
-    // tslint:disable-next-line:no-console
-    console.log(req.headers);
     const token = req.headers.authorization.toString().replace("Bearer ", "");
     if (!token) {
         return res.status(403).send({ auth: false, message: "No token provided." });
@@ -44,8 +42,6 @@ exports.getSettings = (req, res, next) => __awaiter(this, void 0, void 0, functi
  * Hir modositasa.
  */
 exports.editSettings = (req, res, next) => __awaiter(this, void 0, void 0, function* () {
-    // tslint:disable-next-line:no-console
-    console.log(req.headers);
     const token = req.headers.authorization.toString().replace("Bearer ", "");
     if (!token) {
         return res.status(403).send({ auth: false, message: "No token provided." });
@@ -91,8 +87,6 @@ exports.oauth = (req, res, next) => __awaiter(this, void 0, void 0, function* ()
  * Epizod video feltoltese.
  */
 exports.saveTokens = (req, res, next) => __awaiter(this, void 0, void 0, function* () {
-    // tslint:disable-next-line:no-console
-    console.log(req.query);
     oauth2Client.getToken(req.query.code, (err, tokens) => __awaiter(this, void 0, void 0, function* () {
         // Now tokens contains an access_token and an optional refresh_token. Save them.
         if (!err) {
@@ -171,9 +165,6 @@ exports.upload = (req, res, next) => __awaiter(this, void 0, void 0, function* (
                 // number of bytes uploaded to this point.
                 onUploadProgress: (evt) => {
                     const progress = (evt.bytesRead / fileSize) * 100;
-                    // process.stdout.clearLine();
-                    // process.stdout.cursorTo(0);
-                    // console.log(`${Math.round(progress)}% complete`);
                 },
             }, (err, res) => {
                 if (err) {
@@ -183,14 +174,10 @@ exports.upload = (req, res, next) => __awaiter(this, void 0, void 0, function* (
                     if (error) {
                         throw error;
                     }
-                    // tslint:disable-next-line:no-console
-                    console.log("Deleted video from server");
                     const epizod = yield Epizod_1.Epizod.findOne({ video: req.body.video });
                     epizod.video = "";
                     epizod.save();
                 }));
-                // console.log("\n\n");
-                // console.log(res.data);
                 callback(res.data);
             });
         }
@@ -205,8 +192,6 @@ exports.upload = (req, res, next) => __awaiter(this, void 0, void 0, function* (
  * Hir modositasa.
  */
 exports.deleteSettings = (req, res, next) => __awaiter(this, void 0, void 0, function* () {
-    // tslint:disable-next-line:no-console
-    console.log(req.headers);
     const token = req.headers.authorization.toString().replace("Bearer ", "");
     if (!token) {
         return res.status(403).send({ auth: false, message: "No token provided." });

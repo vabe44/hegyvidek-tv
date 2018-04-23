@@ -63,8 +63,6 @@ export let getMusorAdasok =  async (req: Request, res: Response, next: NextFunct
  */
 export let postMusorujsag =  async (req: Request, res: Response, next: NextFunction) => {
 
-    // tslint:disable-next-line:no-console
-    console.log(req.headers);
     const token = req.headers.authorization.toString().replace("Bearer ", "");
     if (!token) {
       return res.status(403).send({ auth: false, message: "No token provided." });
@@ -86,9 +84,6 @@ export let postMusorujsag =  async (req: Request, res: Response, next: NextFunct
     // musorujsag.musor = await Musor.findOne(req.body.musor.id);
     await musorujsag.save();
 
-    // tslint:disable-next-line:no-console
-    console.log(req.body);
-
     if (musorujsag.id) {
         return res.json({ musorujsag, message: "Az adás létrehozása sikeres." });
     } else {
@@ -102,8 +97,6 @@ export let postMusorujsag =  async (req: Request, res: Response, next: NextFunct
  */
 export let putMusorujsag =  async (req: Request, res: Response, next: NextFunction) => {
 
-    // tslint:disable-next-line:no-console
-    console.log(req.headers);
     const token = req.headers.authorization.toString().replace("Bearer ", "");
     if (!token) {
       return res.status(403).send({ auth: false, message: "No token provided." });
@@ -137,8 +130,6 @@ export let putMusorujsag =  async (req: Request, res: Response, next: NextFuncti
  */
 export let deleteMusorujsag =  async (req: Request, res: Response, next: NextFunction) => {
 
-    // tslint:disable-next-line:no-console
-    console.log(req.headers);
     const token = req.headers.authorization.toString().replace("Bearer ", "");
     if (!token) {
       return res.status(403).send({ auth: false, message: "No token provided." });

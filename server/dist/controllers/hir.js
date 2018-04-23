@@ -46,8 +46,6 @@ exports.getHirId = (req, res, next) => __awaiter(this, void 0, void 0, function*
  * Uj hir letrehozasa.
  */
 exports.postHir = (req, res, next) => __awaiter(this, void 0, void 0, function* () {
-    // tslint:disable-next-line:no-console
-    console.log(req.headers);
     const token = req.headers.authorization.toString().replace("Bearer ", "");
     if (!token) {
         return res.status(403).send({ auth: false, message: "No token provided." });
@@ -61,8 +59,6 @@ exports.postHir = (req, res, next) => __awaiter(this, void 0, void 0, function* 
     hir.szoveg = req.body.szoveg;
     hir.statusz = req.body.statusz;
     yield hir.save();
-    // tslint:disable-next-line:no-console
-    console.log(req.body);
     if (hir.id) {
         return res.json({ hir, message: "A hír létrehozása sikeres." });
     }
@@ -75,8 +71,6 @@ exports.postHir = (req, res, next) => __awaiter(this, void 0, void 0, function* 
  * Hir modositasa.
  */
 exports.putHir = (req, res, next) => __awaiter(this, void 0, void 0, function* () {
-    // tslint:disable-next-line:no-console
-    console.log(req.headers);
     const token = req.headers.authorization.toString().replace("Bearer ", "");
     if (!token) {
         return res.status(403).send({ auth: false, message: "No token provided." });
@@ -102,8 +96,6 @@ exports.putHir = (req, res, next) => __awaiter(this, void 0, void 0, function* (
  * Hir torlese.
  */
 exports.deleteHir = (req, res, next) => __awaiter(this, void 0, void 0, function* () {
-    // tslint:disable-next-line:no-console
-    console.log(req.headers);
     const token = req.headers.authorization.toString().replace("Bearer ", "");
     if (!token) {
         return res.status(403).send({ auth: false, message: "No token provided." });
