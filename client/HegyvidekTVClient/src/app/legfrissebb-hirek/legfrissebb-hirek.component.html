@@ -2,7 +2,7 @@
   <h2>Legfrissebb Híreink</h2>
 </div>
 
-<div *ngFor="let epizod of filteredEpizodok" class="hirek">
+<div *ngFor="let epizod of filteredEpizodok | sortDesc:'datum'" class="hirek">
   <div class="hir" routerLink="/musoraink/hirek/{{ epizod.url }}">
     <div class="kep">
       <img src="https://img.youtube.com/vi/{{ epizod.youtube }}/mqdefault.jpg" alt="{{ epizod.cim }}">
