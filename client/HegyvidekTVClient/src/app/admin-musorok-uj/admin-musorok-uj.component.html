@@ -9,11 +9,11 @@
         <div class="field is-grouped">
           <div class="control is-expanded">
             <label class="label">Műsor címe</label>
-            <input id="cim" name="cim" [(ngModel)]="musor.cim" (keyup)="toUrlFormat(musor.cim)" (change)="toUrlFormat(musor.cim)" class="input" type="text" placeholder="Műsor címe">
+            <input id="cim" name="cim" [(ngModel)]="musor.cim" (change)="toUrlFormat(musor.cim)" class="input" type="text" placeholder="Műsor címe">
           </div>
           <div class="control is-expanded">
             <label class="label">Beszédes URL</label>
-            <input type="text" id="url" name="url" [(ngModel)]="musor.url" class="input" [class.is-success]="urlUnique" [class.is-danger]="!urlUnique" placeholder="Beszédes URL" required>
+            <input type="text" id="url" name="url" [(ngModel)]="musor.url" (change)="toUrlFormat(musor.url)" class="input" [class.is-success]="urlUnique" [class.is-danger]="!urlUnique" placeholder="Beszédes URL" required>
             <p *ngIf="!urlUnique" class="help is-danger">Ez az URL már létezik</p>
           </div>
           <div class="control">

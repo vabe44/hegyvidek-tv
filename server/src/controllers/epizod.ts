@@ -199,6 +199,9 @@ export let uploadVideo =  async (req: Request, res: Response, next: NextFunction
 export let checkUrl =  async (req: Request, res: Response, next: NextFunction) => {
 
     const epizodok = await Epizod.find({ url: req.body.url });
+    // tslint:disable-next-line:no-console
+    console.log(req.body);
+    // console.log(epizodok);
     if (epizodok.length) {
         return res.json({ unique: false });
     } else {

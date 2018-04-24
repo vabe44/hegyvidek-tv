@@ -46,7 +46,7 @@ export class EpizodService {
   }
 
   isUrlUnique(url) {
-    return this.http.post(environment.apiUrl + '/epizodok/urlcheck', url)
+    return this.http.post(environment.apiUrl + '/epizodok/urlcheck', {url: url})
       .map(response => response.json());
   }
 

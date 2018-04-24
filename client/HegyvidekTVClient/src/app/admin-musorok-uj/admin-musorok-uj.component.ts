@@ -75,11 +75,11 @@ export class AdminMusorokUjComponent implements OnInit {
       .replace(/-+$/, '');             // Trim - from end of text
     this.musorService.isUrlUnique(this.musor.url)
       .subscribe(response => {
-        if (response.unique) {
-          this.urlUnique = true;
-        } else  {
-          this.urlUnique = false;
+        this.urlUnique = response.unique;
+        if (!this.urlUnique) {
+          this.musor.url = `${this.musor.url}-${this.musor.id}`;
+          this.toUrlFormat(this.musor.url);
         }
-    });
+      });
   }
 }

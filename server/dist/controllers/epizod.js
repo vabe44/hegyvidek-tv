@@ -179,6 +179,9 @@ exports.uploadVideo = (req, res, next) => __awaiter(this, void 0, void 0, functi
  */
 exports.checkUrl = (req, res, next) => __awaiter(this, void 0, void 0, function* () {
     const epizodok = yield Epizod_1.Epizod.find({ url: req.body.url });
+    // tslint:disable-next-line:no-console
+    console.log(req.body);
+    // console.log(epizodok);
     if (epizodok.length) {
         return res.json({ unique: false });
     }

@@ -56,13 +56,16 @@ export class AdminMusorokModositComponent implements OnInit {
   }
 
   torlesMusor() {
-    this.musorService.torles(this.musor.id)
-      .subscribe(response => {
-        alert(response.message);
-        if (response.musor) {
-          this.router.navigate(['/admin/musorok']);
-        }
-      });
+    const shouldDelete = confirm('Biztos benne, hogy törölni akarja a műsort?');
+    if (shouldDelete) {
+      this.musorService.torles(this.musor.id)
+        .subscribe(response => {
+          alert(response.message);
+          if (response.musor) {
+            this.router.navigate(['/admin/musorok']);
+          }
+        });
+    }
   }
 
   toUrlFormat(text: string) {
@@ -80,12 +83,12 @@ export class AdminMusorokModositComponent implements OnInit {
       .replace(/-+$/, '');             // Trim - from end of text
     this.musorService.isUrlUnique(this.musor.url)
       .subscribe(response => {
-        if (response.unique) {
-          this.urlUnique = true;
-        } else  {
-          this.urlUnique = false;
+        this.urlUnique = response.unique;
+        if (!this.urlUnique) {
+          this.musor.url = `${this.musor.url}-${this.musor.id}`;
+          this.toUrlFormat(this.musor.url);
         }
-    });
+      });
   }
 
   trackByIndex(index: number, obj: any): any {

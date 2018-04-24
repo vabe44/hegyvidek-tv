@@ -9,12 +9,12 @@
         <div class="field is-grouped">
           <p class="control is-expanded">
             <label class="label">Epizód címe</label>
-            <input id="cim" name="cim" [(ngModel)]="epizod.cim" (keyup)="toUrlFormat(epizod.cim)" (change)="toUrlFormat(epizod.cim)"
+            <input id="cim" name="cim" [(ngModel)]="epizod.cim" (change)="toUrlFormat(epizod.cim)"
               class="input" type="text" placeholder="Epizód címe">
           </p>
           <div class="control is-expanded">
             <label class="label">Beszédes URL</label>
-            <input type="text" id="url" name="url" [(ngModel)]="epizod.url" class="input" [class.is-success]="urlUnique" [class.is-danger]="!urlUnique"
+            <input type="text" id="url" name="url" [(ngModel)]="epizod.url" (change)="toUrlFormat(epizod.url)" class="input" [class.is-success]="urlUnique" [class.is-danger]="!urlUnique"
               placeholder="Beszédes URL" required>
             <p *ngIf="!urlUnique" class="help is-danger">Ez az URL már létezik</p>
           </div>
@@ -106,7 +106,7 @@
         </div>
         <div class="field is-grouped">
           <p class="control is-expanded">
-            <button class="button is-success" type="submit">Mentés</button>
+            <button class="button is-success" [disabled]="!urlUnique" type="submit">Mentés</button>
           </p>
         </div>
       </form>

@@ -59,7 +59,10 @@ export class AdminEpizodokUjComponent implements OnInit {
     }
 
   ngOnInit() {
-    this.musorService.osszes().subscribe(response => this.musorok = response.musorok);
+    this.musorService.osszes().subscribe(response => {
+      this.musorok = response.musorok;
+      this.epizod.musor = this.musorok[0];
+    });
     // override the onAfterAddingfile property of the uploader so it doesn't authenticate with //credentials.
     this.uploader.onAfterAddingFile = (file) => {
       file.withCredentials = false;
@@ -122,10 +125,10 @@ export class AdminEpizodokUjComponent implements OnInit {
       .replace(/-+$/, '');             // Trim - from end of text
     this.epizodService.isUrlUnique(this.epizod.url)
       .subscribe(response => {
-        if (response.unique) {
-          this.urlUnique = true;
-        } else  {
-          this.urlUnique = false;
+        this.urlUnique = response.unique;
+        if (!this.urlUnique) {
+          this.epizod.url = `${this.epizod.url}-${this.epizod.id}`;
+          this.toUrlFormat(this.epizod.url);
         }
     });
   }

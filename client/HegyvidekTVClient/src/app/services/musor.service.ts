@@ -50,7 +50,7 @@ export class MusorService {
   }
 
   isUrlUnique(url) {
-    return this.authHttp.post(environment.apiUrl + '/musoraink/urlcheck', url)
+    return this.http.post(environment.apiUrl + '/musoraink/urlcheck', {url: url})
       .map(response => response.json());
   }
 }

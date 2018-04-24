@@ -91,13 +91,16 @@ export class AdminEpizodokModositComponent implements OnInit {
   }
 
   torlesEpizod() {
-    this.epizodService.torles(this.epizod.id)
-      .subscribe(response => {
-        alert(response.message);
-        if (response.epizod) {
-          this.router.navigate(['/admin/epizodok']);
-        }
-      });
+    const shouldDelete = confirm('Biztos benne, hogy törölni akarja az epizódot?');
+    if (shouldDelete) {
+      this.epizodService.torles(this.epizod.id)
+        .subscribe(response => {
+          alert(response.message);
+          if (response.epizod) {
+            this.router.navigate(['/admin/epizodok']);
+          }
+        });
+    }
   }
 
   toUrlFormat(text: string) {
@@ -115,10 +118,10 @@ export class AdminEpizodokModositComponent implements OnInit {
       .replace(/-+$/, '');             // Trim - from end of text
     this.epizodService.isUrlUnique(this.epizod.url)
       .subscribe(response => {
-        if (response.unique) {
-          this.urlUnique = true;
-        } else  {
-          this.urlUnique = false;
+        this.urlUnique = response.unique;
+        if (!this.urlUnique) {
+          this.epizod.url = `${this.epizod.url}-${this.epizod.id}`;
+          this.toUrlFormat(this.epizod.url);
         }
     });
   }
