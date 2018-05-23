@@ -71,7 +71,13 @@ class App {
         this.express.use(lusca.xssProtection(true));
         this.express.use(cors({
             credentials: true,
-            origin: process.env.CLIENT_URL_FOR_CORS,
+            origin: [
+                process.env.LOCAL_CLIENT_URL_FOR_CORS,
+                process.env.DOMAIN_URL_FOR_CORS,
+                process.env.WWW_DOMAIN_URL_FOR_CORS,
+                process.env.SECURE_DOMAIN_URL_FOR_CORS,
+                process.env.SECURE_WWW_DOMAIN_URL_FOR_CORS,
+            ],
         }));
         this.express.use((req, res, next) => {
             res.locals.user = req.user;
