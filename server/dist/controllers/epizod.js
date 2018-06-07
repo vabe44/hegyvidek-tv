@@ -39,6 +39,7 @@ exports.getEpizodKereses = (req, res, next) => __awaiter(this, void 0, void 0, f
         .createQueryBuilder("epizod")
         .where("epizod.cim like :kereses OR epizod.leiras like :kereses OR epizod.kulcsszavak like :kereses", { kereses: "%" + req.query.szoveg + "%" })
         .innerJoinAndSelect("epizod.musor", "musor")
+        .orderBy("epizod.datum", "DESC")
         .getMany();
     if (epizodok.length) {
         return res.json({ epizodok });

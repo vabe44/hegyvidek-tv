@@ -72,7 +72,7 @@ export let getMusorUrl =  async (req: Request, res: Response, next: NextFunction
         .createQueryBuilder("musor")
         .where("musor.url = :url", { url: req.params.musorUrl })
         .innerJoinAndSelect("musor.epizodok", "epizodok")
-        .orderBy("musor.createdDate", "DESC")
+        // .orderBy("musor.epizodok.datum", "DESC")
         .getOne();
 
     if (musor.id) {

@@ -49,7 +49,6 @@ export class EloAdasComponent implements OnInit {
           const eddig = new Date(`${now.getFullYear()}-${month2}-${now.getDate()}T${element.aktivEddig}`);
           return ettol <= new Date() && eddig >= new Date();
         });
-
         this.renderer.setProperty(this.musorCim.nativeElement, 'textContent', this.adas.adascim);
         // this.renderer.setProperty(this.musorLeiras.nativeElement, 'textContent', this.musor.leiras);
         this.renderer.setProperty(this.musorLeiras.nativeElement, 'textContent', '');

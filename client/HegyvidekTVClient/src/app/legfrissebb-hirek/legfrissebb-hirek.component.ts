@@ -22,7 +22,9 @@ export class LegfrissebbHirekComponent implements OnInit {
 
   ngOnInit() {
     this.musorService.hirek().subscribe(response => {
-      this.epizodok = response.musor.epizodok.filter(hir => hir.statusz === 'aktív');
+      this.epizodok = response.musor.epizodok
+        .filter(hir => hir.statusz === 'aktív')
+        .sort((a, b) => new Date(b.datum).getTime() - new Date(a.datum).getTime()).slice();
       this.filteredEpizodok = this.paginate(this.epizodok, this.pageSize, this.page);
       this.maxPageSize = this.epizodok.length / this.pageSize;
     });

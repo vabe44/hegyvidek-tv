@@ -61,7 +61,7 @@ export class AdminEpizodokUjComponent implements OnInit {
   ngOnInit() {
     this.musorService.osszes().subscribe(response => {
       this.musorok = response.musorok;
-      this.epizod.musor = this.musorok[0];
+      // this.epizod.musor = this.musorok[0];
     });
     // override the onAfterAddingfile property of the uploader so it doesn't authenticate with //credentials.
     this.uploader.onAfterAddingFile = (file) => {

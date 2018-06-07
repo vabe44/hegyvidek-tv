@@ -41,6 +41,7 @@ export let getEpizodKereses =  async (req: Request, res: Response, next: NextFun
         .where("epizod.cim like :kereses OR epizod.leiras like :kereses OR epizod.kulcsszavak like :kereses",
             {kereses: "%" + req.query.szoveg + "%" })
         .innerJoinAndSelect("epizod.musor", "musor")
+        .orderBy("epizod.datum", "DESC")
         .getMany();
 
     if (epizodok.length) {

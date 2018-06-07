@@ -21,7 +21,9 @@ export class KiemeltVideokComponent implements OnInit {
 
   ngOnInit() {
     this.epizodService.osszes().subscribe(response => {
-      this.epizodok = response.epizodok.filter(epizod => epizod.statusz === 'aktív' && epizod.kiemelt);
+      this.epizodok = response.epizodok
+        .filter(epizod => epizod.statusz === 'aktív' && epizod.kiemelt)
+        .sort((a, b) => new Date(b.datum).getTime() - new Date(a.datum).getTime()).slice();
       this.filteredEpizodok = this.paginate(this.epizodok, this.pageSize, this.page);
       this.maxPageSize = this.epizodok.length / this.pageSize;
     });

@@ -24,7 +24,7 @@
             <label class="label">Műsor</label>
             <div class="select">
               <select id="musor" *ngIf="epizod.musor" [(ngModel)]="epizod.musor.id" name="musor">
-                <option *ngFor="let musor of musorok" [attr.selected]="epizod.musor.id == musor.id ? true : false" [value]="musor.id">{{ musor.cim }}</option>
+                <option *ngFor="let musor of musorok" [value]="musor.id">{{ musor.cim }}</option>
               </select>
             </div>
           </div>
