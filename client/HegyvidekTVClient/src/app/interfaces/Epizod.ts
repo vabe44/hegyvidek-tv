@@ -4,7 +4,7 @@ export interface Epizod {
     cim: string;
     url: string;
     statusz: string;
-    kiemelt: boolean;
+    kiemelt: number;
     datum: Date;
     kep: string;
     video: string;

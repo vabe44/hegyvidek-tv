@@ -3,30 +3,32 @@
     <h2>Régebbi videóink</h2>
     <p>A műsoraink közötti kereséshez kérjük használja a fenti KERESÉS mezőt, vagy lapozzon.</p>
     <div class="felso lapozas">
-      <div class="ujabb">
-        <span *ngIf="page > 1" (click)="ujabb()"><< Újabb</span>
+      <div class="regebbi">
+        <span *ngIf="page < maxPageSize" (click)="regebbi()"><< Régebbi </span>
       </div>
       <div class="separator"></div>
-      <div class="regebbi">
-        <span *ngIf="page < maxPageSize" (click)="regebbi()">Régebbi >> </span>
+      <div class="ujabb">
+        <span *ngIf="page > 1" (click)="ujabb()">Újabb >></span>
       </div>
     </div>
   </div>
 
   <div class="videok">
 
-    <div *ngFor="let epizod of filteredEpizodok" class="video" routerLink="/musoraink/{{ musor?.url }}/{{ epizod?.url }}">
-      <div class="kep">
-        <!-- <iframe width="100%" height="100%" [src]="('https://www.youtube.com/embed/' + epizod.youtube) | youtubeEmbed" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe> -->
-        <img src="https://img.youtube.com/vi/{{ epizod?.youtube }}/mqdefault.jpg" alt="{{ epizod?.cim }}">
-      </div>
-      <div class="szoveg">
-        <h3 class="szalagcim">{{ epizod?.cim }}</h3>
-        <div class="tartalom">
-          <p>{{ epizod?.leiras }}</p>
+    <div class="videok-container">
+      <div *ngFor="let epizod of filteredEpizodok" class="video" routerLink="/musoraink/{{ musor?.url }}/{{ epizod?.url }}">
+        <div class="kep">
+          <!-- <iframe width="100%" height="100%" [src]="('https://www.youtube.com/embed/' + epizod.youtube) | youtubeEmbed" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe> -->
+          <img src="https://img.youtube.com/vi/{{ epizod?.youtube }}/mqdefault.jpg" alt="{{ epizod?.cim }}">
         </div>
-        <div class="datum">
-          <p>{{ epizod?.datum | datum }}</p>
+        <div class="szoveg">
+          <h3 class="szalagcim">{{ epizod?.cim }}</h3>
+          <div class="tartalom">
+            <p>{{ epizod?.leiras }}</p>
+          </div>
+          <div class="datum">
+            <p>{{ epizod?.datum | datum }}</p>
+          </div>
         </div>
       </div>
     </div>
@@ -34,11 +36,11 @@
   </div>
 
   <div class="lapozas">
-    <div class="ujabb">
-      <span *ngIf="page > 1" (click)="ujabb()"><< Újabb</span>
-    </div>
     <div class="regebbi">
-      <span *ngIf="page < maxPageSize" (click)="regebbi()">Régebbi >> </span>
+      <span *ngIf="page < maxPageSize" (click)="regebbi()"><< Régebbi </span>
+    </div>
+    <div class="ujabb">
+      <span *ngIf="page > 1" (click)="ujabb()">Újabb >></span>
     </div>
   </div>
 </div>

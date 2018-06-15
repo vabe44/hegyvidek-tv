@@ -37,7 +37,7 @@ export class AdminEpizodokUjComponent implements OnInit {
         cim: '',
         url: '',
         statusz: 'aktív',
-        kiemelt: false,
+        kiemelt: 0,
         datum: new Date(Date.now()),
         kep: '',
         youtube: '',

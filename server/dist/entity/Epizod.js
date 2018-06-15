@@ -32,7 +32,7 @@ __decorate([
 ], Epizod.prototype, "statusz", void 0);
 __decorate([
     typeorm_1.Column(),
-    __metadata("design:type", Boolean)
+    __metadata("design:type", Number)
 ], Epizod.prototype, "kiemelt", void 0);
 __decorate([
     typeorm_1.Column(),

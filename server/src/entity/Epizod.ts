@@ -18,7 +18,7 @@ export class Epizod extends BaseEntity {
     public statusz: string;
 
     @Column()
-    public kiemelt: boolean;
+    public kiemelt: number;
 
     @Column()
     public datum: Date;

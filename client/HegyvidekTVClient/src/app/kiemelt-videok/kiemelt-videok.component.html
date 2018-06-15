@@ -2,12 +2,12 @@
   <div class="cim">
     <h2>Kiemelt videók</h2>
     <div class="felso lapozas">
-      <div class="ujabb">
-        <span *ngIf="page > 1" (click)="ujabb()"><< Újabb</span>
+      <div class="regebbi">
+        <span *ngIf="page < maxPageSize" (click)="regebbi()"><< Régebbi </span>
       </div>
       <div class="separator"></div>
-      <div class="regebbi">
-        <span *ngIf="page < maxPageSize" (click)="regebbi()">Régebbi >> </span>
+      <div class="ujabb">
+        <span *ngIf="page > 1" (click)="ujabb()">Újabb >></span>
       </div>
     </div>
   </div>
@@ -33,11 +33,11 @@
   </div>
 
   <div class="lapozas">
-    <div class="ujabb">
-      <span *ngIf="page > 1" (click)="ujabb()"><< Újabb</span>
-    </div>
     <div class="regebbi">
-      <span *ngIf="page < maxPageSize" (click)="regebbi()">Régebbi >> </span>
+      <span *ngIf="page < maxPageSize" (click)="regebbi()"><< Régebbi </span>
+    </div>
+    <div class="ujabb">
+      <span *ngIf="page > 1" (click)="ujabb()">Újabb >></span>
     </div>
   </div>
 </div>
