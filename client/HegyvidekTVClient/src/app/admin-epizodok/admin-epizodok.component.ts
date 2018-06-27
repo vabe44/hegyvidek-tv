@@ -19,7 +19,7 @@ export class AdminEpizodokComponent implements OnInit {
   filteredEpizodok: Epizod[];
   musorok: Musor[];
   constructor(private epizodService: EpizodService, private musorService: MusorService, public youtubeEmbed: YoutubeEmbedPipe) {
-    this.filterBy = -1;
+    this.filterBy = -2;
   }
 
   ngOnInit() {
@@ -31,10 +31,12 @@ export class AdminEpizodokComponent implements OnInit {
   }
 
   sort() {
-    if (this.filterBy <= 0) {
+    if (+this.filterBy === -2) {
       this.filteredEpizodok = this.epizodok;
+    } else if (+this.filterBy === -1) {
+      this.filteredEpizodok = this.epizodok.filter(epizod => epizod.kiemelt);
     } else {
-      this.filteredEpizodok = this.epizodok.filter(epizod => epizod.musor.id === Number(this.filterBy));
+      this.filteredEpizodok = this.epizodok.filter(epizod => epizod.musor.id === +this.filterBy);
     }
   }
 }

@@ -25,6 +25,8 @@ section.content {
 }
 
 .details {
+    width: 640px;
+    overflow: hidden;
     padding: 10px;
     color: black;
     background-color: white;

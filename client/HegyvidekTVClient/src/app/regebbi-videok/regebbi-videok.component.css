@@ -96,7 +96,7 @@ h2 {
     flex-direction: column;
 }
 
-.szoveg > h3.szalagcim {
+.szoveg h3.szalagcim {
     color: black;
     font-size: 18px;
     margin: unset;
@@ -105,17 +105,19 @@ h2 {
     font-family: "Arial", "Helvetica", "Helvetica Neue", sans-serif;
 }
 
-.szoveg > .tartalom {
+.szoveg .tartalom {
     flex: 1;
     font-size: 16px;
     line-height: 1.25em;
+    overflow: hidden;
+    max-height: 100px;
 }
 
 .datum {
     text-align: right;
 }
 
-.content > .lapozas {
+.content .lapozas {
     display: flex;
     justify-content: space-between;
     font-family: "Arial", "Helvetica", "Helvetica Neue", sans-serif;

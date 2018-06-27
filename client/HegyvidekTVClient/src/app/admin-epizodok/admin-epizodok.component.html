@@ -20,7 +20,8 @@
               <div class="control">
                 <div class="select">
                   <select [(ngModel)]="filterBy" (change)="sort()">
-                    <option value="-1" [attr.selected]="true"><p>Összes</p></option>
+                    <option value="-2" [attr.selected]="true"><p>Összes</p></option>
+                    <option value="-1"><p>Kiemelt</p></option>
                     <option *ngFor="let musor of musorok;" [value]="musor.id"><p>{{musor.cim}}</p></option>
                   </select>
                 </div>

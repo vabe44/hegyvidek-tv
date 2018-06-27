@@ -50,7 +50,10 @@ h3.szalagcim {
 .tartalom {
     font-size: 16px;
     line-height: 18px;
+    overflow: hidden;
+    max-height: 100px;
 }
+
 
 .datum {
     text-align: right;

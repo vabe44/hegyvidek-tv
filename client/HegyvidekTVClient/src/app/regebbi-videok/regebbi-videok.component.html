@@ -24,7 +24,7 @@
         <div class="szoveg">
           <h3 class="szalagcim">{{ epizod?.cim }}</h3>
           <div class="tartalom">
-            <p>{{ epizod?.leiras }}</p>
+            <p>{{ (epizod.leiras.length>6)? (epizod.leiras | slice:0:210)+'...':(epizod.leiras) }}</p>
           </div>
           <div class="datum">
             <p>{{ epizod?.datum | datum }}</p>

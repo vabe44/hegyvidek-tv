@@ -31,6 +31,12 @@ h2 {
     font-weight: normal;
 }
 
+h4 {
+    text-align: center;
+    font-weight: bold;
+    color: black;
+}
+
 .content p {
     margin-bottom: unset;
 }
@@ -80,4 +86,18 @@ ul > li {
 
 p.bold.last {
     padding: unset;
+}
+
+.contact span {
+    text-align: center;
+    display: block;
+    font-style: italic;
+}
+
+.contact span a {
+    font-style: normal;
+}
+
+.underline {
+    text-decoration: underline;
 }
