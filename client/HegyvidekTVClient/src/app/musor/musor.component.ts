@@ -42,7 +42,10 @@ export class MusorComponent implements OnInit {
               return epizod.url === params.get('epizod');
             });
           } else {
-            this.epizod = this.musor.epizodok[0];
+            const epizodok = this.musor.epizodok
+              .filter(epizod => epizod.statusz === 'aktív')
+              .sort((a, b) => new Date(b.datum).getTime() - new Date(a.datum).getTime()).slice();
+            this.epizod = epizodok[0];
           }
           // console.log(response);
         });
