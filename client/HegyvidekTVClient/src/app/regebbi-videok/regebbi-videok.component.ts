@@ -24,7 +24,7 @@ export class RegebbiVideokComponent implements OnInit, OnChanges {
   ngOnChanges(changes: SimpleChanges) {
     // changes.prop contains the old and the new value...
     // console.log(changes);
-    this.epizodok = this.musor.epizodok;
+    this.epizodok = this.musor.epizodok.sort((a, b) => new Date(b.datum).getTime() - new Date(a.datum).getTime()).slice();
     this.filteredEpizodok = this.paginate(this.epizodok, this.pageSize, this.page);
     this.maxPageSize = this.epizodok.length / this.pageSize;
   }
