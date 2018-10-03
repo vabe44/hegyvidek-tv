@@ -42,3 +42,17 @@
 
   <app-hirek-scroller class="hirek-scroller"></app-hirek-scroller>
 </header>
+
+<div *ngIf="banner" [class.is-active]="showPopup" class="modal">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <section class="modal-card-body">
+      <a [attr.href]="banner.keplink">
+        <img [src]="banner.kep" alt="">
+      </a>
+    </section>
+    <footer class="modal-card-foot">
+      <button (click)="togglePopup()" class="button is-pulled-right">Bezárás</button>
+    </footer>
+  </div>
+</div>

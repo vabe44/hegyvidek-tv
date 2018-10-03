@@ -1,19 +1,24 @@
-import { Component, ElementRef, ViewChild, NgZone, Renderer2 } from '@angular/core';
+import { Component, ElementRef, ViewChild, NgZone, Renderer2, OnInit } from '@angular/core';
 import { environment } from '../../environments/environment';
+import { Banner } from '../interfaces/Banner';
+import { BannerService } from '../services/banner.service';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
   public facebookLink = environment.facebook;
   public youtubeLink = environment.youtube;
   public now: Date = new Date();
+  showPopup: boolean;
   @ViewChild('ido')
   public aktualisIdo: ElementRef;
+  bannerek: Banner[];
+  banner: Banner;
 
-  constructor(private zone: NgZone, private renderer: Renderer2) {
+  constructor(private zone: NgZone, private renderer: Renderer2, private bannerService: BannerService) {
     this.zone.runOutsideAngular(() => {
       setInterval(() => {
         this.now = new Date();
@@ -25,4 +30,26 @@ export class HeaderComponent {
     });
   }
 
+  ngOnInit() {
+    this.bannerService.ervenyesBannerek().subscribe(async response => {
+      this.bannerek = response.bannerek.filter(banner => banner.pozicio === 'popup');
+      this.banner = this.bannerek[this.getRandomInt(this.bannerek.length)];
+      this.banner.kep = environment.url + this.banner.kep;
+      await this.delay(4000);
+      this.showPopup = true;
+      console.log(this.bannerek);
+    });
+  }
+
+  async delay(ms: number) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
+
+  togglePopup() {
+    this.showPopup = !this.showPopup;
+  }
+
+  getRandomInt(max): number {
+    return Math.floor(Math.random() * Math.floor(max));
+  }
 }

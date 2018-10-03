@@ -204,3 +204,11 @@ h2 {
     width: 1280px;
     color: black;
 }
+
+.modal-card-body {
+    padding: 0px;
+}
+
+.modal-card-foot {
+    padding: 10px;
+}

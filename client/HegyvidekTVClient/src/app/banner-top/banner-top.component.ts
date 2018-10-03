@@ -9,7 +9,6 @@ import { Banner } from '../interfaces/Banner';
   styleUrls: ['./banner-top.component.css']
 })
 export class BannerTopComponent implements OnInit {
-
   bannerek: Banner[];
   banner: Banner;
   constructor(private bannerService: BannerService) { }

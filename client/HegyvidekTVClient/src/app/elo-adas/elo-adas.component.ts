@@ -39,21 +39,21 @@ export class EloAdasComponent implements OnInit {
   constructor(
     private musorService: MusorService, private musorujsagService: MusorujsagService,
     private zone: NgZone, private renderer: Renderer2) {
-    this.zone.runOutsideAngular(() => {
-      setInterval(() => {
-        this.adas = this.musorujsag.find(function(element) {
-          const now = new Date();
-          const month = now.getMonth() + 1;
-          const month2 = month < 10 ? '0' + month : '' + month; // ('' + month) for string result
-          const ettol = new Date(`${now.getFullYear()}-${month2}-${now.getDate()}T${element.aktivEttol}`);
-          const eddig = new Date(`${now.getFullYear()}-${month2}-${now.getDate()}T${element.aktivEddig}`);
-          return ettol <= new Date() && eddig >= new Date();
-        });
-        this.renderer.setProperty(this.musorCim.nativeElement, 'textContent', this.adas.adascim);
-        // this.renderer.setProperty(this.musorLeiras.nativeElement, 'textContent', this.musor.leiras);
-        this.renderer.setProperty(this.musorLeiras.nativeElement, 'textContent', '');
-      }, 1000);
-    });
+    // this.zone.runOutsideAngular(() => {
+    //   setInterval(() => {
+    //     this.adas = this.musorujsag.find(function(element) {
+    //       const now = new Date();
+    //       const month = now.getMonth() + 1;
+    //       const month2 = month < 10 ? '0' + month : '' + month; // ('' + month) for string result
+    //       const ettol = new Date(`${now.getFullYear()}-${month2}-${now.getDate()}T${element.aktivEttol}`);
+    //       const eddig = new Date(`${now.getFullYear()}-${month2}-${now.getDate()}T${element.aktivEddig}`);
+    //       return ettol <= new Date() && eddig >= new Date();
+    //     });
+    //     this.renderer.setProperty(this.musorCim.nativeElement, 'textContent', this.adas.adascim);
+    //     // this.renderer.setProperty(this.musorLeiras.nativeElement, 'textContent', this.musor.leiras);
+    //     this.renderer.setProperty(this.musorLeiras.nativeElement, 'textContent', '');
+    //   }, 1000);
+    // });
   }
 
   ngOnInit() {

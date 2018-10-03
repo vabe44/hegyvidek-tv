@@ -52,6 +52,7 @@
                 <select id="pozicio" [(ngModel)]="banner.pozicio" name="pozicio">
                   <option value="felső">Felső (328x55px)</option>
                   <option value="alsó">Alsó (475x150px)</option>
+                  <option value="popup">Popup</option>
                 </select>
               </p>
             </div>
@@ -64,25 +65,7 @@
             <label class="label">Érvényesség vége</label>
             <input id="aktivEddig" [ngModel]="banner.aktivEddig | date:'yyyy-MM-ddT00:00'" (ngModelChange)="banner.aktivEddig = $event" class="input" type="datetime-local" name="aktivEddig">
           </p>
-          <!-- <div class="field is-fullwidth">
-            <label class="label">Banner típusa</label>
-            <div class="control is-expanded">
-              <p class="select is-fullwidth">
-                <select id="tipus" [(ngModel)]="banner.tipus" name="tipus">
-                  <option value="kep">Kép fájl linkkel</option>
-                  <option value="embedkod">Embed kód</option>
-                </select>
-              </p>
-            </div>
-          </div> -->
         </div>
-
-        <!-- <div *ngIf="banner.tipus === 'embedkod'" class="field">
-          <label class="label">Embed kód</label>
-          <div class="control is-expanded">
-            <textarea class="textarea" [(ngModel)]="banner.embedkod" id="embedkod" name="embedkod" placeholder="Embed kód"></textarea>
-          </div>
-        </div> -->
 
         <div *ngIf="banner.kep" class="kep elonezet control is-expanded">
           <figure class="image">
@@ -131,35 +114,5 @@
       </table>
     </div>
 
-    <!-- <div class="bannerek">
-      <h2 class="title">Inaktív Bannerek</h2>
-      <table class="table">
-        <thead>
-          <tr>
-            <th>Név</th>
-            <th>Pozíció</th>
-            <th>Típus</th>
-            <th class="right">Műveletek</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let banner of inaktivBannerek; let index = index;trackBy:trackByIndex;">
-            <td>{{ banner.nev }}</td>
-            <td>{{ banner.pozicio }}</td>
-            <td>{{ banner.tipus }}</td>
-            <td>
-              <div class="muveletek field is-grouped">
-                <p class="control">
-                  <button class="button is-primary" (click)="modositBanner(banner)">Módosítás</button>
-                </p>
-                <p class="control">
-                  <button class="button is-danger" (click)="torlesBanner(banner)">Törlés</button>
-                </p>
-              </div>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div> -->
   </section>
 </main>
