@@ -9,6 +9,8 @@ export interface Banner {
     keplink: string;
     embedkod: string;
     pozicio: string;
+    popupShowDelay: number;
+    popupAutocloseTime: number;
     createdDate: Date;
     updatedDate: Date;
 }

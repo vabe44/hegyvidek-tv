@@ -35,8 +35,10 @@ export class HeaderComponent implements OnInit {
       this.bannerek = response.bannerek.filter(banner => banner.pozicio === 'popup');
       this.banner = this.bannerek[this.getRandomInt(this.bannerek.length)];
       this.banner.kep = environment.url + this.banner.kep;
-      await this.delay(4000);
+      await this.delay(this.banner.popupShowDelay);
       this.showPopup = true;
+      await this.delay(this.banner.popupAutocloseTime);
+      this.showPopup = false;
       console.log(this.bannerek);
     });
   }

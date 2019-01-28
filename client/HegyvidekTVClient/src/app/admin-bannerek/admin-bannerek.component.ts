@@ -29,6 +29,8 @@ export class AdminBannerekComponent implements OnInit {
       keplink: '',
       embedkod: '',
       pozicio: 'felső',
+      popupShowDelay: 4000,
+      popupAutocloseTime: 5000,
       createdDate: undefined,
       updatedDate: undefined
     };
@@ -66,6 +68,8 @@ export class AdminBannerekComponent implements OnInit {
             keplink: '',
             embedkod: '',
             pozicio: 'felső',
+            popupShowDelay: 4000,
+            popupAutocloseTime: 5000,
             createdDate: undefined,
             updatedDate: undefined
           };
@@ -114,6 +118,8 @@ export class AdminBannerekComponent implements OnInit {
               keplink: '',
               embedkod: '',
               pozicio: 'felső',
+              popupShowDelay: 4000,
+              popupAutocloseTime: 5000,
               createdDate: undefined,
               updatedDate: undefined
             };

@@ -54,6 +54,14 @@ __decorate([
     __metadata("design:type", String)
 ], Banner.prototype, "pozicio", void 0);
 __decorate([
+    typeorm_1.Column(),
+    __metadata("design:type", Number)
+], Banner.prototype, "popupShowDelay", void 0);
+__decorate([
+    typeorm_1.Column(),
+    __metadata("design:type", Number)
+], Banner.prototype, "popupAutocloseTime", void 0);
+__decorate([
     typeorm_1.CreateDateColumn(),
     __metadata("design:type", Date)
 ], Banner.prototype, "createdDate", void 0);

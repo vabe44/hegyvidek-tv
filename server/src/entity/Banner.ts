@@ -34,6 +34,12 @@ export class Banner extends BaseEntity {
     @Column()
     public pozicio: string;
 
+    @Column()
+    public popupShowDelay: number;
+
+    @Column()
+    public popupAutocloseTime: number;
+
     @CreateDateColumn()
     public createdDate: Date;
 

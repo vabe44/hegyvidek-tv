@@ -83,6 +83,8 @@ exports.postBanner = (req, res, next) => __awaiter(this, void 0, void 0, functio
     banner.keplink = req.body.keplink;
     banner.embedkod = req.body.embedkod;
     banner.pozicio = req.body.pozicio;
+    banner.popupShowDelay = req.body.popupShowDelay;
+    banner.popupAutocloseTime = req.body.popupAutocloseTime;
     yield banner.save();
     // tslint:disable-next-line:no-console
     console.log(req.body);
@@ -119,6 +121,8 @@ exports.putBanner = (req, res, next) => __awaiter(this, void 0, void 0, function
     banner.keplink = req.body.keplink;
     banner.embedkod = req.body.embedkod;
     banner.pozicio = req.body.pozicio;
+    banner.popupShowDelay = req.body.popupShowDelay;
+    banner.popupAutocloseTime = req.body.popupAutocloseTime;
     yield banner.save();
     if (banner.id) {
         return res.json({ banner, message: "A banner módosítása sikeres." });

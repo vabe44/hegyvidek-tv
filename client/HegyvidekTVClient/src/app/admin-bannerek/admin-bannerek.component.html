@@ -57,8 +57,16 @@
               </p>
             </div>
           </div>
+          <p *ngIf="banner.pozicio === 'popup'" class="control">
+            <label class="label">Popup késleltetés</label>
+            <input id="Popup késleltetés" [(ngModel)]="banner.popupShowDelay" name="popupShowDelay" class="input" type="number" step="1" placeholder="Popup késleltetés (ms)">
+          </p>
+          <p *ngIf="banner.pozicio === 'popup'" class="control">
+            <label class="label">Popup időtartam (ms)</label>
+            <input id="Popup időtartam" [(ngModel)]="banner.popupAutocloseTime" name="popupAutocloseTime" class="input" type="number" step="1" placeholder="Popup időtartam  (ms)">
+          </p>
           <p class="control">
-            <label class="label">Érvényesség kezdete</label>
+            <label class="label">Érvényesség kezdete (ms)</label>
             <input id="aktivEttol" [ngModel]="banner.aktivEttol | date:'yyyy-MM-ddT00:00'" (ngModelChange)="banner.aktivEttol = $event" class="input" type="datetime-local" name="aktivEttol">
           </p>
           <p class="control">

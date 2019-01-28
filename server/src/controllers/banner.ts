@@ -83,6 +83,8 @@ export let postBanner =  async (req: Request, res: Response, next: NextFunction)
     banner.keplink = req.body.keplink;
     banner.embedkod = req.body.embedkod;
     banner.pozicio = req.body.pozicio;
+    banner.popupShowDelay = req.body.popupShowDelay;
+    banner.popupAutocloseTime = req.body.popupAutocloseTime;
     await banner.save();
 
     // tslint:disable-next-line:no-console
@@ -124,6 +126,8 @@ export let putBanner =  async (req: Request, res: Response, next: NextFunction) 
     banner.keplink = req.body.keplink;
     banner.embedkod = req.body.embedkod;
     banner.pozicio = req.body.pozicio;
+    banner.popupShowDelay = req.body.popupShowDelay;
+    banner.popupAutocloseTime = req.body.popupAutocloseTime;
     await banner.save();
 
     if (banner.id) {
