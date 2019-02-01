@@ -19,6 +19,8 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
+        "../node_modules/bootstrap-markdown/css/bootstrap-markdown.min.css",
+        "../node_modules/font-awesome/css/font-awesome.css",
         "styles.css",
         "../node_modules/mediaelement/build/mediaelementplayer.min.css",
         "../node_modules/bulma/css/bulma.css",
@@ -34,10 +36,13 @@
         "assets/fonts/WeatherIcons.woff2"
       ],
       "scripts": [
+        "../node_modules/marked/lib/marked.js",
         "../node_modules/mediaelement/build/mediaelement-and-player.min.js",
         "assets/scripts/set_mejs_language.js",
         "assets/scripts/facebook-sdk.js",
-        "../node_modules/moment/min/moment-with-locales.min.js"
+        "../node_modules/moment/min/moment-with-locales.min.js",
+        "../node_modules/jquery/dist/jquery.js",
+        "../node_modules/bootstrap-markdown/js/bootstrap-markdown.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {

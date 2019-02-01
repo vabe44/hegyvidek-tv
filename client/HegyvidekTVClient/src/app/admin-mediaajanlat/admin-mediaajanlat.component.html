@@ -1,0 +1,28 @@
+<main>
+  <section class="content">
+  <app-admin-menu></app-admin-menu>
+
+  <h2 class="title">Médiaajánlat Beállítások</h2>
+
+  <form novalidate>
+    <div class="editor">
+      <label>Szövegszerkesztő</label>
+      <hr />
+      <angular-markdown-editor textareaId="editor1" [locale]="locale" [options]="editorOptions" rows="20" name="markdownText"
+        [(ngModel)]="markdownText" (onFullscreenExit)="hidePreview()">
+      </angular-markdown-editor>
+    </div>
+  </form>
+
+  <p class="control is-expanded">
+    <button (click)="save()" class="button is-success" type="submit">Mentés</button>
+  </p>
+
+  <h2 class="title">Előnézet</h2>
+  <hr />
+  <div class="result-preview outline">
+    <markdown [data]="markdownText"></markdown>
+  </div>
+
+  </section>
+</main>

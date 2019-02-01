@@ -1,0 +1,23 @@
+main {
+    display: flex;
+    justify-content: center;
+}
+
+section.content {
+    width: 1280px;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    padding-top: 30px;
+    padding-bottom: 50px;
+    background-color: rgba(255,255,255,0.25);
+    margin-top: 180px;
+}
+
+.field.is-grouped {
+    margin-bottom: 1rem;
+}
+
+.button.is-success {
+    width: 100%;
+}

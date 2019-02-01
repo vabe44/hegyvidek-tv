@@ -4,11 +4,13 @@ import { AuthHttp, AUTH_PROVIDERS, provideAuth, AuthConfig } from 'angular2-jwt/
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserXhr, RequestOptions } from '@angular/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule, Http, BaseRequestOptions } from '@angular/http';
 import { CustExtBrowserXhr } from '../cust-ext-browser-xhr';
 import { RouterModule } from '@angular/router';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
+import { AngularMarkdownEditorModule } from 'angular-markdown-editor';
+import { MarkdownModule, MarkedOptions, MarkedRenderer } from 'ngx-markdown';
 
 import { AuthService } from './services/auth.service';
 import { MusorService } from './services/musor.service';
@@ -64,6 +66,8 @@ import { CallbackPipe } from './pipes/callback.pipe';
 import { OraPipe } from './pipes/ora.pipe';
 import { SortPipe } from './pipes/sort.pipe';
 import { SortDescPipe } from './pipes/sort-desc.pipe';
+import { AdminMediaajanlatComponent } from './admin-mediaajanlat/admin-mediaajanlat.component';
+import { MediaajanlatService } from './services/mediaajanlat.service';
 export function getAuthHttp(http, options: RequestOptions) {
   return new AuthHttp(new AuthConfig({
     tokenName: 'token'
@@ -113,11 +117,13 @@ export function getAuthHttp(http, options: RequestOptions) {
     CallbackPipe,
     OraPipe,
     SortPipe,
-    SortDescPipe
+    SortDescPipe,
+    AdminMediaajanlatComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpModule,
     HttpClientModule,
     FileUploadModule,
@@ -142,8 +148,15 @@ export function getAuthHttp(http, options: RequestOptions) {
       { path: 'admin/bannerek', component: AdminBannerekComponent, canActivate: [AuthGuard] },
       { path: 'admin/musorujsag', component: AdminMusorujsagComponent, canActivate: [AuthGuard] },
       { path: 'admin/kapcsolat', component: AdminKapcsolatComponent, canActivate: [AuthGuard] },
+      { path: 'admin/mediaajanlat', component: AdminMediaajanlatComponent},
       { path: 'admin', component: AdminMusorokComponent, canActivate: [AuthGuard] },
-    ])
+    ]),
+    AngularMarkdownEditorModule.forRoot({
+      // add any Global Options/Config you might want
+      // to avoid passing the same options over and over in each components of your App
+      iconlibrary: 'glyph'
+    }),
+    MarkdownModule.forRoot(),
   ],
   providers: [
     AuthService,
@@ -155,6 +168,7 @@ export function getAuthHttp(http, options: RequestOptions) {
     BannerService,
     YoutubeService,
     KapcsolatService,
+    MediaajanlatService,
     AuthHttp,
     AuthGuard,
     {

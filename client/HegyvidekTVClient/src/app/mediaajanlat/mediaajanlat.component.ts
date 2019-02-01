@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MediaajanlatService } from '../services/mediaajanlat.service';
 
 @Component({
   selector: 'app-mediaajanlat',
@@ -6,10 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./mediaajanlat.component.css']
 })
 export class MediaajanlatComponent implements OnInit {
-
-  constructor() { }
+  markdownText: string;
+  constructor(private mediaajanlatService: MediaajanlatService) { }
 
   ngOnInit() {
+    this.mediaajanlatService.getMediaajanlat().subscribe(response => {
+      this.markdownText = response.mediaajanlat;
+      console.log(this.markdownText)
+    });
   }
 
 }

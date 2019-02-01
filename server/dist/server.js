@@ -38,6 +38,7 @@ const bannerek_1 = require("./routes/bannerek");
 const contact_1 = require("./routes/contact");
 const epizodok_1 = require("./routes/epizodok");
 const hirek_1 = require("./routes/hirek");
+const mediaajanlat_1 = require("./routes/mediaajanlat");
 const musoraink_1 = require("./routes/musoraink");
 const musorujsag_1 = require("./routes/musorujsag");
 const root_1 = require("./routes/root");
@@ -100,6 +101,7 @@ class App {
         this.express.use("/api/epizodok", epizodok_1.default);
         this.express.use("/api/hirek", hirek_1.default);
         this.express.use("/api/youtube", youtube_1.default);
+        this.express.use("/api/mediaajanlat", mediaajanlat_1.default);
         this.express.use("*", root_1.default);
     }
     launchConf() {
